@@ -1547,6 +1547,24 @@ def cmd_p1_status(a):
     print("\n".join(lines))
 
 
+def cmd_p1_fetchlist(a):
+    """``p1-fetchlist``: URLs for the login-node downloader (``ops/fetch.sh``)."""
+    from .p1.lyrics_ref import write_fetchlist
+    from .p1.state import read_json
+    cfg, work, songs = _p1_setup(a)
+    dup = (read_json(work / "dupes.json", {}) or {}).get("duplicate_of", {})
+    p = write_fetchlist(songs, work, dup)
+    print(f"{sum(1 for _ in open(p))} URLs -> {p}")
+
+
+def cmd_p1_refpool(a):
+    """``p1-refpool``: parse the fetched LRCLIB results into ``<work>/refpool.json``."""
+    from .p1.lyrics_ref import build_pool
+    cfg, work, songs = _p1_setup(a)
+    pool = build_pool(work)
+    print(f"{len(pool['refs'])} reference lyrics from {len(pool['by_song'])} songs")
+
+
 def cmd_p1_dedupe(a):
     """``p1-dedupe``: group re-uploads from the fingerprints -> ``<work>/dupes.json``."""
     from .p1.clean import find_duplicates
@@ -1843,6 +1861,12 @@ def main(argv=None):
     s = sub.add_parser("p1-dedupe", help="P1: duplicate groups from fingerprints -> <work>/dupes.json")
     p1_common(s)
     s.set_defaults(fn=cmd_p1_dedupe)
+    s = sub.add_parser("p1-fetchlist", help="P1: URL list for ops/fetch.sh (login node)")
+    p1_common(s)
+    s.set_defaults(fn=cmd_p1_fetchlist)
+    s = sub.add_parser("p1-refpool", help="P1: fetched LRCLIB results -> <work>/refpool.json")
+    p1_common(s)
+    s.set_defaults(fn=cmd_p1_refpool)
 
     a = p.parse_args(argv)
     a.fn(a)

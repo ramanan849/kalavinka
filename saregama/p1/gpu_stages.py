@@ -9,8 +9,9 @@
                away from the main pitch and its octaves, and the residual level.
 ``voices``     single-voice mask; ECAPA embedding per single-voice phrase;
                agglomerative clustering into singers within the song (``voices.json``).
-``asr``        Qwen3-ASR and Whisper per sung phrase (``asr.json``), each phrase
-               annotated with its single-voice share and dominant singer cluster.
+``asr``        Qwen3-ASR and Whisper per sung phrase (``asr.json``)
+               (singer / overlap per phrase is added later, in reconcile, so tuning
+               the voices stage never re-runs ASR).
 ``emissions``  MMS_FA log-probabilities at 50 fps (``mms.npz``, float16): every later
                alignment decision is CPU-only and re-runnable from this cache.
 """
@@ -172,16 +173,26 @@ def runs(mask: np.ndarray, min_len: int, max_gap: int = 0) -> List[Tuple[int, in
     return [(int(a), int(b)) for a, b in merged if b - a >= min_len]
 
 
-def cluster_embeddings(emb: np.ndarray, threshold: float) -> np.ndarray:
-    """Average-linkage agglomerative clustering by cosine distance; labels
-    ordered by first appearance."""
+def cluster_embeddings(emb: np.ndarray, threshold: float, median_hz: np.ndarray | None = None,
+                       register_weight: float = 0.5) -> np.ndarray:
+    """Average-linkage agglomerative clustering; labels ordered by first appearance.
+
+    Distance = cosine distance of the speaker embeddings + ``register_weight``
+    per octave between the segments' median F0.  ECAPA is a speech model; on
+    singing it can confuse a male and a female voice, the pitch register can't.
+    """
     if len(emb) == 0:
         return np.zeros(0, dtype=int)
     if len(emb) == 1:
         return np.zeros(1, dtype=int)
     from scipy.cluster.hierarchy import fcluster, linkage
+    from scipy.spatial.distance import pdist
     e = emb / (np.linalg.norm(emb, axis=1, keepdims=True) + 1e-9)
-    lab = fcluster(linkage(e, method="average", metric="cosine"), t=threshold, criterion="distance")
+    d = pdist(e, metric="cosine")
+    if median_hz is not None:
+        oct_ = np.log2(np.maximum(np.asarray(median_hz, float), 1.0))[:, None]
+        d = d + register_weight * pdist(oct_, metric="cityblock")
+    lab = fcluster(linkage(d, method="average"), t=threshold, criterion="distance")
     order = {l: k for k, l in enumerate(dict.fromkeys(lab))}
     return np.array([order[l] for l in lab])
 
@@ -210,7 +221,9 @@ def voices(ctx, song: Song, sdir: Path) -> Dict:
             w = torch.from_numpy(voc16[a * ASR_SR // FPS: b * ASR_SR // FPS]).float()[None]
             embs.append(enc.encode_batch(w.to(enc.device)).squeeze().float().cpu().numpy())
     emb = np.array(embs, dtype=np.float32).reshape(len(segs), -1) if embs else np.zeros((0, 192), np.float32)
-    lab = cluster_embeddings(emb, c["cluster_threshold"])
+    med = np.array([np.median(fz["f0"][a:b][fz["f0"][a:b] > 0]) if (fz["f0"][a:b] > 0).any() else 0.0
+                    for a, b in segs])
+    lab = cluster_embeddings(emb, c["cluster_threshold"], med)
     clusters = {}
     for k in sorted(set(lab.tolist())):
         sel = lab == k
@@ -219,7 +232,8 @@ def voices(ctx, song: Song, sdir: Path) -> Dict:
     np.save(sdir / "voices_emb.npy", emb)
     voiced = fz["f0"] > 0
     out = {"fps": FPS, "single_frames": int(mask.sum()), "voiced_frames": int(voiced.sum()),
-           "segments": [{"start": a / FPS, "end": b / FPS, "cluster": int(l)} for (a, b), l in zip(segs, lab)],
+           "segments": [{"start": a / FPS, "end": b / FPS, "cluster": int(l), "median_hz": round(float(m), 1)}
+                        for (a, b), l, m in zip(segs, lab, med)],
            "clusters": clusters}
     atomic_json(sdir / "voices.json", out)
     np.save(sdir / "single_mask.npy", mask)
@@ -251,12 +265,7 @@ def asr(ctx, song: Song, sdir: Path) -> Dict:
     acfg = AsrCfg(min_gap_s=a["min_gap_s"], min_phrase_s=a["min_phrase_s"], max_phrase_s=a["max_phrase_s"],
                   pad_s=a["pad_s"], max_chars_per_s=a["max_chars_per_s"])
     fz = np.load(sdir / "f0.npz")
-    single = np.load(sdir / "single_mask.npy")
-    vj = read_json(sdir / "voices.json", {})
-    seg_cl = np.full(len(single), -1)
-    for s in vj.get("segments", []):
-        seg_cl[int(s["start"] * FPS): int(s["end"] * FPS)] = s["cluster"]
-    spans = plan_phrases(fz["f0"] > 0, FPS, acfg)
+    spans = plan_phrases(fz["f0"] > 0, FPS, acfg)      # singer / overlap info is added in reconcile
     voc16 = resample(_load(sdir, "vocals.flac"), SR, ASR_SR)
     clips = [voc16[max(0, int((s - a["pad_s"]) * ASR_SR)): int((e + a["pad_s"]) * ASR_SR)].astype(np.float32)
              for s, e in spans]
@@ -265,16 +274,9 @@ def asr(ctx, song: Song, sdir: Path) -> Dict:
     tw = w(clips, a["language"]) if clips else []
     phrases = []
     for (s, e), (rq, _), (rw, _) in zip(spans, tq, tw):
-        fa, fb = int(s * FPS), int(e * FPS)
-        voiced = fz["f0"][fa:fb] > 0
-        cl = seg_cl[fa:fb][voiced]
-        cl = cl[cl >= 0]
         qt, qd = clean_text(rq, e - s, a["max_chars_per_s"])
         wt, wd = clean_text(rw, e - s, a["max_chars_per_s"])
-        phrases.append({"start": round(s, 3), "end": round(e, 3),
-                        "single_share": round(float(single[fa:fb][voiced].mean()) if voiced.any() else 0.0, 3),
-                        "cluster": int(np.bincount(cl).argmax()) if len(cl) else -1,
-                        "qwen": qt, "qwen_raw": (rq or "").strip(), "qwen_dropped": qd,
+        phrases.append({"start": round(s, 3), "end": round(e, 3), "qwen": qt, "qwen_raw": (rq or "").strip(), "qwen_dropped": qd,
                         "whisper": wt, "whisper_raw": (rw or "").strip(), "whisper_dropped": wd})
     atomic_json(sdir / "asr.json", {"models": {"qwen": a["primary"], "whisper": a["secondary"]},
                                     "phrases": phrases})
@@ -303,7 +305,7 @@ def emissions(ctx, song: Song, sdir: Path) -> Dict:
 STAGES = [
     Stage("separate", 1, separate, sections=("separation",), depends=("inventory",), gpu=True),
     Stage("f0", 1, f0, sections=("f0",), depends=("separate",), gpu=True),
-    Stage("voices", 1, voices, sections=("voices",), depends=("f0",), gpu=True),
-    Stage("asr", 1, asr, sections=("asr",), depends=("voices",), gpu=True),
+    Stage("voices", 2, voices, sections=("voices",), depends=("f0",), gpu=True),
+    Stage("asr", 1, asr, sections=("asr",), depends=("f0",), gpu=True),
     Stage("emissions", 1, emissions, sections=(), depends=("f0",), gpu=True),
 ]
