@@ -74,11 +74,26 @@ def fingerprint(ctx, song: Song, sdir: Path) -> Dict:
 _POP = np.array([bin(i).count("1") for i in range(256)], dtype=np.uint8)
 
 
-def ber(a: np.ndarray, b: np.ndarray, max_shift: int = 40) -> Tuple[float, int]:
+def offset_votes(a: np.ndarray, b: np.ndarray) -> int:
+    """Most likely shift of ``b`` against ``a`` (in fingerprint values): the most
+    common position difference of identical (top-28-bit) values.  Works for any
+    shift, e.g. a music video with a 40 s intro against the audio release."""
+    pos: Dict[int, List[int]] = defaultdict(list)
+    for i, v in enumerate((a >> 4).tolist()):
+        pos[v].append(i)
+    diffs = Counter()
+    for j, v in enumerate((b >> 4).tolist()):
+        for i in pos.get(v, ())[:5]:
+            diffs[i - j] += 1
+    return diffs.most_common(1)[0][0] if diffs else 0
+
+
+def ber(a: np.ndarray, b: np.ndarray, max_shift: int = 40, center: int | None = None) -> Tuple[float, int]:
     """Lowest bit error rate between fingerprints over shifts of +-``max_shift``
-    values (about +-5 s), and that shift."""
+    values around ``center`` (default: the vote of ``offset_votes``), and that shift."""
     best, best_s = 1.0, 0
-    for s in range(-max_shift, max_shift + 1):
+    c = offset_votes(a, b) if center is None else center
+    for s in range(c - max_shift, c + max_shift + 1):
         x, y = (a[s:], b) if s >= 0 else (a, b[-s:])
         n = min(len(x), len(y))
         if n < 50:
@@ -151,7 +166,13 @@ def find_duplicates(songs: Sequence[Song], work: Path) -> Dict:
         out_groups.append(members)
         for m in members[1:]:
             dup_of[m] = members[0]
+    def norm_title(t: str) -> str:
+        """Title without upload decorations, letters only (for conflict checks)."""
+        t = _PREFER_LESS.sub(" ", re.sub(r"\(.*?\)|\[.*?\]|with lyrics|title track|hindi", " ", t.lower()))
+        return re.sub(r"[^a-z]", "", t)
+
+    conflicts = [g for g in out_groups if len({norm_title(by_id[m].title) for m in g}) > 1]
     res = {"groups": sorted(out_groups), "duplicate_of": dup_of, "pairs": sorted(pairs),
-           "songs_fingerprinted": len(fps)}
+           "title_conflicts": sorted(conflicts), "songs_fingerprinted": len(fps)}
     atomic_json(work / "dupes.json", res)
     return res
