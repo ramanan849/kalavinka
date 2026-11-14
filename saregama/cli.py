@@ -34,7 +34,8 @@ Global options ``--saraga-root``, ``--ann-root`` and ``--lyrics-dir`` default to
 the locations in :mod:`saregama.paths`.
 
 Legacy film-song workspace (songs.csv; ported from indic-svs-annotator):
-``init``, ``run``, ``draft-lyrics``, ``export-review``, ``audit``,
+``init``, ``songs-from-folder``, ``run``, ``asr`` (automatic lyrics for songs
+without a sheet), ``draft-lyrics``, ``export-review``, ``audit``,
 ``import-review``, ``make-eval-csv``, ``evaluate``, ``export``, ``stats``,
 ``phoneset``, ``g2p``, ``contour`` (pitch-contour sargam PDF per song).
 """
@@ -47,6 +48,8 @@ import random
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
+
+import numpy as np
 
 from .config import load_config
 from .ir import DEFAULT_ROOT as ANN_ROOT
@@ -87,6 +90,10 @@ def _cfg(a):
         over["work_dir"] = a.work_dir
     if getattr(a, "out_dir", None):
         over["out_dir"] = a.out_dir
+    asr = {k: getattr(a, f"asr_{k}") for k in ("backend", "model", "align_mode", "input")
+           if getattr(a, f"asr_{k}", None)}
+    if asr:
+        over["asr"] = asr
     return load_config(a.config, **over)
 
 
@@ -141,6 +148,71 @@ def cmd_draft_lyrics(a):
         out.parent.mkdir(parents=True, exist_ok=True)
         lines = draft_lyrics(vocals, f0, row["language"], asr, out, d / "asr_phrases")
         print(f"{row['song_id']}: {len(lines)} draft lines -> {out}")
+
+
+def cmd_asr(a):
+    """``asr``: transcribe the songs of songs.csv that have no lyric sheet with the
+    ``[asr]`` backend; writes ``asr.json`` + ``lyrics.asr.txt`` per song (separation
+    and F0 run first when the song has no vocals yet).
+    """
+    from .audio import SR, load_audio, loudness_normalize, save_audio
+    from .pipeline import Pipeline, read_songs
+    cfg = _cfg(a)
+    if cfg.asr.backend == "none":
+        sys.exit("set an ASR backend: --asr-backend qwen3|whisper (or [asr] backend in the config)")
+    pipe = Pipeline(cfg)
+    rows = read_songs(a.songs)
+    if a.only:
+        keep = set(a.only.split(","))
+        rows = [r for r in rows if r["song_id"] in keep]
+    for row in rows:
+        if row.get("lyrics") and not a.all:
+            continue
+        d = pipe.song_dir(row["song_id"])
+        d.mkdir(parents=True, exist_ok=True)
+        vp = d / "vocals.wav"
+        if vp.exists():
+            vocals = load_audio(vp, SR)
+        elif row.get("vocal_only") in ("1", "true", "yes"):
+            vocals = loudness_normalize(load_audio(row["audio"], SR))
+            save_audio(vp, vocals)
+        else:
+            vocals, _ = pipe.sep.process(row["audio"], str(vp), str(d / "accomp.wav"))
+        f0p = d / "f0.npy"
+        f0 = np.load(f0p) if f0p.exists() else pipe.f0est(vocals)["f0"]
+        phrases, model = pipe.transcribe(row, d, vocals, f0, force=a.force)
+        kept = sum(1 for p in phrases if p.text)
+        print(f"{row['song_id']}: {kept}/{len(phrases)} phrases kept ({model}) -> {d / 'lyrics.asr.txt'}",
+              flush=True)
+
+
+def cmd_songs_from_folder(a):
+    """``songs-from-folder``: write a songs.csv for every audio file in a folder
+    (``<year> - <title> [<youtube id>].<ext>`` names give tidy ids); the lyrics
+    column stays empty, so ``run`` with an ``[asr]`` backend transcribes them.
+    """
+    import re
+    exts = {".opus", ".m4a", ".mp3", ".wav", ".flac", ".webm", ".ogg"}
+    files = sorted(p for p in Path(a.audio_dir).iterdir() if p.suffix.lower() in exts)
+    if a.match:
+        files = [p for p in files if re.search(a.match, p.name, re.I)]
+    out = Path(a.out)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    seen = set()
+    with open(out, "w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(SONGS_HEADER)
+        for p in files:
+            m = re.match(r"(\d{4}) - (.*?)\s*(\[[^\]]+\])?$", p.stem)
+            year, title, vid = (m.group(1), m.group(2), (m.group(3) or "")[1:-1]) if m else ("", p.stem, "")
+            slug = re.sub(r"[^a-z0-9]+", "_", title.lower()).strip("_")[:40]
+            sid = f"{a.language}_{a.style}_{year}_{slug}" if year else f"{a.language}_{a.style}_{slug}"
+            if sid in seen:
+                sid += "_" + re.sub(r"[^A-Za-z0-9]", "", vid)[:6]
+            seen.add(sid)
+            src = f"youtube:{vid}" if vid else p.name
+            w.writerow([sid, str(p.resolve()), a.language, "", a.style, "", "", "0", "", src, ""])
+    print(f"{len(files)} songs -> {out}")
 
 
 def cmd_export_review(a):
@@ -1405,6 +1477,10 @@ def main(argv=None):
     p.add_argument("--config", default=None, help="TOML config (defaults if omitted)")
     p.add_argument("--work-dir", default=None)
     p.add_argument("--out-dir", default=None)
+    p.add_argument("--asr-backend", default=None, help="override [asr] backend: qwen3 | whisper | none")
+    p.add_argument("--asr-model", default=None, help="override [asr] model (HF id or path)")
+    p.add_argument("--asr-align-mode", default=None, help="override [asr] align_mode: phrase | global")
+    p.add_argument("--asr-input", default=None, help="override [asr] input: vocals | mix")
     p.add_argument("--saraga-root", default=str(SARAGA_ROOT))
     p.add_argument("--ann-root", default=str(ANN_ROOT), help="where per-recording IR bundles live")
     p.add_argument("--lyrics-dir", default=str(LYRICS_DIR), help="per-work lyric YAMLs")
@@ -1419,6 +1495,21 @@ def main(argv=None):
     s.add_argument("--only", default="", help="comma-separated song ids")
     s.add_argument("--force", action="store_true", help="recompute auto annotations (never touches reviewed/gold)")
     s.set_defaults(fn=cmd_run)
+
+    s = sub.add_parser("asr", help="transcribe songs without a lyric sheet ([asr] backend)")
+    s.add_argument("--songs", required=True)
+    s.add_argument("--only", default="", help="comma-separated song ids")
+    s.add_argument("--all", action="store_true", help="also songs that have a lyric sheet (evaluation)")
+    s.add_argument("--force", action="store_true", help="re-transcribe even if asr.json exists")
+    s.set_defaults(fn=cmd_asr)
+
+    s = sub.add_parser("songs-from-folder", help="songs.csv for every audio file in a folder (lyrics left to ASR)")
+    s.add_argument("--audio-dir", required=True)
+    s.add_argument("--out", default="songs.csv")
+    s.add_argument("--language", default="hi")
+    s.add_argument("--style", default="film")
+    s.add_argument("--match", default="", help="regex on file names, e.g. 'Kesariya|Tum Hi Ho'")
+    s.set_defaults(fn=cmd_songs_from_folder)
 
     s = sub.add_parser("draft-lyrics", help="ASR draft lyric sheets for songs without lyrics")
     s.add_argument("--songs", required=True)

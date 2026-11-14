@@ -5,7 +5,8 @@ songs.csv columns (header required; only the first four are mandatory):
     song_id     unique, filesystem-safe id, e.g. mr_bhavgeet_0007
     audio       path to the mp3/wav/flac
     language    hi | mr | ta
-    lyrics      path to the lyric sheet (.txt); empty -> ASR draft, song stops there
+    lyrics      path to the lyric sheet (.txt); empty -> transcribed by the [asr]
+                backend (stages.asr) when one is set, else the song stops there
     style       film | bhajan | hindustani | carnatic | bhavgeet | natyasangeet | ...
     singer_id   stable id per singer (needed for singer-disjoint splits)
     gender      f | m | other
@@ -18,16 +19,17 @@ from __future__ import annotations
 
 import csv
 import json
+from collections import Counter
 import traceback
 from dataclasses import asdict
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Tuple
 
 import numpy as np
 
 from .audio import FPS, SR, load_audio, n_frames, save_audio
 from .config import Config
-from .g2p import Lexicon, lyrics_to_syllables
+from .g2p import Lexicon, line_to_syllables, split_words
 from .schema import SongAnnotation, SyllableAnn
 from .stages.align import Aligner
 from .stages.f0 import F0Estimator
@@ -72,6 +74,33 @@ def g2p_opts(cfg: Config) -> Dict:
             "intervocalic_k": g.tamil_intervocalic_k}
 
 
+def safe_syllables(lines: List[str], windows: Optional[List[Tuple[float, float]]], lang: str,
+                   lexicon: Lexicon, **opts):
+    """``lyrics_to_syllables`` that drops words the G2P cannot read instead of
+    failing (ASR output can contain stray symbols).  Lines left without
+    syllables are dropped together with their window.
+
+    Returns (syllables per line, kept lines, kept windows or None, dropped words).
+    """
+    out, kept, kwin, bad = [], [], [] if windows is not None else None, []
+    for k, line in enumerate(lines):
+        words = []
+        for w in split_words(line):
+            try:
+                line_to_syllables(w, lang, lexicon, **opts)
+                words.append(w)
+            except (ValueError, KeyError):
+                bad.append(w)
+        if not words:
+            continue
+        text = " ".join(words)
+        out.append(line_to_syllables(text, lang, lexicon, **opts))
+        kept.append(text)
+        if kwin is not None:
+            kwin.append(windows[k])
+    return out, kept, kwin, bad
+
+
 class Pipeline:
     """Legacy film-song pipeline: separation, F0, tonic, alignment, notes,
     quality curves and QC for each song of songs.csv, written as a
@@ -85,6 +114,7 @@ class Pipeline:
         self._sep: Optional[Separator] = None
         self._f0: Optional[F0Estimator] = None
         self._aligner: Optional[Aligner] = None
+        self._asr = None
         self.lexicon = Lexicon.load(*cfg.g2p.lexicon)
 
     # lazily built so that `--stages` subsets don't load unneeded models
@@ -109,9 +139,34 @@ class Pipeline:
             self._aligner = Aligner(self.cfg.align, self.annotator)
         return self._aligner
 
+    @property
+    def asr(self):
+        """The ASR backend of ``[asr]`` (built on first access)."""
+        if self._asr is None:
+            from .stages.asr import load_backend
+            self._asr = load_backend(self.cfg.asr)
+        return self._asr
+
     def song_dir(self, song_id: str) -> Path:
         """Folder of one song's annotation."""
         return self.work / "songs" / song_id
+
+    def transcribe(self, row: Dict[str, str], d: Path, vocals: np.ndarray, f0: np.ndarray,
+                   force: bool = False):
+        """ASR transcript of one song: reuse ``asr.json`` unless ``force`` (or the
+        model changed), else transcribe the vocal (or the mix, ``[asr] input``).
+        Returns (phrases, model id).
+        """
+        from .stages.asr import load_transcript, transcribe_song, write_transcript
+        a = self.cfg.asr
+        old = load_transcript(d)
+        if old is not None and not force and (not a.model or old[0] == a.model):
+            return old[1], old[0]
+        audio = vocals if a.input == "vocals" else load_audio(row["audio"], SR)
+        phrases = transcribe_song(audio, SR, f0 > 0, FPS, self.asr, a)
+        model = getattr(self.asr, "model_id", a.backend)
+        write_transcript(phrases, d, model)
+        return phrases, model
 
     # ------------------------------------------------------------------
     def run_song(self, row: Dict[str, str], force: bool = False,
@@ -170,18 +225,41 @@ class Pipeline:
             h1h2_db=qual["h1h2_db"])
 
         # 5. lyrics -> syllables -----------------------------------------
-        if not row.get("lyrics"):
+        windows = None
+        lyrics_info: Dict = {"source": "sheet", "path": row.get("lyrics", "")}
+        if row.get("lyrics"):
+            lines = read_lyrics(row["lyrics"])
+        elif cfg.asr.backend != "none":
+            # 5a. no lyric sheet: transcribe the sung phrases (stages.asr)
+            phrases, model = self.transcribe(row, d, vocals, f0, force=force)
+            kept = [p for p in phrases if p.text]
+            lines = [p.text for p in kept]
+            if cfg.asr.align_mode == "phrase":
+                windows = [(p.start, p.end) for p in kept]
+            lyrics_info = {"source": "asr", "model": model, "align_mode": cfg.asr.align_mode,
+                           "phrases": len(phrases), "kept": len(kept),
+                           "dropped": dict(Counter(p.dropped for p in phrases if p.dropped))}
+        else:
             ann.status = "rejected"
             ann.qc = {"flags": ["no_lyrics"], "metrics": {},
-                      "note": "run `saregama draft-lyrics` and correct the draft"}
+                      "note": "set [asr] backend, or run `saregama draft-lyrics` and correct the draft"}
             ann.save(d)
             return ann
-        lines = read_lyrics(row["lyrics"])
+        sylls, lines, windows, bad_words = safe_syllables(lines, windows, lang, self.lexicon,
+                                                         **g2p_opts(cfg))
         ann.lines = lines
-        sylls = lyrics_to_syllables(lines, lang, self.lexicon, **g2p_opts(cfg))
+        if bad_words:
+            lyrics_info["g2p_dropped_words"] = bad_words
+        if not lines:
+            ann.status = "rejected"
+            ann.qc = {"flags": ["no_lyrics"], "metrics": {}, "lyrics": lyrics_info,
+                      "note": "ASR found no usable lyrics (see asr.json)"}
+            ann.save(d)
+            return ann
 
         # 6. alignment ---------------------------------------------------
-        aligned, ainfo = self.aligner.align(vocals, sylls, f0, qual["energy_db"], emission=emission)
+        aligned, ainfo = self.aligner.align(vocals, sylls, f0, qual["energy_db"], emission=emission,
+                                            windows=windows, window_pad_s=cfg.asr.pad_s)
         ann.syllables = []
         for a in aligned:
             if a.kind == "vocalise":
@@ -201,14 +279,19 @@ class Pipeline:
         # 8. QC ----------------------------------------------------------
         leak = leakage_score(vocals, accomp, f0, qual["energy_db"]) if accomp is not None else None
         metrics, flags, status = song_qc(ann, cfg.qc, ainfo, f0info, leak)
-        ann.qc = {"metrics": metrics, "flags": flags, "align": {k: v for k, v in ainfo.items()
-                                                                 if not isinstance(v, np.ndarray)}}
+        if lyrics_info["source"] == "asr":
+            flags = list(flags) + ["lyrics_asr_unverified"]
+            if not cfg.asr.accept_unreviewed and status == "auto":
+                status = "flagged"            # ASR words are a draft until a person checks them
+        ann.qc = {"metrics": metrics, "flags": flags, "lyrics": lyrics_info,
+                  "align": {k: v for k, v in ainfo.items() if not isinstance(v, np.ndarray)}}
         ann.status = status
         errs = ann.validate()
         if errs:
             ann.qc["validation_errors"] = errs
             ann.status = "flagged"
-        ann.history.append(f"auto:{cfg.align.backend}:{'+'.join(cfg.f0.backends)}")
+        src = f":asr={lyrics_info['model']}" if lyrics_info["source"] == "asr" else ""
+        ann.history.append(f"auto:{cfg.align.backend}:{'+'.join(cfg.f0.backends)}{src}")
         ann.save(d)
         return ann
 

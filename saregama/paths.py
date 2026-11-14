@@ -18,6 +18,7 @@ overridden with an environment variable (useful when the data sits elsewhere):
 ``SAREGAMA_SARAGA``         Saraga Carnatic root (``saraga1.5_carnatic``)
 ``SAREGAMA_ANNOTATIONS``    annotation output root (holds ``carnatic/``, ``lyrics/``)
 ``SAREGAMA_VARNAM``         Carnatic-Varnam 1.1 root (evaluation only)
+``SAREGAMA_VOCALS_MODEL``   folder of the full-vocals Mel-RoFormer (film songs)
 ==========================  ==============================================
 
 The CLI's ``--saraga-root``, ``--ann-root`` and ``--lyrics-dir`` override these
@@ -39,6 +40,10 @@ REPO = Path(__file__).resolve().parents[1]
 PROJECT = _env("SAREGAMA_PROJECT", REPO.parent)
 SOULX_REPO = _env("SAREGAMA_SOULX", PROJECT / "SoulX-Singer")
 SOULX_MODELS = SOULX_REPO / "pretrained_models" / "SoulX-Singer-Preprocess"
+# full-vocals Mel-RoFormer (Kimberley Jensen), for film songs with duets / chorus:
+#   huggingface.co/KimberleyJSN/melbandroformer (MelBandRoformer.ckpt) + ZFTurbo's
+#   configs/KimberleyJensen/config_vocals_mel_band_roformer_kj.yaml
+VOCALS_MODEL_DIR = _env("SAREGAMA_VOCALS_MODEL", PROJECT / "models" / "melband-vocals-kj")
 SARAGA_CARNATIC = _env("SAREGAMA_SARAGA", PROJECT / "Datasets" / "Saraga" / "files" / "saraga1.5_carnatic")
 ANNOTATIONS = _env("SAREGAMA_ANNOTATIONS", PROJECT / "annotations")
 ANN_CARNATIC = ANNOTATIONS / "carnatic"          # one IR bundle per recording

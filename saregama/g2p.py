@@ -430,6 +430,59 @@ def syllabify(phones: Sequence[str], srcs: Optional[Sequence[int]] = None) -> Li
     return out
 
 
+# ---------------------------------------------------------------------------
+# Latin script (English and romanised Hindi in Hinglish lyrics)
+# ---------------------------------------------------------------------------
+# Greedy longest-match letter groups -> phones.  This is a rough reading, good
+# enough to drive the romanised-letter CTC aligner (MMS_FA spells tokens with
+# Phone.roman, which gives back nearly the same letters); words that matter for
+# training data should still get a lexicon entry.
+LATIN_GROUPS: Dict[str, List[str]] = {
+    "chh": ["ch"], "ch": ["c"], "sh": ["sh"], "kh": ["kh"], "gh": ["gh"],
+    "th": ["th"], "dh": ["dh"], "ph": ["f"], "bh": ["bh"], "jh": ["jh"],
+    "ck": ["k"], "qu": ["k", "v"], "ng": ["ng"],
+    "aa": ["aa"], "ee": ["ii"], "ii": ["ii"], "oo": ["uu"], "uu": ["uu"],
+    "ai": ["E"], "au": ["O"], "ou": ["O"], "ay": ["ee"], "ey": ["ee"],
+    "a": ["a"], "e": ["ee"], "i": ["i"], "o": ["oo"], "u": ["u"],
+    "b": ["b"], "c": ["k"], "d": ["d"], "f": ["f"], "g": ["g"], "h": ["h"],
+    "j": ["j"], "k": ["k"], "l": ["l"], "m": ["m"], "n": ["n"], "p": ["p"],
+    "q": ["q"], "r": ["r"], "s": ["s"], "t": ["t"], "v": ["v"], "w": ["v"],
+    "x": ["k", "s"], "z": ["z"],
+}
+_LATIN_KEYS = sorted(LATIN_GROUPS, key=len, reverse=True)
+_LATIN_RANGE = re.compile(r"[A-Za-z]")
+
+
+def latin_word(word: str) -> Tuple[List[Ph], List[str]]:
+    """Phones (with source letter-group index) and letter groups of a Latin-script
+    word, e.g. ``"dil"`` -> d i l, ``"girlfriend"``, ``"pyaar"``.
+
+    Doubled consonants collapse to one phone; ``y`` is a vowel (``ii``) after a
+    consonant at the end of a word (``baby``) and a consonant elsewhere.
+    Characters outside a-z are ignored.
+    """
+    w = "".join(ch for ch in unicodedata.normalize("NFKD", word.lower()) if "a" <= ch <= "z")
+    phones: List[Ph] = []
+    groups: List[str] = []
+    i = 0
+    while i < len(w):
+        if w[i] == "y":
+            final_vowel = i == len(w) - 1 and i > 0 and w[i - 1] not in "aeiou"
+            g, ph = "y", (["ii"] if final_vowel else ["y"])
+        else:
+            g = next(k for k in _LATIN_KEYS if w.startswith(k, i))
+            ph = LATIN_GROUPS[g]
+        # "dd", "ll", "tt": one written group per letter, but sung as one consonant
+        if phones and len(ph) == 1 and ph[0] in CONSONANTS and phones[-1][0] == ph[0] \
+                and groups[-1] == g:
+            groups[-1] += g
+        else:
+            groups.append(g)
+            phones.extend((p, len(groups) - 1) for p in ph)
+        i += len(g)
+    return _clean(phones), groups
+
+
 _DEV_RANGE = re.compile(r"[ऀ-ॿ]")
 _TA_RANGE = re.compile(r"[஀-௿]")
 _WORD_SPLIT = re.compile(r"[\s।॥,;:!?\.\"'()\[\]{}\-–—…|]+")
@@ -454,8 +507,13 @@ def word_to_syllables(word: str, lang: str, lexicon: Optional[Lexicon] = None,
                                    **{k: v for k, v in opts.items()
                                       if k in ("keep_final_schwa", "delete_medial_schwa",
                                                "marathi_affricates")})
+    elif _LATIN_RANGE.search(word):
+        # Hinglish: English words and romanised Hindi written in Latin script
+        phs, aks = latin_word(word)
+        if not phs:
+            raise ValueError(f"word {word!r} has no pronounceable letters")
     else:
-        raise ValueError(f"word {word!r} is not Devanagari or Tamil; add it to the lexicon")
+        raise ValueError(f"word {word!r} is not Devanagari, Tamil or Latin; add it to the lexicon")
     names = [p for p, _ in phs]
     srcs = [s for _, s in phs]
     groups = syllabify(names, srcs)

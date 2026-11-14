@@ -814,6 +814,40 @@ which step 8 will adapt:
 `stages/{align,lyrics,notes,quality,qc}.py`, `annotator_model/` (optional unified
 annotator network), `configs/default.toml`, `lexicons/common.tsv`.
 
+**Automatic lyrics for film songs (ASR → alignment).** A songs.csv row with an
+empty `lyrics` column no longer stops at "no lyrics". With an `[asr]` backend
+set (`configs/default.toml` sets `qwen3`), `run` does the following:
+
+1. Separates the vocal and runs F0.
+2. Cuts the vocal into sung phrases at unvoiced gaps (`stages/asr.plan_phrases`).
+3. Transcribes each phrase with **Qwen3-ASR-1.7B**.
+4. Cleans the text: drops hallucination loops and boilerplate, transliterates
+   Gurmukhi to Devanagari, and drops Perso-Arabic script.
+5. Uses one line per phrase as the lyric sheet, and force-aligns each line with
+   MMS_FA **inside its own phrase window** (`align_mode = "phrase"`).
+
+English and romanized-Hindi words (Hinglish) go through a Latin-script G2P
+(`g2p.latin_word`). Such songs carry the flag `lyrics_asr_unverified` and the
+status `flagged` until a person corrects `work/songs/<id>/lyrics.asr.txt` and
+points songs.csv at it.
+
+    saregama songs-from-folder --audio-dir ../music_dataset --out work/songs.csv --match "Kesariya|Tum Hi Ho"
+    saregama --config configs/default.toml run --songs work/songs.csv      # ASR + alignment + F0 ...
+    saregama --config configs/default.toml asr --songs work/songs.csv      # transcripts only
+    saregama --asr-backend whisper --asr-model openai/whisper-large-v3 run --songs ...   # other ASR
+
+**Separation for film songs.** Set `[separation] sep_model = "vocals"`, a full-vocals
+Mel-RoFormer (Kimberley Jensen's, in `<project>/models/melband-vocals-kj/`). SoulX's
+default *karaoke* checkpoint keeps one lead voice and removes "backing" vocals. On
+duets and chorus-heavy film songs, that silenced most of the singing: the voiced
+share fell from 0.79 to 0.20, and the lyric WER rose from 0.30 to 0.85–1.0.
+
+**Why two models.** On our test set, Qwen3-ASR transcribes Hindi singing best (see
+`../eval/summary.md`). Its forced aligner covers 11 languages, and Hindi isn't one
+of them, so it gives no usable timestamps. Whisper's word timestamps exist but are
+coarse on singing. MMS_FA (1,100+ languages) gives the timing. `../eval/run_eval.py`
+reproduces the comparison against LRCLIB synced lyrics.
+
 **Pitch-contour sargam report for a film song** (same layout as
 `files_and_context/pitch_contour_sargam.pdf`):
 
@@ -869,6 +903,7 @@ writes `<id>_pitch_contour_sargam.pdf` per song (`viz.song_contour_pdf` →
 | `test_varnam_eval.py` | structure parsing with repeated keys, tick spans, notation on ticks, scoring |
 | `test_gold_eval.py` | syllable matching, instance P/R, sections, sama, the review-import snapshot |
 | `test_report.py` | report rows, missing-stage reasons, outliers, grouping, HTML escaping; one-vote-per-recording tonic consensus |
+| `test_asr.py` | phrase planning, ASR text clean-up, Latin G2P, phrase-window alignment, ASR path through `run`, lyric scoring |
 | `test_viz.py` | film-song contour report: cents from Hz, words grouped per line, PDF pages |
 | `test_pipeline.py` | legacy end to end on synthetic songs (G2P → … → SoulX format) |
 | `test_annotator.py` | legacy annotator train / load / run smoke test |
