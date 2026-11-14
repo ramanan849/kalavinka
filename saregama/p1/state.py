@@ -27,6 +27,12 @@ import numpy as np
 MAX_FAILS = 2          # a stage that failed this many times is parked, not retried
 
 
+def _now() -> str:
+    """Current local time with microseconds (stage stamps must differ between runs)."""
+    from datetime import datetime
+    return datetime.now().isoformat(timespec="microseconds")
+
+
 def _tmp(path: Path) -> Path:
     """Temporary sibling of ``path`` unique to this process."""
     return path.with_name(f"{path.name}.tmp.{os.getpid()}")
@@ -121,7 +127,7 @@ class SongState:
     def mark_done(self, stage: str, version: int, cfg: str, seconds: float, **extra) -> None:
         """Record a successful run of ``stage``."""
         self._update(stage, {"status": "done", "version": version, "config": cfg,
-                             "seconds": round(seconds, 2), "finished": time.strftime("%Y-%m-%dT%H:%M:%S"),
+                             "seconds": round(seconds, 2), "finished": _now(),
                              "job": os.environ.get("SLURM_JOB_ID", "local"), **extra})
 
     def mark_failed(self, stage: str, version: int, cfg: str, error: str) -> int:
@@ -129,7 +135,7 @@ class SongState:
         old = self.get(stage) or {}
         fails = (old.get("fails", 0) if old.get("status") == "failed" else 0) + 1
         self._update(stage, {"status": "failed", "version": version, "config": cfg, "fails": fails,
-                             "error": error[-2000:], "finished": time.strftime("%Y-%m-%dT%H:%M:%S"),
+                             "error": error[-2000:], "finished": _now(),
                              "job": os.environ.get("SLURM_JOB_ID", "local")})
         return fails
 
@@ -137,7 +143,7 @@ class SongState:
         """Record that ``stage`` deliberately does not apply (counts as done, e.g.
         a duplicate song or one without singing)."""
         self._update(stage, {"status": "done", "skipped": reason, "version": version, "config": cfg,
-                             "seconds": 0.0, "finished": time.strftime("%Y-%m-%dT%H:%M:%S"),
+                             "seconds": 0.0, "finished": _now(),
                              "job": os.environ.get("SLURM_JOB_ID", "local")})
 
     def reset(self, stage: str) -> None:

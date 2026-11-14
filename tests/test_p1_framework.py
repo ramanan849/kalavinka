@@ -125,3 +125,29 @@ def test_duplicate_detection():
     assert res["groups"] == [["a_plain", "a_lyrical"]]
     assert res["duplicate_of"] == {"a_lyrical": "a_plain"}
     assert clean.ber(base, other)[0] > 0.4
+
+
+def test_dependency_rerun_invalidates_dependants():
+    """Re-running a stage (new version) makes stages that depend on it stale."""
+    w = _tmp()
+    calls = []
+
+    def mk(name):
+        """A stage function that records its calls."""
+        def fn(ctx, song, sdir):
+            """Record the call."""
+            calls.append(name)
+        return fn
+
+    songs = [manifest.Song("s1", "", "", "", "")]
+    a1, b1, c1 = Stage("a", 1, mk("a")), Stage("b", 1, mk("b"), depends=("a",)), Stage("c", 1, mk("c"))
+    ctx = Context({}, w)
+    run_worker(ctx, songs, [a1, b1, c1], {"a": a1, "b": b1, "c": c1}, budget_s=60)
+    assert calls == ["a", "b", "c"]
+    calls.clear()
+    a2 = Stage("a", 2, mk("a"))
+    run_worker(ctx, songs, [a2], {"a": a2, "b": b1, "c": c1}, budget_s=60)     # only A re-run now
+    assert calls == ["a"]
+    calls.clear()
+    run_worker(ctx, songs, [a2, b1, c1], {"a": a2, "b": b1, "c": c1}, budget_s=60)
+    assert calls == ["b"]                                                      # B is stale, C is not

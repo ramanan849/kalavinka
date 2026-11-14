@@ -119,14 +119,30 @@ def release(work: Path, song_id: str) -> None:
 # ---------------------------------------------------------------------------
 # the loop
 # ---------------------------------------------------------------------------
+def is_fresh(marks: Dict[str, Dict], st: Stage, cfg: Dict) -> bool:
+    """Done with the current version and config, and no dependency re-ran since
+    (each done marker stores its dependencies' ``finished`` stamps in ``deps``;
+    markers written before stamps existed are trusted)."""
+    m = marks.get(st.name)
+    if not (m and m.get("status") == "done" and m.get("version") == st.version
+            and m.get("config") == st.cfg_hash(cfg)):
+        return False
+    for d, stamp in (m.get("deps") or {}).items():
+        if (marks.get(d) or {}).get("finished") != stamp:
+            return False
+    return True
+
+
 def pending(state: SongState, stages: Sequence[Stage], all_stages: Dict[str, Stage], cfg: Dict
             ) -> List[Stage]:
     """Stages of ``stages`` still to run for a song, in order, stopping at the first
     one that is parked or whose dependencies are not done (those need another
-    worker type or a fix first)."""
+    worker type or a fix first).  A stage whose dependency is re-run in this pass
+    is re-run too."""
     out, done_now = [], set()
+    marks = state.load()
     for st in stages:
-        if state.is_done(st.name, st.version, st.cfg_hash(cfg)):
+        if is_fresh(marks, st, cfg) and not any(d in {s.name for s in out} for d in st.depends):
             done_now.add(st.name)
             continue
         if state.is_parked(st.name):
@@ -168,7 +184,9 @@ def run_worker(ctx: Context, songs: Sequence[Song], stages: Sequence[Stage], all
                 t = time.time()
                 try:
                     stats = st.fn(ctx, song, sdir) or {}
-                    state.mark_done(st.name, st.version, cfgh, time.time() - t, **stats)
+                    marks = state.load()
+                    deps = {d: (marks.get(d) or {}).get("finished") for d in st.depends}
+                    state.mark_done(st.name, st.version, cfgh, time.time() - t, deps=deps, **stats)
                     counts["done"] += 1
                     print(f"{song.song_id} {st.name} ok {time.time() - t:.1f}s", flush=True)
                 except Skip as e:
@@ -200,8 +218,7 @@ def status_table(songs: Sequence[Song], stages: Sequence[Stage], work: Path, cfg
         marks = SongState(p.parent).load() if p.exists() else {}
         for st in stages:
             m = marks.get(st.name)
-            if m and m.get("status") == "done" and m.get("version") == st.version \
-                    and m.get("config") == st.cfg_hash(cfg):
+            if is_fresh(marks, st, cfg):
                 out[st.name]["skipped" if m.get("skipped") else "done"] += 1
             elif m and m.get("status") == "failed":
                 out[st.name]["parked" if m.get("fails", 0) >= 2 else "failed"] += 1
