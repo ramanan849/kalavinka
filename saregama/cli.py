@@ -1471,6 +1471,94 @@ def cmd_gold_eval(a):
         print("no reviewed recordings with a pred/ snapshot yet (correct some with review-export / review-import)")
 
 
+# ---------------------------------------------------------------------------
+# P1: large-scale film-song annotation (PLAN.md); run these only inside Slurm jobs
+# ---------------------------------------------------------------------------
+def _p1_setup(a):
+    """(config, work dir, songs) for the P1 commands."""
+    from .p1 import manifest
+    from .p1.config import load_p1_config
+    cfg = load_p1_config(a.p1_config or None)
+    work = Path(cfg["paths"]["work_dir"])
+    path = work / "songs.tsv"
+    songs = manifest.read(path) if path.exists() else []
+    return cfg, work, songs
+
+
+def cmd_p1_init(a):
+    """``p1-init``: (re)build ``<work>/songs.tsv`` from the audio folder (ids are stable)."""
+    from .p1 import manifest
+    cfg, work, old = _p1_setup(a)
+    songs = manifest.build(cfg["paths"]["audio_dir"])
+    manifest.write(songs, work / "songs.tsv")
+    print(f"{len(songs)} songs -> {work / 'songs.tsv'} (was {len(old)})")
+
+
+def _select(songs, a, work):
+    """Songs chosen by --songs (ids or a file of ids), --limit; duplicates skipped."""
+    from .p1.state import read_json
+    if a.songs:
+        p = Path(a.songs)
+        ids = [l.strip() for l in p.read_text().splitlines() if l.strip()] if p.exists() else a.songs.split(",")
+        keep = set(ids)
+        songs = [s for s in songs if s.song_id in keep]
+    dup = (read_json(work / "dupes.json", {}) or {}).get("duplicate_of", {})
+    if dup and not a.include_duplicates:
+        songs = [s for s in songs if s.song_id not in dup]
+    return songs[: a.limit] if a.limit else songs
+
+
+def cmd_p1_run(a):
+    """``p1-run``: a worker over the selected stages (or groups) until done or
+    out of time (``--budget-min``)."""
+    from .p1.registry import all_stages, resolve
+    from .p1.state import SongState
+    from .p1.worker import Context, run_worker
+    cfg, work, songs = _p1_setup(a)
+    allst = all_stages()
+    names = resolve(a.stages)
+    missing = [n for n in names if n not in allst]
+    if missing:
+        sys.exit(f"unknown / not yet implemented stages: {missing}")
+    stages = [allst[n] for n in allst if n in names]
+    songs = _select(songs, a, work)
+    if a.force or a.retry_failed:
+        for s in songs:
+            st = SongState(work / "songs" / s.song_id)
+            for n in names:
+                m = st.get(n)
+                if a.force or (m and m.get("status") == "failed"):
+                    st.reset(n)
+    run_worker(Context(cfg, work), songs, stages, allst, budget_s=a.budget_min * 60,
+               max_songs=a.max_songs)
+
+
+def cmd_p1_status(a):
+    """``p1-status``: done / skipped / failed / parked / pending per stage ->
+    ``<P1>/ops/status.tsv`` and stdout."""
+    from .p1.registry import all_stages
+    from .p1.state import atomic_bytes
+    from .p1.worker import status_table
+    cfg, work, songs = _p1_setup(a)
+    tab = status_table(_select(songs, a, work), list(all_stages().values()), work, cfg)
+    cols = ["done", "skipped", "failed", "parked", "pending"]
+    lines = ["stage\t" + "\t".join(cols)] + [f"{k}\t" + "\t".join(str(v[c]) for c in cols) for k, v in tab.items()]
+    atomic_bytes(work.parent / "ops" / "status.tsv", ("\n".join(lines) + "\n").encode())
+    print("\n".join(lines))
+
+
+def cmd_p1_dedupe(a):
+    """``p1-dedupe``: group re-uploads from the fingerprints -> ``<work>/dupes.json``."""
+    from .p1.clean import find_duplicates
+    cfg, work, songs = _p1_setup(a)
+    res = find_duplicates(songs, work)
+    n = sum(len(g) - 1 for g in res["groups"])
+    print(f"{res['songs_fingerprinted']} fingerprinted, {len(res['groups'])} duplicate groups, "
+          f"{n} files marked duplicate")
+    for g in res["groups"][:50]:
+        print("  keep", g[0], "| drop", ", ".join(g[1:]))
+
+
 def main(argv=None):
     """Parse the command line and run the chosen command."""
     p = argparse.ArgumentParser(prog="saregama", description=__doc__)
@@ -1727,6 +1815,34 @@ def main(argv=None):
     s = sub.add_parser("gold-eval", help="score predictions against hand-corrected recordings")
     s.add_argument("--out", default=str(ANN_ROOT.parent / "eval" / "gold"))
     s.set_defaults(fn=cmd_gold_eval)
+
+    # ---- P1 (PLAN.md): run inside Slurm jobs via ops/submit.sh --------------
+    def p1_common(s, stages=False):
+        """Options shared by the P1 commands."""
+        s.add_argument("--p1-config", default="", help="P1 TOML (default <work>/p1.toml)")
+        s.add_argument("--songs", default="", help="comma-separated ids or a file of ids")
+        s.add_argument("--limit", type=int, default=0)
+        s.add_argument("--include-duplicates", action="store_true")
+        if stages:
+            s.add_argument("--stages", required=True, help="stage or group names: clean, gpu, text, ...")
+            s.add_argument("--budget-min", type=float, default=50.0,
+                           help="stop starting songs after this (set ~10 min under --time)")
+            s.add_argument("--max-songs", type=int, default=None)
+            s.add_argument("--force", action="store_true", help="redo the stages for the selected songs")
+            s.add_argument("--retry-failed", action="store_true", help="reset failed / parked markers first")
+
+    s = sub.add_parser("p1-init", help="P1: build <work>/songs.tsv from the audio folder")
+    p1_common(s)
+    s.set_defaults(fn=cmd_p1_init)
+    s = sub.add_parser("p1-run", help="P1: worker over stages / groups (resumable)")
+    p1_common(s, stages=True)
+    s.set_defaults(fn=cmd_p1_run)
+    s = sub.add_parser("p1-status", help="P1: per-stage progress -> ops/status.tsv")
+    p1_common(s)
+    s.set_defaults(fn=cmd_p1_status)
+    s = sub.add_parser("p1-dedupe", help="P1: duplicate groups from fingerprints -> <work>/dupes.json")
+    p1_common(s)
+    s.set_defaults(fn=cmd_p1_dedupe)
 
     a = p.parse_args(argv)
     a.fn(a)
