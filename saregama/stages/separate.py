@@ -52,9 +52,17 @@ class Separator:
             sys.path.insert(0, str(repo))
         from preprocess.tools.vocal_separation.model import VocalSeparator  # type: ignore
         m = Path(self.cfg.soulx_models)
+        if self.cfg.sep_model == "vocals":
+            v = Path(self.cfg.vocals_model_dir)
+            sep_ckpt, sep_conf = v / "MelBandRoformer.ckpt", v / "config_vocals_mel_band_roformer_kj.yaml"
+        elif self.cfg.sep_model == "karaoke":
+            sep_ckpt = m / "mel-band-roformer-karaoke/mel_band_roformer_karaoke_becruily.ckpt"
+            sep_conf = m / "mel-band-roformer-karaoke/config_karaoke_becruily.yaml"
+        else:
+            raise ValueError(f"unknown sep_model {self.cfg.sep_model!r} (karaoke | vocals)")
         return VocalSeparator(
-            sep_model_path=str(m / "mel-band-roformer-karaoke/mel_band_roformer_karaoke_becruily.ckpt"),
-            sep_config_path=str(m / "mel-band-roformer-karaoke/config_karaoke_becruily.yaml"),
+            sep_model_path=str(sep_ckpt),
+            sep_config_path=str(sep_conf),
             der_model_path=str(m / "dereverb_mel_band_roformer/dereverb_mel_band_roformer_anvuew_sdr_19.1729.ckpt"),
             der_config_path=str(m / "dereverb_mel_band_roformer/dereverb_mel_band_roformer_anvuew.yaml"),
             use_der=self.cfg.dereverb,

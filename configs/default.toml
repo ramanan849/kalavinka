@@ -11,6 +11,8 @@ out_dir = "dataset"      # exported SoulX-Singer training set
 backend = "soulx"        # soulx | audio_separator | none
 soulx_repo = "../SoulX-Singer"
 soulx_models = "../SoulX-Singer/pretrained_models/SoulX-Singer-Preprocess"
+sep_model = "vocals"     # vocals: every voice (film songs: duets, chorus) | karaoke: lead only
+vocals_model_dir = "../models/melband-vocals-kj"
 dereverb = true
 device = "cuda"
 
@@ -41,6 +43,18 @@ chunk_overlap_s = 2.0
 min_gap_rest_s = 0.12
 vocalise_min_s = 0.6
 vocalise_policy = "review"   # review | drop | akaar
+device = "cuda"
+
+[asr]
+# Automatic lyrics for songs whose `lyrics` column in songs.csv is empty.
+# qwen3 = Qwen/Qwen3-ASR-1.7B (best mean WER on our Hindi / Hinglish test songs; ../eval);
+# whisper = any HF Whisper checkpoint (set model); none = stop without lyrics.
+backend = "qwen3"
+model = ""               # empty = backend default
+language = "hi"
+input = "vocals"         # vocals (separated) | mix
+align_mode = "phrase"    # phrase: MMS_FA inside each ASR phrase | global: whole song
+accept_unreviewed = false
 device = "cuda"
 
 [notes]
