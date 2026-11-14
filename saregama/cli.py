@@ -1499,6 +1499,10 @@ def _select(songs, a, work):
     from .p1.state import read_json
     if a.songs:
         p = Path(a.songs)
+        if not p.exists() and (work.parent / a.songs).exists():      # paths relative to P1/
+            p = work.parent / a.songs
+        if not p.exists() and "/" in a.songs:
+            sys.exit(f"--songs file not found: {a.songs}")
         ids = [l.strip() for l in p.read_text().splitlines() if l.strip()] if p.exists() else a.songs.split(",")
         keep = set(ids)
         songs = [s for s in songs if s.song_id in keep]
@@ -1563,6 +1567,31 @@ def cmd_p1_refpool(a):
     cfg, work, songs = _p1_setup(a)
     pool = build_pool(work)
     print(f"{len(pool['refs'])} reference lyrics from {len(pool['by_song'])} songs")
+
+
+def cmd_p1_export(a):
+    """``p1-export``: accepted clips in SoulX format -> ``<P1>/export`` (or ``--out``)."""
+    from .p1.export import export
+    cfg, work, songs = _p1_setup(a)
+    out = Path(a.out or cfg["paths"]["export_dir"])
+    stats = export(_select(songs, a, work), work, out, cfg.get("qc", {}), include_review=a.include_review)
+    print(json.dumps(stats, indent=1))
+
+
+def cmd_p1_goldpack(a):
+    """``p1-goldpack``: Praat TextGrids + audio windows for hand correction -> ``<P1>/gold``."""
+    from .p1.gold import make_pack
+    cfg, work, songs = _p1_setup(a)
+    done = make_pack(_select(songs, a, work), work, work.parent / "gold")
+    print(f"{len(done)} songs -> {work.parent / 'gold' / 'pack'}")
+
+
+def cmd_p1_goldeval(a):
+    """``p1-goldeval``: score predictions against ``gold/corrected/*.TextGrid``."""
+    from .p1.gold import evaluate
+    cfg, work, songs = _p1_setup(a)
+    res = evaluate(work.parent / "gold")
+    print(json.dumps({"songs": res["songs"], "median": res["median"]}, indent=1, ensure_ascii=False))
 
 
 def cmd_p1_dedupe(a):
@@ -1867,6 +1896,17 @@ def main(argv=None):
     s = sub.add_parser("p1-refpool", help="P1: fetched LRCLIB results -> <work>/refpool.json")
     p1_common(s)
     s.set_defaults(fn=cmd_p1_refpool)
+    s = sub.add_parser("p1-export", help="P1: accepted clips in SoulX format")
+    p1_common(s)
+    s.add_argument("--out", default="")
+    s.add_argument("--include-review", action="store_true", help="also clips in the review band")
+    s.set_defaults(fn=cmd_p1_export)
+    s = sub.add_parser("p1-goldpack", help="P1: gold-set pack (TextGrids + audio) for hand correction")
+    p1_common(s)
+    s.set_defaults(fn=cmd_p1_goldpack)
+    s = sub.add_parser("p1-goldeval", help="P1: score predictions against corrected gold TextGrids")
+    p1_common(s)
+    s.set_defaults(fn=cmd_p1_goldeval)
 
     a = p.parse_args(argv)
     a.fn(a)
