@@ -58,6 +58,64 @@ def write_fetchlist(songs: Sequence[Song], work: Path, dup: Dict[str, str]) -> P
     return p
 
 
+LRCLIB_Q = "https://lrclib.net/api/search?q={}"
+_NOISE = re.compile(r"\b(?:official|video|full|song|songs|lyrical|lyrics?|hd|4k|audio|jukebox|t-series|"
+                    r"tseries|zee music|sony music|tips|saregama|eros|yrf|venus|shemaroo|movie|film|"
+                    r"hindi|bollywood|new|latest|romantic|hit|hits|with)\b", re.I)
+
+
+def title_variants(title: str) -> List[str]:
+    """Spelling variants of a romanised Hindi title, for search engines that match
+    exact tokens: doubled vowels collapsed, v <-> w, -iyaan -> -iyan."""
+    t = clean_title(title).lower()
+    out = [t]
+    a = re.sub(r"aa", "a", re.sub(r"ii", "i", t))      # "ee" / "oo" are the usual spellings: keep
+    a = re.sub(r"iyaan\b", "iyan", a)
+    out.append(a)
+    out.append(re.sub(r"\bv", "w", a))
+    out.append(re.sub(r"\bw", "v", a))
+    return list(dict.fromkeys(x.strip() for x in out if x.strip()))
+
+
+def oembed_query(path: Path) -> Optional[str]:
+    """A search query from the real YouTube title (oEmbed): channel / upload noise
+    removed, first 8 words."""
+    d = read_json(path, {}) or {}
+    t = d.get("title") if isinstance(d, dict) else None
+    if not t:
+        return None
+    t = re.sub(r"[|\-–—:()\[\]\"'“”,!]+", " ", t)
+    t = _NOISE.sub(" ", t)
+    words = [w for w in t.split() if not re.fullmatch(r"\d+", w)]
+    return " ".join(words[:8]) or None
+
+
+def write_retry_list(songs: Sequence[Song], work: Path, dup: Dict[str, str]) -> Tuple[Path, int]:
+    """Second lookup round (``work/raw/fetch_retry.tsv``) for songs whose
+    identity is ``unidentified`` (or not yet known and without claimed-title
+    lyrics): title spelling variants and the oEmbed title via ``q=`` search."""
+    pool = read_json(work / "refpool.json", {}) or {}
+    have = pool.get("by_song", {})
+    rows, n = [], 0
+    for s in songs:
+        if s.song_id in dup:
+            continue
+        ident = read_json(work / "songs" / s.song_id / "identity.json", None)
+        need = (ident or {}).get("status") == "unidentified" or (ident is None and not have.get(s.song_id))
+        if not need:
+            continue
+        n += 1
+        qs = title_variants(s.title)[1:]                     # the plain title was already searched
+        oq = oembed_query(work / "raw" / "oembed" / f"{s.song_id}.json")
+        if oq:
+            qs.append(oq)
+        for k, q in enumerate(dict.fromkeys(qs)):
+            rows.append(f"lrclib_q/{s.song_id}@q{k}.json\t{LRCLIB_Q.format(urllib.parse.quote(q))}")
+    p = work / "raw" / "fetch_retry.tsv"
+    atomic_bytes(p, ("\n".join(rows) + "\n").encode())
+    return p, n
+
+
 # ---------------------------------------------------------------------------
 # reference pool
 # ---------------------------------------------------------------------------
@@ -82,7 +140,8 @@ def build_pool(work: Path) -> Dict:
     that fetched them -> ``work/refpool.json``."""
     refs: Dict[str, Dict] = {}
     by_song: Dict[str, List[str]] = defaultdict(list)
-    for f in sorted((work / "raw" / "lrclib_title").glob("*.json")):
+    files = sorted((work / "raw" / "lrclib_title").glob("*.json")) + sorted((work / "raw" / "lrclib_q").glob("*.json"))
+    for f in files:
         try:
             data = json.loads(f.read_text(encoding="utf-8"))
         except Exception:
@@ -93,7 +152,7 @@ def build_pool(work: Path) -> Dict:
             if rec.get("instrumental") or not (rec.get("syncedLyrics") or rec.get("plainLyrics")):
                 continue
             rid = str(rec["id"])
-            by_song[f.stem].append(rid)
+            by_song[f.stem.split("@q")[0]].append(rid)
             if rid not in refs:
                 refs[rid] = {"id": rid, "track": rec.get("trackName", ""), "artist": rec.get("artistName", ""),
                              "album": rec.get("albumName", ""), "duration": rec.get("duration"),

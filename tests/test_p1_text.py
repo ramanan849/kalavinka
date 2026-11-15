@@ -9,7 +9,8 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from saregama.p1.lyrics_ref import clean_title, coverage, local_align, ref_lines, sim_matrix  # noqa: E402
+from saregama.p1.lyrics_ref import (clean_title, coverage, local_align, ref_lines, sim_matrix,  # noqa: E402
+                                     title_variants)
 from saregama.p1.text_stages import (classify_vocalise, english_syllables, plan_clips,  # noqa: E402
                                      reconcile_phrase, word_lang)
 
@@ -88,3 +89,34 @@ def test_plan_clips():
     assert clips == [(0, 24), (24, len(sylls))]
     cluster[750:800] = 1                                                    # singer change inside clip 2
     assert plan_clips(sylls, single, cluster, hz) == [(0, 24)]
+
+
+def test_plan_clips_keeps_good_units_inside_bad_spans():
+    """An overlapped phrase doesn't take its neighbours down with it."""
+    n = 2000
+    hz = np.full(n, 200.0)
+    single = np.ones(n, bool)
+    single[230:280] = False                                                 # overlap in phrase 2
+    cluster = np.zeros(n, int)
+    sylls = []
+    for p0 in (0, 200, 400):                                                # three 3.5 s phrases, 0.5 s rests
+        sylls += [{"start": s, "end": s + 20} for s in range(p0, p0 + 175, 25)]
+    reasons = {}
+    clips = plan_clips(sylls, single, cluster, hz, reasons=reasons)
+    assert clips == [(0, 7), (14, 21)] and reasons["overlap"] == 1
+
+
+def test_merge_small_clusters():
+    """Tiny clusters join the nearest big one; labels renumbered by size."""
+    from saregama.p1.text_stages import merge_small_clusters
+    emb = np.array([[1, 0], [1, 0.1], [0, 1], [0.1, 1], [0.9, 0.2]], float)
+    lab = np.array([0, 0, 1, 1, 2])
+    dur = np.array([10, 10, 5, 5, 0.5])
+    assert merge_small_clusters(lab, emb, dur, 0.05).tolist() == [0, 0, 1, 1, 0]
+
+
+def test_title_variants():
+    """Romanised spelling variants for exact-token search."""
+    v = title_variants("Saagar Kinaare")
+    assert "sagar kinare" in v
+    assert "yeh haseen wadiyan" in title_variants("Yeh Haseen Vaadiyaan")

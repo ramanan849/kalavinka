@@ -32,7 +32,7 @@ def all_stages() -> Dict[str, Stage]:
 GROUPS = {
     "clean": ["inventory", "fingerprint"],
     "gpu": ["separate", "f0", "voices", "asr", "emissions"],
-    "text": ["identify", "reconcile", "align", "vocables", "notes_qc"],
+    "text": ["singers", "identify", "reconcile", "align", "vocables", "notes_qc"],
 }
 
 

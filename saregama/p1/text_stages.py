@@ -77,6 +77,58 @@ def word_lang(word: str) -> str:
 
 
 # ---------------------------------------------------------------------------
+# S5b singers (CPU, from the cached embeddings)
+# ---------------------------------------------------------------------------
+def merge_small_clusters(lab: np.ndarray, emb: np.ndarray, dur: np.ndarray, min_share: float) -> np.ndarray:
+    """Relabel clusters holding less than ``min_share`` of the single-voice time
+    to the nearest large cluster (centroid cosine); labels renumbered by size."""
+    if len(lab) == 0:
+        return lab
+    tot = dur.sum() or 1.0
+    share = {k: dur[lab == k].sum() / tot for k in set(lab.tolist())}
+    big = [k for k, s in share.items() if s >= min_share] or [max(share, key=share.get)]
+    e = emb / (np.linalg.norm(emb, axis=1, keepdims=True) + 1e-9)
+    cent = {k: e[lab == k].mean(axis=0) for k in big}
+    out = lab.copy()
+    for i, k in enumerate(lab):
+        if k not in big:
+            out[i] = max(big, key=lambda b: float(e[i] @ cent[b]))
+    order = sorted(set(out.tolist()), key=lambda k: -dur[out == k].sum())
+    ren = {k: r for r, k in enumerate(order)}
+    return np.array([ren[k] for k in out])
+
+
+def singers(ctx, song: Song, sdir: Path) -> Dict:
+    """Singer clusters of the single-voice segments, from ``voices_emb.npy`` and
+    the segments' median F0 -> ``singers.json``.  CPU-only, so thresholds can be
+    tuned without touching the GPU stages."""
+    from .gpu_stages import _dup_check, cluster_embeddings
+    _dup_check(ctx, song)
+    c = ctx.cfg["singers"]
+    vj = read_json(sdir / "voices.json", {}) or {}
+    segs = vj.get("segments", [])
+    emb = np.load(sdir / "voices_emb.npy") if segs else np.zeros((0, 192), np.float32)
+    med = np.array([s.get("median_hz", 0.0) for s in segs])
+    dur = np.array([s["end"] - s["start"] for s in segs])
+    lab = cluster_embeddings(emb, c["threshold"], med, c["register_weight"]) if len(segs) else np.zeros(0, int)
+    lab = merge_small_clusters(lab, emb, dur, c["min_cluster_share"])
+    out_segs = [{"start": s["start"], "end": s["end"], "median_hz": s.get("median_hz", 0.0), "cluster": int(k)}
+                for s, k in zip(segs, lab)]
+    clusters = {str(k): {"seconds": round(float(dur[lab == k].sum()), 1),
+                         "median_hz": round(float(np.median(med[lab == k])), 1)} for k in sorted(set(lab.tolist()))}
+    atomic_json(sdir / "singers.json", {"segments": out_segs, "clusters": clusters})
+    return {"clusters": len(clusters)}
+
+
+def cluster_track(sdir: Path, n: int) -> np.ndarray:
+    """Singer cluster per 50 fps frame (-1 outside single-voice segments)."""
+    cl = np.full(n, -1)
+    for s in (read_json(sdir / "singers.json", {}) or {}).get("segments", []):
+        cl[int(s["start"] * FPS): int(s["end"] * FPS)] = s["cluster"]
+    return cl
+
+
+# ---------------------------------------------------------------------------
 # S8 reconcile
 # ---------------------------------------------------------------------------
 def _agrees(word: str, others: Sequence[str]) -> bool:
@@ -157,9 +209,7 @@ def reconcile(ctx, song: Song, sdir: Path) -> Dict:
     asr = read_json(sdir / "asr.json", {}) or {}
     hz = np.load(sdir / "f0.npz")["f0"]
     single = np.load(sdir / "single_mask.npy")
-    seg_cl = np.full(len(single), -1)
-    for s in (read_json(sdir / "voices.json", {}) or {}).get("segments", []):
-        seg_cl[int(s["start"] * FPS): int(s["end"] * FPS)] = s["cluster"]
+    seg_cl = cluster_track(sdir, len(single))
     phrases = []
     for p in asr.get("phrases", []):
         fa, fb = int(p["start"] * FPS), int(p["end"] * FPS)
@@ -379,39 +429,75 @@ def vocables(ctx, song: Song, sdir: Path) -> Dict:
 GOOD_SRC = {"ref+asr", "ref+whisper", "asr+whisper", "disputed->ref", "vocable"}
 
 
-def plan_clips(sylls: List[Dict], single: np.ndarray, cluster: np.ndarray, hz: np.ndarray,
-               min_s: float = 2.0, max_s: float = 16.0, split_rest_s: float = 0.3) -> List[Tuple[int, int]]:
-    """Clip spans (syllable index ranges [i, j)) of one singer and one voice,
-    cut at rests >= ``split_rest_s``, ``min_s``..``max_s`` long."""
-    out, i, n = [], 0, len(sylls)
-    gap_min = int(split_rest_s * FPS)
-    while i < n:
-        j = i + 1
-        while j < n:
-            s = sylls[j]
-            if s["start"] - sylls[i]["start"] > max_s * FPS:
-                break
-            j += 1
-        # back off to the last rest boundary that keeps the clip within max_s
-        best = None
-        for k in range(i + 1, j + 1):
-            end = sylls[k - 1]["end"]
-            if (end - sylls[i]["start"]) > max_s * FPS:
-                break
-            if k == n or sylls[k]["start"] - end >= gap_min:
-                best = k
-        if best is None:
-            i += 1
+def _units(sylls: List[Dict], gap_min: int, max_f: int) -> List[Tuple[int, int]]:
+    """Syllable ranges separated by rests >= ``gap_min`` frames; ranges longer than
+    ``max_f`` are split at their largest internal gap until they fit."""
+    units, i = [], 0
+    for k in range(1, len(sylls) + 1):
+        if k == len(sylls) or sylls[k]["start"] - sylls[k - 1]["end"] >= gap_min:
+            units.append((i, k))
+            i = k
+    out: List[Tuple[int, int]] = []
+    stack = units[::-1]
+    while stack:
+        i, j = stack.pop()
+        if sylls[j - 1]["end"] - sylls[i]["start"] <= max_f or j - i < 2:
+            out.append((i, j))
             continue
-        a, b = sylls[i]["start"], sylls[best - 1]["end"]
+        gaps = [sylls[k]["start"] - sylls[k - 1]["end"] for k in range(i + 1, j)]
+        k = i + 1 + int(np.argmax(gaps))
+        stack.extend([(k, j), (i, k)])
+    return out
+
+
+def plan_clips(sylls: List[Dict], single: np.ndarray, cluster: np.ndarray, hz: np.ndarray,
+               min_s: float = 2.0, max_s: float = 16.0, split_rest_s: float = 0.3,
+               min_single: float = 0.9, min_purity: float = 0.9,
+               reasons: Optional[Dict[str, int]] = None) -> List[Tuple[int, int]]:
+    """Clip spans (syllable index ranges [i, j)) sung by one voice and one singer.
+
+    The song is cut into phrase units at rests; each unit passes if at least
+    ``min_single`` of its voiced frames are single-voice and its dominant singer
+    holds at least ``min_purity`` of the labelled frames.  Consecutive passing
+    units of the same singer are merged up to ``max_s``; clips under ``min_s``
+    are dropped.  ``reasons`` (if given) counts why units were rejected.
+    """
+    reasons = reasons if reasons is not None else {}
+    units = _units(sylls, int(split_rest_s * FPS), int(max_s * FPS))
+    good: List[Tuple[int, int, int]] = []          # (i, j, singer)
+    for i, j in units:
+        a, b = sylls[i]["start"], sylls[j - 1]["end"]
         voiced = hz[a:b] > 0
+        if not voiced.any():
+            reasons["unvoiced"] = reasons.get("unvoiced", 0) + 1
+            continue
+        if single[a:b][voiced].mean() < min_single:
+            reasons["overlap"] = reasons.get("overlap", 0) + 1
+            continue
         cl = cluster[a:b][voiced]
         cl = cl[cl >= 0]
-        one_singer = len(set(cl.tolist())) <= 1
-        if (b - a) >= min_s * FPS and one_singer and voiced.any() and single[a:b][voiced].mean() >= 0.98:
-            out.append((i, best))
-        i = best
-    return out
+        if not len(cl):
+            reasons["no_singer"] = reasons.get("no_singer", 0) + 1
+            continue
+        counts = np.bincount(cl)
+        if counts.max() / len(cl) < min_purity:
+            reasons["mixed_singers"] = reasons.get("mixed_singers", 0) + 1
+            continue
+        good.append((i, j, int(counts.argmax())))
+    out: List[Tuple[int, int]] = []
+    cur = None
+    for i, j, s in good:
+        if cur and cur[2] == s and cur[1] == i and sylls[j - 1]["end"] - sylls[cur[0]]["start"] <= max_s * FPS:
+            cur = (cur[0], j, s)
+            continue
+        if cur:
+            out.append((cur[0], cur[1]))
+        cur = (i, j, s)
+    if cur:
+        out.append((cur[0], cur[1]))
+    keep = [(i, j) for i, j in out if sylls[j - 1]["end"] - sylls[i]["start"] >= min_s * FPS]
+    reasons["too_short"] = reasons.get("too_short", 0) + len(out) - len(keep)
+    return keep
 
 
 def notes_qc(ctx, song: Song, sdir: Path) -> Dict:
@@ -431,9 +517,7 @@ def notes_qc(ctx, song: Song, sdir: Path) -> Dict:
     n = min(len(hz), sj["frames"])
     hz, agree = hz[:n], agree[:n]
     single = np.load(sdir / "single_mask.npy")[:n]
-    cluster = np.full(n, -1)
-    for s in (read_json(sdir / "voices.json", {}) or {}).get("segments", []):
-        cluster[int(s["start"] * FPS): int(s["end"] * FPS)] = s["cluster"]
+    cluster = cluster_track(sdir, n)
     sylls = sorted([s for s in sj["syllables"] if s["kind"] in ("lyric", "vocable")], key=lambda s: s["start"])
     tonic, tconf = estimate_tonic(hz)
     ann_s = [SyllableAnn(s["text"], s["phones"], int(s["start"]), int(min(s["end"], n)), int(s.get("phrase", -1)),
@@ -446,7 +530,10 @@ def notes_qc(ctx, song: Song, sdir: Path) -> Dict:
     for s in sylls:
         covered[s["start"]:s["end"]] = True
     clips = []
-    for i, j in plan_clips(sylls, single, cluster, hz):
+    q = ctx.cfg["qc"]
+    reasons: Dict[str, int] = {}
+    for i, j in plan_clips(sylls, single, cluster, hz, min_single=q.get("clip_min_single", 0.9),
+                           min_purity=q.get("clip_min_purity", 0.9), reasons=reasons):
         a, b = sylls[i]["start"], sylls[j - 1]["end"]
         seg = sylls[i:j]
         voiced = hz[a:b] > 0
@@ -474,15 +561,17 @@ def notes_qc(ctx, song: Song, sdir: Path) -> Dict:
                          hnr_db=np.zeros(n, np.float32), h1h2_db=np.zeros(n, np.float32),
                          qc={"identity": ident}, history=["p1"])
     ann.save(sdir)
-    atomic_json(sdir / "clips.json", {"fps": FPS, "clips": clips})
-    return {"clips": len(clips), "clip_s": round(sum(c["features"]["dur_s"] for c in clips), 1),
+    atomic_json(sdir / "clips.json", {"fps": FPS, "clips": clips, "rejected_units": reasons})
+    return {"clips": len(clips), "rejected_units": reasons,
+            "clip_s": round(sum(c["features"]["dur_s"] for c in clips), 1),
             "notes": len(notes)}
 
 
 STAGES = [
+    Stage("singers", 1, singers, sections=("singers",), depends=("voices",)),
     Stage("identify", 1, identify, sections=("lyrics",), depends=("asr",)),
-    Stage("reconcile", 1, reconcile, sections=("lyrics",), depends=("identify", "voices")),
+    Stage("reconcile", 1, reconcile, sections=("lyrics",), depends=("identify", "singers")),
     Stage("align", 1, align, sections=("align",), depends=("reconcile", "emissions")),
     Stage("vocables", 1, vocables, sections=(), depends=("align",)),
-    Stage("notes_qc", 1, notes_qc, sections=("qc",), depends=("vocables",)),
+    Stage("notes_qc", 2, notes_qc, sections=("qc",), depends=("vocables", "singers")),
 ]
