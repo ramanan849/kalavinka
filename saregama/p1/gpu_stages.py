@@ -252,7 +252,7 @@ def _asr_backends(ctx):
                                                    batch_size=a["batch_size"], device=dev)))
     w = ctx.model("whisper", lambda: WhisperAsr(AsrCfg(backend="whisper", model=a["secondary"],
                                                        language=a["language"], batch_size=a["batch_size"],
-                                                       device=dev)))
+                                                       beams=a.get("whisper_beams", 1), device=dev)))
     return q, w
 
 
@@ -270,8 +270,12 @@ def asr(ctx, song: Song, sdir: Path) -> Dict:
     clips = [voc16[max(0, int((s - a["pad_s"]) * ASR_SR)): int((e + a["pad_s"]) * ASR_SR)].astype(np.float32)
              for s, e in spans]
     q, w = _asr_backends(ctx)
+    import time
+    t = time.time()
     tq = q(clips, a["language"]) if clips else []
+    tq_s, t = time.time() - t, time.time()
     tw = w(clips, a["language"]) if clips else []
+    tw_s = time.time() - t
     phrases = []
     for (s, e), (rq, _), (rw, _) in zip(spans, tq, tw):
         qt, qd = clean_text(rq, e - s, a["max_chars_per_s"])
@@ -280,7 +284,7 @@ def asr(ctx, song: Song, sdir: Path) -> Dict:
                         "whisper": wt, "whisper_raw": (rw or "").strip(), "whisper_dropped": wd})
     atomic_json(sdir / "asr.json", {"models": {"qwen": a["primary"], "whisper": a["secondary"]},
                                     "phrases": phrases})
-    return {"phrases": len(phrases), "qwen_kept": sum(1 for p in phrases if p["qwen"]),
+    return {"qwen_s": round(tq_s, 1), "whisper_s": round(tw_s, 1), "phrases": len(phrases), "qwen_kept": sum(1 for p in phrases if p["qwen"]),
             "whisper_kept": sum(1 for p in phrases if p["whisper"])}
 
 

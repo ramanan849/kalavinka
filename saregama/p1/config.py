@@ -24,7 +24,7 @@ DEFAULTS: Dict[str, Dict[str, Any]] = {
     "voices": {"min_single_s": 1.0, "residual_db": -12.0, "second_peak": 0.35, "cluster_threshold": 0.55},
     "asr": {"primary": "Qwen/Qwen3-ASR-1.7B", "secondary": "openai/whisper-large-v3", "language": "hi",
             "min_gap_s": 0.4, "min_phrase_s": 1.0, "max_phrase_s": 25.0, "pad_s": 0.3,
-            "max_chars_per_s": 22.0, "batch_size": 16},
+            "max_chars_per_s": 22.0, "batch_size": 16, "whisper_beams": 1},
     "lyrics": {"min_version_coverage": 0.4, "match_threshold": 0.75},
     "align": {"window_pad_s": 0.3},
     "qc": {},

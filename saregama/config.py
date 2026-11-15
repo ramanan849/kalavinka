@@ -111,6 +111,7 @@ class AsrCfg:
     pad_s: float = 0.3                 # audio context around each phrase
     max_chars_per_s: float = 22.0      # faster "speech" than this is a hallucination
     batch_size: int = 16
+    beams: int = 5                     # Whisper beam width (word timestamps always decode greedily)
     accept_unreviewed: bool = False    # keep QC status instead of forcing review
     device: str = "cuda"
 

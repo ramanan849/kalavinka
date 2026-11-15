@@ -243,7 +243,7 @@ class WhisperAsr(AsrBackend):
         words = words and self.has_word_times
         # word timestamps keep cross-attention maps for every beam and token
         # (tens of GB for large-v3), so they decode greedily
-        gen = {"task": "transcribe", "num_beams": 1 if words else 5}
+        gen = {"task": "transcribe", "num_beams": 1 if words else max(1, self.cfg.beams)}
         if lang:
             gen["language"] = lang
         inputs = [{"raw": c.astype(np.float32), "sampling_rate": ASR_SR} for c in clips]
