@@ -1,0 +1,8664 @@
+{
+ "fps": 50,
+ "frames": 14995,
+ "choices": [
+  {
+   "phrase": 6,
+   "use_ref": false,
+   "with_optional": false,
+   "margin": 0.34
+  },
+  {
+   "phrase": 11,
+   "use_ref": true,
+   "with_optional": true,
+   "margin": 30.4
+  },
+  {
+   "phrase": 13,
+   "use_ref": false,
+   "with_optional": true,
+   "margin": 4.94
+  },
+  {
+   "phrase": 14,
+   "use_ref": true,
+   "with_optional": true,
+   "margin": 27.65
+  },
+  {
+   "phrase": 15,
+   "use_ref": false,
+   "with_optional": false,
+   "margin": 0.76
+  }
+ ],
+ "info": {
+  "backend": "external",
+  "align_mode": "phrase",
+  "path_logp_per_frame": -1.064270111912989,
+  "mean_token_logp": -3.5998471400298357
+ },
+ "syllables": [
+  {
+   "kind": "lyric",
+   "text": "है",
+   "phones": [
+    "h",
+    "E"
+   ],
+   "start": 440,
+   "end": 457,
+   "line": 0,
+   "phrase": 0,
+   "word": 0,
+   "word_text": "है",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -8.178
+  },
+  {
+   "kind": "lyric",
+   "text": "तुम्",
+   "phones": [
+    "t",
+    "u",
+    "m"
+   ],
+   "start": 549,
+   "end": 557,
+   "line": 1,
+   "phrase": 1,
+   "word": 0,
+   "word_text": "तुम्हारी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.768
+  },
+  {
+   "kind": "lyric",
+   "text": "हा",
+   "phones": [
+    "h",
+    "aa"
+   ],
+   "start": 557,
+   "end": 564,
+   "line": 1,
+   "phrase": 1,
+   "word": 0,
+   "word_text": "तुम्हारी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.812
+  },
+  {
+   "kind": "lyric",
+   "text": "री",
+   "phones": [
+    "r",
+    "ii"
+   ],
+   "start": 564,
+   "end": 572,
+   "line": 1,
+   "phrase": 1,
+   "word": 0,
+   "word_text": "तुम्हारी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.391
+  },
+  {
+   "kind": "lyric",
+   "text": "मो",
+   "phones": [
+    "m",
+    "oo"
+   ],
+   "start": 572,
+   "end": 578,
+   "line": 1,
+   "phrase": 1,
+   "word": 1,
+   "word_text": "मोहब्बत",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -5.369
+  },
+  {
+   "kind": "lyric",
+   "text": "हब्",
+   "phones": [
+    "h",
+    "a",
+    "b"
+   ],
+   "start": 578,
+   "end": 588,
+   "line": 1,
+   "phrase": 1,
+   "word": 1,
+   "word_text": "मोहब्बत",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.744
+  },
+  {
+   "kind": "lyric",
+   "text": "बत",
+   "phones": [
+    "b",
+    "a",
+    "t"
+   ],
+   "start": 588,
+   "end": 600,
+   "line": 1,
+   "phrase": 1,
+   "word": 1,
+   "word_text": "मोहब्बत",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.774
+  },
+  {
+   "kind": "lyric",
+   "text": "में",
+   "phones": [
+    "m",
+    "ee",
+    "nas"
+   ],
+   "start": 600,
+   "end": 607,
+   "line": 1,
+   "phrase": 1,
+   "word": 2,
+   "word_text": "में",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -4.558
+  },
+  {
+   "kind": "lyric",
+   "text": "हम",
+   "phones": [
+    "h",
+    "a",
+    "m"
+   ],
+   "start": 607,
+   "end": 618,
+   "line": 1,
+   "phrase": 1,
+   "word": 3,
+   "word_text": "हम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.719
+  },
+  {
+   "kind": "lyric",
+   "text": "तुम्",
+   "phones": [
+    "t",
+    "u",
+    "m"
+   ],
+   "start": 618,
+   "end": 625,
+   "line": 1,
+   "phrase": 1,
+   "word": 4,
+   "word_text": "तुम्हारे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.748
+  },
+  {
+   "kind": "lyric",
+   "text": "हा",
+   "phones": [
+    "h",
+    "aa"
+   ],
+   "start": 625,
+   "end": 632,
+   "line": 1,
+   "phrase": 1,
+   "word": 4,
+   "word_text": "तुम्हारे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.796
+  },
+  {
+   "kind": "lyric",
+   "text": "रे",
+   "phones": [
+    "r",
+    "ee"
+   ],
+   "start": 632,
+   "end": 641,
+   "line": 1,
+   "phrase": 1,
+   "word": 4,
+   "word_text": "तुम्हारे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.571
+  },
+  {
+   "kind": "lyric",
+   "text": "ज़र",
+   "phones": [
+    "z",
+    "a",
+    "r"
+   ],
+   "start": 641,
+   "end": 653,
+   "line": 1,
+   "phrase": 1,
+   "word": 5,
+   "word_text": "ज़र",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.111
+  },
+  {
+   "kind": "lyric",
+   "text": "ख़",
+   "phones": [
+    "x",
+    "a"
+   ],
+   "start": 653,
+   "end": 661,
+   "line": 1,
+   "phrase": 1,
+   "word": 6,
+   "word_text": "ख़रीद",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.908
+  },
+  {
+   "kind": "lyric",
+   "text": "रीद",
+   "phones": [
+    "r",
+    "ii",
+    "d"
+   ],
+   "start": 661,
+   "end": 676,
+   "line": 1,
+   "phrase": 1,
+   "word": 6,
+   "word_text": "ख़रीद",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.844
+  },
+  {
+   "kind": "lyric",
+   "text": "ग़ु",
+   "phones": [
+    "gg",
+    "u"
+   ],
+   "start": 676,
+   "end": 682,
+   "line": 1,
+   "phrase": 1,
+   "word": 7,
+   "word_text": "ग़ुलाम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.739
+  },
+  {
+   "kind": "lyric",
+   "text": "लाम",
+   "phones": [
+    "l",
+    "aa",
+    "m"
+   ],
+   "start": 682,
+   "end": 697,
+   "line": 1,
+   "phrase": 1,
+   "word": 7,
+   "word_text": "ग़ुलाम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.808
+  },
+  {
+   "kind": "lyric",
+   "text": "हो",
+   "phones": [
+    "h",
+    "oo"
+   ],
+   "start": 697,
+   "end": 704,
+   "line": 1,
+   "phrase": 1,
+   "word": 8,
+   "word_text": "हो",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.597
+  },
+  {
+   "kind": "lyric",
+   "text": "चु",
+   "phones": [
+    "c",
+    "u"
+   ],
+   "start": 704,
+   "end": 711,
+   "line": 1,
+   "phrase": 1,
+   "word": 9,
+   "word_text": "चुके",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.829
+  },
+  {
+   "kind": "lyric",
+   "text": "के",
+   "phones": [
+    "k",
+    "ee"
+   ],
+   "start": 711,
+   "end": 716,
+   "line": 1,
+   "phrase": 1,
+   "word": 9,
+   "word_text": "चुके",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.578
+  },
+  {
+   "kind": "lyric",
+   "text": "हैं",
+   "phones": [
+    "h",
+    "E",
+    "nas"
+   ],
+   "start": 716,
+   "end": 743,
+   "line": 1,
+   "phrase": 1,
+   "word": 10,
+   "word_text": "हैं",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -8.496
+  },
+  {
+   "kind": "lyric",
+   "text": "हर",
+   "phones": [
+    "h",
+    "a",
+    "r"
+   ],
+   "start": 807,
+   "end": 825,
+   "line": 2,
+   "phrase": 2,
+   "word": 0,
+   "word_text": "हर",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.798
+  },
+  {
+   "kind": "lyric",
+   "text": "ज",
+   "phones": [
+    "j",
+    "a"
+   ],
+   "start": 825,
+   "end": 833,
+   "line": 2,
+   "phrase": 2,
+   "word": 1,
+   "word_text": "जगह",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.756
+  },
+  {
+   "kind": "lyric",
+   "text": "गह",
+   "phones": [
+    "g",
+    "a",
+    "h"
+   ],
+   "start": 833,
+   "end": 843,
+   "line": 2,
+   "phrase": 2,
+   "word": 1,
+   "word_text": "जगह",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.775
+  },
+  {
+   "kind": "lyric",
+   "text": "तुम्",
+   "phones": [
+    "t",
+    "u",
+    "m"
+   ],
+   "start": 843,
+   "end": 850,
+   "line": 2,
+   "phrase": 2,
+   "word": 2,
+   "word_text": "तुम्हारे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.76
+  },
+  {
+   "kind": "lyric",
+   "text": "हा",
+   "phones": [
+    "h",
+    "aa"
+   ],
+   "start": 850,
+   "end": 857,
+   "line": 2,
+   "phrase": 2,
+   "word": 2,
+   "word_text": "तुम्हारे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.771
+  },
+  {
+   "kind": "lyric",
+   "text": "रे",
+   "phones": [
+    "r",
+    "ee"
+   ],
+   "start": 857,
+   "end": 863,
+   "line": 2,
+   "phrase": 2,
+   "word": 2,
+   "word_text": "तुम्हारे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.245
+  },
+  {
+   "kind": "lyric",
+   "text": "लि",
+   "phones": [
+    "l",
+    "i"
+   ],
+   "start": 863,
+   "end": 868,
+   "line": 2,
+   "phrase": 2,
+   "word": 3,
+   "word_text": "लिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.757
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 868,
+   "end": 875,
+   "line": 2,
+   "phrase": 2,
+   "word": 3,
+   "word_text": "लिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.264
+  },
+  {
+   "kind": "lyric",
+   "text": "बद",
+   "phones": [
+    "b",
+    "a",
+    "d"
+   ],
+   "start": 875,
+   "end": 888,
+   "line": 2,
+   "phrase": 2,
+   "word": 4,
+   "word_text": "बदनाम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.736
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 888,
+   "end": 901,
+   "line": 2,
+   "phrase": 2,
+   "word": 4,
+   "word_text": "बदनाम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.801
+  },
+  {
+   "kind": "lyric",
+   "text": "हो",
+   "phones": [
+    "h",
+    "oo"
+   ],
+   "start": 901,
+   "end": 908,
+   "line": 2,
+   "phrase": 2,
+   "word": 5,
+   "word_text": "हो",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.465
+  },
+  {
+   "kind": "lyric",
+   "text": "चु",
+   "phones": [
+    "c",
+    "u"
+   ],
+   "start": 908,
+   "end": 915,
+   "line": 2,
+   "phrase": 2,
+   "word": 6,
+   "word_text": "चुके",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.881
+  },
+  {
+   "kind": "lyric",
+   "text": "के",
+   "phones": [
+    "k",
+    "ee"
+   ],
+   "start": 915,
+   "end": 919,
+   "line": 2,
+   "phrase": 2,
+   "word": 6,
+   "word_text": "चुके",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -4.145
+  },
+  {
+   "kind": "lyric",
+   "text": "हैं",
+   "phones": [
+    "h",
+    "E",
+    "nas"
+   ],
+   "start": 919,
+   "end": 961,
+   "line": 2,
+   "phrase": 2,
+   "word": 7,
+   "word_text": "हैं",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -8.041
+  },
+  {
+   "kind": "lyric",
+   "text": "ले",
+   "phones": [
+    "l",
+    "ee"
+   ],
+   "start": 988,
+   "end": 994,
+   "line": 3,
+   "phrase": 3,
+   "word": 0,
+   "word_text": "लेकर",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -8.605
+  },
+  {
+   "kind": "lyric",
+   "text": "कर",
+   "phones": [
+    "k",
+    "a",
+    "r"
+   ],
+   "start": 1007,
+   "end": 1021,
+   "line": 3,
+   "phrase": 3,
+   "word": 0,
+   "word_text": "लेकर",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -8.424
+  },
+  {
+   "kind": "lyric",
+   "text": "लाड़",
+   "phones": [
+    "l",
+    "aa",
+    "R"
+   ],
+   "start": 1021,
+   "end": 1028,
+   "line": 3,
+   "phrase": 3,
+   "word": 1,
+   "word_text": "लाड़",
+   "lang": "hi",
+   "src": "asr1",
+   "conf": -8.434
+  },
+  {
+   "kind": "lyric",
+   "text": "आह",
+   "phones": [
+    "aa",
+    "h"
+   ],
+   "start": 1084,
+   "end": 1344,
+   "line": 4,
+   "phrase": 4,
+   "word": 0,
+   "word_text": "आह",
+   "lang": "hi",
+   "src": "asr1",
+   "conf": -4.191
+  },
+  {
+   "kind": "lyric",
+   "text": "आह",
+   "phones": [
+    "aa",
+    "h"
+   ],
+   "start": 1344,
+   "end": 1731,
+   "line": 4,
+   "phrase": 4,
+   "word": 1,
+   "word_text": "आह",
+   "lang": "hi",
+   "src": "asr1",
+   "conf": -4.439
+  },
+  {
+   "kind": "lyric",
+   "text": "आह",
+   "phones": [
+    "aa",
+    "h"
+   ],
+   "start": 1731,
+   "end": 1872,
+   "line": 4,
+   "phrase": 4,
+   "word": 2,
+   "word_text": "आह",
+   "lang": "hi",
+   "src": "asr1",
+   "conf": -3.71
+  },
+  {
+   "kind": "lyric",
+   "text": "आह",
+   "phones": [
+    "aa",
+    "h"
+   ],
+   "start": 1872,
+   "end": 2179,
+   "line": 4,
+   "phrase": 4,
+   "word": 3,
+   "word_text": "आह",
+   "lang": "hi",
+   "src": "asr1",
+   "conf": -5.114
+  },
+  {
+   "kind": "lyric",
+   "text": "आ",
+   "phones": [
+    "aa"
+   ],
+   "start": 2650,
+   "end": 2674,
+   "line": 5,
+   "phrase": 5,
+   "word": 0,
+   "word_text": "आशिक़ी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.663
+  },
+  {
+   "kind": "lyric",
+   "text": "शि",
+   "phones": [
+    "sh",
+    "i"
+   ],
+   "start": 2674,
+   "end": 2683,
+   "line": 5,
+   "phrase": 5,
+   "word": 0,
+   "word_text": "आशिक़ी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.51
+  },
+  {
+   "kind": "lyric",
+   "text": "क़ी",
+   "phones": [
+    "q",
+    "ii"
+   ],
+   "start": 2683,
+   "end": 2698,
+   "line": 5,
+   "phrase": 5,
+   "word": 0,
+   "word_text": "आशिक़ी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.609
+  },
+  {
+   "kind": "lyric",
+   "text": "का",
+   "phones": [
+    "k",
+    "aa"
+   ],
+   "start": 2698,
+   "end": 2716,
+   "line": 5,
+   "phrase": 5,
+   "word": 1,
+   "word_text": "का",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -1.254
+  },
+  {
+   "kind": "lyric",
+   "text": "ग़म",
+   "phones": [
+    "gg",
+    "a",
+    "m"
+   ],
+   "start": 2716,
+   "end": 2756,
+   "line": 5,
+   "phrase": 5,
+   "word": 2,
+   "word_text": "ग़म",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.28
+  },
+  {
+   "kind": "lyric",
+   "text": "हम",
+   "phones": [
+    "h",
+    "a",
+    "m"
+   ],
+   "start": 2756,
+   "end": 2774,
+   "line": 5,
+   "phrase": 5,
+   "word": 3,
+   "word_text": "हम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.271
+  },
+  {
+   "kind": "lyric",
+   "text": "भी",
+   "phones": [
+    "bh",
+    "ii"
+   ],
+   "start": 2774,
+   "end": 2785,
+   "line": 5,
+   "phrase": 5,
+   "word": 4,
+   "word_text": "भी",
+   "lang": "hi",
+   "src": "asr1",
+   "conf": -3.294
+  },
+  {
+   "kind": "lyric",
+   "text": "पि",
+   "phones": [
+    "p",
+    "i"
+   ],
+   "start": 2785,
+   "end": 2803,
+   "line": 5,
+   "phrase": 5,
+   "word": 5,
+   "word_text": "पिए",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -6.363
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 2803,
+   "end": 2814,
+   "line": 5,
+   "phrase": 5,
+   "word": 5,
+   "word_text": "पिए",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -3.85
+  },
+  {
+   "kind": "lyric",
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 2814,
+   "end": 2839,
+   "line": 5,
+   "phrase": 5,
+   "word": 6,
+   "word_text": "जा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.257
+  },
+  {
+   "kind": "lyric",
+   "text": "र",
+   "phones": [
+    "r",
+    "a"
+   ],
+   "start": 2839,
+   "end": 2849,
+   "line": 5,
+   "phrase": 5,
+   "word": 7,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.396
+  },
+  {
+   "kind": "lyric",
+   "text": "हे",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 2849,
+   "end": 2917,
+   "line": 5,
+   "phrase": 5,
+   "word": 7,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.492
+  },
+  {
+   "kind": "lyric",
+   "text": "आ",
+   "phones": [
+    "aa"
+   ],
+   "start": 2917,
+   "end": 2937,
+   "line": 5,
+   "phrase": 5,
+   "word": 8,
+   "word_text": "आशिक़ी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.512
+  },
+  {
+   "kind": "lyric",
+   "text": "शि",
+   "phones": [
+    "sh",
+    "i"
+   ],
+   "start": 2937,
+   "end": 2947,
+   "line": 5,
+   "phrase": 5,
+   "word": 8,
+   "word_text": "आशिक़ी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.446
+  },
+  {
+   "kind": "lyric",
+   "text": "क़ी",
+   "phones": [
+    "q",
+    "ii"
+   ],
+   "start": 2947,
+   "end": 2962,
+   "line": 5,
+   "phrase": 5,
+   "word": 8,
+   "word_text": "आशिक़ी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.665
+  },
+  {
+   "kind": "lyric",
+   "text": "का",
+   "phones": [
+    "k",
+    "aa"
+   ],
+   "start": 2962,
+   "end": 2979,
+   "line": 5,
+   "phrase": 5,
+   "word": 9,
+   "word_text": "का",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -1.183
+  },
+  {
+   "kind": "lyric",
+   "text": "ग़म",
+   "phones": [
+    "gg",
+    "a",
+    "m"
+   ],
+   "start": 2979,
+   "end": 3020,
+   "line": 5,
+   "phrase": 5,
+   "word": 10,
+   "word_text": "ग़म",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.277
+  },
+  {
+   "kind": "lyric",
+   "text": "हम",
+   "phones": [
+    "h",
+    "a",
+    "m"
+   ],
+   "start": 3020,
+   "end": 3038,
+   "line": 5,
+   "phrase": 5,
+   "word": 11,
+   "word_text": "हम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.894
+  },
+  {
+   "kind": "lyric",
+   "text": "भी",
+   "phones": [
+    "bh",
+    "ii"
+   ],
+   "start": 3038,
+   "end": 3048,
+   "line": 5,
+   "phrase": 5,
+   "word": 12,
+   "word_text": "भी",
+   "lang": "hi",
+   "src": "asr1",
+   "conf": -2.46
+  },
+  {
+   "kind": "lyric",
+   "text": "पि",
+   "phones": [
+    "p",
+    "i"
+   ],
+   "start": 3048,
+   "end": 3051,
+   "line": 5,
+   "phrase": 5,
+   "word": 13,
+   "word_text": "पिए",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -9.146
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 3051,
+   "end": 3077,
+   "line": 5,
+   "phrase": 5,
+   "word": 13,
+   "word_text": "पिए",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -3.684
+  },
+  {
+   "kind": "lyric",
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 3077,
+   "end": 3103,
+   "line": 5,
+   "phrase": 5,
+   "word": 14,
+   "word_text": "जा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.102
+  },
+  {
+   "kind": "lyric",
+   "text": "र",
+   "phones": [
+    "r",
+    "a"
+   ],
+   "start": 3103,
+   "end": 3112,
+   "line": 5,
+   "phrase": 5,
+   "word": 15,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.123
+  },
+  {
+   "kind": "lyric",
+   "text": "हे",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 3112,
+   "end": 3154,
+   "line": 5,
+   "phrase": 5,
+   "word": 15,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.665
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 3154,
+   "end": 3169,
+   "line": 5,
+   "phrase": 5,
+   "word": 16,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.003
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 3169,
+   "end": 3178,
+   "line": 5,
+   "phrase": 5,
+   "word": 16,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.354
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 3178,
+   "end": 3211,
+   "line": 5,
+   "phrase": 5,
+   "word": 17,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.829
+  },
+  {
+   "kind": "lyric",
+   "text": "ले",
+   "phones": [
+    "l",
+    "ee"
+   ],
+   "start": 3211,
+   "end": 3242,
+   "line": 5,
+   "phrase": 5,
+   "word": 18,
+   "word_text": "लेकर",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.953
+  },
+  {
+   "kind": "lyric",
+   "text": "कर",
+   "phones": [
+    "k",
+    "a",
+    "r"
+   ],
+   "start": 3242,
+   "end": 3284,
+   "line": 5,
+   "phrase": 5,
+   "word": 18,
+   "word_text": "लेकर",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.054
+  },
+  {
+   "kind": "lyric",
+   "text": "हम",
+   "phones": [
+    "h",
+    "a",
+    "m"
+   ],
+   "start": 3284,
+   "end": 3300,
+   "line": 5,
+   "phrase": 5,
+   "word": 19,
+   "word_text": "हम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.652
+  },
+  {
+   "kind": "lyric",
+   "text": "जि",
+   "phones": [
+    "j",
+    "i"
+   ],
+   "start": 3300,
+   "end": 3311,
+   "line": 5,
+   "phrase": 5,
+   "word": 20,
+   "word_text": "जिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.297
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 3311,
+   "end": 3339,
+   "line": 5,
+   "phrase": 5,
+   "word": 20,
+   "word_text": "जिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.948
+  },
+  {
+   "kind": "lyric",
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 3339,
+   "end": 3366,
+   "line": 5,
+   "phrase": 5,
+   "word": 21,
+   "word_text": "जा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.633
+  },
+  {
+   "kind": "lyric",
+   "text": "र",
+   "phones": [
+    "r",
+    "a"
+   ],
+   "start": 3366,
+   "end": 3376,
+   "line": 5,
+   "phrase": 5,
+   "word": 22,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.729
+  },
+  {
+   "kind": "lyric",
+   "text": "हे",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 3376,
+   "end": 3418,
+   "line": 5,
+   "phrase": 5,
+   "word": 22,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.939
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 3418,
+   "end": 3433,
+   "line": 5,
+   "phrase": 5,
+   "word": 23,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.019
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 3433,
+   "end": 3442,
+   "line": 5,
+   "phrase": 5,
+   "word": 23,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.343
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 3442,
+   "end": 3474,
+   "line": 5,
+   "phrase": 5,
+   "word": 24,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.821
+  },
+  {
+   "kind": "lyric",
+   "text": "ले",
+   "phones": [
+    "l",
+    "ee"
+   ],
+   "start": 3474,
+   "end": 3506,
+   "line": 5,
+   "phrase": 5,
+   "word": 25,
+   "word_text": "लेकर",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.035
+  },
+  {
+   "kind": "lyric",
+   "text": "कर",
+   "phones": [
+    "k",
+    "a",
+    "r"
+   ],
+   "start": 3506,
+   "end": 3547,
+   "line": 5,
+   "phrase": 5,
+   "word": 25,
+   "word_text": "लेकर",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.09
+  },
+  {
+   "kind": "lyric",
+   "text": "हम",
+   "phones": [
+    "h",
+    "a",
+    "m"
+   ],
+   "start": 3547,
+   "end": 3564,
+   "line": 5,
+   "phrase": 5,
+   "word": 26,
+   "word_text": "हम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.205
+  },
+  {
+   "kind": "lyric",
+   "text": "जि",
+   "phones": [
+    "j",
+    "i"
+   ],
+   "start": 3564,
+   "end": 3574,
+   "line": 5,
+   "phrase": 5,
+   "word": 27,
+   "word_text": "जिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.246
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 3574,
+   "end": 3603,
+   "line": 5,
+   "phrase": 5,
+   "word": 27,
+   "word_text": "जिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.973
+  },
+  {
+   "kind": "lyric",
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 3603,
+   "end": 3630,
+   "line": 5,
+   "phrase": 5,
+   "word": 28,
+   "word_text": "जा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.657
+  },
+  {
+   "kind": "lyric",
+   "text": "र",
+   "phones": [
+    "r",
+    "a"
+   ],
+   "start": 3630,
+   "end": 3639,
+   "line": 5,
+   "phrase": 5,
+   "word": 29,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.613
+  },
+  {
+   "kind": "lyric",
+   "text": "हे",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 3639,
+   "end": 3709,
+   "line": 5,
+   "phrase": 5,
+   "word": 29,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -4.459
+  },
+  {
+   "kind": "lyric",
+   "text": "आ",
+   "phones": [
+    "aa"
+   ],
+   "start": 3709,
+   "end": 3728,
+   "line": 5,
+   "phrase": 5,
+   "word": 30,
+   "word_text": "आशिक़ी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.819
+  },
+  {
+   "kind": "lyric",
+   "text": "शि",
+   "phones": [
+    "sh",
+    "i"
+   ],
+   "start": 3728,
+   "end": 3738,
+   "line": 5,
+   "phrase": 5,
+   "word": 30,
+   "word_text": "आशिक़ी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.22
+  },
+  {
+   "kind": "lyric",
+   "text": "क़ी",
+   "phones": [
+    "q",
+    "ii"
+   ],
+   "start": 3738,
+   "end": 3739,
+   "line": 5,
+   "phrase": 5,
+   "word": 30,
+   "word_text": "आशिक़ी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.785
+  },
+  {
+   "kind": "lyric",
+   "text": "आ",
+   "phones": [
+    "aa"
+   ],
+   "start": 3739,
+   "end": 3740,
+   "line": 6,
+   "phrase": 6,
+   "word": 0,
+   "word_text": "आशिक़ी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -4.769
+  },
+  {
+   "kind": "lyric",
+   "text": "शि",
+   "phones": [
+    "sh",
+    "i"
+   ],
+   "start": 3740,
+   "end": 3741,
+   "line": 6,
+   "phrase": 6,
+   "word": 0,
+   "word_text": "आशिक़ी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.22
+  },
+  {
+   "kind": "lyric",
+   "text": "क़ी",
+   "phones": [
+    "q",
+    "ii"
+   ],
+   "start": 3741,
+   "end": 3754,
+   "line": 6,
+   "phrase": 6,
+   "word": 0,
+   "word_text": "आशिक़ी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.776
+  },
+  {
+   "kind": "lyric",
+   "text": "का",
+   "phones": [
+    "k",
+    "aa"
+   ],
+   "start": 3754,
+   "end": 3814,
+   "line": 6,
+   "phrase": 6,
+   "word": 1,
+   "word_text": "का",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -1.378
+  },
+  {
+   "kind": "lyric",
+   "text": "हम",
+   "phones": [
+    "h",
+    "a",
+    "m"
+   ],
+   "start": 3814,
+   "end": 3829,
+   "line": 6,
+   "phrase": 6,
+   "word": 2,
+   "word_text": "हम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.552
+  },
+  {
+   "kind": "lyric",
+   "text": "पि",
+   "phones": [
+    "p",
+    "i"
+   ],
+   "start": 3829,
+   "end": 3840,
+   "line": 6,
+   "phrase": 6,
+   "word": 3,
+   "word_text": "पिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.726
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 3840,
+   "end": 3869,
+   "line": 6,
+   "phrase": 6,
+   "word": 3,
+   "word_text": "पिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.859
+  },
+  {
+   "kind": "lyric",
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 3869,
+   "end": 3891,
+   "line": 6,
+   "phrase": 6,
+   "word": 4,
+   "word_text": "जा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.044
+  },
+  {
+   "kind": "lyric",
+   "text": "र",
+   "phones": [
+    "r",
+    "a"
+   ],
+   "start": 3891,
+   "end": 3903,
+   "line": 6,
+   "phrase": 6,
+   "word": 5,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.745
+  },
+  {
+   "kind": "lyric",
+   "text": "हे",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 3903,
+   "end": 3946,
+   "line": 6,
+   "phrase": 6,
+   "word": 5,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -4.78
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 3946,
+   "end": 3961,
+   "line": 6,
+   "phrase": 6,
+   "word": 6,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.849
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 3961,
+   "end": 3970,
+   "line": 6,
+   "phrase": 6,
+   "word": 6,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.805
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 3970,
+   "end": 4001,
+   "line": 6,
+   "phrase": 6,
+   "word": 7,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.568
+  },
+  {
+   "kind": "lyric",
+   "text": "ले",
+   "phones": [
+    "l",
+    "ee"
+   ],
+   "start": 4001,
+   "end": 4033,
+   "line": 6,
+   "phrase": 6,
+   "word": 8,
+   "word_text": "लेकर",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.151
+  },
+  {
+   "kind": "lyric",
+   "text": "कर",
+   "phones": [
+    "k",
+    "a",
+    "r"
+   ],
+   "start": 4033,
+   "end": 4077,
+   "line": 6,
+   "phrase": 6,
+   "word": 8,
+   "word_text": "लेकर",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.332
+  },
+  {
+   "kind": "lyric",
+   "text": "हम",
+   "phones": [
+    "h",
+    "a",
+    "m"
+   ],
+   "start": 4077,
+   "end": 4093,
+   "line": 6,
+   "phrase": 6,
+   "word": 9,
+   "word_text": "हम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.122
+  },
+  {
+   "kind": "lyric",
+   "text": "जि",
+   "phones": [
+    "j",
+    "i"
+   ],
+   "start": 4093,
+   "end": 4107,
+   "line": 6,
+   "phrase": 6,
+   "word": 10,
+   "word_text": "जिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.217
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 4107,
+   "end": 4132,
+   "line": 6,
+   "phrase": 6,
+   "word": 10,
+   "word_text": "जिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.798
+  },
+  {
+   "kind": "lyric",
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 4132,
+   "end": 4158,
+   "line": 6,
+   "phrase": 6,
+   "word": 11,
+   "word_text": "जा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.259
+  },
+  {
+   "kind": "lyric",
+   "text": "र",
+   "phones": [
+    "r",
+    "a"
+   ],
+   "start": 4158,
+   "end": 4168,
+   "line": 6,
+   "phrase": 6,
+   "word": 12,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.58
+  },
+  {
+   "kind": "lyric",
+   "text": "हे",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 4168,
+   "end": 4185,
+   "line": 6,
+   "phrase": 6,
+   "word": 12,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -4.267
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 4185,
+   "end": 4278,
+   "line": 6,
+   "phrase": 6,
+   "word": 15,
+   "word_text": "तेरे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -6.784
+  },
+  {
+   "kind": "lyric",
+   "text": "रे",
+   "phones": [
+    "r",
+    "ee"
+   ],
+   "start": 4278,
+   "end": 4290,
+   "line": 6,
+   "phrase": 6,
+   "word": 15,
+   "word_text": "तेरे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.587
+  },
+  {
+   "kind": "lyric",
+   "text": "लि",
+   "phones": [
+    "l",
+    "i"
+   ],
+   "start": 4290,
+   "end": 4302,
+   "line": 6,
+   "phrase": 6,
+   "word": 16,
+   "word_text": "लिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -6.236
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 4302,
+   "end": 4309,
+   "line": 6,
+   "phrase": 6,
+   "word": 16,
+   "word_text": "लिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -6.938
+  },
+  {
+   "kind": "lyric",
+   "text": "रात",
+   "phones": [
+    "r",
+    "aa",
+    "t"
+   ],
+   "start": 4309,
+   "end": 4331,
+   "line": 6,
+   "phrase": 6,
+   "word": 17,
+   "word_text": "रात",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.164
+  },
+  {
+   "kind": "lyric",
+   "text": "भर",
+   "phones": [
+    "bh",
+    "a",
+    "r"
+   ],
+   "start": 4331,
+   "end": 4364,
+   "line": 6,
+   "phrase": 6,
+   "word": 18,
+   "word_text": "भर",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.041
+  },
+  {
+   "kind": "lyric",
+   "text": "हम",
+   "phones": [
+    "h",
+    "a",
+    "m"
+   ],
+   "start": 4364,
+   "end": 4376,
+   "line": 6,
+   "phrase": 6,
+   "word": 19,
+   "word_text": "हम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -5.691
+  },
+  {
+   "kind": "lyric",
+   "text": "तो",
+   "phones": [
+    "t",
+    "oo"
+   ],
+   "start": 4376,
+   "end": 4388,
+   "line": 6,
+   "phrase": 6,
+   "word": 20,
+   "word_text": "तो",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.276
+  },
+  {
+   "kind": "lyric",
+   "text": "पि",
+   "phones": [
+    "p",
+    "i"
+   ],
+   "start": 4388,
+   "end": 4398,
+   "line": 6,
+   "phrase": 6,
+   "word": 21,
+   "word_text": "पिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -6.09
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 4398,
+   "end": 4406,
+   "line": 6,
+   "phrase": 6,
+   "word": 21,
+   "word_text": "पिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.127
+  },
+  {
+   "kind": "lyric",
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 4406,
+   "end": 4421,
+   "line": 6,
+   "phrase": 6,
+   "word": 22,
+   "word_text": "जा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -6.785
+  },
+  {
+   "kind": "lyric",
+   "text": "र",
+   "phones": [
+    "r",
+    "a"
+   ],
+   "start": 4421,
+   "end": 4520,
+   "line": 6,
+   "phrase": 6,
+   "word": 23,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -4.665
+  },
+  {
+   "kind": "lyric",
+   "text": "हे",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 4520,
+   "end": 4530,
+   "line": 6,
+   "phrase": 6,
+   "word": 23,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -6.417
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 4530,
+   "end": 4542,
+   "line": 6,
+   "phrase": 6,
+   "word": 26,
+   "word_text": "तेरे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -6.488
+  },
+  {
+   "kind": "lyric",
+   "text": "रे",
+   "phones": [
+    "r",
+    "ee"
+   ],
+   "start": 4542,
+   "end": 4554,
+   "line": 6,
+   "phrase": 6,
+   "word": 26,
+   "word_text": "तेरे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.005
+  },
+  {
+   "kind": "lyric",
+   "text": "लि",
+   "phones": [
+    "l",
+    "i"
+   ],
+   "start": 4554,
+   "end": 4566,
+   "line": 6,
+   "phrase": 6,
+   "word": 27,
+   "word_text": "लिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -5.832
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 4566,
+   "end": 4572,
+   "line": 6,
+   "phrase": 6,
+   "word": 27,
+   "word_text": "लिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.375
+  },
+  {
+   "kind": "lyric",
+   "text": "रात",
+   "phones": [
+    "r",
+    "aa",
+    "t"
+   ],
+   "start": 4572,
+   "end": 4621,
+   "line": 6,
+   "phrase": 6,
+   "word": 28,
+   "word_text": "रात",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -8.083
+  },
+  {
+   "kind": "lyric",
+   "text": "भर",
+   "phones": [
+    "bh",
+    "a",
+    "r"
+   ],
+   "start": 4621,
+   "end": 4627,
+   "line": 6,
+   "phrase": 6,
+   "word": 29,
+   "word_text": "भर",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -8.156
+  },
+  {
+   "kind": "lyric",
+   "text": "हम",
+   "phones": [
+    "h",
+    "a",
+    "m"
+   ],
+   "start": 4627,
+   "end": 4640,
+   "line": 7,
+   "phrase": 7,
+   "word": 0,
+   "word_text": "हम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.504
+  },
+  {
+   "kind": "lyric",
+   "text": "तो",
+   "phones": [
+    "t",
+    "oo"
+   ],
+   "start": 4640,
+   "end": 4651,
+   "line": 7,
+   "phrase": 7,
+   "word": 1,
+   "word_text": "तो",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -4.633
+  },
+  {
+   "kind": "lyric",
+   "text": "पि",
+   "phones": [
+    "p",
+    "i"
+   ],
+   "start": 4651,
+   "end": 4656,
+   "line": 7,
+   "phrase": 7,
+   "word": 2,
+   "word_text": "पिए",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -3.659
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 4656,
+   "end": 4670,
+   "line": 7,
+   "phrase": 7,
+   "word": 2,
+   "word_text": "पिए",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -3.066
+  },
+  {
+   "kind": "lyric",
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 4670,
+   "end": 4685,
+   "line": 7,
+   "phrase": 7,
+   "word": 3,
+   "word_text": "जा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.93
+  },
+  {
+   "kind": "lyric",
+   "text": "र",
+   "phones": [
+    "r",
+    "a"
+   ],
+   "start": 4685,
+   "end": 4687,
+   "line": 7,
+   "phrase": 7,
+   "word": 4,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -4.638
+  },
+  {
+   "kind": "lyric",
+   "text": "हे",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 4687,
+   "end": 4695,
+   "line": 7,
+   "phrase": 7,
+   "word": 4,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -5.469
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 4695,
+   "end": 4699,
+   "line": 7,
+   "phrase": 7,
+   "word": 5,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -5.64
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 4699,
+   "end": 4703,
+   "line": 7,
+   "phrase": 7,
+   "word": 5,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -8.189
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 4703,
+   "end": 4708,
+   "line": 7,
+   "phrase": 7,
+   "word": 6,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -6.792
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 4708,
+   "end": 4720,
+   "line": 7,
+   "phrase": 7,
+   "word": 7,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -8.327
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 4720,
+   "end": 4728,
+   "line": 7,
+   "phrase": 7,
+   "word": 7,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -8.293
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 4728,
+   "end": 4743,
+   "line": 7,
+   "phrase": 7,
+   "word": 8,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -8.265
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 4743,
+   "end": 4752,
+   "line": 7,
+   "phrase": 7,
+   "word": 9,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.695
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 4752,
+   "end": 4760,
+   "line": 7,
+   "phrase": 7,
+   "word": 9,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -6.87
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 4760,
+   "end": 4775,
+   "line": 7,
+   "phrase": 7,
+   "word": 10,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.205
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 4775,
+   "end": 4784,
+   "line": 7,
+   "phrase": 7,
+   "word": 11,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -8.371
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 4784,
+   "end": 4792,
+   "line": 7,
+   "phrase": 7,
+   "word": 11,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.706
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 4792,
+   "end": 4807,
+   "line": 7,
+   "phrase": 7,
+   "word": 12,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.119
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 4807,
+   "end": 4849,
+   "line": 7,
+   "phrase": 7,
+   "word": 13,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.548
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 4849,
+   "end": 4857,
+   "line": 7,
+   "phrase": 7,
+   "word": 13,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -8.305
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 4857,
+   "end": 4906,
+   "line": 7,
+   "phrase": 7,
+   "word": 14,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.81
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 4906,
+   "end": 4915,
+   "line": 7,
+   "phrase": 7,
+   "word": 15,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -7.148
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 4915,
+   "end": 4923,
+   "line": 7,
+   "phrase": 7,
+   "word": 15,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -7.714
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 4923,
+   "end": 4940,
+   "line": 7,
+   "phrase": 7,
+   "word": 16,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -8.144
+  },
+  {
+   "kind": "lyric",
+   "text": "लि",
+   "phones": [
+    "l",
+    "i"
+   ],
+   "start": 4940,
+   "end": 4943,
+   "line": 7,
+   "phrase": 7,
+   "word": 17,
+   "word_text": "लिए",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -8.646
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 4943,
+   "end": 4956,
+   "line": 7,
+   "phrase": 7,
+   "word": 17,
+   "word_text": "लिए",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -8.438
+  },
+  {
+   "kind": "lyric",
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 4956,
+   "end": 4974,
+   "line": 7,
+   "phrase": 7,
+   "word": 18,
+   "word_text": "जा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -8.171
+  },
+  {
+   "kind": "lyric",
+   "text": "र",
+   "phones": [
+    "r",
+    "a"
+   ],
+   "start": 4974,
+   "end": 4993,
+   "line": 7,
+   "phrase": 7,
+   "word": 19,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -8.574
+  },
+  {
+   "kind": "lyric",
+   "text": "हे",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 4993,
+   "end": 5006,
+   "line": 7,
+   "phrase": 7,
+   "word": 19,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -9.651
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 5006,
+   "end": 5015,
+   "line": 7,
+   "phrase": 7,
+   "word": 20,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.445
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 5015,
+   "end": 5023,
+   "line": 7,
+   "phrase": 7,
+   "word": 20,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -6.936
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 5023,
+   "end": 5039,
+   "line": 7,
+   "phrase": 7,
+   "word": 21,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.051
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 5039,
+   "end": 5048,
+   "line": 7,
+   "phrase": 7,
+   "word": 22,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.279
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 5048,
+   "end": 5056,
+   "line": 7,
+   "phrase": 7,
+   "word": 22,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -6.743
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 5056,
+   "end": 5071,
+   "line": 7,
+   "phrase": 7,
+   "word": 23,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -5.711
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 5071,
+   "end": 5080,
+   "line": 7,
+   "phrase": 7,
+   "word": 24,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -6.203
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 5080,
+   "end": 5089,
+   "line": 7,
+   "phrase": 7,
+   "word": 24,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -6.836
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 5089,
+   "end": 5104,
+   "line": 7,
+   "phrase": 7,
+   "word": 25,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -5.713
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 5104,
+   "end": 5113,
+   "line": 7,
+   "phrase": 7,
+   "word": 26,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -4.777
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 5113,
+   "end": 5121,
+   "line": 7,
+   "phrase": 7,
+   "word": 26,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -4.467
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 5121,
+   "end": 5136,
+   "line": 7,
+   "phrase": 7,
+   "word": 27,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -5.216
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 5136,
+   "end": 5145,
+   "line": 7,
+   "phrase": 7,
+   "word": 28,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.426
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 5145,
+   "end": 5153,
+   "line": 7,
+   "phrase": 7,
+   "word": 28,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.32
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 5153,
+   "end": 5170,
+   "line": 7,
+   "phrase": 7,
+   "word": 29,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.423
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 5170,
+   "end": 5179,
+   "line": 7,
+   "phrase": 7,
+   "word": 30,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -6.656
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 5179,
+   "end": 5187,
+   "line": 7,
+   "phrase": 7,
+   "word": 30,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -6.501
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 5187,
+   "end": 5204,
+   "line": 7,
+   "phrase": 7,
+   "word": 31,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -5.392
+  },
+  {
+   "kind": "lyric",
+   "text": "लि",
+   "phones": [
+    "l",
+    "i"
+   ],
+   "start": 5204,
+   "end": 5206,
+   "line": 7,
+   "phrase": 7,
+   "word": 32,
+   "word_text": "लिए",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -6.068
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 5206,
+   "end": 5220,
+   "line": 7,
+   "phrase": 7,
+   "word": 32,
+   "word_text": "लिए",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -5.9
+  },
+  {
+   "kind": "lyric",
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 5220,
+   "end": 5237,
+   "line": 7,
+   "phrase": 7,
+   "word": 33,
+   "word_text": "जा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -5.965
+  },
+  {
+   "kind": "lyric",
+   "text": "र",
+   "phones": [
+    "r",
+    "a"
+   ],
+   "start": 5237,
+   "end": 5273,
+   "line": 7,
+   "phrase": 7,
+   "word": 34,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -6.361
+  },
+  {
+   "kind": "lyric",
+   "text": "हे",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 5273,
+   "end": 5287,
+   "line": 7,
+   "phrase": 7,
+   "word": 34,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.564
+  },
+  {
+   "kind": "lyric",
+   "text": "कित",
+   "phones": [
+    "k",
+    "i",
+    "t"
+   ],
+   "start": 5287,
+   "end": 5303,
+   "line": 7,
+   "phrase": 7,
+   "word": 35,
+   "word_text": "कितनी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.803
+  },
+  {
+   "kind": "lyric",
+   "text": "नी",
+   "phones": [
+    "n",
+    "ii"
+   ],
+   "start": 5303,
+   "end": 5327,
+   "line": 7,
+   "phrase": 7,
+   "word": 35,
+   "word_text": "कितनी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.864
+  },
+  {
+   "kind": "lyric",
+   "text": "चो",
+   "phones": [
+    "c",
+    "oo"
+   ],
+   "start": 5327,
+   "end": 5342,
+   "line": 7,
+   "phrase": 7,
+   "word": 36,
+   "word_text": "चोटें",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.39
+  },
+  {
+   "kind": "lyric",
+   "text": "टें",
+   "phones": [
+    "T",
+    "ee",
+    "nas"
+   ],
+   "start": 5342,
+   "end": 5353,
+   "line": 7,
+   "phrase": 7,
+   "word": 36,
+   "word_text": "चोटें",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -4.922
+  },
+  {
+   "kind": "lyric",
+   "text": "दिल",
+   "phones": [
+    "d",
+    "i",
+    "l"
+   ],
+   "start": 5353,
+   "end": 5370,
+   "line": 7,
+   "phrase": 7,
+   "word": 37,
+   "word_text": "दिल",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.918
+  },
+  {
+   "kind": "lyric",
+   "text": "पे",
+   "phones": [
+    "p",
+    "ee"
+   ],
+   "start": 5370,
+   "end": 5395,
+   "line": 7,
+   "phrase": 7,
+   "word": 38,
+   "word_text": "पे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.188
+  },
+  {
+   "kind": "lyric",
+   "text": "हम",
+   "phones": [
+    "h",
+    "a",
+    "m"
+   ],
+   "start": 5395,
+   "end": 5411,
+   "line": 7,
+   "phrase": 7,
+   "word": 39,
+   "word_text": "हम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.746
+  },
+  {
+   "kind": "lyric",
+   "text": "लि",
+   "phones": [
+    "l",
+    "i"
+   ],
+   "start": 5411,
+   "end": 5425,
+   "line": 7,
+   "phrase": 7,
+   "word": 40,
+   "word_text": "लिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.817
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 5425,
+   "end": 5451,
+   "line": 7,
+   "phrase": 7,
+   "word": 40,
+   "word_text": "लिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.484
+  },
+  {
+   "kind": "lyric",
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 5451,
+   "end": 5476,
+   "line": 7,
+   "phrase": 7,
+   "word": 41,
+   "word_text": "जा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.952
+  },
+  {
+   "kind": "lyric",
+   "text": "र",
+   "phones": [
+    "r",
+    "a"
+   ],
+   "start": 5476,
+   "end": 5486,
+   "line": 7,
+   "phrase": 7,
+   "word": 42,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.105
+  },
+  {
+   "kind": "lyric",
+   "text": "हे",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 5486,
+   "end": 5550,
+   "line": 7,
+   "phrase": 7,
+   "word": 42,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.058
+  },
+  {
+   "kind": "lyric",
+   "text": "कित",
+   "phones": [
+    "k",
+    "i",
+    "t"
+   ],
+   "start": 5550,
+   "end": 5567,
+   "line": 7,
+   "phrase": 7,
+   "word": 43,
+   "word_text": "कितनी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.795
+  },
+  {
+   "kind": "lyric",
+   "text": "नी",
+   "phones": [
+    "n",
+    "ii"
+   ],
+   "start": 5567,
+   "end": 5591,
+   "line": 7,
+   "phrase": 7,
+   "word": 43,
+   "word_text": "कितनी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.024
+  },
+  {
+   "kind": "lyric",
+   "text": "चो",
+   "phones": [
+    "c",
+    "oo"
+   ],
+   "start": 5591,
+   "end": 5605,
+   "line": 7,
+   "phrase": 7,
+   "word": 44,
+   "word_text": "चोटें",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.445
+  },
+  {
+   "kind": "lyric",
+   "text": "टें",
+   "phones": [
+    "T",
+    "ee",
+    "nas"
+   ],
+   "start": 5605,
+   "end": 5617,
+   "line": 7,
+   "phrase": 7,
+   "word": 44,
+   "word_text": "चोटें",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -5.131
+  },
+  {
+   "kind": "lyric",
+   "text": "दिल",
+   "phones": [
+    "d",
+    "i",
+    "l"
+   ],
+   "start": 5617,
+   "end": 5634,
+   "line": 7,
+   "phrase": 7,
+   "word": 45,
+   "word_text": "दिल",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.909
+  },
+  {
+   "kind": "lyric",
+   "text": "पे",
+   "phones": [
+    "p",
+    "ee"
+   ],
+   "start": 5634,
+   "end": 5659,
+   "line": 7,
+   "phrase": 7,
+   "word": 46,
+   "word_text": "पे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.141
+  },
+  {
+   "kind": "lyric",
+   "text": "हम",
+   "phones": [
+    "h",
+    "a",
+    "m"
+   ],
+   "start": 5659,
+   "end": 5674,
+   "line": 7,
+   "phrase": 7,
+   "word": 47,
+   "word_text": "हम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.741
+  },
+  {
+   "kind": "lyric",
+   "text": "लि",
+   "phones": [
+    "l",
+    "i"
+   ],
+   "start": 5674,
+   "end": 5688,
+   "line": 7,
+   "phrase": 7,
+   "word": 48,
+   "word_text": "लिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.818
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 5688,
+   "end": 5715,
+   "line": 7,
+   "phrase": 7,
+   "word": 48,
+   "word_text": "लिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.79
+  },
+  {
+   "kind": "lyric",
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 5715,
+   "end": 5738,
+   "line": 7,
+   "phrase": 7,
+   "word": 49,
+   "word_text": "जा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.973
+  },
+  {
+   "kind": "lyric",
+   "text": "र",
+   "phones": [
+    "r",
+    "a"
+   ],
+   "start": 5738,
+   "end": 5749,
+   "line": 7,
+   "phrase": 7,
+   "word": 50,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.415
+  },
+  {
+   "kind": "lyric",
+   "text": "हे",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 5749,
+   "end": 5792,
+   "line": 7,
+   "phrase": 7,
+   "word": 50,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.554
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 5792,
+   "end": 5806,
+   "line": 8,
+   "phrase": 8,
+   "word": 0,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.967
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 5806,
+   "end": 5815,
+   "line": 8,
+   "phrase": 8,
+   "word": 0,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.302
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 5815,
+   "end": 5848,
+   "line": 8,
+   "phrase": 8,
+   "word": 1,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.897
+  },
+  {
+   "kind": "lyric",
+   "text": "ले",
+   "phones": [
+    "l",
+    "ee"
+   ],
+   "start": 5848,
+   "end": 5880,
+   "line": 8,
+   "phrase": 8,
+   "word": 2,
+   "word_text": "लेकर",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.413
+  },
+  {
+   "kind": "lyric",
+   "text": "कर",
+   "phones": [
+    "k",
+    "a",
+    "r"
+   ],
+   "start": 5880,
+   "end": 5921,
+   "line": 8,
+   "phrase": 8,
+   "word": 2,
+   "word_text": "लेकर",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.827
+  },
+  {
+   "kind": "lyric",
+   "text": "हम",
+   "phones": [
+    "h",
+    "a",
+    "m"
+   ],
+   "start": 5921,
+   "end": 5937,
+   "line": 8,
+   "phrase": 8,
+   "word": 3,
+   "word_text": "हम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.756
+  },
+  {
+   "kind": "lyric",
+   "text": "जि",
+   "phones": [
+    "j",
+    "i"
+   ],
+   "start": 5937,
+   "end": 5951,
+   "line": 8,
+   "phrase": 8,
+   "word": 4,
+   "word_text": "जिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.138
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 5951,
+   "end": 5977,
+   "line": 8,
+   "phrase": 8,
+   "word": 4,
+   "word_text": "जिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.574
+  },
+  {
+   "kind": "lyric",
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 5977,
+   "end": 6004,
+   "line": 8,
+   "phrase": 8,
+   "word": 5,
+   "word_text": "जा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.984
+  },
+  {
+   "kind": "lyric",
+   "text": "र",
+   "phones": [
+    "r",
+    "a"
+   ],
+   "start": 6004,
+   "end": 6013,
+   "line": 8,
+   "phrase": 8,
+   "word": 6,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.687
+  },
+  {
+   "kind": "lyric",
+   "text": "हे",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 6013,
+   "end": 6055,
+   "line": 8,
+   "phrase": 8,
+   "word": 6,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.459
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 6055,
+   "end": 6070,
+   "line": 8,
+   "phrase": 8,
+   "word": 7,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.836
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 6070,
+   "end": 6079,
+   "line": 8,
+   "phrase": 8,
+   "word": 7,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.736
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 6079,
+   "end": 6112,
+   "line": 8,
+   "phrase": 8,
+   "word": 8,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.429
+  },
+  {
+   "kind": "lyric",
+   "text": "ले",
+   "phones": [
+    "l",
+    "ee"
+   ],
+   "start": 6112,
+   "end": 6141,
+   "line": 8,
+   "phrase": 8,
+   "word": 9,
+   "word_text": "लेकर",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.293
+  },
+  {
+   "kind": "lyric",
+   "text": "कर",
+   "phones": [
+    "k",
+    "a",
+    "r"
+   ],
+   "start": 6141,
+   "end": 6184,
+   "line": 8,
+   "phrase": 8,
+   "word": 9,
+   "word_text": "लेकर",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.657
+  },
+  {
+   "kind": "lyric",
+   "text": "हम",
+   "phones": [
+    "h",
+    "a",
+    "m"
+   ],
+   "start": 6184,
+   "end": 6202,
+   "line": 8,
+   "phrase": 8,
+   "word": 10,
+   "word_text": "हम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.29
+  },
+  {
+   "kind": "lyric",
+   "text": "जि",
+   "phones": [
+    "j",
+    "i"
+   ],
+   "start": 6202,
+   "end": 6217,
+   "line": 8,
+   "phrase": 8,
+   "word": 11,
+   "word_text": "जिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.454
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 6217,
+   "end": 6242,
+   "line": 8,
+   "phrase": 8,
+   "word": 11,
+   "word_text": "जिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.394
+  },
+  {
+   "kind": "lyric",
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 6242,
+   "end": 6269,
+   "line": 8,
+   "phrase": 8,
+   "word": 12,
+   "word_text": "जा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.333
+  },
+  {
+   "kind": "lyric",
+   "text": "र",
+   "phones": [
+    "r",
+    "a"
+   ],
+   "start": 6269,
+   "end": 6278,
+   "line": 8,
+   "phrase": 8,
+   "word": 13,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.335
+  },
+  {
+   "kind": "lyric",
+   "text": "हे",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 6278,
+   "end": 6914,
+   "line": 8,
+   "phrase": 8,
+   "word": 13,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.976
+  },
+  {
+   "kind": "lyric",
+   "text": "हम",
+   "phones": [
+    "h",
+    "a",
+    "m"
+   ],
+   "start": 7364,
+   "end": 7372,
+   "line": 9,
+   "phrase": 9,
+   "word": 0,
+   "word_text": "हम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -5.542
+  },
+  {
+   "kind": "lyric",
+   "text": "या",
+   "phones": [
+    "y",
+    "aa"
+   ],
+   "start": 7391,
+   "end": 7413,
+   "line": 10,
+   "phrase": 10,
+   "word": 0,
+   "word_text": "यारी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.896
+  },
+  {
+   "kind": "lyric",
+   "text": "री",
+   "phones": [
+    "r",
+    "ii"
+   ],
+   "start": 7413,
+   "end": 7438,
+   "line": 10,
+   "phrase": 10,
+   "word": 0,
+   "word_text": "यारी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -4.141
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 7438,
+   "end": 7454,
+   "line": 10,
+   "phrase": 10,
+   "word": 1,
+   "word_text": "तेरी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.26
+  },
+  {
+   "kind": "lyric",
+   "text": "री",
+   "phones": [
+    "r",
+    "ii"
+   ],
+   "start": 7454,
+   "end": 7463,
+   "line": 10,
+   "phrase": 10,
+   "word": 1,
+   "word_text": "तेरी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.734
+  },
+  {
+   "kind": "lyric",
+   "text": "मे",
+   "phones": [
+    "m",
+    "ee"
+   ],
+   "start": 7463,
+   "end": 7478,
+   "line": 10,
+   "phrase": 10,
+   "word": 2,
+   "word_text": "मेरी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.143
+  },
+  {
+   "kind": "lyric",
+   "text": "री",
+   "phones": [
+    "r",
+    "ii"
+   ],
+   "start": 7478,
+   "end": 7528,
+   "line": 10,
+   "phrase": 10,
+   "word": 2,
+   "word_text": "मेरी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.137
+  },
+  {
+   "kind": "lyric",
+   "text": "है",
+   "phones": [
+    "h",
+    "E"
+   ],
+   "start": 7528,
+   "end": 7544,
+   "line": 10,
+   "phrase": 10,
+   "word": 3,
+   "word_text": "है",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.983
+  },
+  {
+   "kind": "lyric",
+   "text": "अत",
+   "phones": [
+    "a",
+    "t"
+   ],
+   "start": 7544,
+   "end": 7563,
+   "line": 10,
+   "phrase": 10,
+   "word": 4,
+   "word_text": "अतरंगी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.713
+  },
+  {
+   "kind": "lyric",
+   "text": "रं",
+   "phones": [
+    "r",
+    "a",
+    "ng"
+   ],
+   "start": 7563,
+   "end": 7578,
+   "line": 10,
+   "phrase": 10,
+   "word": 4,
+   "word_text": "अतरंगी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.642
+  },
+  {
+   "kind": "lyric",
+   "text": "गी",
+   "phones": [
+    "g",
+    "ii"
+   ],
+   "start": 7578,
+   "end": 7592,
+   "line": 10,
+   "phrase": 10,
+   "word": 4,
+   "word_text": "अतरंगी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.858
+  },
+  {
+   "kind": "lyric",
+   "text": "या",
+   "phones": [
+    "y",
+    "aa"
+   ],
+   "start": 7592,
+   "end": 7610,
+   "line": 10,
+   "phrase": 10,
+   "word": 5,
+   "word_text": "यारा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.567
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 7610,
+   "end": 7659,
+   "line": 10,
+   "phrase": 10,
+   "word": 5,
+   "word_text": "यारा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.87
+  },
+  {
+   "kind": "lyric",
+   "text": "तुझ",
+   "phones": [
+    "t",
+    "u",
+    "jh"
+   ],
+   "start": 7659,
+   "end": 7676,
+   "line": 10,
+   "phrase": 10,
+   "word": 6,
+   "word_text": "तुझसे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.034
+  },
+  {
+   "kind": "lyric",
+   "text": "से",
+   "phones": [
+    "s",
+    "ee"
+   ],
+   "start": 7676,
+   "end": 7702,
+   "line": 10,
+   "phrase": 10,
+   "word": 6,
+   "word_text": "तुझसे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.972
+  },
+  {
+   "kind": "lyric",
+   "text": "मे",
+   "phones": [
+    "m",
+    "ee"
+   ],
+   "start": 7702,
+   "end": 7718,
+   "line": 10,
+   "phrase": 10,
+   "word": 7,
+   "word_text": "मेरी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.718
+  },
+  {
+   "kind": "lyric",
+   "text": "री",
+   "phones": [
+    "r",
+    "ii"
+   ],
+   "start": 7718,
+   "end": 7726,
+   "line": 10,
+   "phrase": 10,
+   "word": 7,
+   "word_text": "मेरी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.16
+  },
+  {
+   "kind": "lyric",
+   "text": "दु",
+   "phones": [
+    "d",
+    "u"
+   ],
+   "start": 7726,
+   "end": 7734,
+   "line": 10,
+   "phrase": 10,
+   "word": 8,
+   "word_text": "दुनिया",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.717
+  },
+  {
+   "kind": "lyric",
+   "text": "नि",
+   "phones": [
+    "n",
+    "i"
+   ],
+   "start": 7734,
+   "end": 7742,
+   "line": 10,
+   "phrase": 10,
+   "word": 8,
+   "word_text": "दुनिया",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.709
+  },
+  {
+   "kind": "lyric",
+   "text": "या",
+   "phones": [
+    "y",
+    "aa"
+   ],
+   "start": 7742,
+   "end": 7791,
+   "line": 10,
+   "phrase": 10,
+   "word": 8,
+   "word_text": "दुनिया",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.938
+  },
+  {
+   "kind": "lyric",
+   "text": "है",
+   "phones": [
+    "h",
+    "E"
+   ],
+   "start": 7791,
+   "end": 7807,
+   "line": 10,
+   "phrase": 10,
+   "word": 9,
+   "word_text": "है",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.586
+  },
+  {
+   "kind": "lyric",
+   "text": "सत",
+   "phones": [
+    "s",
+    "a",
+    "t"
+   ],
+   "start": 7807,
+   "end": 7825,
+   "line": 10,
+   "phrase": 10,
+   "word": 10,
+   "word_text": "सतरंगी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.973
+  },
+  {
+   "kind": "lyric",
+   "text": "रं",
+   "phones": [
+    "r",
+    "a",
+    "ng"
+   ],
+   "start": 7825,
+   "end": 7841,
+   "line": 10,
+   "phrase": 10,
+   "word": 10,
+   "word_text": "सतरंगी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.684
+  },
+  {
+   "kind": "lyric",
+   "text": "गी",
+   "phones": [
+    "g",
+    "ii"
+   ],
+   "start": 7841,
+   "end": 7851,
+   "line": 10,
+   "phrase": 10,
+   "word": 10,
+   "word_text": "सतरंगी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.953
+  },
+  {
+   "kind": "lyric",
+   "text": "या",
+   "phones": [
+    "y",
+    "aa"
+   ],
+   "start": 7851,
+   "end": 7875,
+   "line": 10,
+   "phrase": 10,
+   "word": 11,
+   "word_text": "यारा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.567
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 7875,
+   "end": 7907,
+   "line": 10,
+   "phrase": 10,
+   "word": 11,
+   "word_text": "यारा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.83
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 7907,
+   "end": 7917,
+   "line": 10,
+   "phrase": 10,
+   "word": 12,
+   "word_text": "तेरे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.185
+  },
+  {
+   "kind": "lyric",
+   "text": "रे",
+   "phones": [
+    "r",
+    "ee"
+   ],
+   "start": 7917,
+   "end": 7933,
+   "line": 10,
+   "phrase": 10,
+   "word": 12,
+   "word_text": "तेरे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.742
+  },
+  {
+   "kind": "lyric",
+   "text": "इश्क़",
+   "phones": [
+    "i",
+    "sh",
+    "q"
+   ],
+   "start": 7933,
+   "end": 7950,
+   "line": 10,
+   "phrase": 10,
+   "word": 13,
+   "word_text": "इश्क़",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.089
+  },
+  {
+   "kind": "lyric",
+   "text": "में",
+   "phones": [
+    "m",
+    "ee",
+    "nas"
+   ],
+   "start": 7950,
+   "end": 8037,
+   "line": 10,
+   "phrase": 10,
+   "word": 14,
+   "word_text": "में",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.922
+  },
+  {
+   "kind": "lyric",
+   "text": "हम",
+   "phones": [
+    "h",
+    "a",
+    "m"
+   ],
+   "start": 8037,
+   "end": 8056,
+   "line": 10,
+   "phrase": 10,
+   "word": 15,
+   "word_text": "हम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.716
+  },
+  {
+   "kind": "lyric",
+   "text": "अप",
+   "phones": [
+    "a",
+    "p"
+   ],
+   "start": 8056,
+   "end": 8072,
+   "line": 10,
+   "phrase": 10,
+   "word": 16,
+   "word_text": "अपने",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.723
+  },
+  {
+   "kind": "lyric",
+   "text": "ने",
+   "phones": [
+    "n",
+    "ee"
+   ],
+   "start": 8072,
+   "end": 8081,
+   "line": 10,
+   "phrase": 10,
+   "word": 16,
+   "word_text": "अपने",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.325
+  },
+  {
+   "kind": "lyric",
+   "text": "ही",
+   "phones": [
+    "h",
+    "ii"
+   ],
+   "start": 8081,
+   "end": 8187,
+   "line": 10,
+   "phrase": 10,
+   "word": 17,
+   "word_text": "ही",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.046
+  },
+  {
+   "kind": "lyric",
+   "text": "दिल",
+   "phones": [
+    "d",
+    "i",
+    "l"
+   ],
+   "start": 8187,
+   "end": 8204,
+   "line": 10,
+   "phrase": 10,
+   "word": 18,
+   "word_text": "दिल",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.725
+  },
+  {
+   "kind": "lyric",
+   "text": "से",
+   "phones": [
+    "s",
+    "ee"
+   ],
+   "start": 8204,
+   "end": 8220,
+   "line": 10,
+   "phrase": 10,
+   "word": 19,
+   "word_text": "से",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.641
+  },
+  {
+   "kind": "lyric",
+   "text": "मात",
+   "phones": [
+    "m",
+    "aa",
+    "t"
+   ],
+   "start": 8220,
+   "end": 8254,
+   "line": 10,
+   "phrase": 10,
+   "word": 20,
+   "word_text": "मात",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.242
+  },
+  {
+   "kind": "lyric",
+   "text": "खा",
+   "phones": [
+    "kh",
+    "aa"
+   ],
+   "start": 8254,
+   "end": 8270,
+   "line": 10,
+   "phrase": 10,
+   "word": 21,
+   "word_text": "खा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.866
+  },
+  {
+   "kind": "lyric",
+   "text": "र",
+   "phones": [
+    "r",
+    "a"
+   ],
+   "start": 8270,
+   "end": 8279,
+   "line": 10,
+   "phrase": 10,
+   "word": 22,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.765
+  },
+  {
+   "kind": "lyric",
+   "text": "हे",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 8279,
+   "end": 8318,
+   "line": 10,
+   "phrase": 10,
+   "word": 22,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.882
+  },
+  {
+   "kind": "lyric",
+   "text": "दिल",
+   "phones": [
+    "d",
+    "i",
+    "l"
+   ],
+   "start": 8318,
+   "end": 8334,
+   "line": 10,
+   "phrase": 10,
+   "word": 23,
+   "word_text": "दिल",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.728
+  },
+  {
+   "kind": "lyric",
+   "text": "से",
+   "phones": [
+    "s",
+    "ee"
+   ],
+   "start": 8334,
+   "end": 8351,
+   "line": 10,
+   "phrase": 10,
+   "word": 24,
+   "word_text": "से",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.563
+  },
+  {
+   "kind": "lyric",
+   "text": "मात",
+   "phones": [
+    "m",
+    "aa",
+    "t"
+   ],
+   "start": 8351,
+   "end": 8385,
+   "line": 10,
+   "phrase": 10,
+   "word": 25,
+   "word_text": "मात",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.992
+  },
+  {
+   "kind": "lyric",
+   "text": "खा",
+   "phones": [
+    "kh",
+    "aa"
+   ],
+   "start": 8385,
+   "end": 8401,
+   "line": 10,
+   "phrase": 10,
+   "word": 26,
+   "word_text": "खा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.925
+  },
+  {
+   "kind": "lyric",
+   "text": "र",
+   "phones": [
+    "r",
+    "a"
+   ],
+   "start": 8401,
+   "end": 8411,
+   "line": 10,
+   "phrase": 10,
+   "word": 27,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.776
+  },
+  {
+   "kind": "lyric",
+   "text": "हे",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 8411,
+   "end": 8533,
+   "line": 10,
+   "phrase": 10,
+   "word": 27,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.544
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 8581,
+   "end": 8629,
+   "line": 11,
+   "phrase": 11,
+   "word": 2,
+   "word_text": "तेरे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -6.967
+  },
+  {
+   "kind": "lyric",
+   "text": "रे",
+   "phones": [
+    "r",
+    "ee"
+   ],
+   "start": 8629,
+   "end": 8641,
+   "line": 11,
+   "phrase": 11,
+   "word": 2,
+   "word_text": "तेरे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.993
+  },
+  {
+   "kind": "lyric",
+   "text": "लि",
+   "phones": [
+    "l",
+    "i"
+   ],
+   "start": 8641,
+   "end": 8653,
+   "line": 11,
+   "phrase": 11,
+   "word": 3,
+   "word_text": "लिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.01
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 8653,
+   "end": 8660,
+   "line": 11,
+   "phrase": 11,
+   "word": 3,
+   "word_text": "लिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.857
+  },
+  {
+   "kind": "lyric",
+   "text": "रात",
+   "phones": [
+    "r",
+    "aa",
+    "t"
+   ],
+   "start": 8660,
+   "end": 8683,
+   "line": 11,
+   "phrase": 11,
+   "word": 4,
+   "word_text": "रात",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -8.078
+  },
+  {
+   "kind": "lyric",
+   "text": "भर",
+   "phones": [
+    "bh",
+    "a",
+    "r"
+   ],
+   "start": 8683,
+   "end": 8715,
+   "line": 11,
+   "phrase": 11,
+   "word": 5,
+   "word_text": "भर",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -8.867
+  },
+  {
+   "kind": "lyric",
+   "text": "हम",
+   "phones": [
+    "h",
+    "a",
+    "m"
+   ],
+   "start": 8715,
+   "end": 8727,
+   "line": 11,
+   "phrase": 11,
+   "word": 6,
+   "word_text": "हम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -5.734
+  },
+  {
+   "kind": "lyric",
+   "text": "तो",
+   "phones": [
+    "t",
+    "oo"
+   ],
+   "start": 8727,
+   "end": 8740,
+   "line": 11,
+   "phrase": 11,
+   "word": 7,
+   "word_text": "तो",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.044
+  },
+  {
+   "kind": "lyric",
+   "text": "पि",
+   "phones": [
+    "p",
+    "i"
+   ],
+   "start": 8740,
+   "end": 8744,
+   "line": 11,
+   "phrase": 11,
+   "word": 8,
+   "word_text": "पिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -5.545
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 8744,
+   "end": 8758,
+   "line": 11,
+   "phrase": 11,
+   "word": 8,
+   "word_text": "पिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -6.975
+  },
+  {
+   "kind": "lyric",
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 8758,
+   "end": 8773,
+   "line": 11,
+   "phrase": 11,
+   "word": 9,
+   "word_text": "जा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -6.305
+  },
+  {
+   "kind": "lyric",
+   "text": "र",
+   "phones": [
+    "r",
+    "a"
+   ],
+   "start": 8773,
+   "end": 8782,
+   "line": 11,
+   "phrase": 11,
+   "word": 10,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -5.586
+  },
+  {
+   "kind": "lyric",
+   "text": "हे",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 8782,
+   "end": 8830,
+   "line": 11,
+   "phrase": 11,
+   "word": 10,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -6.78
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 8830,
+   "end": 8839,
+   "line": 11,
+   "phrase": 11,
+   "word": 11,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -7.539
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 8839,
+   "end": 8848,
+   "line": 11,
+   "phrase": 11,
+   "word": 11,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -7.022
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 8848,
+   "end": 8863,
+   "line": 11,
+   "phrase": 11,
+   "word": 12,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -7.338
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 8863,
+   "end": 8872,
+   "line": 11,
+   "phrase": 11,
+   "word": 13,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -7.462
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 8872,
+   "end": 8880,
+   "line": 11,
+   "phrase": 11,
+   "word": 13,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -6.126
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 8880,
+   "end": 8895,
+   "line": 11,
+   "phrase": 11,
+   "word": 14,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -6.183
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 8895,
+   "end": 8904,
+   "line": 11,
+   "phrase": 11,
+   "word": 15,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -6.646
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 8904,
+   "end": 8913,
+   "line": 11,
+   "phrase": 11,
+   "word": 15,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -6.69
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 8913,
+   "end": 8928,
+   "line": 11,
+   "phrase": 11,
+   "word": 16,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.174
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 8928,
+   "end": 8937,
+   "line": 11,
+   "phrase": 11,
+   "word": 17,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.527
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 8937,
+   "end": 8945,
+   "line": 11,
+   "phrase": 11,
+   "word": 17,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.047
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 8945,
+   "end": 8960,
+   "line": 11,
+   "phrase": 11,
+   "word": 18,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.188
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 8960,
+   "end": 8968,
+   "line": 11,
+   "phrase": 11,
+   "word": 19,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.883
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 8968,
+   "end": 8977,
+   "line": 11,
+   "phrase": 11,
+   "word": 19,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -8.703
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 8977,
+   "end": 8994,
+   "line": 11,
+   "phrase": 11,
+   "word": 20,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.217
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 8994,
+   "end": 9003,
+   "line": 11,
+   "phrase": 11,
+   "word": 21,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -6.895
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 9003,
+   "end": 9015,
+   "line": 11,
+   "phrase": 11,
+   "word": 21,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -8.417
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 9015,
+   "end": 9028,
+   "line": 11,
+   "phrase": 11,
+   "word": 22,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -8.105
+  },
+  {
+   "kind": "lyric",
+   "text": "लि",
+   "phones": [
+    "l",
+    "i"
+   ],
+   "start": 9028,
+   "end": 9038,
+   "line": 11,
+   "phrase": 11,
+   "word": 23,
+   "word_text": "लिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -8.836
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 9038,
+   "end": 9091,
+   "line": 11,
+   "phrase": 11,
+   "word": 23,
+   "word_text": "लिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -8.531
+  },
+  {
+   "kind": "lyric",
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 9091,
+   "end": 9095,
+   "line": 11,
+   "phrase": 11,
+   "word": 24,
+   "word_text": "जा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -8.251
+  },
+  {
+   "kind": "lyric",
+   "text": "र",
+   "phones": [
+    "r",
+    "a"
+   ],
+   "start": 9095,
+   "end": 9097,
+   "line": 11,
+   "phrase": 11,
+   "word": 25,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -8.945
+  },
+  {
+   "kind": "lyric",
+   "text": "हे",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 9097,
+   "end": 9106,
+   "line": 11,
+   "phrase": 11,
+   "word": 25,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -8.284
+  },
+  {
+   "kind": "lyric",
+   "text": "हैं",
+   "phones": [
+    "h",
+    "E",
+    "nas"
+   ],
+   "start": 9106,
+   "end": 9110,
+   "line": 11,
+   "phrase": 11,
+   "word": 26,
+   "word_text": "हैं",
+   "lang": "hi",
+   "src": "asr+whisper",
+   "conf": -7.616
+  },
+  {
+   "kind": "lyric",
+   "text": "कित",
+   "phones": [
+    "k",
+    "i",
+    "t"
+   ],
+   "start": 9110,
+   "end": 9127,
+   "line": 11,
+   "phrase": 11,
+   "word": 27,
+   "word_text": "कितनी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.011
+  },
+  {
+   "kind": "lyric",
+   "text": "नी",
+   "phones": [
+    "n",
+    "ii"
+   ],
+   "start": 9127,
+   "end": 9151,
+   "line": 11,
+   "phrase": 11,
+   "word": 27,
+   "word_text": "कितनी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.301
+  },
+  {
+   "kind": "lyric",
+   "text": "चो",
+   "phones": [
+    "c",
+    "oo"
+   ],
+   "start": 9151,
+   "end": 9169,
+   "line": 11,
+   "phrase": 11,
+   "word": 28,
+   "word_text": "चोटें",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.248
+  },
+  {
+   "kind": "lyric",
+   "text": "टें",
+   "phones": [
+    "T",
+    "ee",
+    "nas"
+   ],
+   "start": 9169,
+   "end": 9177,
+   "line": 11,
+   "phrase": 11,
+   "word": 28,
+   "word_text": "चोटें",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -4.171
+  },
+  {
+   "kind": "lyric",
+   "text": "दिल",
+   "phones": [
+    "d",
+    "i",
+    "l"
+   ],
+   "start": 9177,
+   "end": 9194,
+   "line": 11,
+   "phrase": 11,
+   "word": 29,
+   "word_text": "दिल",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.196
+  },
+  {
+   "kind": "lyric",
+   "text": "पे",
+   "phones": [
+    "p",
+    "ee"
+   ],
+   "start": 9194,
+   "end": 9219,
+   "line": 11,
+   "phrase": 11,
+   "word": 30,
+   "word_text": "पे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.697
+  },
+  {
+   "kind": "lyric",
+   "text": "हम",
+   "phones": [
+    "h",
+    "a",
+    "m"
+   ],
+   "start": 9219,
+   "end": 9235,
+   "line": 11,
+   "phrase": 11,
+   "word": 31,
+   "word_text": "हम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.996
+  },
+  {
+   "kind": "lyric",
+   "text": "लि",
+   "phones": [
+    "l",
+    "i"
+   ],
+   "start": 9235,
+   "end": 9249,
+   "line": 11,
+   "phrase": 11,
+   "word": 32,
+   "word_text": "लिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.23
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 9249,
+   "end": 9275,
+   "line": 11,
+   "phrase": 11,
+   "word": 32,
+   "word_text": "लिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -4.209
+  },
+  {
+   "kind": "lyric",
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 9275,
+   "end": 9298,
+   "line": 11,
+   "phrase": 11,
+   "word": 33,
+   "word_text": "जा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.609
+  },
+  {
+   "kind": "lyric",
+   "text": "र",
+   "phones": [
+    "r",
+    "a"
+   ],
+   "start": 9298,
+   "end": 9309,
+   "line": 11,
+   "phrase": 11,
+   "word": 34,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.517
+  },
+  {
+   "kind": "lyric",
+   "text": "हे",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 9309,
+   "end": 9352,
+   "line": 11,
+   "phrase": 11,
+   "word": 34,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -4.281
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 9352,
+   "end": 9366,
+   "line": 11,
+   "phrase": 11,
+   "word": 35,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.187
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 9366,
+   "end": 9376,
+   "line": 11,
+   "phrase": 11,
+   "word": 35,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.58
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 9376,
+   "end": 9408,
+   "line": 11,
+   "phrase": 11,
+   "word": 36,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.946
+  },
+  {
+   "kind": "lyric",
+   "text": "ले",
+   "phones": [
+    "l",
+    "ee"
+   ],
+   "start": 9408,
+   "end": 9440,
+   "line": 11,
+   "phrase": 11,
+   "word": 37,
+   "word_text": "लेकर",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.247
+  },
+  {
+   "kind": "lyric",
+   "text": "कर",
+   "phones": [
+    "k",
+    "a",
+    "r"
+   ],
+   "start": 9440,
+   "end": 9482,
+   "line": 11,
+   "phrase": 11,
+   "word": 37,
+   "word_text": "लेकर",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.2
+  },
+  {
+   "kind": "lyric",
+   "text": "हम",
+   "phones": [
+    "h",
+    "a",
+    "m"
+   ],
+   "start": 9482,
+   "end": 9497,
+   "line": 11,
+   "phrase": 11,
+   "word": 38,
+   "word_text": "हम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.167
+  },
+  {
+   "kind": "lyric",
+   "text": "जि",
+   "phones": [
+    "j",
+    "i"
+   ],
+   "start": 9497,
+   "end": 9512,
+   "line": 11,
+   "phrase": 11,
+   "word": 39,
+   "word_text": "जिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.135
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 9512,
+   "end": 9537,
+   "line": 11,
+   "phrase": 11,
+   "word": 39,
+   "word_text": "जिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.861
+  },
+  {
+   "kind": "lyric",
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 9537,
+   "end": 9564,
+   "line": 11,
+   "phrase": 11,
+   "word": 40,
+   "word_text": "जा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.38
+  },
+  {
+   "kind": "lyric",
+   "text": "र",
+   "phones": [
+    "r",
+    "a"
+   ],
+   "start": 9564,
+   "end": 9574,
+   "line": 11,
+   "phrase": 11,
+   "word": 41,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.573
+  },
+  {
+   "kind": "lyric",
+   "text": "हे",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 9574,
+   "end": 9643,
+   "line": 11,
+   "phrase": 11,
+   "word": 41,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.965
+  },
+  {
+   "kind": "lyric",
+   "text": "आ",
+   "phones": [
+    "aa"
+   ],
+   "start": 9643,
+   "end": 9664,
+   "line": 11,
+   "phrase": 11,
+   "word": 42,
+   "word_text": "आशिक़ी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.519
+  },
+  {
+   "kind": "lyric",
+   "text": "शि",
+   "phones": [
+    "sh",
+    "i"
+   ],
+   "start": 9664,
+   "end": 9674,
+   "line": 11,
+   "phrase": 11,
+   "word": 42,
+   "word_text": "आशिक़ी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.514
+  },
+  {
+   "kind": "lyric",
+   "text": "क़ी",
+   "phones": [
+    "q",
+    "ii"
+   ],
+   "start": 9674,
+   "end": 9675,
+   "line": 11,
+   "phrase": 11,
+   "word": 42,
+   "word_text": "आशिक़ी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.339
+  },
+  {
+   "kind": "lyric",
+   "text": "प्याश",
+   "phones": [
+    "p",
+    "y",
+    "aa",
+    "sh"
+   ],
+   "start": 9675,
+   "end": 9676,
+   "line": 12,
+   "phrase": 12,
+   "word": 0,
+   "word_text": "प्याश",
+   "lang": "hi",
+   "src": "asr1",
+   "conf": -5.284
+  },
+  {
+   "kind": "lyric",
+   "text": "के",
+   "phones": [
+    "k",
+    "ee"
+   ],
+   "start": 9676,
+   "end": 9705,
+   "line": 12,
+   "phrase": 12,
+   "word": 1,
+   "word_text": "के",
+   "lang": "hi",
+   "src": "asr1",
+   "conf": -3.675
+  },
+  {
+   "kind": "lyric",
+   "text": "ग़म",
+   "phones": [
+    "gg",
+    "a",
+    "m"
+   ],
+   "start": 9705,
+   "end": 9744,
+   "line": 12,
+   "phrase": 12,
+   "word": 2,
+   "word_text": "ग़म",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.031
+  },
+  {
+   "kind": "lyric",
+   "text": "हम",
+   "phones": [
+    "h",
+    "a",
+    "m"
+   ],
+   "start": 9744,
+   "end": 9763,
+   "line": 12,
+   "phrase": 12,
+   "word": 3,
+   "word_text": "हम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.948
+  },
+  {
+   "kind": "lyric",
+   "text": "पि",
+   "phones": [
+    "p",
+    "i"
+   ],
+   "start": 9763,
+   "end": 9778,
+   "line": 12,
+   "phrase": 12,
+   "word": 4,
+   "word_text": "पिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.051
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 9778,
+   "end": 9801,
+   "line": 12,
+   "phrase": 12,
+   "word": 4,
+   "word_text": "पिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.917
+  },
+  {
+   "kind": "lyric",
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 9801,
+   "end": 9827,
+   "line": 12,
+   "phrase": 12,
+   "word": 5,
+   "word_text": "जा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.253
+  },
+  {
+   "kind": "lyric",
+   "text": "र",
+   "phones": [
+    "r",
+    "a"
+   ],
+   "start": 9827,
+   "end": 9836,
+   "line": 12,
+   "phrase": 12,
+   "word": 6,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.333
+  },
+  {
+   "kind": "lyric",
+   "text": "हे",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 9836,
+   "end": 9880,
+   "line": 12,
+   "phrase": 12,
+   "word": 6,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -4.11
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 9880,
+   "end": 9894,
+   "line": 12,
+   "phrase": 12,
+   "word": 7,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.345
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 9894,
+   "end": 9904,
+   "line": 12,
+   "phrase": 12,
+   "word": 7,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.641
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 9904,
+   "end": 9935,
+   "line": 12,
+   "phrase": 12,
+   "word": 8,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.041
+  },
+  {
+   "kind": "lyric",
+   "text": "ले",
+   "phones": [
+    "l",
+    "ee"
+   ],
+   "start": 9935,
+   "end": 9967,
+   "line": 12,
+   "phrase": 12,
+   "word": 9,
+   "word_text": "लेकर",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.273
+  },
+  {
+   "kind": "lyric",
+   "text": "कर",
+   "phones": [
+    "k",
+    "a",
+    "r"
+   ],
+   "start": 9967,
+   "end": 10010,
+   "line": 12,
+   "phrase": 12,
+   "word": 9,
+   "word_text": "लेकर",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.357
+  },
+  {
+   "kind": "lyric",
+   "text": "हम",
+   "phones": [
+    "h",
+    "a",
+    "m"
+   ],
+   "start": 10010,
+   "end": 10026,
+   "line": 12,
+   "phrase": 12,
+   "word": 10,
+   "word_text": "हम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.146
+  },
+  {
+   "kind": "lyric",
+   "text": "जि",
+   "phones": [
+    "j",
+    "i"
+   ],
+   "start": 10026,
+   "end": 10041,
+   "line": 12,
+   "phrase": 12,
+   "word": 11,
+   "word_text": "जिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.325
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 10041,
+   "end": 10067,
+   "line": 12,
+   "phrase": 12,
+   "word": 11,
+   "word_text": "जिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.844
+  },
+  {
+   "kind": "lyric",
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 10067,
+   "end": 10093,
+   "line": 12,
+   "phrase": 12,
+   "word": 12,
+   "word_text": "जा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.354
+  },
+  {
+   "kind": "lyric",
+   "text": "र",
+   "phones": [
+    "r",
+    "a"
+   ],
+   "start": 10093,
+   "end": 10102,
+   "line": 12,
+   "phrase": 12,
+   "word": 13,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.56
+  },
+  {
+   "kind": "lyric",
+   "text": "हे",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 10102,
+   "end": 10192,
+   "line": 12,
+   "phrase": 12,
+   "word": 13,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.737
+  },
+  {
+   "kind": "lyric",
+   "text": "मे",
+   "phones": [
+    "m",
+    "ee"
+   ],
+   "start": 11087,
+   "end": 11105,
+   "line": 13,
+   "phrase": 13,
+   "word": 0,
+   "word_text": "मेरे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.319
+  },
+  {
+   "kind": "lyric",
+   "text": "रे",
+   "phones": [
+    "r",
+    "ee"
+   ],
+   "start": 11105,
+   "end": 11133,
+   "line": 13,
+   "phrase": 13,
+   "word": 0,
+   "word_text": "मेरे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.404
+  },
+  {
+   "kind": "lyric",
+   "text": "आस",
+   "phones": [
+    "aa",
+    "s"
+   ],
+   "start": 11133,
+   "end": 11154,
+   "line": 13,
+   "phrase": 13,
+   "word": 1,
+   "word_text": "आसमाँ",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.92
+  },
+  {
+   "kind": "lyric",
+   "text": "माँ",
+   "phones": [
+    "m",
+    "aa",
+    "nas"
+   ],
+   "start": 11154,
+   "end": 11169,
+   "line": 13,
+   "phrase": 13,
+   "word": 1,
+   "word_text": "आसमाँ",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.668
+  },
+  {
+   "kind": "lyric",
+   "text": "का",
+   "phones": [
+    "k",
+    "aa"
+   ],
+   "start": 11169,
+   "end": 11221,
+   "line": 13,
+   "phrase": 13,
+   "word": 2,
+   "word_text": "का",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.996
+  },
+  {
+   "kind": "lyric",
+   "text": "तू",
+   "phones": [
+    "t",
+    "uu"
+   ],
+   "start": 11221,
+   "end": 11238,
+   "line": 13,
+   "phrase": 13,
+   "word": 3,
+   "word_text": "तू",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.99
+  },
+  {
+   "kind": "lyric",
+   "text": "है",
+   "phones": [
+    "h",
+    "E"
+   ],
+   "start": 11238,
+   "end": 11254,
+   "line": 13,
+   "phrase": 13,
+   "word": 4,
+   "word_text": "है",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.269
+  },
+  {
+   "kind": "lyric",
+   "text": "चाँद",
+   "phones": [
+    "c",
+    "aa",
+    "nas",
+    "d"
+   ],
+   "start": 11254,
+   "end": 11274,
+   "line": 13,
+   "phrase": 13,
+   "word": 5,
+   "word_text": "चाँद",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.441
+  },
+  {
+   "kind": "lyric",
+   "text": "और",
+   "phones": [
+    "O",
+    "r"
+   ],
+   "start": 11274,
+   "end": 11287,
+   "line": 13,
+   "phrase": 13,
+   "word": 6,
+   "word_text": "और",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.441
+  },
+  {
+   "kind": "lyric",
+   "text": "ता",
+   "phones": [
+    "t",
+    "aa"
+   ],
+   "start": 11287,
+   "end": 11304,
+   "line": 13,
+   "phrase": 13,
+   "word": 7,
+   "word_text": "तारा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.842
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 11304,
+   "end": 11352,
+   "line": 13,
+   "phrase": 13,
+   "word": 7,
+   "word_text": "तारा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.136
+  },
+  {
+   "kind": "lyric",
+   "text": "जग",
+   "phones": [
+    "j",
+    "a",
+    "g"
+   ],
+   "start": 11352,
+   "end": 11370,
+   "line": 13,
+   "phrase": 13,
+   "word": 8,
+   "word_text": "जग",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.44
+  },
+  {
+   "kind": "lyric",
+   "text": "से",
+   "phones": [
+    "s",
+    "ee"
+   ],
+   "start": 11370,
+   "end": 11397,
+   "line": 13,
+   "phrase": 13,
+   "word": 9,
+   "word_text": "से",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.956
+  },
+  {
+   "kind": "lyric",
+   "text": "कह",
+   "phones": [
+    "k",
+    "a",
+    "h"
+   ],
+   "start": 11397,
+   "end": 11411,
+   "line": 13,
+   "phrase": 13,
+   "word": 10,
+   "word_text": "कह",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -0.824
+  },
+  {
+   "kind": "lyric",
+   "text": "दि",
+   "phones": [
+    "d",
+    "i"
+   ],
+   "start": 11411,
+   "end": 11420,
+   "line": 13,
+   "phrase": 13,
+   "word": 11,
+   "word_text": "दिया",
+   "lang": "hi",
+   "src": "ref_only",
+   "conf": -2.342
+  },
+  {
+   "kind": "lyric",
+   "text": "या",
+   "phones": [
+    "y",
+    "aa"
+   ],
+   "start": 11420,
+   "end": 11434,
+   "line": 13,
+   "phrase": 13,
+   "word": 11,
+   "word_text": "दिया",
+   "lang": "hi",
+   "src": "ref_only",
+   "conf": -2.633
+  },
+  {
+   "kind": "lyric",
+   "text": "है",
+   "phones": [
+    "h",
+    "E"
+   ],
+   "start": 11434,
+   "end": 11485,
+   "line": 13,
+   "phrase": 13,
+   "word": 12,
+   "word_text": "है",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.893
+  },
+  {
+   "kind": "lyric",
+   "text": "तू",
+   "phones": [
+    "t",
+    "uu"
+   ],
+   "start": 11485,
+   "end": 11500,
+   "line": 13,
+   "phrase": 13,
+   "word": 13,
+   "word_text": "तू",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.879
+  },
+  {
+   "kind": "lyric",
+   "text": "है",
+   "phones": [
+    "h",
+    "E"
+   ],
+   "start": 11500,
+   "end": 11516,
+   "line": 13,
+   "phrase": 13,
+   "word": 14,
+   "word_text": "है",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.135
+  },
+  {
+   "kind": "lyric",
+   "text": "सिर्फ़",
+   "phones": [
+    "s",
+    "i",
+    "r",
+    "f"
+   ],
+   "start": 11516,
+   "end": 11542,
+   "line": 13,
+   "phrase": 13,
+   "word": 15,
+   "word_text": "सिर्फ़",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.271
+  },
+  {
+   "kind": "lyric",
+   "text": "ह",
+   "phones": [
+    "h",
+    "a"
+   ],
+   "start": 11542,
+   "end": 11552,
+   "line": 13,
+   "phrase": 13,
+   "word": 16,
+   "word_text": "हमारा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.888
+  },
+  {
+   "kind": "lyric",
+   "text": "मा",
+   "phones": [
+    "m",
+    "aa"
+   ],
+   "start": 11552,
+   "end": 11567,
+   "line": 13,
+   "phrase": 13,
+   "word": 16,
+   "word_text": "हमारा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.776
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 11567,
+   "end": 11599,
+   "line": 13,
+   "phrase": 13,
+   "word": 16,
+   "word_text": "हमारा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.808
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 11599,
+   "end": 11609,
+   "line": 13,
+   "phrase": 13,
+   "word": 17,
+   "word_text": "तेरे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.407
+  },
+  {
+   "kind": "lyric",
+   "text": "रे",
+   "phones": [
+    "r",
+    "ee"
+   ],
+   "start": 11609,
+   "end": 11626,
+   "line": 13,
+   "phrase": 13,
+   "word": 17,
+   "word_text": "तेरे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.957
+  },
+  {
+   "kind": "lyric",
+   "text": "इश्क़",
+   "phones": [
+    "i",
+    "sh",
+    "q"
+   ],
+   "start": 11626,
+   "end": 11642,
+   "line": 13,
+   "phrase": 13,
+   "word": 18,
+   "word_text": "इश्क़",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.281
+  },
+  {
+   "kind": "lyric",
+   "text": "में",
+   "phones": [
+    "m",
+    "ee",
+    "nas"
+   ],
+   "start": 11642,
+   "end": 11730,
+   "line": 13,
+   "phrase": 13,
+   "word": 19,
+   "word_text": "में",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.818
+  },
+  {
+   "kind": "lyric",
+   "text": "हम",
+   "phones": [
+    "h",
+    "a",
+    "m"
+   ],
+   "start": 11730,
+   "end": 11749,
+   "line": 13,
+   "phrase": 13,
+   "word": 20,
+   "word_text": "हम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.712
+  },
+  {
+   "kind": "lyric",
+   "text": "अप",
+   "phones": [
+    "a",
+    "p"
+   ],
+   "start": 11749,
+   "end": 11764,
+   "line": 13,
+   "phrase": 13,
+   "word": 21,
+   "word_text": "अपने",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.719
+  },
+  {
+   "kind": "lyric",
+   "text": "ने",
+   "phones": [
+    "n",
+    "ee"
+   ],
+   "start": 11764,
+   "end": 11773,
+   "line": 13,
+   "phrase": 13,
+   "word": 21,
+   "word_text": "अपने",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.865
+  },
+  {
+   "kind": "lyric",
+   "text": "ही",
+   "phones": [
+    "h",
+    "ii"
+   ],
+   "start": 11773,
+   "end": 11879,
+   "line": 13,
+   "phrase": 13,
+   "word": 22,
+   "word_text": "ही",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.836
+  },
+  {
+   "kind": "lyric",
+   "text": "दिल",
+   "phones": [
+    "d",
+    "i",
+    "l"
+   ],
+   "start": 11879,
+   "end": 11896,
+   "line": 13,
+   "phrase": 13,
+   "word": 23,
+   "word_text": "दिल",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.804
+  },
+  {
+   "kind": "lyric",
+   "text": "से",
+   "phones": [
+    "s",
+    "ee"
+   ],
+   "start": 11896,
+   "end": 11913,
+   "line": 13,
+   "phrase": 13,
+   "word": 24,
+   "word_text": "से",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.967
+  },
+  {
+   "kind": "lyric",
+   "text": "मात",
+   "phones": [
+    "m",
+    "aa",
+    "t"
+   ],
+   "start": 11913,
+   "end": 11947,
+   "line": 13,
+   "phrase": 13,
+   "word": 25,
+   "word_text": "मात",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.96
+  },
+  {
+   "kind": "lyric",
+   "text": "खा",
+   "phones": [
+    "kh",
+    "aa"
+   ],
+   "start": 11947,
+   "end": 11962,
+   "line": 13,
+   "phrase": 13,
+   "word": 26,
+   "word_text": "खा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.129
+  },
+  {
+   "kind": "lyric",
+   "text": "र",
+   "phones": [
+    "r",
+    "a"
+   ],
+   "start": 11962,
+   "end": 11972,
+   "line": 13,
+   "phrase": 13,
+   "word": 27,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.842
+  },
+  {
+   "kind": "lyric",
+   "text": "हे",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 11972,
+   "end": 12011,
+   "line": 13,
+   "phrase": 13,
+   "word": 27,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.982
+  },
+  {
+   "kind": "lyric",
+   "text": "दिल",
+   "phones": [
+    "d",
+    "i",
+    "l"
+   ],
+   "start": 12011,
+   "end": 12027,
+   "line": 13,
+   "phrase": 13,
+   "word": 28,
+   "word_text": "दिल",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.988
+  },
+  {
+   "kind": "lyric",
+   "text": "से",
+   "phones": [
+    "s",
+    "ee"
+   ],
+   "start": 12027,
+   "end": 12043,
+   "line": 13,
+   "phrase": 13,
+   "word": 29,
+   "word_text": "से",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.687
+  },
+  {
+   "kind": "lyric",
+   "text": "मात",
+   "phones": [
+    "m",
+    "aa",
+    "t"
+   ],
+   "start": 12043,
+   "end": 12077,
+   "line": 13,
+   "phrase": 13,
+   "word": 30,
+   "word_text": "मात",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.192
+  },
+  {
+   "kind": "lyric",
+   "text": "खा",
+   "phones": [
+    "kh",
+    "aa"
+   ],
+   "start": 12077,
+   "end": 12094,
+   "line": 13,
+   "phrase": 13,
+   "word": 31,
+   "word_text": "खा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.224
+  },
+  {
+   "kind": "lyric",
+   "text": "र",
+   "phones": [
+    "r",
+    "a"
+   ],
+   "start": 12094,
+   "end": 12103,
+   "line": 13,
+   "phrase": 13,
+   "word": 32,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.1
+  },
+  {
+   "kind": "lyric",
+   "text": "हे",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 12103,
+   "end": 12227,
+   "line": 13,
+   "phrase": 13,
+   "word": 32,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.451
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 12273,
+   "end": 12322,
+   "line": 14,
+   "phrase": 14,
+   "word": 2,
+   "word_text": "तेरे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -6.367
+  },
+  {
+   "kind": "lyric",
+   "text": "रे",
+   "phones": [
+    "r",
+    "ee"
+   ],
+   "start": 12322,
+   "end": 12334,
+   "line": 14,
+   "phrase": 14,
+   "word": 2,
+   "word_text": "तेरे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -6.973
+  },
+  {
+   "kind": "lyric",
+   "text": "लि",
+   "phones": [
+    "l",
+    "i"
+   ],
+   "start": 12334,
+   "end": 12347,
+   "line": 14,
+   "phrase": 14,
+   "word": 3,
+   "word_text": "लिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -5.822
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 12347,
+   "end": 12353,
+   "line": 14,
+   "phrase": 14,
+   "word": 3,
+   "word_text": "लिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.387
+  },
+  {
+   "kind": "lyric",
+   "text": "रात",
+   "phones": [
+    "r",
+    "aa",
+    "t"
+   ],
+   "start": 12353,
+   "end": 12375,
+   "line": 14,
+   "phrase": 14,
+   "word": 4,
+   "word_text": "रात",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.116
+  },
+  {
+   "kind": "lyric",
+   "text": "भर",
+   "phones": [
+    "bh",
+    "a",
+    "r"
+   ],
+   "start": 12375,
+   "end": 12408,
+   "line": 14,
+   "phrase": 14,
+   "word": 5,
+   "word_text": "भर",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -6.961
+  },
+  {
+   "kind": "lyric",
+   "text": "हम",
+   "phones": [
+    "h",
+    "a",
+    "m"
+   ],
+   "start": 12408,
+   "end": 12420,
+   "line": 14,
+   "phrase": 14,
+   "word": 6,
+   "word_text": "हम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.441
+  },
+  {
+   "kind": "lyric",
+   "text": "तो",
+   "phones": [
+    "t",
+    "oo"
+   ],
+   "start": 12420,
+   "end": 12432,
+   "line": 14,
+   "phrase": 14,
+   "word": 7,
+   "word_text": "तो",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -4.093
+  },
+  {
+   "kind": "lyric",
+   "text": "पि",
+   "phones": [
+    "p",
+    "i"
+   ],
+   "start": 12432,
+   "end": 12436,
+   "line": 14,
+   "phrase": 14,
+   "word": 8,
+   "word_text": "पिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.849
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 12436,
+   "end": 12450,
+   "line": 14,
+   "phrase": 14,
+   "word": 8,
+   "word_text": "पिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.149
+  },
+  {
+   "kind": "lyric",
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 12450,
+   "end": 12466,
+   "line": 14,
+   "phrase": 14,
+   "word": 9,
+   "word_text": "जा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.413
+  },
+  {
+   "kind": "lyric",
+   "text": "र",
+   "phones": [
+    "r",
+    "a"
+   ],
+   "start": 12466,
+   "end": 12474,
+   "line": 14,
+   "phrase": 14,
+   "word": 10,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.273
+  },
+  {
+   "kind": "lyric",
+   "text": "हे",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 12474,
+   "end": 12486,
+   "line": 14,
+   "phrase": 14,
+   "word": 10,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -5.395
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 12486,
+   "end": 12508,
+   "line": 14,
+   "phrase": 14,
+   "word": 11,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -7.802
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 12508,
+   "end": 12513,
+   "line": 14,
+   "phrase": 14,
+   "word": 11,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -7.482
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 12513,
+   "end": 12523,
+   "line": 14,
+   "phrase": 14,
+   "word": 12,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -7.752
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 12523,
+   "end": 12532,
+   "line": 14,
+   "phrase": 14,
+   "word": 13,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -6.746
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 12532,
+   "end": 12540,
+   "line": 14,
+   "phrase": 14,
+   "word": 13,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -6.484
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 12540,
+   "end": 12555,
+   "line": 14,
+   "phrase": 14,
+   "word": 14,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+whisper",
+   "conf": -7.028
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 12555,
+   "end": 12564,
+   "line": 14,
+   "phrase": 14,
+   "word": 15,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.146
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 12564,
+   "end": 12572,
+   "line": 14,
+   "phrase": 14,
+   "word": 15,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -6.628
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 12572,
+   "end": 12587,
+   "line": 14,
+   "phrase": 14,
+   "word": 16,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -5.77
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 12587,
+   "end": 12597,
+   "line": 14,
+   "phrase": 14,
+   "word": 17,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -6.073
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 12597,
+   "end": 12605,
+   "line": 14,
+   "phrase": 14,
+   "word": 17,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -6.917
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 12605,
+   "end": 12620,
+   "line": 14,
+   "phrase": 14,
+   "word": 18,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.391
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 12620,
+   "end": 12630,
+   "line": 14,
+   "phrase": 14,
+   "word": 19,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.445
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 12630,
+   "end": 12670,
+   "line": 14,
+   "phrase": 14,
+   "word": 19,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.471
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 12670,
+   "end": 12686,
+   "line": 14,
+   "phrase": 14,
+   "word": 20,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.074
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 12686,
+   "end": 12695,
+   "line": 14,
+   "phrase": 14,
+   "word": 21,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.151
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 12695,
+   "end": 12703,
+   "line": 14,
+   "phrase": 14,
+   "word": 21,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.332
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 12703,
+   "end": 12720,
+   "line": 14,
+   "phrase": 14,
+   "word": 22,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.577
+  },
+  {
+   "kind": "lyric",
+   "text": "लि",
+   "phones": [
+    "l",
+    "i"
+   ],
+   "start": 12720,
+   "end": 12731,
+   "line": 14,
+   "phrase": 14,
+   "word": 23,
+   "word_text": "लिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.889
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 12731,
+   "end": 12736,
+   "line": 14,
+   "phrase": 14,
+   "word": 23,
+   "word_text": "लिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.438
+  },
+  {
+   "kind": "lyric",
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 12736,
+   "end": 12754,
+   "line": 14,
+   "phrase": 14,
+   "word": 24,
+   "word_text": "जा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -6.977
+  },
+  {
+   "kind": "lyric",
+   "text": "र",
+   "phones": [
+    "r",
+    "a"
+   ],
+   "start": 12754,
+   "end": 12788,
+   "line": 14,
+   "phrase": 14,
+   "word": 25,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -6.264
+  },
+  {
+   "kind": "lyric",
+   "text": "हे",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 12788,
+   "end": 12799,
+   "line": 14,
+   "phrase": 14,
+   "word": 25,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -7.052
+  },
+  {
+   "kind": "lyric",
+   "text": "हैं",
+   "phones": [
+    "h",
+    "E",
+    "nas"
+   ],
+   "start": 12799,
+   "end": 12803,
+   "line": 14,
+   "phrase": 14,
+   "word": 26,
+   "word_text": "हैं",
+   "lang": "hi",
+   "src": "asr+whisper",
+   "conf": -6.62
+  },
+  {
+   "kind": "lyric",
+   "text": "कित",
+   "phones": [
+    "k",
+    "i",
+    "t"
+   ],
+   "start": 12803,
+   "end": 12819,
+   "line": 14,
+   "phrase": 14,
+   "word": 27,
+   "word_text": "कितनी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.217
+  },
+  {
+   "kind": "lyric",
+   "text": "नी",
+   "phones": [
+    "n",
+    "ii"
+   ],
+   "start": 12819,
+   "end": 12844,
+   "line": 14,
+   "phrase": 14,
+   "word": 27,
+   "word_text": "कितनी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.116
+  },
+  {
+   "kind": "lyric",
+   "text": "चो",
+   "phones": [
+    "c",
+    "oo"
+   ],
+   "start": 12844,
+   "end": 12861,
+   "line": 14,
+   "phrase": 14,
+   "word": 28,
+   "word_text": "चोटें",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.929
+  },
+  {
+   "kind": "lyric",
+   "text": "टें",
+   "phones": [
+    "T",
+    "ee",
+    "nas"
+   ],
+   "start": 12861,
+   "end": 12869,
+   "line": 14,
+   "phrase": 14,
+   "word": 28,
+   "word_text": "चोटें",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.381
+  },
+  {
+   "kind": "lyric",
+   "text": "दिल",
+   "phones": [
+    "d",
+    "i",
+    "l"
+   ],
+   "start": 12869,
+   "end": 12886,
+   "line": 14,
+   "phrase": 14,
+   "word": 29,
+   "word_text": "दिल",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.995
+  },
+  {
+   "kind": "lyric",
+   "text": "पे",
+   "phones": [
+    "p",
+    "ee"
+   ],
+   "start": 12886,
+   "end": 12911,
+   "line": 14,
+   "phrase": 14,
+   "word": 30,
+   "word_text": "पे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.523
+  },
+  {
+   "kind": "lyric",
+   "text": "हम",
+   "phones": [
+    "h",
+    "a",
+    "m"
+   ],
+   "start": 12911,
+   "end": 12927,
+   "line": 14,
+   "phrase": 14,
+   "word": 31,
+   "word_text": "हम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.828
+  },
+  {
+   "kind": "lyric",
+   "text": "लि",
+   "phones": [
+    "l",
+    "i"
+   ],
+   "start": 12927,
+   "end": 12942,
+   "line": 14,
+   "phrase": 14,
+   "word": 32,
+   "word_text": "लिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.088
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 12942,
+   "end": 12967,
+   "line": 14,
+   "phrase": 14,
+   "word": 32,
+   "word_text": "लिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.458
+  },
+  {
+   "kind": "lyric",
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 12967,
+   "end": 12993,
+   "line": 14,
+   "phrase": 14,
+   "word": 33,
+   "word_text": "जा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.208
+  },
+  {
+   "kind": "lyric",
+   "text": "र",
+   "phones": [
+    "r",
+    "a"
+   ],
+   "start": 12993,
+   "end": 13002,
+   "line": 14,
+   "phrase": 14,
+   "word": 34,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.929
+  },
+  {
+   "kind": "lyric",
+   "text": "हे",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 13002,
+   "end": 13007,
+   "line": 14,
+   "phrase": 14,
+   "word": 34,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.806
+  },
+  {
+   "kind": "lyric",
+   "text": "हैं",
+   "phones": [
+    "h",
+    "E",
+    "nas"
+   ],
+   "start": 13007,
+   "end": 13044,
+   "line": 14,
+   "phrase": 14,
+   "word": 35,
+   "word_text": "हैं",
+   "lang": "hi",
+   "src": "asr+whisper",
+   "conf": -6.369
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 13044,
+   "end": 13059,
+   "line": 14,
+   "phrase": 14,
+   "word": 36,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.006
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 13059,
+   "end": 13068,
+   "line": 14,
+   "phrase": 14,
+   "word": 36,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.27
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 13068,
+   "end": 13095,
+   "line": 14,
+   "phrase": 14,
+   "word": 37,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.888
+  },
+  {
+   "kind": "lyric",
+   "text": "ले",
+   "phones": [
+    "l",
+    "ee"
+   ],
+   "start": 13095,
+   "end": 13101,
+   "line": 14,
+   "phrase": 14,
+   "word": 38,
+   "word_text": "ले",
+   "lang": "hi",
+   "src": "asr+whisper",
+   "conf": -7.051
+  },
+  {
+   "kind": "lyric",
+   "text": "ले",
+   "phones": [
+    "l",
+    "ee"
+   ],
+   "start": 13101,
+   "end": 13132,
+   "line": 14,
+   "phrase": 14,
+   "word": 39,
+   "word_text": "लेकर",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.053
+  },
+  {
+   "kind": "lyric",
+   "text": "कर",
+   "phones": [
+    "k",
+    "a",
+    "r"
+   ],
+   "start": 13132,
+   "end": 13175,
+   "line": 14,
+   "phrase": 14,
+   "word": 39,
+   "word_text": "लेकर",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.901
+  },
+  {
+   "kind": "lyric",
+   "text": "हम",
+   "phones": [
+    "h",
+    "a",
+    "m"
+   ],
+   "start": 13175,
+   "end": 13189,
+   "line": 14,
+   "phrase": 14,
+   "word": 40,
+   "word_text": "हम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.861
+  },
+  {
+   "kind": "lyric",
+   "text": "जि",
+   "phones": [
+    "j",
+    "i"
+   ],
+   "start": 13189,
+   "end": 13204,
+   "line": 14,
+   "phrase": 14,
+   "word": 41,
+   "word_text": "जिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -0.967
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 13204,
+   "end": 13230,
+   "line": 14,
+   "phrase": 14,
+   "word": 41,
+   "word_text": "जिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.542
+  },
+  {
+   "kind": "lyric",
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 13230,
+   "end": 13256,
+   "line": 14,
+   "phrase": 14,
+   "word": 42,
+   "word_text": "जा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.155
+  },
+  {
+   "kind": "lyric",
+   "text": "र",
+   "phones": [
+    "r",
+    "a"
+   ],
+   "start": 13256,
+   "end": 13266,
+   "line": 14,
+   "phrase": 14,
+   "word": 43,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.058
+  },
+  {
+   "kind": "lyric",
+   "text": "हे",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 13266,
+   "end": 13279,
+   "line": 14,
+   "phrase": 14,
+   "word": 43,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.507
+  },
+  {
+   "kind": "lyric",
+   "text": "हैं",
+   "phones": [
+    "h",
+    "E",
+    "nas"
+   ],
+   "start": 13279,
+   "end": 13336,
+   "line": 14,
+   "phrase": 14,
+   "word": 44,
+   "word_text": "हैं",
+   "lang": "hi",
+   "src": "asr+whisper",
+   "conf": -5.875
+  },
+  {
+   "kind": "lyric",
+   "text": "आ",
+   "phones": [
+    "aa"
+   ],
+   "start": 13336,
+   "end": 13355,
+   "line": 14,
+   "phrase": 14,
+   "word": 45,
+   "word_text": "आशिक़ी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.245
+  },
+  {
+   "kind": "lyric",
+   "text": "शि",
+   "phones": [
+    "sh",
+    "i"
+   ],
+   "start": 13355,
+   "end": 13365,
+   "line": 14,
+   "phrase": 14,
+   "word": 45,
+   "word_text": "आशिक़ी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.684
+  },
+  {
+   "kind": "lyric",
+   "text": "क़ी",
+   "phones": [
+    "q",
+    "ii"
+   ],
+   "start": 13365,
+   "end": 13366,
+   "line": 14,
+   "phrase": 14,
+   "word": 45,
+   "word_text": "आशिक़ी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.121
+  },
+  {
+   "kind": "lyric",
+   "text": "आ",
+   "phones": [
+    "aa"
+   ],
+   "start": 13366,
+   "end": 13367,
+   "line": 15,
+   "phrase": 15,
+   "word": 0,
+   "word_text": "आशिक़ी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -4.263
+  },
+  {
+   "kind": "lyric",
+   "text": "शि",
+   "phones": [
+    "sh",
+    "i"
+   ],
+   "start": 13367,
+   "end": 13368,
+   "line": 15,
+   "phrase": 15,
+   "word": 0,
+   "word_text": "आशिक़ी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.684
+  },
+  {
+   "kind": "lyric",
+   "text": "क़ी",
+   "phones": [
+    "q",
+    "ii"
+   ],
+   "start": 13368,
+   "end": 13380,
+   "line": 15,
+   "phrase": 15,
+   "word": 0,
+   "word_text": "आशिक़ी",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.225
+  },
+  {
+   "kind": "lyric",
+   "text": "का",
+   "phones": [
+    "k",
+    "aa"
+   ],
+   "start": 13380,
+   "end": 13440,
+   "line": 15,
+   "phrase": 15,
+   "word": 1,
+   "word_text": "का",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.284
+  },
+  {
+   "kind": "lyric",
+   "text": "हम",
+   "phones": [
+    "h",
+    "a",
+    "m"
+   ],
+   "start": 13440,
+   "end": 13455,
+   "line": 15,
+   "phrase": 15,
+   "word": 2,
+   "word_text": "हम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.064
+  },
+  {
+   "kind": "lyric",
+   "text": "पि",
+   "phones": [
+    "p",
+    "i"
+   ],
+   "start": 13455,
+   "end": 13466,
+   "line": 15,
+   "phrase": 15,
+   "word": 3,
+   "word_text": "पिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.265
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 13466,
+   "end": 13495,
+   "line": 15,
+   "phrase": 15,
+   "word": 3,
+   "word_text": "पिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -4.101
+  },
+  {
+   "kind": "lyric",
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 13495,
+   "end": 13518,
+   "line": 15,
+   "phrase": 15,
+   "word": 4,
+   "word_text": "जा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.346
+  },
+  {
+   "kind": "lyric",
+   "text": "र",
+   "phones": [
+    "r",
+    "a"
+   ],
+   "start": 13518,
+   "end": 13529,
+   "line": 15,
+   "phrase": 15,
+   "word": 5,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.643
+  },
+  {
+   "kind": "lyric",
+   "text": "हे",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 13529,
+   "end": 13572,
+   "line": 15,
+   "phrase": 15,
+   "word": 5,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -5.514
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 13572,
+   "end": 13588,
+   "line": 15,
+   "phrase": 15,
+   "word": 6,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.867
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 13588,
+   "end": 13597,
+   "line": 15,
+   "phrase": 15,
+   "word": 6,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.092
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 13597,
+   "end": 13628,
+   "line": 15,
+   "phrase": 15,
+   "word": 7,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.737
+  },
+  {
+   "kind": "lyric",
+   "text": "ले",
+   "phones": [
+    "l",
+    "ee"
+   ],
+   "start": 13628,
+   "end": 13657,
+   "line": 15,
+   "phrase": 15,
+   "word": 8,
+   "word_text": "लेकर",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.138
+  },
+  {
+   "kind": "lyric",
+   "text": "कर",
+   "phones": [
+    "k",
+    "a",
+    "r"
+   ],
+   "start": 13657,
+   "end": 13817,
+   "line": 15,
+   "phrase": 15,
+   "word": 8,
+   "word_text": "लेकर",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.482
+  },
+  {
+   "kind": "lyric",
+   "text": "हम",
+   "phones": [
+    "h",
+    "a",
+    "m"
+   ],
+   "start": 13831,
+   "end": 13851,
+   "line": 16,
+   "phrase": 16,
+   "word": 0,
+   "word_text": "हम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.103
+  },
+  {
+   "kind": "lyric",
+   "text": "जि",
+   "phones": [
+    "j",
+    "i"
+   ],
+   "start": 13851,
+   "end": 13864,
+   "line": 16,
+   "phrase": 16,
+   "word": 1,
+   "word_text": "जिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.956
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 13864,
+   "end": 13891,
+   "line": 16,
+   "phrase": 16,
+   "word": 1,
+   "word_text": "जिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -4.761
+  },
+  {
+   "kind": "lyric",
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 13891,
+   "end": 13917,
+   "line": 16,
+   "phrase": 16,
+   "word": 2,
+   "word_text": "जा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.463
+  },
+  {
+   "kind": "lyric",
+   "text": "र",
+   "phones": [
+    "r",
+    "a"
+   ],
+   "start": 13917,
+   "end": 13926,
+   "line": 16,
+   "phrase": 16,
+   "word": 3,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.502
+  },
+  {
+   "kind": "lyric",
+   "text": "हे",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 13926,
+   "end": 13967,
+   "line": 16,
+   "phrase": 16,
+   "word": 3,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -4.462
+  },
+  {
+   "kind": "lyric",
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 13967,
+   "end": 13982,
+   "line": 16,
+   "phrase": 16,
+   "word": 4,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.323
+  },
+  {
+   "kind": "lyric",
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 13982,
+   "end": 13991,
+   "line": 16,
+   "phrase": 16,
+   "word": 4,
+   "word_text": "तेरा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.807
+  },
+  {
+   "kind": "lyric",
+   "text": "नाम",
+   "phones": [
+    "n",
+    "aa",
+    "m"
+   ],
+   "start": 13991,
+   "end": 14024,
+   "line": 16,
+   "phrase": 16,
+   "word": 5,
+   "word_text": "नाम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.504
+  },
+  {
+   "kind": "lyric",
+   "text": "ले",
+   "phones": [
+    "l",
+    "ee"
+   ],
+   "start": 14024,
+   "end": 14051,
+   "line": 16,
+   "phrase": 16,
+   "word": 6,
+   "word_text": "लेकर",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.37
+  },
+  {
+   "kind": "lyric",
+   "text": "कर",
+   "phones": [
+    "k",
+    "a",
+    "r"
+   ],
+   "start": 14051,
+   "end": 14096,
+   "line": 16,
+   "phrase": 16,
+   "word": 6,
+   "word_text": "लेकर",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.387
+  },
+  {
+   "kind": "lyric",
+   "text": "हम",
+   "phones": [
+    "h",
+    "a",
+    "m"
+   ],
+   "start": 14096,
+   "end": 14114,
+   "line": 16,
+   "phrase": 16,
+   "word": 7,
+   "word_text": "हम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -1.914
+  },
+  {
+   "kind": "lyric",
+   "text": "जि",
+   "phones": [
+    "j",
+    "i"
+   ],
+   "start": 14114,
+   "end": 14126,
+   "line": 16,
+   "phrase": 16,
+   "word": 8,
+   "word_text": "जिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -2.324
+  },
+  {
+   "kind": "lyric",
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 14126,
+   "end": 14154,
+   "line": 16,
+   "phrase": 16,
+   "word": 8,
+   "word_text": "जिए",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -4.471
+  },
+  {
+   "kind": "lyric",
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 14154,
+   "end": 14181,
+   "line": 16,
+   "phrase": 16,
+   "word": 9,
+   "word_text": "जा",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -3.25
+  },
+  {
+   "kind": "lyric",
+   "text": "र",
+   "phones": [
+    "r",
+    "a"
+   ],
+   "start": 14181,
+   "end": 14191,
+   "line": 16,
+   "phrase": 16,
+   "word": 10,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -5.684
+  },
+  {
+   "kind": "lyric",
+   "text": "हे",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 14191,
+   "end": 14269,
+   "line": 16,
+   "phrase": 16,
+   "word": 10,
+   "word_text": "रहे",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -6.447
+  },
+  {
+   "kind": "lyric",
+   "text": "हम",
+   "phones": [
+    "h",
+    "a",
+    "m"
+   ],
+   "start": 14716,
+   "end": 14732,
+   "line": 17,
+   "phrase": 17,
+   "word": 0,
+   "word_text": "हम",
+   "lang": "hi",
+   "src": "ref+asr",
+   "conf": -6.466
+  }
+ ],
+ "vocables_done": true
+}

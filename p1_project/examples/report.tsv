@@ -1,0 +1,5 @@
+song_id	duration_s	identity	track	coverage	single_share	clusters	phrases	ref_backed	syllables	vocables	melisma	clips	clip_s	accept	review	reject
+2021_aashiquii_kaa_gum__GPN9oZ8e-h4	299.9	claimed	Aashiquii Kaa Gum	0.916	0.571	7	18	0.953	501	0	0	12	72.1	9	1	2
+2022_jo_bhi_kasmein_khai_thi_humne__B72_HsUR0Vc	335.2	unidentified			0.67	11	26	0.0	407	4	0	16	130.1	4	0	12
+2022_kesariya__BddP6PYo2gs	172.2	claimed	Kesariya	0.756	0.731	10	12	0.775	277	0	0	9	57.7	8	1	0
+2022_naacho_naacho_hindi__oAVhUAaVCVQ	245.5	relabeled	Chammak Challo	0.653	0.249	11	21	0.688	441	16	0	2	6.4	2	0	0

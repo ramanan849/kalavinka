@@ -12,20 +12,26 @@ from dataclasses import asdict, dataclass, field, fields, is_dataclass
 from pathlib import Path
 from typing import List, Optional
 
-from .paths import SOULX_MODELS, SOULX_REPO
+from .paths import SOULX_MODELS, SOULX_REPO, VOCALS_MODEL_DIR
 
 
 @dataclass
 class SeparationCfg:
     """Vocal separation / de-reverb (stage ``stems``; legacy ``run``).
 
-    ``backend`` soulx uses SoulX-Singer's Mel-RoFormer karaoke + de-reverb models
-    from ``soulx_models``; audio_separator runs the same checkpoint through the
+    ``backend`` soulx uses SoulX-Singer's Mel-RoFormer wrapper with the karaoke
+    (or, ``sep_model = "vocals"``, a full-vocals) checkpoint + de-reverb from
+    ``soulx_models``; audio_separator runs the same checkpoint through the
     ``audio-separator`` package; none means the input is already a dry vocal.
     """
     backend: str = "soulx"            # soulx | audio_separator | none
     soulx_repo: str = str(SOULX_REPO)
     soulx_models: str = str(SOULX_MODELS)
+    # soulx separation checkpoint: karaoke keeps one lead voice and drops backing
+    # vocals (right for close-mic stems); vocals keeps every voice, which film
+    # songs need (duets, chorus, doubled leads), from ``vocals_model_dir``
+    sep_model: str = "karaoke"        # karaoke | vocals
+    vocals_model_dir: str = str(VOCALS_MODEL_DIR)
     dereverb: bool = True
     audio_separator_model: str = "mel_band_roformer_karaoke_becruily.ckpt"
     device: str = "cuda"
@@ -71,6 +77,42 @@ class AlignCfg:
     min_gap_rest_s: float = 0.12       # silence this long between syllables becomes a rest
     vocalise_min_s: float = 0.6        # star-absorbed voiced spans longer than this are flagged
     vocalise_policy: str = "review"    # review | drop | akaar
+    device: str = "cuda"
+
+
+@dataclass
+class AsrCfg:
+    """Automatic lyrics for songs without a lyric sheet (``stages.asr``).
+
+    With a backend other than ``none``, the legacy ``run`` transcribes the
+    separated vocal phrase by phrase, uses the transcript as the lyric sheet
+    and aligns it like a human sheet; such songs are flagged
+    ``lyrics_asr_unverified`` and, unless ``accept_unreviewed``, routed to review.
+
+    backend      qwen3 (Qwen3-ASR; recommended, robust to singing and leftover
+                 accompaniment) | whisper (any Hugging Face Whisper checkpoint,
+                 e.g. openai/whisper-large-v3 or a Hinglish fine-tune) | none
+    model        Hugging Face id or local path; empty = the backend's default
+    language     language passed to the model (``hi`` also suits Hinglish:
+                 both models write English words in Latin script)
+    input        vocals (separated lead vocal, recommended) | mix
+    align_mode   phrase: align each transcribed phrase inside its own time
+                 window (ASR timing as a prior; robust to missed or invented
+                 lines) | global: one forced alignment over the whole song
+    """
+    backend: str = "none"              # qwen3 | whisper | none
+    model: str = ""
+    language: str = "hi"
+    input: str = "vocals"              # vocals | mix
+    align_mode: str = "phrase"         # phrase | global
+    min_gap_s: float = 0.4             # unvoiced gap that ends a phrase
+    min_phrase_s: float = 1.0          # shorter phrases merge into a neighbour
+    max_phrase_s: float = 25.0         # longer phrases are split (Whisper window is 30 s)
+    pad_s: float = 0.3                 # audio context around each phrase
+    max_chars_per_s: float = 22.0      # faster "speech" than this is a hallucination
+    batch_size: int = 16
+    beams: int = 5                     # Whisper beam width (word timestamps always decode greedily)
+    accept_unreviewed: bool = False    # keep QC status instead of forcing review
     device: str = "cuda"
 
 
@@ -124,6 +166,7 @@ class Config:
     f0: F0Cfg = field(default_factory=F0Cfg)
     tonic: TonicCfg = field(default_factory=TonicCfg)
     align: AlignCfg = field(default_factory=AlignCfg)
+    asr: AsrCfg = field(default_factory=AsrCfg)
     notes: NotesCfg = field(default_factory=NotesCfg)
     clips: ClipCfg = field(default_factory=ClipCfg)
     qc: QcCfg = field(default_factory=QcCfg)

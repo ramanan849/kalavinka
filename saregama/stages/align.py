@@ -457,13 +457,55 @@ class Aligner:
         elif cfg.backend != "heuristic":
             raise ValueError(f"unknown align backend {cfg.backend!r}")
 
+    def _align_windows(self, logp: np.ndarray, lines: List[List[Syllable]],
+                       windows: Sequence[Tuple[float, float]], pad_s: float
+                       ) -> Tuple[np.ndarray, np.ndarray, np.ndarray, Dict]:
+        """Force-align each line inside its own window (seconds, e.g. the ASR
+        phrase it was transcribed from, padded by ``pad_s``).
+
+        A window too short for its tokens is widened symmetrically.  Returns
+        per-syllable onsets, ends (frames), confidences and an info dict; onsets
+        are made strictly increasing across lines.
+        """
+        em = self.emitter
+        n = len(logp)
+        onsets, ends, confs, scores, frames = [], [], [], [], 0
+        for line, (ws, we) in zip(lines, windows):
+            if not line:
+                continue
+            seq, index = build_tokens([line], em.unit, em.vocab, em.star_id)
+            a = max(0, int((ws - pad_s) * FPS))
+            b = min(n, int(np.ceil((we + pad_s) * FPS)))
+            while b - a < len(seq.ids) + 2 and (a > 0 or b < n):
+                a, b = max(0, a - FPS // 4), min(n, b + FPS // 4)
+            path, score = ctc_viterbi(logp[a:b], seq.ids, em.blank)
+            st, en, sc = token_spans(path, logp[a:b], seq.ids, len(seq.ids))
+            for k in range(len(index)):
+                m = seq.syl == k
+                onsets.append(a + st[m].min())
+                ends.append(a + en[m].max())
+                confs.append(sc[m].mean())
+            scores.append(score)
+            frames += b - a
+        onsets = np.array(onsets, dtype=int)
+        for k in range(1, len(onsets)):                 # windows may overlap by the padding
+            onsets[k] = max(onsets[k], onsets[k - 1] + 1)
+        ends = np.maximum(np.array(ends, dtype=int), onsets + 1)
+        info = {"align_mode": "phrase", "path_logp_per_frame": float(sum(scores) / max(frames, 1)),
+                "mean_token_logp": float(np.mean(confs)) if confs else None}
+        return onsets, ends, np.array(confs), info
+
     def align(self, vocals: np.ndarray, lines: List[List[Syllable]], f0: np.ndarray,
-              energy_db: np.ndarray, emission: Optional[np.ndarray] = None
+              energy_db: np.ndarray, emission: Optional[np.ndarray] = None,
+              windows: Optional[Sequence[Tuple[float, float]]] = None, window_pad_s: float = 0.3
               ) -> Tuple[List[AlignedSyllable], Dict]:
         """Align the syllables of ``lines`` to the vocals.
 
-        Returns the aligned syllables (lyric ones and voiced stretches absorbed by
-        the star, labelled vocalise) and an info dict (backend, confidence ...).
+        ``windows`` (one (start, end) in seconds per line, e.g. ASR phrase times)
+        aligns each line inside its window instead of one Viterbi pass over the
+        whole song.  Returns the aligned syllables (lyric ones and voiced
+        stretches absorbed by the star, labelled vocalise) and an info dict
+        (backend, confidence ...).
         """
         n = len(f0)
         sylls_index = [(li, si) for li, line in enumerate(lines) for si in range(len(line))]
@@ -473,6 +515,12 @@ class Aligner:
             ends = onsets + 1
             confs = np.full(len(onsets), np.nan)
             info["path_logp"] = None
+        elif windows is not None:
+            if len(windows) != len(lines):
+                raise ValueError(f"{len(windows)} windows for {len(lines)} lines")
+            logp = emission if emission is not None else self.emitter(vocals, n)
+            onsets, ends, confs, winfo = self._align_windows(logp, lines, windows, window_pad_s)
+            info.update(winfo)
         else:
             em = self.emitter
             logp = emission if emission is not None else em(vocals, n)

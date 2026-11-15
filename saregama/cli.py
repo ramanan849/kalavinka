@@ -34,7 +34,8 @@ Global options ``--saraga-root``, ``--ann-root`` and ``--lyrics-dir`` default to
 the locations in :mod:`saregama.paths`.
 
 Legacy film-song workspace (songs.csv; ported from indic-svs-annotator):
-``init``, ``run``, ``draft-lyrics``, ``export-review``, ``audit``,
+``init``, ``songs-from-folder``, ``run``, ``asr`` (automatic lyrics for songs
+without a sheet), ``draft-lyrics``, ``export-review``, ``audit``,
 ``import-review``, ``make-eval-csv``, ``evaluate``, ``export``, ``stats``,
 ``phoneset``, ``g2p``, ``contour`` (pitch-contour sargam PDF per song).
 """
@@ -47,6 +48,8 @@ import random
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
+
+import numpy as np
 
 from .config import load_config
 from .ir import DEFAULT_ROOT as ANN_ROOT
@@ -87,6 +90,10 @@ def _cfg(a):
         over["work_dir"] = a.work_dir
     if getattr(a, "out_dir", None):
         over["out_dir"] = a.out_dir
+    asr = {k: getattr(a, f"asr_{k}") for k in ("backend", "model", "align_mode", "input")
+           if getattr(a, f"asr_{k}", None)}
+    if asr:
+        over["asr"] = asr
     return load_config(a.config, **over)
 
 
@@ -141,6 +148,71 @@ def cmd_draft_lyrics(a):
         out.parent.mkdir(parents=True, exist_ok=True)
         lines = draft_lyrics(vocals, f0, row["language"], asr, out, d / "asr_phrases")
         print(f"{row['song_id']}: {len(lines)} draft lines -> {out}")
+
+
+def cmd_asr(a):
+    """``asr``: transcribe the songs of songs.csv that have no lyric sheet with the
+    ``[asr]`` backend; writes ``asr.json`` + ``lyrics.asr.txt`` per song (separation
+    and F0 run first when the song has no vocals yet).
+    """
+    from .audio import SR, load_audio, loudness_normalize, save_audio
+    from .pipeline import Pipeline, read_songs
+    cfg = _cfg(a)
+    if cfg.asr.backend == "none":
+        sys.exit("set an ASR backend: --asr-backend qwen3|whisper (or [asr] backend in the config)")
+    pipe = Pipeline(cfg)
+    rows = read_songs(a.songs)
+    if a.only:
+        keep = set(a.only.split(","))
+        rows = [r for r in rows if r["song_id"] in keep]
+    for row in rows:
+        if row.get("lyrics") and not a.all:
+            continue
+        d = pipe.song_dir(row["song_id"])
+        d.mkdir(parents=True, exist_ok=True)
+        vp = d / "vocals.wav"
+        if vp.exists():
+            vocals = load_audio(vp, SR)
+        elif row.get("vocal_only") in ("1", "true", "yes"):
+            vocals = loudness_normalize(load_audio(row["audio"], SR))
+            save_audio(vp, vocals)
+        else:
+            vocals, _ = pipe.sep.process(row["audio"], str(vp), str(d / "accomp.wav"))
+        f0p = d / "f0.npy"
+        f0 = np.load(f0p) if f0p.exists() else pipe.f0est(vocals)["f0"]
+        phrases, model = pipe.transcribe(row, d, vocals, f0, force=a.force)
+        kept = sum(1 for p in phrases if p.text)
+        print(f"{row['song_id']}: {kept}/{len(phrases)} phrases kept ({model}) -> {d / 'lyrics.asr.txt'}",
+              flush=True)
+
+
+def cmd_songs_from_folder(a):
+    """``songs-from-folder``: write a songs.csv for every audio file in a folder
+    (``<year> - <title> [<youtube id>].<ext>`` names give tidy ids); the lyrics
+    column stays empty, so ``run`` with an ``[asr]`` backend transcribes them.
+    """
+    import re
+    exts = {".opus", ".m4a", ".mp3", ".wav", ".flac", ".webm", ".ogg"}
+    files = sorted(p for p in Path(a.audio_dir).iterdir() if p.suffix.lower() in exts)
+    if a.match:
+        files = [p for p in files if re.search(a.match, p.name, re.I)]
+    out = Path(a.out)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    seen = set()
+    with open(out, "w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(SONGS_HEADER)
+        for p in files:
+            m = re.match(r"(\d{4}) - (.*?)\s*(\[[^\]]+\])?$", p.stem)
+            year, title, vid = (m.group(1), m.group(2), (m.group(3) or "")[1:-1]) if m else ("", p.stem, "")
+            slug = re.sub(r"[^a-z0-9]+", "_", title.lower()).strip("_")[:40]
+            sid = f"{a.language}_{a.style}_{year}_{slug}" if year else f"{a.language}_{a.style}_{slug}"
+            if sid in seen:
+                sid += "_" + re.sub(r"[^A-Za-z0-9]", "", vid)[:6]
+            seen.add(sid)
+            src = f"youtube:{vid}" if vid else p.name
+            w.writerow([sid, str(p.resolve()), a.language, "", a.style, "", "", "0", "", src, ""])
+    print(f"{len(files)} songs -> {out}")
 
 
 def cmd_export_review(a):
@@ -1399,12 +1471,191 @@ def cmd_gold_eval(a):
         print("no reviewed recordings with a pred/ snapshot yet (correct some with review-export / review-import)")
 
 
+# ---------------------------------------------------------------------------
+# P1: large-scale film-song annotation (PLAN.md); run these only inside Slurm jobs
+# ---------------------------------------------------------------------------
+def _p1_setup(a):
+    """(config, work dir, songs) for the P1 commands."""
+    from .p1 import manifest
+    from .p1.config import load_p1_config
+    cfg = load_p1_config(a.p1_config or None)
+    work = Path(cfg["paths"]["work_dir"])
+    path = work / "songs.tsv"
+    songs = manifest.read(path) if path.exists() else []
+    return cfg, work, songs
+
+
+def cmd_p1_init(a):
+    """``p1-init``: (re)build ``<work>/songs.tsv`` from the audio folder (ids are stable)."""
+    from .p1 import manifest
+    cfg, work, old = _p1_setup(a)
+    songs = manifest.build(cfg["paths"]["audio_dir"])
+    manifest.write(songs, work / "songs.tsv")
+    print(f"{len(songs)} songs -> {work / 'songs.tsv'} (was {len(old)})")
+
+
+def _select(songs, a, work):
+    """Songs chosen by --songs (ids or a file of ids), --limit; duplicates skipped."""
+    from .p1.state import read_json
+    if a.songs:
+        p = Path(a.songs)
+        if not p.exists() and (work.parent / a.songs).exists():      # paths relative to P1/
+            p = work.parent / a.songs
+        if not p.exists() and "/" in a.songs:
+            sys.exit(f"--songs file not found: {a.songs}")
+        ids = [l.strip() for l in p.read_text().splitlines() if l.strip()] if p.exists() else a.songs.split(",")
+        keep = set(ids)
+        songs = [s for s in songs if s.song_id in keep]
+    dup = (read_json(work / "dupes.json", {}) or {}).get("duplicate_of", {})
+    if dup and not a.include_duplicates:
+        songs = [s for s in songs if s.song_id not in dup]
+    return songs[: a.limit] if a.limit else songs
+
+
+def cmd_p1_run(a):
+    """``p1-run``: a worker over the selected stages (or groups) until done or
+    out of time (``--budget-min``)."""
+    from .p1.registry import all_stages, resolve
+    from .p1.state import SongState
+    from .p1.worker import Context, run_worker
+    cfg, work, songs = _p1_setup(a)
+    allst = all_stages()
+    names = resolve(a.stages)
+    missing = [n for n in names if n not in allst]
+    if missing:
+        sys.exit(f"unknown / not yet implemented stages: {missing}")
+    stages = [allst[n] for n in allst if n in names]
+    songs = _select(songs, a, work)
+    if a.force or a.retry_failed:
+        for s in songs:
+            st = SongState(work / "songs" / s.song_id)
+            for n in names:
+                m = st.get(n)
+                if a.force or (m and m.get("status") == "failed"):
+                    st.reset(n)
+    run_worker(Context(cfg, work), songs, stages, allst, budget_s=a.budget_min * 60,
+               max_songs=a.max_songs)
+
+
+def cmd_p1_status(a):
+    """``p1-status``: done / skipped / failed / parked / pending per stage ->
+    ``<P1>/ops/status.tsv`` and stdout."""
+    from .p1.registry import all_stages
+    from .p1.state import atomic_bytes
+    from .p1.worker import status_table
+    cfg, work, songs = _p1_setup(a)
+    tab = status_table(_select(songs, a, work), list(all_stages().values()), work, cfg)
+    cols = ["done", "skipped", "failed", "parked", "pending"]
+    lines = ["stage\t" + "\t".join(cols)] + [f"{k}\t" + "\t".join(str(v[c]) for c in cols) for k, v in tab.items()]
+    atomic_bytes(work.parent / "ops" / "status.tsv", ("\n".join(lines) + "\n").encode())
+    print("\n".join(lines))
+
+
+def cmd_p1_fetchlist(a):
+    """``p1-fetchlist``: URLs for the login-node downloader (``ops/fetch.sh``)."""
+    from .p1.lyrics_ref import write_fetchlist
+    from .p1.state import read_json
+    cfg, work, songs = _p1_setup(a)
+    dup = (read_json(work / "dupes.json", {}) or {}).get("duplicate_of", {})
+    if a.kind == "retry":
+        from .p1.lyrics_ref import write_retry_list
+        p, n = write_retry_list(songs, work, dup)
+        print(f"{n} songs need a second lookup")
+    else:
+        p = write_fetchlist(songs, work, dup)
+    print(f"{sum(1 for _ in open(p))} URLs -> {p}")
+
+
+def cmd_p1_refpool(a):
+    """``p1-refpool``: parse the fetched LRCLIB results into ``<work>/refpool.json``."""
+    from .p1.lyrics_ref import build_pool
+    cfg, work, songs = _p1_setup(a)
+    pool = build_pool(work)
+    print(f"{len(pool['refs'])} reference lyrics from {len(pool['by_song'])} songs")
+
+
+def cmd_p1_export(a):
+    """``p1-export``: accepted clips in SoulX format -> ``<P1>/export`` (or ``--out``)."""
+    from .p1.export import export
+    cfg, work, songs = _p1_setup(a)
+    out = Path(a.out or cfg["paths"]["export_dir"])
+    stats = export(_select(songs, a, work), work, out, cfg.get("qc", {}), include_review=a.include_review)
+    print(json.dumps(stats, indent=1))
+
+
+def cmd_p1_goldpack(a):
+    """``p1-goldpack``: Praat TextGrids + audio windows for hand correction -> ``<P1>/gold``."""
+    from .p1.gold import make_pack
+    cfg, work, songs = _p1_setup(a)
+    done = make_pack(_select(songs, a, work), work, work.parent / "gold")
+    print(f"{len(done)} songs -> {work.parent / 'gold' / 'pack'}")
+
+
+def cmd_p1_goldeval(a):
+    """``p1-goldeval``: score predictions against ``gold/corrected/*.TextGrid``."""
+    from .p1.gold import evaluate
+    cfg, work, songs = _p1_setup(a)
+    res = evaluate(work.parent / "gold")
+    print(json.dumps({"songs": res["songs"], "median": res["median"]}, indent=1, ensure_ascii=False))
+
+
+def cmd_p1_report(a):
+    """``p1-report``: one row per song (identity, singing, clips, bands) ->
+    ``<P1>/ops/report.tsv`` and a summary on stdout."""
+    from collections import Counter
+    from .p1.export import accept_band
+    from .p1.state import atomic_bytes, read_json
+    cfg, work, songs = _p1_setup(a)
+    cols = ["song_id", "duration_s", "identity", "track", "coverage", "single_share", "clusters", "phrases",
+            "ref_backed", "syllables", "vocables", "melisma", "clips", "clip_s", "accept", "review", "reject"]
+    rows, tot = [], Counter()
+    for s in _select(songs, a, work):
+        d = work / "songs" / s.song_id
+        st = read_json(d / "stages.json", {}) or {}
+        if "notes_qc" not in st and "identify" not in st:
+            continue
+        idn = read_json(d / "identity.json", {}) or {}
+        cj = read_json(d / "clips.json", {}) or {}
+        bands = Counter(accept_band(c["features"], cfg.get("qc", {})) for c in cj.get("clips", []))
+        acc_s = sum(c["features"]["dur_s"] for c in cj.get("clips", [])
+                    if accept_band(c["features"], cfg.get("qc", {})) == "accept")
+        g = lambda k, f: (st.get(k) or {}).get(f, "")                       # noqa: E731
+        r = [s.song_id, g("inventory", "duration_s"), idn.get("status", ""), (idn.get("best") or {}).get("track", ""),
+             (idn.get("best") or {}).get("coverage", ""), g("voices", "single_share"), g("voices", "clusters"),
+             g("reconcile", "phrases"), g("reconcile", "ref_backed"), g("align", "syllables"),
+             g("vocables", "vocables"), g("vocables", "melisma"), len(cj.get("clips", [])),
+             g("notes_qc", "clip_s"), bands["accept"], bands["review"], bands["reject"]]
+        rows.append("\t".join(map(str, r)))
+        tot["songs"] += 1
+        tot[f"identity_{idn.get('status', 'none')}"] += 1
+        tot.update({f"clips_{k}": v for k, v in bands.items()})
+        tot["accepted_min"] += acc_s / 60
+    atomic_bytes(work.parent / "ops" / "report.tsv", ("\t".join(cols) + "\n" + "\n".join(rows) + "\n").encode())
+    print(json.dumps({k: (round(v, 1) if isinstance(v, float) else v) for k, v in sorted(tot.items())}, indent=1))
+
+
+def cmd_p1_dedupe(a):
+    """``p1-dedupe``: group re-uploads from the fingerprints -> ``<work>/dupes.json``."""
+    from .p1.clean import find_duplicates
+    cfg, work, songs = _p1_setup(a)
+    res = find_duplicates(songs, work)
+    n = sum(len(g) - 1 for g in res["groups"])
+    print(f"{res['songs_fingerprinted']} fingerprinted, {len(res['groups'])} duplicate groups, "
+          f"{n} files marked duplicate")
+    for g in res["groups"][:50]:
+        print("  keep", g[0], "| drop", ", ".join(g[1:]))
+
+
 def main(argv=None):
     """Parse the command line and run the chosen command."""
     p = argparse.ArgumentParser(prog="saregama", description=__doc__)
     p.add_argument("--config", default=None, help="TOML config (defaults if omitted)")
     p.add_argument("--work-dir", default=None)
     p.add_argument("--out-dir", default=None)
+    p.add_argument("--asr-backend", default=None, help="override [asr] backend: qwen3 | whisper | none")
+    p.add_argument("--asr-model", default=None, help="override [asr] model (HF id or path)")
+    p.add_argument("--asr-align-mode", default=None, help="override [asr] align_mode: phrase | global")
+    p.add_argument("--asr-input", default=None, help="override [asr] input: vocals | mix")
     p.add_argument("--saraga-root", default=str(SARAGA_ROOT))
     p.add_argument("--ann-root", default=str(ANN_ROOT), help="where per-recording IR bundles live")
     p.add_argument("--lyrics-dir", default=str(LYRICS_DIR), help="per-work lyric YAMLs")
@@ -1419,6 +1670,21 @@ def main(argv=None):
     s.add_argument("--only", default="", help="comma-separated song ids")
     s.add_argument("--force", action="store_true", help="recompute auto annotations (never touches reviewed/gold)")
     s.set_defaults(fn=cmd_run)
+
+    s = sub.add_parser("asr", help="transcribe songs without a lyric sheet ([asr] backend)")
+    s.add_argument("--songs", required=True)
+    s.add_argument("--only", default="", help="comma-separated song ids")
+    s.add_argument("--all", action="store_true", help="also songs that have a lyric sheet (evaluation)")
+    s.add_argument("--force", action="store_true", help="re-transcribe even if asr.json exists")
+    s.set_defaults(fn=cmd_asr)
+
+    s = sub.add_parser("songs-from-folder", help="songs.csv for every audio file in a folder (lyrics left to ASR)")
+    s.add_argument("--audio-dir", required=True)
+    s.add_argument("--out", default="songs.csv")
+    s.add_argument("--language", default="hi")
+    s.add_argument("--style", default="film")
+    s.add_argument("--match", default="", help="regex on file names, e.g. 'Kesariya|Tum Hi Ho'")
+    s.set_defaults(fn=cmd_songs_from_folder)
 
     s = sub.add_parser("draft-lyrics", help="ASR draft lyric sheets for songs without lyrics")
     s.add_argument("--songs", required=True)
@@ -1636,6 +1902,55 @@ def main(argv=None):
     s = sub.add_parser("gold-eval", help="score predictions against hand-corrected recordings")
     s.add_argument("--out", default=str(ANN_ROOT.parent / "eval" / "gold"))
     s.set_defaults(fn=cmd_gold_eval)
+
+    # ---- P1 (PLAN.md): run inside Slurm jobs via ops/submit.sh --------------
+    def p1_common(s, stages=False):
+        """Options shared by the P1 commands."""
+        s.add_argument("--p1-config", default="", help="P1 TOML (default <work>/p1.toml)")
+        s.add_argument("--songs", default="", help="comma-separated ids or a file of ids")
+        s.add_argument("--limit", type=int, default=0)
+        s.add_argument("--include-duplicates", action="store_true")
+        if stages:
+            s.add_argument("--stages", required=True, help="stage or group names: clean, gpu, text, ...")
+            s.add_argument("--budget-min", type=float, default=50.0,
+                           help="stop starting songs after this (set ~10 min under --time)")
+            s.add_argument("--max-songs", type=int, default=None)
+            s.add_argument("--force", action="store_true", help="redo the stages for the selected songs")
+            s.add_argument("--retry-failed", action="store_true", help="reset failed / parked markers first")
+
+    s = sub.add_parser("p1-init", help="P1: build <work>/songs.tsv from the audio folder")
+    p1_common(s)
+    s.set_defaults(fn=cmd_p1_init)
+    s = sub.add_parser("p1-run", help="P1: worker over stages / groups (resumable)")
+    p1_common(s, stages=True)
+    s.set_defaults(fn=cmd_p1_run)
+    s = sub.add_parser("p1-status", help="P1: per-stage progress -> ops/status.tsv")
+    p1_common(s)
+    s.set_defaults(fn=cmd_p1_status)
+    s = sub.add_parser("p1-dedupe", help="P1: duplicate groups from fingerprints -> <work>/dupes.json")
+    p1_common(s)
+    s.set_defaults(fn=cmd_p1_dedupe)
+    s = sub.add_parser("p1-fetchlist", help="P1: URL list for ops/fetch.sh (login node)")
+    p1_common(s)
+    s.add_argument("--kind", default="title", help="title (first round) | retry (unidentified songs)")
+    s.set_defaults(fn=cmd_p1_fetchlist)
+    s = sub.add_parser("p1-refpool", help="P1: fetched LRCLIB results -> <work>/refpool.json")
+    p1_common(s)
+    s.set_defaults(fn=cmd_p1_refpool)
+    s = sub.add_parser("p1-export", help="P1: accepted clips in SoulX format")
+    p1_common(s)
+    s.add_argument("--out", default="")
+    s.add_argument("--include-review", action="store_true", help="also clips in the review band")
+    s.set_defaults(fn=cmd_p1_export)
+    s = sub.add_parser("p1-goldpack", help="P1: gold-set pack (TextGrids + audio) for hand correction")
+    p1_common(s)
+    s.set_defaults(fn=cmd_p1_goldpack)
+    s = sub.add_parser("p1-goldeval", help="P1: score predictions against corrected gold TextGrids")
+    p1_common(s)
+    s.set_defaults(fn=cmd_p1_goldeval)
+    s = sub.add_parser("p1-report", help="P1: per-song summary -> ops/report.tsv")
+    p1_common(s)
+    s.set_defaults(fn=cmd_p1_report)
 
     a = p.parse_args(argv)
     a.fn(a)

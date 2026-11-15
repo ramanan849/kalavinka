@@ -1,0 +1,10 @@
+{
+ "duration_s": 172.2275,
+ "bit_rate": 137054,
+ "codec": "opus",
+ "sample_rate": 48000,
+ "channels": 2,
+ "bytes": 2950563,
+ "sha256": "f340fcdae345bfed65e6bc2d3c681489b0c7eb66e606b0bb2094c80e90b9e997",
+ "decode_errors": ""
+}

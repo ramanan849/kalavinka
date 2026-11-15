@@ -1,0 +1,80 @@
+{
+ "status": "claimed",
+ "best": {
+  "ref_id": "5891632",
+  "track": "Aashiquii Kaa Gum",
+  "artist": "Salman Ali, Himesh Reshammiya",
+  "coverage": 0.916,
+  "claimed": true,
+  "duration": 328.0,
+  "synced": true
+ },
+ "claimed_title": "Aashiquii Kaa Gum",
+ "claimed_best": {
+  "ref_id": "5891632",
+  "track": "Aashiquii Kaa Gum",
+  "artist": "Salman Ali, Himesh Reshammiya",
+  "coverage": 0.916,
+  "claimed": true,
+  "duration": 328.0,
+  "synced": true
+ },
+ "audio_duration": 299.9075,
+ "asr_words": 320,
+ "candidates": [
+  {
+   "ref_id": "5891632",
+   "track": "Aashiquii Kaa Gum",
+   "artist": "Salman Ali, Himesh Reshammiya",
+   "coverage": 0.916,
+   "claimed": true,
+   "duration": 328.0,
+   "synced": true
+  },
+  {
+   "ref_id": "5891631",
+   "track": "Aashiquii Kaa Gum",
+   "artist": "Salman Ali feat. Himesh Reshammiya",
+   "coverage": 0.916,
+   "claimed": true,
+   "duration": 328.0,
+   "synced": true
+  },
+  {
+   "ref_id": "9084353",
+   "track": "Aashiquii Kaa Gum",
+   "artist": "Himesh Reshammiya & Salman Ali",
+   "coverage": 0.916,
+   "claimed": true,
+   "duration": 300.0,
+   "synced": true
+  },
+  {
+   "ref_id": "11036036",
+   "track": "Aashiquii Kaa Gum",
+   "artist": "Salman Ali",
+   "coverage": 0.916,
+   "claimed": true,
+   "duration": 327.0,
+   "synced": true
+  },
+  {
+   "ref_id": "11497000",
+   "track": "Aashiquii Kaa Gum",
+   "artist": "Salman Ali • Himesh Reshammiya",
+   "coverage": 0.916,
+   "claimed": true,
+   "duration": 328.0,
+   "synced": true
+  },
+  {
+   "ref_id": "36249221",
+   "track": "Aashiquii Kaa Gum",
+   "artist": "Himesh Reshammiya",
+   "coverage": 0.916,
+   "claimed": true,
+   "duration": 327.0,
+   "synced": true
+  }
+ ]
+}

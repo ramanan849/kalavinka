@@ -1,0 +1,176 @@
+{
+ "segments": [
+  {
+   "start": 11.02,
+   "end": 13.02,
+   "median_hz": 136.1,
+   "cluster": 0
+  },
+  {
+   "start": 16.26,
+   "end": 17.48,
+   "median_hz": 116.2,
+   "cluster": 0
+  },
+  {
+   "start": 22.4,
+   "end": 23.72,
+   "median_hz": 455.6,
+   "cluster": 1
+  },
+  {
+   "start": 33.46,
+   "end": 35.28,
+   "median_hz": 452.8,
+   "cluster": 1
+  },
+  {
+   "start": 53.02,
+   "end": 54.68,
+   "median_hz": 431.8,
+   "cluster": 0
+  },
+  {
+   "start": 54.94,
+   "end": 67.7,
+   "median_hz": 396.8,
+   "cluster": 0
+  },
+  {
+   "start": 68.32,
+   "end": 70.16,
+   "median_hz": 348.9,
+   "cluster": 0
+  },
+  {
+   "start": 70.98,
+   "end": 73.3,
+   "median_hz": 392.3,
+   "cluster": 0
+  },
+  {
+   "start": 73.5,
+   "end": 78.22,
+   "median_hz": 395.4,
+   "cluster": 0
+  },
+  {
+   "start": 81.54,
+   "end": 84.56,
+   "median_hz": 392.7,
+   "cluster": 0
+  },
+  {
+   "start": 105.76,
+   "end": 120.18,
+   "median_hz": 400.5,
+   "cluster": 0
+  },
+  {
+   "start": 121.12,
+   "end": 122.66,
+   "median_hz": 347.8,
+   "cluster": 0
+  },
+  {
+   "start": 127.34,
+   "end": 129.0,
+   "median_hz": 459.8,
+   "cluster": 1
+  },
+  {
+   "start": 147.84,
+   "end": 166.1,
+   "median_hz": 434.9,
+   "cluster": 0
+  },
+  {
+   "start": 166.3,
+   "end": 170.52,
+   "median_hz": 398.2,
+   "cluster": 0
+  },
+  {
+   "start": 182.24,
+   "end": 194.56,
+   "median_hz": 395.5,
+   "cluster": 0
+  },
+  {
+   "start": 199.6,
+   "end": 202.66,
+   "median_hz": 395.2,
+   "cluster": 0
+  },
+  {
+   "start": 221.74,
+   "end": 233.28,
+   "median_hz": 436.2,
+   "cluster": 0
+  },
+  {
+   "start": 234.06,
+   "end": 235.62,
+   "median_hz": 330.3,
+   "cluster": 0
+  },
+  {
+   "start": 235.78,
+   "end": 239.98,
+   "median_hz": 441.8,
+   "cluster": 0
+  },
+  {
+   "start": 240.14,
+   "end": 242.66,
+   "median_hz": 443.5,
+   "cluster": 0
+  },
+  {
+   "start": 255.82,
+   "end": 257.74,
+   "median_hz": 397.8,
+   "cluster": 0
+  },
+  {
+   "start": 258.16,
+   "end": 260.14,
+   "median_hz": 391.7,
+   "cluster": 0
+  },
+  {
+   "start": 260.92,
+   "end": 270.7,
+   "median_hz": 393.3,
+   "cluster": 0
+  },
+  {
+   "start": 271.06,
+   "end": 272.72,
+   "median_hz": 356.2,
+   "cluster": 0
+  },
+  {
+   "start": 274.02,
+   "end": 276.34,
+   "median_hz": 443.4,
+   "cluster": 1
+  },
+  {
+   "start": 276.54,
+   "end": 285.16,
+   "median_hz": 391.4,
+   "cluster": 0
+  }
+ ],
+ "clusters": {
+  "0": {
+   "seconds": 127.1,
+   "median_hz": 395.2
+  },
+  "1": {
+   "seconds": 7.1,
+   "median_hz": 454.2
+  }
+ }
+}

@@ -1,0 +1,199 @@
+{
+ "fps": 50,
+ "single_frames": 6475,
+ "voiced_frames": 11339,
+ "segments": [
+  {
+   "start": 11.02,
+   "end": 13.02,
+   "cluster": 0,
+   "median_hz": 136.1
+  },
+  {
+   "start": 16.26,
+   "end": 17.48,
+   "cluster": 1,
+   "median_hz": 116.2
+  },
+  {
+   "start": 22.4,
+   "end": 23.72,
+   "cluster": 2,
+   "median_hz": 455.6
+  },
+  {
+   "start": 33.46,
+   "end": 35.28,
+   "cluster": 2,
+   "median_hz": 452.8
+  },
+  {
+   "start": 53.02,
+   "end": 54.68,
+   "cluster": 3,
+   "median_hz": 431.8
+  },
+  {
+   "start": 54.94,
+   "end": 67.7,
+   "cluster": 4,
+   "median_hz": 396.8
+  },
+  {
+   "start": 68.32,
+   "end": 70.16,
+   "cluster": 5,
+   "median_hz": 348.9
+  },
+  {
+   "start": 70.98,
+   "end": 73.3,
+   "cluster": 4,
+   "median_hz": 392.3
+  },
+  {
+   "start": 73.5,
+   "end": 78.22,
+   "cluster": 4,
+   "median_hz": 395.4
+  },
+  {
+   "start": 81.54,
+   "end": 84.56,
+   "cluster": 4,
+   "median_hz": 392.7
+  },
+  {
+   "start": 105.76,
+   "end": 120.18,
+   "cluster": 4,
+   "median_hz": 400.5
+  },
+  {
+   "start": 121.12,
+   "end": 122.66,
+   "cluster": 5,
+   "median_hz": 347.8
+  },
+  {
+   "start": 127.34,
+   "end": 129.0,
+   "cluster": 2,
+   "median_hz": 459.8
+  },
+  {
+   "start": 147.84,
+   "end": 166.1,
+   "cluster": 4,
+   "median_hz": 434.9
+  },
+  {
+   "start": 166.3,
+   "end": 170.52,
+   "cluster": 4,
+   "median_hz": 398.2
+  },
+  {
+   "start": 182.24,
+   "end": 194.56,
+   "cluster": 4,
+   "median_hz": 395.5
+  },
+  {
+   "start": 199.6,
+   "end": 202.66,
+   "cluster": 4,
+   "median_hz": 395.2
+  },
+  {
+   "start": 221.74,
+   "end": 233.28,
+   "cluster": 4,
+   "median_hz": 436.2
+  },
+  {
+   "start": 234.06,
+   "end": 235.62,
+   "cluster": 6,
+   "median_hz": 330.3
+  },
+  {
+   "start": 235.78,
+   "end": 239.98,
+   "cluster": 4,
+   "median_hz": 441.8
+  },
+  {
+   "start": 240.14,
+   "end": 242.66,
+   "cluster": 4,
+   "median_hz": 443.5
+  },
+  {
+   "start": 255.82,
+   "end": 257.74,
+   "cluster": 4,
+   "median_hz": 397.8
+  },
+  {
+   "start": 258.16,
+   "end": 260.14,
+   "cluster": 4,
+   "median_hz": 391.7
+  },
+  {
+   "start": 260.92,
+   "end": 270.7,
+   "cluster": 4,
+   "median_hz": 393.3
+  },
+  {
+   "start": 271.06,
+   "end": 272.72,
+   "cluster": 5,
+   "median_hz": 356.2
+  },
+  {
+   "start": 274.02,
+   "end": 276.34,
+   "cluster": 2,
+   "median_hz": 443.4
+  },
+  {
+   "start": 276.54,
+   "end": 285.16,
+   "cluster": 4,
+   "median_hz": 391.4
+  }
+ ],
+ "clusters": {
+  "0": {
+   "seconds": 2.0,
+   "segments": 1
+  },
+  "1": {
+   "seconds": 1.2,
+   "segments": 1
+  },
+  "2": {
+   "seconds": 7.1,
+   "segments": 4
+  },
+  "3": {
+   "seconds": 1.7,
+   "segments": 1
+  },
+  "4": {
+   "seconds": 115.7,
+   "segments": 16
+  },
+  "5": {
+   "seconds": 5.0,
+   "segments": 3
+  },
+  "6": {
+   "seconds": 1.6,
+   "segments": 1
+  }
+ }
+}

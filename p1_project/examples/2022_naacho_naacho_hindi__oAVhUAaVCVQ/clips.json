@@ -1,0 +1,53 @@
+{
+ "fps": 50,
+ "clips": [
+  {
+   "start": 1923,
+   "end": 2061,
+   "syllables": [
+    72,
+    82
+   ],
+   "cluster": 0,
+   "features": {
+    "dur_s": 2.76,
+    "good_src_share": 1.0,
+    "asr1_share": 0.0,
+    "ref_backed_share": 1.0,
+    "mean_conf": -1.695,
+    "min_conf": -3.179,
+    "f0_agree": 0.939,
+    "unlabelled_voiced": 0.0,
+    "vocables": 0,
+    "identity": "relabeled"
+   }
+  },
+  {
+   "start": 4789,
+   "end": 4970,
+   "syllables": [
+    212,
+    222
+   ],
+   "cluster": 0,
+   "features": {
+    "dur_s": 3.62,
+    "good_src_share": 1.0,
+    "asr1_share": 0.0,
+    "ref_backed_share": 1.0,
+    "mean_conf": -1.89,
+    "min_conf": -4.017,
+    "f0_agree": 0.926,
+    "unlabelled_voiced": 0.0,
+    "vocables": 0,
+    "identity": "relabeled"
+   }
+  }
+ ],
+ "rejected_units": {
+  "no_singer": 10,
+  "overlap": 193,
+  "unvoiced": 1,
+  "too_short": 12
+ }
+}
