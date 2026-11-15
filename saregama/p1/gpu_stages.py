@@ -75,9 +75,22 @@ def _load(sdir: Path, name: str) -> np.ndarray:
 def separate(ctx, song: Song, sdir: Path) -> Dict:
     """Full vocals (de-reverbed) and the karaoke lead, 24 kHz FLAC, same gain."""
     _dup_check(ctx, song)
+    import subprocess
+    import tempfile
     import torch
     full, lead = _separators(ctx)
-    res = full.process(song.audio, verbose=False)
+    src, tmp = song.audio, None
+    if Path(src).suffix.lower() not in (".wav", ".flac", ".ogg", ".opus", ".mp3"):
+        # libsndfile (used by the separator's loader) can't read m4a / webm: decode first
+        tmp = tempfile.NamedTemporaryFile(suffix=".wav", dir=str(ctx.work), delete=False).name
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", src, "-ac", "2", "-ar", "44100", tmp],
+                       check=True, timeout=600)
+        src = tmp
+    try:
+        res = full.process(src, verbose=False)
+    finally:
+        if tmp:
+            Path(tmp).unlink(missing_ok=True)
     sr = int(res.sample_rate)
     voc = res.vocals_dereverbed if res.vocals_dereverbed is not None else res.vocals
     voc = np.asarray(voc, dtype=np.float32)
