@@ -47,9 +47,9 @@ python on the login node; `-p X --qos=X`).
 | Who | Where | Action |
 |---|---|---|
 | **Human** | PC | **H3 gold set**: copy `P1/gold/` to the PC (`scp -r 23b1529@10.195.100.101:~/projects/P1/gold ./p1_gold`; WinSCP / MobaXterm on Windows), follow `gold/README.txt` in Praat (20 windows × 75 s, about 15–25 min each), put the corrected TextGrids in `gold/corrected/` and copy them back to Prajna. |
-| Claude | login | GPU chains: `squeue -u $USER`; when they end, resubmit workers (`ops/submit.sh gpu 60 gpu-allN -- p1-run --stages gpu --budget-min 50`, chains via `P1_DEP=afterany:<id>`) until `p1-status` shows asr/emissions done for all songs |
-| Claude | login | finish `ops/fetch.sh work/raw/fetch_retry.tsv` (resumable; log `ops/logs/fetch_retry.log`), then `p1-refpool`; after all GPU stages: `p1-fetchlist --kind retry` again → fetch → refpool → `p1-run --stages text` (CPU, about 2 s/song) |
-| Claude | code | C3 `p1-calibrate` (thresholds from gold: single-voice cues, clip bands, singer clustering); H5 review pack; H6 cross-song singer linking; E1 SoulX phone-set files + real DataProcessor check |
+| Dev | login | GPU chains: `squeue -u $USER`; when they end, resubmit workers (`ops/submit.sh gpu 60 gpu-allN -- p1-run --stages gpu --budget-min 50`, chains via `P1_DEP=afterany:<id>`) until `p1-status` shows asr/emissions done for all songs |
+| Dev | login | finish `ops/fetch.sh work/raw/fetch_retry.tsv` (resumable; log `ops/logs/fetch_retry.log`), then `p1-refpool`; after all GPU stages: `p1-fetchlist --kind retry` again → fetch → refpool → `p1-run --stages text` (CPU, about 2 s/song) |
+| Dev | code | C3 `p1-calibrate` (thresholds from gold: single-voice cues, clip bands, singer clustering); H5 review pack; H6 cross-song singer linking; E1 SoulX phone-set files + real DataProcessor check |
 
 ## Log (one line per step)
 - 2026-11-14: cloned saregama624; built env; added ASR stage, Latin G2P, phrase-window alignment, CLI (`asr`, `songs-from-folder`).

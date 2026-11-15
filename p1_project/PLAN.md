@@ -243,10 +243,10 @@ everything else automatic and trustworthy.
 
 ## 10. Execution phases, steps and time estimates
 
-Times: "Claude" means agent working time in sessions; "GPU" means job runtime; queue wait
+Times: "Dev" means developer working time in sessions; "GPU" means job runtime; queue wait
 has so far been seconds to 10 min.
 
-### Phase A: setup and hygiene (about 1.5 h, Claude)
+### Phase A: setup and hygiene (about 1.5 h, Dev)
 | Step | Where | Estimate |
 |---|---|---|
 | A1 housekeeping: delete `wheels/` and the broken zip; create `work/`, `export/` | login | 5 min |
@@ -254,7 +254,7 @@ has so far been seconds to 10 min.
 | A3 `P1/ops/`: job templates (`gpu_worker.sbatch`, `cpu_job.sbatch`), `jobs.tsv`, `fetch_*.sh` (curl + jq) | login | 30 min |
 | A4 download the extra models on the login node: ECAPA speaker model; `fpcalc` static binary; `g2p_en` data; micromamba + MFA env | login | 30 min |
 
-### Phase B: implementation (about 14–20 h, Claude; each step ends with tests in a `debug` CPU job)
+### Phase B: implementation (about 14–20 h, Dev; each step ends with tests in a `debug` CPU job)
 | Step | What | Estimate |
 |---|---|---|
 | B1 | stage/state framework (`stages.json`, atomic IO, config hash), worker loop with claims, `p1-status` | 2–3 h |
@@ -271,7 +271,7 @@ has so far been seconds to 10 min.
 | Step | What | Where | Estimate |
 |---|---|---|---|
 | C1 | stratified pilot: 40 songs (decades 1980s–2020s; ballad, duet, rap/Hinglish, classical-leaning, aakar-heavy, chorus), full S0–S13 | GPU workers ×2 | about 1 h GPU |
-| C2 | gold pack: 20 clips with pre-filled layers → **H3** | CPU job → PC | Claude 1 h + human 6–8 h |
+| C2 | gold pack: 20 clips with pre-filled layers → **H3** | CPU job → PC | Dev 1 h + human 6–8 h |
 | C3 | evaluation: WER, syllable onset error, vocable precision, single-voice precision, phone refinement vs baseline; threshold fitting → **H4** | CPU job | 1 h |
 | C4 | fix what the pilot reveals; rerun only the affected stages (state framework) | — | 2–4 h |
 
@@ -290,7 +290,7 @@ has so far been seconds to 10 min.
 | E2 | `rsync` export + reports to your PC; **H8** | PC |
 | E3 | final PROGRESS.md entry; optionally delete intermediates that are no longer needed (keep caches needed to re-export) | login |
 
-**Overall:** about 3–4 Claude sessions of implementation, about 30 GPU-hours, about
+**Overall:** about 3–4 dev sessions of implementation, about 30 GPU-hours, about
 11–14 h of human time, roughly **1–1.5 weeks** of calendar time, depending mostly on H3.
 
 ## 11. Good-citizen rules for this plan
