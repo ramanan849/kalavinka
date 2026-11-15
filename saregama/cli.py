@@ -1594,6 +1594,41 @@ def cmd_p1_goldeval(a):
     print(json.dumps({"songs": res["songs"], "median": res["median"]}, indent=1, ensure_ascii=False))
 
 
+def cmd_p1_report(a):
+    """``p1-report``: one row per song (identity, singing, clips, bands) ->
+    ``<P1>/ops/report.tsv`` and a summary on stdout."""
+    from collections import Counter
+    from .p1.export import accept_band
+    from .p1.state import atomic_bytes, read_json
+    cfg, work, songs = _p1_setup(a)
+    cols = ["song_id", "duration_s", "identity", "track", "coverage", "single_share", "clusters", "phrases",
+            "ref_backed", "syllables", "vocables", "melisma", "clips", "clip_s", "accept", "review", "reject"]
+    rows, tot = [], Counter()
+    for s in _select(songs, a, work):
+        d = work / "songs" / s.song_id
+        st = read_json(d / "stages.json", {}) or {}
+        if "notes_qc" not in st and "identify" not in st:
+            continue
+        idn = read_json(d / "identity.json", {}) or {}
+        cj = read_json(d / "clips.json", {}) or {}
+        bands = Counter(accept_band(c["features"], cfg.get("qc", {})) for c in cj.get("clips", []))
+        acc_s = sum(c["features"]["dur_s"] for c in cj.get("clips", [])
+                    if accept_band(c["features"], cfg.get("qc", {})) == "accept")
+        g = lambda k, f: (st.get(k) or {}).get(f, "")                       # noqa: E731
+        r = [s.song_id, g("inventory", "duration_s"), idn.get("status", ""), (idn.get("best") or {}).get("track", ""),
+             (idn.get("best") or {}).get("coverage", ""), g("voices", "single_share"), g("voices", "clusters"),
+             g("reconcile", "phrases"), g("reconcile", "ref_backed"), g("align", "syllables"),
+             g("vocables", "vocables"), g("vocables", "melisma"), len(cj.get("clips", [])),
+             g("notes_qc", "clip_s"), bands["accept"], bands["review"], bands["reject"]]
+        rows.append("\t".join(map(str, r)))
+        tot["songs"] += 1
+        tot[f"identity_{idn.get('status', 'none')}"] += 1
+        tot.update({f"clips_{k}": v for k, v in bands.items()})
+        tot["accepted_min"] += acc_s / 60
+    atomic_bytes(work.parent / "ops" / "report.tsv", ("\t".join(cols) + "\n" + "\n".join(rows) + "\n").encode())
+    print(json.dumps({k: (round(v, 1) if isinstance(v, float) else v) for k, v in sorted(tot.items())}, indent=1))
+
+
 def cmd_p1_dedupe(a):
     """``p1-dedupe``: group re-uploads from the fingerprints -> ``<work>/dupes.json``."""
     from .p1.clean import find_duplicates
@@ -1907,6 +1942,9 @@ def main(argv=None):
     s = sub.add_parser("p1-goldeval", help="P1: score predictions against corrected gold TextGrids")
     p1_common(s)
     s.set_defaults(fn=cmd_p1_goldeval)
+    s = sub.add_parser("p1-report", help="P1: per-song summary -> ops/report.tsv")
+    p1_common(s)
+    s.set_defaults(fn=cmd_p1_report)
 
     a = p.parse_args(argv)
     a.fn(a)
