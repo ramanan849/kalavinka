@@ -1,0 +1,12222 @@
+{
+ "song_id": "2022_naacho_naacho_hindi__oAVhUAaVCVQ",
+ "language": "hi",
+ "style": "film",
+ "singer_id": "",
+ "gender": "",
+ "source": "",
+ "license": "",
+ "audio_path": "/home/fmea/23b1529/projects/P1/music_dataset/2022 - Naacho Naacho (Hindi) [oAVhUAaVCVQ].opus",
+ "vocals_path": "/home/fmea/23b1529/projects/P1/work/songs/2022_naacho_naacho_hindi__oAVhUAaVCVQ/vocals.flac",
+ "n_frames": 12277,
+ "tonic_hz": 155.685,
+ "tonic_source": "auto",
+ "tonic_conf": 0.789,
+ "lines": [],
+ "syllables": [
+  {
+   "text": "hey",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 111,
+   "end": 125,
+   "line": 0,
+   "word": 0,
+   "conf": -6.686,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "hey",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 290,
+   "end": 303,
+   "line": 1,
+   "word": 0,
+   "conf": -5.893,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "hey",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 469,
+   "end": 490,
+   "line": 2,
+   "word": 0,
+   "conf": -5.785,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "hey",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 648,
+   "end": 662,
+   "line": 3,
+   "word": 0,
+   "conf": -6.059,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "girl",
+   "phones": [
+    "g",
+    "a",
+    "r",
+    "l"
+   ],
+   "start": 828,
+   "end": 850,
+   "line": 4,
+   "word": 0,
+   "conf": -3.267,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "you",
+   "phones": [
+    "y",
+    "uu"
+   ],
+   "start": 850,
+   "end": 870,
+   "line": 4,
+   "word": 1,
+   "conf": -4.104,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "re",
+   "phones": [
+    "r",
+    "ee"
+   ],
+   "start": 870,
+   "end": 882,
+   "line": 4,
+   "word": 2,
+   "conf": -6.661,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "my",
+   "phones": [
+    "m",
+    "ai"
+   ],
+   "start": 882,
+   "end": 892,
+   "line": 4,
+   "word": 3,
+   "conf": -1.594,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "chha",
+   "phones": [
+    "ch",
+    "a"
+   ],
+   "start": 892,
+   "end": 901,
+   "line": 4,
+   "word": 4,
+   "conf": -3.655,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "llo",
+   "phones": [
+    "l",
+    "oo"
+   ],
+   "start": 901,
+   "end": 918,
+   "line": 4,
+   "word": 4,
+   "conf": -1.444,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "hey",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 918,
+   "end": 1018,
+   "line": 4,
+   "word": 5,
+   "conf": -6.098,
+   "flags": [
+    "ref+whisper"
+   ]
+  },
+  {
+   "text": "where",
+   "phones": [
+    "v",
+    "e",
+    "r"
+   ],
+   "start": 1018,
+   "end": 1023,
+   "line": 4,
+   "word": 6,
+   "conf": -4.783,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "you",
+   "phones": [
+    "y",
+    "uu"
+   ],
+   "start": 1023,
+   "end": 1028,
+   "line": 4,
+   "word": 7,
+   "conf": -3.667,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "go",
+   "phones": [
+    "g",
+    "oo"
+   ],
+   "start": 1028,
+   "end": 1039,
+   "line": 4,
+   "word": 8,
+   "conf": -1.583,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "girl",
+   "phones": [
+    "g",
+    "a",
+    "r",
+    "l"
+   ],
+   "start": 1039,
+   "end": 1053,
+   "line": 4,
+   "word": 9,
+   "conf": -1.425,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "i",
+   "phones": [
+    "ai"
+   ],
+   "start": 1053,
+   "end": 1055,
+   "line": 4,
+   "word": 10,
+   "conf": -6.974,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "m",
+   "phones": [
+    "e",
+    "m"
+   ],
+   "start": 1055,
+   "end": 1062,
+   "line": 4,
+   "word": 11,
+   "conf": -5.143,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "gonna",
+   "phones": [
+    "g",
+    "aa"
+   ],
+   "start": 1062,
+   "end": 1066,
+   "line": 4,
+   "word": 12,
+   "conf": -3.577,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "~",
+   "phones": [
+    "n",
+    "a"
+   ],
+   "start": 1066,
+   "end": 1073,
+   "line": 4,
+   "word": 12,
+   "conf": -0.866,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "follow",
+   "phones": [
+    "f",
+    "aa"
+   ],
+   "start": 1073,
+   "end": 1084,
+   "line": 4,
+   "word": 13,
+   "conf": -4.784,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "~",
+   "phones": [
+    "l",
+    "oo"
+   ],
+   "start": 1084,
+   "end": 1097,
+   "line": 4,
+   "word": 13,
+   "conf": -0.934,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "hey",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 1097,
+   "end": 1197,
+   "line": 4,
+   "word": 14,
+   "conf": -6.397,
+   "flags": [
+    "ref+whisper"
+   ]
+  },
+  {
+   "text": "what",
+   "phones": [
+    "v",
+    "a",
+    "T"
+   ],
+   "start": 1197,
+   "end": 1203,
+   "line": 4,
+   "word": 15,
+   "conf": -4.111,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "you",
+   "phones": [
+    "y",
+    "uu"
+   ],
+   "start": 1203,
+   "end": 1208,
+   "line": 4,
+   "word": 16,
+   "conf": -5.169,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "want",
+   "phones": [
+    "v",
+    "aa",
+    "n",
+    "T"
+   ],
+   "start": 1208,
+   "end": 1217,
+   "line": 4,
+   "word": 17,
+   "conf": -5.079,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "girl",
+   "phones": [
+    "g",
+    "a",
+    "r",
+    "l"
+   ],
+   "start": 1217,
+   "end": 1228,
+   "line": 4,
+   "word": 18,
+   "conf": -3.235,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "just",
+   "phones": [
+    "j",
+    "a",
+    "s",
+    "T"
+   ],
+   "start": 1228,
+   "end": 1241,
+   "line": 4,
+   "word": 19,
+   "conf": -3.472,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "let",
+   "phones": [
+    "l",
+    "e",
+    "T"
+   ],
+   "start": 1241,
+   "end": 1253,
+   "line": 4,
+   "word": 20,
+   "conf": -1.092,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "me",
+   "phones": [
+    "m",
+    "ii"
+   ],
+   "start": 1253,
+   "end": 1263,
+   "line": 4,
+   "word": 21,
+   "conf": -2.167,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "know",
+   "phones": [
+    "n",
+    "oo"
+   ],
+   "start": 1263,
+   "end": 1353,
+   "line": 4,
+   "word": 22,
+   "conf": -1.524,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "hey",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 1353,
+   "end": 1377,
+   "line": 4,
+   "word": 23,
+   "conf": -6.375,
+   "flags": [
+    "ref+whisper"
+   ]
+  },
+  {
+   "text": "you",
+   "phones": [
+    "y",
+    "uu"
+   ],
+   "start": 1377,
+   "end": 1382,
+   "line": 4,
+   "word": 24,
+   "conf": -4.643,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "can",
+   "phones": [
+    "k",
+    "ae",
+    "n"
+   ],
+   "start": 1382,
+   "end": 1397,
+   "line": 4,
+   "word": 25,
+   "conf": -3.03,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "be",
+   "phones": [
+    "b",
+    "ii"
+   ],
+   "start": 1397,
+   "end": 1419,
+   "line": 4,
+   "word": 26,
+   "conf": -4.684,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "my",
+   "phones": [
+    "m",
+    "ai"
+   ],
+   "start": 1419,
+   "end": 1430,
+   "line": 4,
+   "word": 27,
+   "conf": -1.541,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "chha",
+   "phones": [
+    "ch",
+    "a"
+   ],
+   "start": 1430,
+   "end": 1438,
+   "line": 4,
+   "word": 28,
+   "conf": -3.893,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "llo",
+   "phones": [
+    "l",
+    "oo"
+   ],
+   "start": 1438,
+   "end": 1476,
+   "line": 4,
+   "word": 28,
+   "conf": -1.318,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "hey",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 1476,
+   "end": 1553,
+   "line": 4,
+   "word": 29,
+   "conf": -7.561,
+   "flags": [
+    "ref+whisper"
+   ]
+  },
+  {
+   "text": "shaw",
+   "phones": [
+    "sh",
+    "a",
+    "v"
+   ],
+   "start": 1553,
+   "end": 1566,
+   "line": 4,
+   "word": 30,
+   "conf": -2.714,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "ty",
+   "phones": [
+    "t",
+    "ii"
+   ],
+   "start": 1566,
+   "end": 1579,
+   "line": 4,
+   "word": 30,
+   "conf": -4.954,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "i",
+   "phones": [
+    "ai"
+   ],
+   "start": 1579,
+   "end": 1582,
+   "line": 4,
+   "word": 31,
+   "conf": -5.788,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "m",
+   "phones": [
+    "e",
+    "m"
+   ],
+   "start": 1582,
+   "end": 1588,
+   "line": 4,
+   "word": 32,
+   "conf": -5.515,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "gonna",
+   "phones": [
+    "g",
+    "aa"
+   ],
+   "start": 1588,
+   "end": 1605,
+   "line": 4,
+   "word": 33,
+   "conf": -1.518,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "~",
+   "phones": [
+    "n",
+    "a"
+   ],
+   "start": 1605,
+   "end": 1611,
+   "line": 4,
+   "word": 33,
+   "conf": -0.79,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "get",
+   "phones": [
+    "g",
+    "e",
+    "T"
+   ],
+   "start": 1611,
+   "end": 1621,
+   "line": 4,
+   "word": 34,
+   "conf": -1.056,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "ya",
+   "phones": [
+    "y",
+    "aa"
+   ],
+   "start": 1621,
+   "end": 1644,
+   "line": 4,
+   "word": 35,
+   "conf": -6.562,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "you",
+   "phones": [
+    "y",
+    "uu"
+   ],
+   "start": 1644,
+   "end": 1655,
+   "line": 4,
+   "word": 36,
+   "conf": -5.839,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "know",
+   "phones": [
+    "n",
+    "oo"
+   ],
+   "start": 1655,
+   "end": 1670,
+   "line": 4,
+   "word": 37,
+   "conf": -1.642,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "i",
+   "phones": [
+    "ai"
+   ],
+   "start": 1670,
+   "end": 1673,
+   "line": 4,
+   "word": 38,
+   "conf": -4.933,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "m",
+   "phones": [
+    "e",
+    "m"
+   ],
+   "start": 1673,
+   "end": 1679,
+   "line": 4,
+   "word": 39,
+   "conf": -4.971,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "gonna",
+   "phones": [
+    "g",
+    "aa"
+   ],
+   "start": 1679,
+   "end": 1695,
+   "line": 4,
+   "word": 40,
+   "conf": -1.076,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "~",
+   "phones": [
+    "n",
+    "a"
+   ],
+   "start": 1695,
+   "end": 1702,
+   "line": 4,
+   "word": 40,
+   "conf": -0.811,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "get",
+   "phones": [
+    "g",
+    "e",
+    "T"
+   ],
+   "start": 1702,
+   "end": 1711,
+   "line": 4,
+   "word": 41,
+   "conf": -1.084,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "ya",
+   "phones": [
+    "y",
+    "aa"
+   ],
+   "start": 1711,
+   "end": 1718,
+   "line": 4,
+   "word": 42,
+   "conf": -7.758,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "hey",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 1718,
+   "end": 1734,
+   "line": 4,
+   "word": 43,
+   "conf": -7.688,
+   "flags": [
+    "ref+whisper"
+   ]
+  },
+  {
+   "text": "you",
+   "phones": [
+    "y",
+    "uu"
+   ],
+   "start": 1734,
+   "end": 1744,
+   "line": 4,
+   "word": 44,
+   "conf": -5.932,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "know",
+   "phones": [
+    "n",
+    "oo"
+   ],
+   "start": 1744,
+   "end": 1759,
+   "line": 4,
+   "word": 45,
+   "conf": -1.688,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "i",
+   "phones": [
+    "ai"
+   ],
+   "start": 1759,
+   "end": 1766,
+   "line": 4,
+   "word": 46,
+   "conf": -5.441,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "ll",
+   "phones": [
+    "l"
+   ],
+   "start": 1766,
+   "end": 1770,
+   "line": 4,
+   "word": 47,
+   "conf": -0.708,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "even",
+   "phones": [
+    "ii"
+   ],
+   "start": 1770,
+   "end": 1777,
+   "line": 4,
+   "word": 48,
+   "conf": -3.312,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "~",
+   "phones": [
+    "v",
+    "i",
+    "n"
+   ],
+   "start": 1777,
+   "end": 1788,
+   "line": 4,
+   "word": 48,
+   "conf": -2.734,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "let",
+   "phones": [
+    "l",
+    "e",
+    "T"
+   ],
+   "start": 1788,
+   "end": 1802,
+   "line": 4,
+   "word": 49,
+   "conf": -2.939,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "you",
+   "phones": [
+    "y",
+    "uu"
+   ],
+   "start": 1802,
+   "end": 1811,
+   "line": 4,
+   "word": 50,
+   "conf": -4.956,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "let",
+   "phones": [
+    "l",
+    "e",
+    "T"
+   ],
+   "start": 1811,
+   "end": 1824,
+   "line": 4,
+   "word": 51,
+   "conf": -3.48,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "you",
+   "phones": [
+    "y",
+    "uu"
+   ],
+   "start": 1824,
+   "end": 1825,
+   "line": 4,
+   "word": 52,
+   "conf": -5.378,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "लेच्",
+   "phones": [
+    "l",
+    "ee",
+    "c"
+   ],
+   "start": 1825,
+   "end": 1834,
+   "line": 5,
+   "word": 0,
+   "conf": -1.829,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "पी",
+   "phones": [
+    "p",
+    "ii"
+   ],
+   "start": 1834,
+   "end": 1846,
+   "line": 5,
+   "word": 0,
+   "conf": -3.106,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "मच",
+   "phones": [
+    "m",
+    "a",
+    "c"
+   ],
+   "start": 1846,
+   "end": 1867,
+   "line": 5,
+   "word": 1,
+   "conf": -0.791,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "मक",
+   "phones": [
+    "m",
+    "a",
+    "k"
+   ],
+   "start": 1867,
+   "end": 1879,
+   "line": 5,
+   "word": 1,
+   "conf": -0.727,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "च",
+   "phones": [
+    "c",
+    "a"
+   ],
+   "start": 1879,
+   "end": 1886,
+   "line": 5,
+   "word": 2,
+   "conf": -0.935,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "लो",
+   "phones": [
+    "l",
+    "oo"
+   ],
+   "start": 1886,
+   "end": 1913,
+   "line": 5,
+   "word": 2,
+   "conf": -4.14,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "कै",
+   "phones": [
+    "k",
+    "E"
+   ],
+   "start": 1913,
+   "end": 1923,
+   "line": 5,
+   "word": 3,
+   "conf": -3.215,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "सा",
+   "phones": [
+    "s",
+    "aa"
+   ],
+   "start": 1923,
+   "end": 1934,
+   "line": 5,
+   "word": 3,
+   "conf": -2.13,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "शर्",
+   "phones": [
+    "sh",
+    "a",
+    "r"
+   ],
+   "start": 1934,
+   "end": 1946,
+   "line": 5,
+   "word": 4,
+   "conf": -0.731,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "मा",
+   "phones": [
+    "m",
+    "aa"
+   ],
+   "start": 1946,
+   "end": 1958,
+   "line": 5,
+   "word": 4,
+   "conf": -1.871,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "ना",
+   "phones": [
+    "n",
+    "aa"
+   ],
+   "start": 1958,
+   "end": 1972,
+   "line": 5,
+   "word": 4,
+   "conf": -2.289,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "आ",
+   "phones": [
+    "aa"
+   ],
+   "start": 1972,
+   "end": 1979,
+   "line": 5,
+   "word": 5,
+   "conf": -3.179,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 1979,
+   "end": 1992,
+   "line": 5,
+   "word": 5,
+   "conf": -1.97,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "नच",
+   "phones": [
+    "n",
+    "a",
+    "c"
+   ],
+   "start": 1992,
+   "end": 2013,
+   "line": 5,
+   "word": 6,
+   "conf": -0.743,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "ke",
+   "phones": [
+    "k",
+    "e"
+   ],
+   "start": 2013,
+   "end": 2025,
+   "line": 5,
+   "word": 7,
+   "conf": -1.104,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "दि",
+   "phones": [
+    "d",
+    "i"
+   ],
+   "start": 2025,
+   "end": 2035,
+   "line": 5,
+   "word": 8,
+   "conf": -0.78,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "खा",
+   "phones": [
+    "kh",
+    "aa"
+   ],
+   "start": 2035,
+   "end": 2061,
+   "line": 5,
+   "word": 8,
+   "conf": -2.148,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "de",
+   "phones": [
+    "D",
+    "ii"
+   ],
+   "start": 2061,
+   "end": 2096,
+   "line": 5,
+   "word": 9,
+   "conf": -5.769,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "आ",
+   "phones": [
+    "aa"
+   ],
+   "start": 2096,
+   "end": 2104,
+   "line": 5,
+   "word": 10,
+   "conf": -2.2,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "मे",
+   "phones": [
+    "m",
+    "ee"
+   ],
+   "start": 2104,
+   "end": 2115,
+   "line": 5,
+   "word": 10,
+   "conf": -2.348,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "री",
+   "phones": [
+    "r",
+    "ii"
+   ],
+   "start": 2115,
+   "end": 2137,
+   "line": 5,
+   "word": 10,
+   "conf": -3.027,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "le",
+   "phones": [
+    "l",
+    "a"
+   ],
+   "start": 2137,
+   "end": 2151,
+   "line": 5,
+   "word": 11,
+   "conf": -1.681,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "आ",
+   "phones": [
+    "aa"
+   ],
+   "start": 2151,
+   "end": 2158,
+   "line": 5,
+   "word": 12,
+   "conf": -2.611,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 2158,
+   "end": 2171,
+   "line": 5,
+   "word": 12,
+   "conf": -1.96,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "बा",
+   "phones": [
+    "b",
+    "aa"
+   ],
+   "start": 2171,
+   "end": 2183,
+   "line": 5,
+   "word": 13,
+   "conf": -2.829,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "रि",
+   "phones": [
+    "r",
+    "i"
+   ],
+   "start": 2183,
+   "end": 2193,
+   "line": 5,
+   "word": 13,
+   "conf": -0.785,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "दा",
+   "phones": [
+    "d",
+    "aa"
+   ],
+   "start": 2193,
+   "end": 2205,
+   "line": 5,
+   "word": 13,
+   "conf": -1.335,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "गि",
+   "phones": [
+    "g",
+    "i"
+   ],
+   "start": 2205,
+   "end": 2216,
+   "line": 5,
+   "word": 14,
+   "conf": -1.166,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 2216,
+   "end": 2240,
+   "line": 5,
+   "word": 14,
+   "conf": -1.547,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "de",
+   "phones": [
+    "D",
+    "ii"
+   ],
+   "start": 2240,
+   "end": 2274,
+   "line": 5,
+   "word": 15,
+   "conf": -5.564,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "आ",
+   "phones": [
+    "aa"
+   ],
+   "start": 2274,
+   "end": 2282,
+   "line": 5,
+   "word": 16,
+   "conf": -2.46,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "मे",
+   "phones": [
+    "m",
+    "ee"
+   ],
+   "start": 2282,
+   "end": 2294,
+   "line": 5,
+   "word": 16,
+   "conf": -2.355,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "री",
+   "phones": [
+    "r",
+    "ii"
+   ],
+   "start": 2294,
+   "end": 2308,
+   "line": 5,
+   "word": 16,
+   "conf": -1.919,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "अ",
+   "phones": [
+    "a"
+   ],
+   "start": 2308,
+   "end": 2315,
+   "line": 5,
+   "word": 17,
+   "conf": -0.751,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "की",
+   "phones": [
+    "k",
+    "ii"
+   ],
+   "start": 2315,
+   "end": 2337,
+   "line": 5,
+   "word": 17,
+   "conf": -3.767,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "se",
+   "phones": [
+    "s",
+    "ee"
+   ],
+   "start": 2337,
+   "end": 2352,
+   "line": 5,
+   "word": 18,
+   "conf": -2.168,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "अ",
+   "phones": [
+    "a"
+   ],
+   "start": 2352,
+   "end": 2360,
+   "line": 5,
+   "word": 19,
+   "conf": -0.74,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "की",
+   "phones": [
+    "k",
+    "ii"
+   ],
+   "start": 2360,
+   "end": 2381,
+   "line": 5,
+   "word": 19,
+   "conf": -3.754,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "mila",
+   "phones": [
+    "m",
+    "ai"
+   ],
+   "start": 2381,
+   "end": 2394,
+   "line": 5,
+   "word": 20,
+   "conf": -2.922,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "~",
+   "phones": [
+    "l",
+    "a"
+   ],
+   "start": 2394,
+   "end": 2418,
+   "line": 5,
+   "word": 20,
+   "conf": -0.789,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "hey",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 2418,
+   "end": 2451,
+   "line": 5,
+   "word": 21,
+   "conf": -4.698,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "haan",
+   "phones": [
+    "h",
+    "aa",
+    "n"
+   ],
+   "start": 2451,
+   "end": 2462,
+   "line": 5,
+   "word": 22,
+   "conf": -3.746,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "tu",
+   "phones": [
+    "T",
+    "uu"
+   ],
+   "start": 2462,
+   "end": 2473,
+   "line": 5,
+   "word": 23,
+   "conf": -2.942,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "na",
+   "phones": [
+    "n",
+    "aa"
+   ],
+   "start": 2473,
+   "end": 2507,
+   "line": 5,
+   "word": 24,
+   "conf": -0.723,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "रे",
+   "phones": [
+    "r",
+    "ee"
+   ],
+   "start": 2507,
+   "end": 2519,
+   "line": 5,
+   "word": 25,
+   "conf": -2.16,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "दि",
+   "phones": [
+    "d",
+    "i"
+   ],
+   "start": 2519,
+   "end": 2530,
+   "line": 5,
+   "word": 26,
+   "conf": -0.788,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "खा",
+   "phones": [
+    "kh",
+    "aa"
+   ],
+   "start": 2530,
+   "end": 2551,
+   "line": 5,
+   "word": 26,
+   "conf": -3.987,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "wanna",
+   "phones": [
+    "v",
+    "aa"
+   ],
+   "start": 2551,
+   "end": 2634,
+   "line": 5,
+   "word": 27,
+   "conf": -8.395,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "~",
+   "phones": [
+    "n",
+    "a"
+   ],
+   "start": 2634,
+   "end": 2637,
+   "line": 5,
+   "word": 27,
+   "conf": -7.002,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "my",
+   "phones": [
+    "m",
+    "ai"
+   ],
+   "start": 2637,
+   "end": 2651,
+   "line": 5,
+   "word": 28,
+   "conf": -9.51,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "मच",
+   "phones": [
+    "m",
+    "a",
+    "c"
+   ],
+   "start": 2651,
+   "end": 2673,
+   "line": 5,
+   "word": 29,
+   "conf": -8.635,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "मक",
+   "phones": [
+    "m",
+    "a",
+    "k"
+   ],
+   "start": 2673,
+   "end": 2683,
+   "line": 5,
+   "word": 29,
+   "conf": -7.497,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "च",
+   "phones": [
+    "c",
+    "a"
+   ],
+   "start": 2683,
+   "end": 2695,
+   "line": 5,
+   "word": 30,
+   "conf": -8.495,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "लो",
+   "phones": [
+    "l",
+    "oo"
+   ],
+   "start": 2695,
+   "end": 2830,
+   "line": 5,
+   "word": 30,
+   "conf": -7.365,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "मा",
+   "phones": [
+    "m",
+    "aa"
+   ],
+   "start": 2830,
+   "end": 2841,
+   "line": 6,
+   "word": 0,
+   "conf": -7.001,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "चा",
+   "phones": [
+    "c",
+    "aa"
+   ],
+   "start": 2841,
+   "end": 2852,
+   "line": 6,
+   "word": 0,
+   "conf": -7.807,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "मा",
+   "phones": [
+    "m",
+    "aa"
+   ],
+   "start": 2852,
+   "end": 2862,
+   "line": 6,
+   "word": 1,
+   "conf": -7.497,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "चा",
+   "phones": [
+    "c",
+    "aa"
+   ],
+   "start": 2862,
+   "end": 2875,
+   "line": 6,
+   "word": 1,
+   "conf": -7.528,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "लो",
+   "phones": [
+    "l",
+    "oo"
+   ],
+   "start": 2875,
+   "end": 2922,
+   "line": 6,
+   "word": 2,
+   "conf": -7.901,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "ओ",
+   "phones": [
+    "oo"
+   ],
+   "start": 2922,
+   "end": 2948,
+   "line": 6,
+   "word": 3,
+   "conf": -9.75,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "ओ",
+   "phones": [
+    "oo"
+   ],
+   "start": 2948,
+   "end": 2986,
+   "line": 6,
+   "word": 4,
+   "conf": -9.918,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "वा",
+   "phones": [
+    "v",
+    "aa"
+   ],
+   "start": 2986,
+   "end": 2992,
+   "line": 6,
+   "word": 5,
+   "conf": -8.135,
+   "flags": [
+    "asr+whisper"
+   ]
+  },
+  {
+   "text": "ना",
+   "phones": [
+    "n",
+    "aa"
+   ],
+   "start": 2992,
+   "end": 2999,
+   "line": 6,
+   "word": 5,
+   "conf": -6.659,
+   "flags": [
+    "asr+whisper"
+   ]
+  },
+  {
+   "text": "भी",
+   "phones": [
+    "bh",
+    "ii"
+   ],
+   "start": 2999,
+   "end": 3009,
+   "line": 6,
+   "word": 6,
+   "conf": -6.964,
+   "flags": [
+    "asr+whisper"
+   ]
+  },
+  {
+   "text": "मा",
+   "phones": [
+    "m",
+    "aa"
+   ],
+   "start": 3009,
+   "end": 3020,
+   "line": 6,
+   "word": 7,
+   "conf": -7.277,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "चा",
+   "phones": [
+    "c",
+    "aa"
+   ],
+   "start": 3020,
+   "end": 3031,
+   "line": 6,
+   "word": 7,
+   "conf": -8.586,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "मा",
+   "phones": [
+    "m",
+    "aa"
+   ],
+   "start": 3031,
+   "end": 3042,
+   "line": 6,
+   "word": 8,
+   "conf": -7.495,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "चा",
+   "phones": [
+    "c",
+    "aa"
+   ],
+   "start": 3042,
+   "end": 3050,
+   "line": 6,
+   "word": 8,
+   "conf": -8.268,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "लो",
+   "phones": [
+    "l",
+    "oo"
+   ],
+   "start": 3050,
+   "end": 3101,
+   "line": 6,
+   "word": 9,
+   "conf": -8.249,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "ओ",
+   "phones": [
+    "oo"
+   ],
+   "start": 3101,
+   "end": 3142,
+   "line": 6,
+   "word": 10,
+   "conf": -7.775,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "ओ",
+   "phones": [
+    "oo"
+   ],
+   "start": 3142,
+   "end": 3165,
+   "line": 6,
+   "word": 11,
+   "conf": -9.039,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "वा",
+   "phones": [
+    "v",
+    "aa"
+   ],
+   "start": 3165,
+   "end": 3171,
+   "line": 6,
+   "word": 12,
+   "conf": -7.023,
+   "flags": [
+    "asr+whisper"
+   ]
+  },
+  {
+   "text": "ना",
+   "phones": [
+    "n",
+    "aa"
+   ],
+   "start": 3171,
+   "end": 3178,
+   "line": 6,
+   "word": 12,
+   "conf": -6.516,
+   "flags": [
+    "asr+whisper"
+   ]
+  },
+  {
+   "text": "भी",
+   "phones": [
+    "bh",
+    "ii"
+   ],
+   "start": 3178,
+   "end": 3188,
+   "line": 6,
+   "word": 13,
+   "conf": -5.914,
+   "flags": [
+    "asr+whisper"
+   ]
+  },
+  {
+   "text": "मा",
+   "phones": [
+    "m",
+    "aa"
+   ],
+   "start": 3188,
+   "end": 3221,
+   "line": 6,
+   "word": 14,
+   "conf": -5.935,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "चा",
+   "phones": [
+    "c",
+    "aa"
+   ],
+   "start": 3221,
+   "end": 3265,
+   "line": 6,
+   "word": 14,
+   "conf": -5.372,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "मा",
+   "phones": [
+    "m",
+    "aa"
+   ],
+   "start": 3265,
+   "end": 3276,
+   "line": 6,
+   "word": 15,
+   "conf": -7.38,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "चा",
+   "phones": [
+    "c",
+    "aa"
+   ],
+   "start": 3276,
+   "end": 3359,
+   "line": 6,
+   "word": 15,
+   "conf": -6.406,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 3359,
+   "end": 3389,
+   "line": -1,
+   "word": -1,
+   "conf": 0.352,
+   "flags": [
+    "vocable",
+    "vocable"
+   ]
+  },
+  {
+   "text": "hey",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 3424,
+   "end": 3460,
+   "line": 7,
+   "word": 0,
+   "conf": -6.884,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "hey",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 3513,
+   "end": 3554,
+   "line": 8,
+   "word": 0,
+   "conf": -6.837,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "tu",
+   "phones": [
+    "T",
+    "uu"
+   ],
+   "start": 3693,
+   "end": 3716,
+   "line": 9,
+   "word": 0,
+   "conf": -1.803,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "मे",
+   "phones": [
+    "m",
+    "ee"
+   ],
+   "start": 3716,
+   "end": 3727,
+   "line": 9,
+   "word": 1,
+   "conf": -1.075,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "री",
+   "phones": [
+    "r",
+    "ii"
+   ],
+   "start": 3727,
+   "end": 3736,
+   "line": 9,
+   "word": 1,
+   "conf": -1.081,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "च",
+   "phones": [
+    "c",
+    "a"
+   ],
+   "start": 3736,
+   "end": 3744,
+   "line": 9,
+   "word": 2,
+   "conf": -1.216,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "मक",
+   "phones": [
+    "m",
+    "a",
+    "k"
+   ],
+   "start": 3744,
+   "end": 3759,
+   "line": 9,
+   "word": 2,
+   "conf": -1.111,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "च",
+   "phones": [
+    "c",
+    "a"
+   ],
+   "start": 3759,
+   "end": 3767,
+   "line": 9,
+   "word": 3,
+   "conf": -1.443,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "लो",
+   "phones": [
+    "l",
+    "oo"
+   ],
+   "start": 3767,
+   "end": 3883,
+   "line": 9,
+   "word": 3,
+   "conf": -1.951,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "teri",
+   "phones": [
+    "T",
+    "e"
+   ],
+   "start": 3883,
+   "end": 3888,
+   "line": 9,
+   "word": 4,
+   "conf": -0.829,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "~",
+   "phones": [
+    "r",
+    "ii"
+   ],
+   "start": 3888,
+   "end": 3894,
+   "line": 9,
+   "word": 4,
+   "conf": -1.796,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "पिक्",
+   "phones": [
+    "p",
+    "i",
+    "k"
+   ],
+   "start": 3894,
+   "end": 3904,
+   "line": 9,
+   "word": 5,
+   "conf": -1.318,
+   "flags": [
+    "asr+whisper"
+   ]
+  },
+  {
+   "text": "चर",
+   "phones": [
+    "c",
+    "a",
+    "r"
+   ],
+   "start": 3904,
+   "end": 3915,
+   "line": 9,
+   "word": 5,
+   "conf": -1.019,
+   "flags": [
+    "asr+whisper"
+   ]
+  },
+  {
+   "text": "ka",
+   "phones": [
+    "k",
+    "aa"
+   ],
+   "start": 3915,
+   "end": 3927,
+   "line": 9,
+   "word": 6,
+   "conf": -0.929,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "main",
+   "phones": [
+    "m",
+    "ee",
+    "n"
+   ],
+   "start": 3927,
+   "end": 3939,
+   "line": 9,
+   "word": 7,
+   "conf": -2.965,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "hero",
+   "phones": [
+    "h",
+    "i"
+   ],
+   "start": 3939,
+   "end": 3952,
+   "line": 9,
+   "word": 8,
+   "conf": -3.357,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "~",
+   "phones": [
+    "r",
+    "oo"
+   ],
+   "start": 3952,
+   "end": 4061,
+   "line": 9,
+   "word": 8,
+   "conf": -1.37,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "give",
+   "phones": [
+    "g",
+    "i",
+    "v"
+   ],
+   "start": 4061,
+   "end": 4072,
+   "line": 9,
+   "word": 9,
+   "conf": -2.423,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "टू",
+   "phones": [
+    "T",
+    "uu"
+   ],
+   "start": 4072,
+   "end": 4078,
+   "line": 9,
+   "word": 10,
+   "conf": -2.725,
+   "flags": [
+    "asr+whisper"
+   ]
+  },
+  {
+   "text": "me",
+   "phones": [
+    "m",
+    "ii"
+   ],
+   "start": 4078,
+   "end": 4085,
+   "line": 9,
+   "word": 11,
+   "conf": -1.582,
+   "flags": [
+    "ref+whisper"
+   ]
+  },
+  {
+   "text": "जल्द",
+   "phones": [
+    "j",
+    "a",
+    "l",
+    "d"
+   ],
+   "start": 4085,
+   "end": 4096,
+   "line": 9,
+   "word": 12,
+   "conf": -3.825,
+   "flags": [
+    "asr+whisper"
+   ]
+  },
+  {
+   "text": "मुझ",
+   "phones": [
+    "m",
+    "u",
+    "jh"
+   ],
+   "start": 4096,
+   "end": 4108,
+   "line": 9,
+   "word": 13,
+   "conf": -2.025,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "को",
+   "phones": [
+    "k",
+    "oo"
+   ],
+   "start": 4108,
+   "end": 4119,
+   "line": 9,
+   "word": 13,
+   "conf": -1.626,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "de",
+   "phones": [
+    "D",
+    "ii"
+   ],
+   "start": 4119,
+   "end": 4131,
+   "line": 9,
+   "word": 14,
+   "conf": -3.044,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "do",
+   "phones": [
+    "D",
+    "uu"
+   ],
+   "start": 4131,
+   "end": 4242,
+   "line": 9,
+   "word": 15,
+   "conf": -3.183,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "you",
+   "phones": [
+    "y",
+    "uu"
+   ],
+   "start": 4242,
+   "end": 4248,
+   "line": 9,
+   "word": 16,
+   "conf": -4.379,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "can",
+   "phones": [
+    "k",
+    "ae",
+    "n"
+   ],
+   "start": 4248,
+   "end": 4275,
+   "line": 9,
+   "word": 17,
+   "conf": -3.207,
+   "flags": [
+    "ref+whisper"
+   ]
+  },
+  {
+   "text": "chha",
+   "phones": [
+    "ch",
+    "a"
+   ],
+   "start": 4275,
+   "end": 4286,
+   "line": 9,
+   "word": 18,
+   "conf": -1.603,
+   "flags": [
+    "ref+whisper"
+   ]
+  },
+  {
+   "text": "mmak",
+   "phones": [
+    "m",
+    "a",
+    "k"
+   ],
+   "start": 4286,
+   "end": 4298,
+   "line": 9,
+   "word": 18,
+   "conf": -0.746,
+   "flags": [
+    "ref+whisper"
+   ]
+  },
+  {
+   "text": "च",
+   "phones": [
+    "c",
+    "a"
+   ],
+   "start": 4298,
+   "end": 4310,
+   "line": 9,
+   "word": 19,
+   "conf": -0.898,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "लो",
+   "phones": [
+    "l",
+    "oo"
+   ],
+   "start": 4310,
+   "end": 4345,
+   "line": 9,
+   "word": 19,
+   "conf": -1.913,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "आ",
+   "phones": [
+    "aa"
+   ],
+   "start": 4345,
+   "end": 4386,
+   "line": -1,
+   "word": -1,
+   "conf": 0.614,
+   "flags": [
+    "vocable",
+    "vocable"
+   ]
+  },
+  {
+   "text": "शॉ",
+   "phones": [
+    "sh",
+    "O"
+   ],
+   "start": 4410,
+   "end": 4432,
+   "line": 9,
+   "word": 20,
+   "conf": -2.403,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "री",
+   "phones": [
+    "r",
+    "ii"
+   ],
+   "start": 4432,
+   "end": 4445,
+   "line": 9,
+   "word": 20,
+   "conf": -1.945,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "i",
+   "phones": [
+    "ai"
+   ],
+   "start": 4445,
+   "end": 4449,
+   "line": 9,
+   "word": 21,
+   "conf": -5.418,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "m",
+   "phones": [
+    "e",
+    "m"
+   ],
+   "start": 4449,
+   "end": 4454,
+   "line": 9,
+   "word": 22,
+   "conf": -5.517,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "gonna",
+   "phones": [
+    "g",
+    "aa"
+   ],
+   "start": 4454,
+   "end": 4466,
+   "line": 9,
+   "word": 23,
+   "conf": -1.572,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "~",
+   "phones": [
+    "n",
+    "a"
+   ],
+   "start": 4466,
+   "end": 4477,
+   "line": 9,
+   "word": 23,
+   "conf": -2.629,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "get",
+   "phones": [
+    "g",
+    "e",
+    "T"
+   ],
+   "start": 4477,
+   "end": 4488,
+   "line": 9,
+   "word": 24,
+   "conf": -5.258,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "ya",
+   "phones": [
+    "y",
+    "aa"
+   ],
+   "start": 4488,
+   "end": 4503,
+   "line": 9,
+   "word": 25,
+   "conf": -4.949,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "you",
+   "phones": [
+    "y",
+    "uu"
+   ],
+   "start": 4510,
+   "end": 4521,
+   "line": 9,
+   "word": 26,
+   "conf": -6.256,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "know",
+   "phones": [
+    "n",
+    "oo"
+   ],
+   "start": 4521,
+   "end": 4535,
+   "line": 9,
+   "word": 27,
+   "conf": -1.617,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "i",
+   "phones": [
+    "ai"
+   ],
+   "start": 4535,
+   "end": 4538,
+   "line": 9,
+   "word": 28,
+   "conf": -5.183,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "m",
+   "phones": [
+    "e",
+    "m"
+   ],
+   "start": 4538,
+   "end": 4544,
+   "line": 9,
+   "word": 29,
+   "conf": -5.701,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "gonna",
+   "phones": [
+    "g",
+    "aa"
+   ],
+   "start": 4544,
+   "end": 4560,
+   "line": 9,
+   "word": 30,
+   "conf": -1.538,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "~",
+   "phones": [
+    "n",
+    "a"
+   ],
+   "start": 4560,
+   "end": 4566,
+   "line": 9,
+   "word": 30,
+   "conf": -3.165,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "get",
+   "phones": [
+    "g",
+    "e",
+    "T"
+   ],
+   "start": 4566,
+   "end": 4577,
+   "line": 9,
+   "word": 31,
+   "conf": -4.08,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "ya",
+   "phones": [
+    "y",
+    "aa"
+   ],
+   "start": 4577,
+   "end": 4600,
+   "line": 9,
+   "word": 32,
+   "conf": -5.844,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "maybe",
+   "phones": [
+    "m",
+    "ee"
+   ],
+   "start": 4600,
+   "end": 4611,
+   "line": 9,
+   "word": 33,
+   "conf": -1.874,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "~",
+   "phones": [
+    "b",
+    "ii"
+   ],
+   "start": 4611,
+   "end": 4624,
+   "line": 9,
+   "word": 33,
+   "conf": -2.246,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "i",
+   "phones": [
+    "ai"
+   ],
+   "start": 4624,
+   "end": 4633,
+   "line": 9,
+   "word": 34,
+   "conf": -5.414,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "ll",
+   "phones": [
+    "l"
+   ],
+   "start": 4633,
+   "end": 4637,
+   "line": 9,
+   "word": 35,
+   "conf": -0.702,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "even",
+   "phones": [
+    "ii"
+   ],
+   "start": 4637,
+   "end": 4644,
+   "line": 9,
+   "word": 36,
+   "conf": -1.755,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "~",
+   "phones": [
+    "v",
+    "i",
+    "n"
+   ],
+   "start": 4644,
+   "end": 4656,
+   "line": 9,
+   "word": 36,
+   "conf": -3.404,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "let",
+   "phones": [
+    "l",
+    "e",
+    "T"
+   ],
+   "start": 4656,
+   "end": 4666,
+   "line": 9,
+   "word": 37,
+   "conf": -4.219,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "you",
+   "phones": [
+    "y",
+    "uu"
+   ],
+   "start": 4666,
+   "end": 4676,
+   "line": 9,
+   "word": 38,
+   "conf": -9.109,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "be",
+   "phones": [
+    "b",
+    "ii"
+   ],
+   "start": 4676,
+   "end": 4689,
+   "line": 9,
+   "word": 39,
+   "conf": -2.177,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "my",
+   "phones": [
+    "m",
+    "ai"
+   ],
+   "start": 4689,
+   "end": 4698,
+   "line": 9,
+   "word": 40,
+   "conf": -3.671,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "च",
+   "phones": [
+    "c",
+    "a"
+   ],
+   "start": 4698,
+   "end": 4710,
+   "line": 9,
+   "word": 41,
+   "conf": -0.752,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "मक",
+   "phones": [
+    "m",
+    "a",
+    "k"
+   ],
+   "start": 4710,
+   "end": 4721,
+   "line": 9,
+   "word": 41,
+   "conf": -0.701,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "च",
+   "phones": [
+    "c",
+    "a"
+   ],
+   "start": 4721,
+   "end": 4728,
+   "line": 9,
+   "word": 42,
+   "conf": -0.861,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "मक",
+   "phones": [
+    "m",
+    "a",
+    "k"
+   ],
+   "start": 4728,
+   "end": 4729,
+   "line": 9,
+   "word": 42,
+   "conf": -6.629,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "मक्",
+   "phones": [
+    "m",
+    "a",
+    "k"
+   ],
+   "start": 4729,
+   "end": 4730,
+   "line": 10,
+   "word": 0,
+   "conf": -0.701,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "ष",
+   "phones": [
+    "sh",
+    "a"
+   ],
+   "start": 4730,
+   "end": 4732,
+   "line": 10,
+   "word": 0,
+   "conf": -1.462,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "मक",
+   "phones": [
+    "m",
+    "a",
+    "k"
+   ],
+   "start": 4732,
+   "end": 4744,
+   "line": 10,
+   "word": 0,
+   "conf": -0.71,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "च",
+   "phones": [
+    "c",
+    "a"
+   ],
+   "start": 4744,
+   "end": 4756,
+   "line": 10,
+   "word": 1,
+   "conf": -0.84,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "लो",
+   "phones": [
+    "l",
+    "oo"
+   ],
+   "start": 4756,
+   "end": 4779,
+   "line": 10,
+   "word": 1,
+   "conf": -3.547,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "कै",
+   "phones": [
+    "k",
+    "E"
+   ],
+   "start": 4779,
+   "end": 4789,
+   "line": 10,
+   "word": 2,
+   "conf": -3.158,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "सा",
+   "phones": [
+    "s",
+    "aa"
+   ],
+   "start": 4789,
+   "end": 4799,
+   "line": 10,
+   "word": 2,
+   "conf": -2.634,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "शर्",
+   "phones": [
+    "sh",
+    "a",
+    "r"
+   ],
+   "start": 4799,
+   "end": 4812,
+   "line": 10,
+   "word": 3,
+   "conf": -0.739,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "मा",
+   "phones": [
+    "m",
+    "aa"
+   ],
+   "start": 4812,
+   "end": 4823,
+   "line": 10,
+   "word": 3,
+   "conf": -1.909,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "ना",
+   "phones": [
+    "n",
+    "aa"
+   ],
+   "start": 4823,
+   "end": 4838,
+   "line": 10,
+   "word": 3,
+   "conf": -2.361,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "आ",
+   "phones": [
+    "aa"
+   ],
+   "start": 4838,
+   "end": 4845,
+   "line": 10,
+   "word": 4,
+   "conf": -3.027,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 4845,
+   "end": 4858,
+   "line": 10,
+   "word": 4,
+   "conf": -1.91,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "नच",
+   "phones": [
+    "n",
+    "a",
+    "c"
+   ],
+   "start": 4858,
+   "end": 4879,
+   "line": 10,
+   "word": 5,
+   "conf": -0.726,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "ke",
+   "phones": [
+    "k",
+    "e"
+   ],
+   "start": 4879,
+   "end": 4891,
+   "line": 10,
+   "word": 6,
+   "conf": -0.842,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "de",
+   "phones": [
+    "D",
+    "ii"
+   ],
+   "start": 4891,
+   "end": 4905,
+   "line": 10,
+   "word": 7,
+   "conf": -4.017,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "आ",
+   "phones": [
+    "aa"
+   ],
+   "start": 4905,
+   "end": 4970,
+   "line": 10,
+   "word": 8,
+   "conf": -0.734,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "मे",
+   "phones": [
+    "m",
+    "ee"
+   ],
+   "start": 4970,
+   "end": 4981,
+   "line": 10,
+   "word": 9,
+   "conf": -2.196,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "री",
+   "phones": [
+    "r",
+    "ii"
+   ],
+   "start": 4981,
+   "end": 5002,
+   "line": 10,
+   "word": 9,
+   "conf": -2.836,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "le",
+   "phones": [
+    "l",
+    "a"
+   ],
+   "start": 5002,
+   "end": 5016,
+   "line": 10,
+   "word": 10,
+   "conf": -2.68,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "आ",
+   "phones": [
+    "aa"
+   ],
+   "start": 5016,
+   "end": 5024,
+   "line": 10,
+   "word": 11,
+   "conf": -2.159,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 5024,
+   "end": 5036,
+   "line": 10,
+   "word": 11,
+   "conf": -2.001,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "पा",
+   "phones": [
+    "p",
+    "aa"
+   ],
+   "start": 5036,
+   "end": 5048,
+   "line": 10,
+   "word": 12,
+   "conf": -1.808,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "रि",
+   "phones": [
+    "r",
+    "i"
+   ],
+   "start": 5048,
+   "end": 5059,
+   "line": 10,
+   "word": 12,
+   "conf": -0.757,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "दा",
+   "phones": [
+    "d",
+    "aa"
+   ],
+   "start": 5059,
+   "end": 5071,
+   "line": 10,
+   "word": 12,
+   "conf": -1.334,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "गि",
+   "phones": [
+    "g",
+    "i"
+   ],
+   "start": 5071,
+   "end": 5082,
+   "line": 10,
+   "word": 13,
+   "conf": -0.877,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 5082,
+   "end": 5105,
+   "line": 10,
+   "word": 13,
+   "conf": -1.601,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "de",
+   "phones": [
+    "D",
+    "ii"
+   ],
+   "start": 5105,
+   "end": 5139,
+   "line": 10,
+   "word": 14,
+   "conf": -5.705,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "आ",
+   "phones": [
+    "aa"
+   ],
+   "start": 5139,
+   "end": 5148,
+   "line": 10,
+   "word": 15,
+   "conf": -2.387,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "मे",
+   "phones": [
+    "m",
+    "ee"
+   ],
+   "start": 5148,
+   "end": 5160,
+   "line": 10,
+   "word": 16,
+   "conf": -1.713,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "री",
+   "phones": [
+    "r",
+    "ii"
+   ],
+   "start": 5160,
+   "end": 5170,
+   "line": 10,
+   "word": 16,
+   "conf": -2.913,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "य",
+   "phones": [
+    "y",
+    "a"
+   ],
+   "start": 5170,
+   "end": 5181,
+   "line": 10,
+   "word": 17,
+   "conf": -0.898,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "कीन",
+   "phones": [
+    "k",
+    "ii",
+    "n"
+   ],
+   "start": 5181,
+   "end": 5203,
+   "line": 10,
+   "word": 17,
+   "conf": -2.18,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "se",
+   "phones": [
+    "s",
+    "ee"
+   ],
+   "start": 5203,
+   "end": 5215,
+   "line": 10,
+   "word": 18,
+   "conf": -2.203,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "य",
+   "phones": [
+    "y",
+    "a"
+   ],
+   "start": 5215,
+   "end": 5226,
+   "line": 10,
+   "word": 19,
+   "conf": -0.981,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "कीन",
+   "phones": [
+    "k",
+    "ii",
+    "n"
+   ],
+   "start": 5226,
+   "end": 5236,
+   "line": 10,
+   "word": 19,
+   "conf": -2.554,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "mila",
+   "phones": [
+    "m",
+    "ai"
+   ],
+   "start": 5236,
+   "end": 5260,
+   "line": 10,
+   "word": 20,
+   "conf": -2.384,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "~",
+   "phones": [
+    "l",
+    "a"
+   ],
+   "start": 5260,
+   "end": 5283,
+   "line": 10,
+   "word": 20,
+   "conf": -0.795,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "hey",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 5283,
+   "end": 5316,
+   "line": 10,
+   "word": 21,
+   "conf": -5.941,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "haan",
+   "phones": [
+    "h",
+    "aa",
+    "n"
+   ],
+   "start": 5316,
+   "end": 5339,
+   "line": 10,
+   "word": 22,
+   "conf": -2.986,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "na",
+   "phones": [
+    "n",
+    "aa"
+   ],
+   "start": 5339,
+   "end": 5350,
+   "line": 10,
+   "word": 23,
+   "conf": -2.218,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "न",
+   "phones": [
+    "n",
+    "a"
+   ],
+   "start": 5350,
+   "end": 5361,
+   "line": 10,
+   "word": 24,
+   "conf": -0.699,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "खी",
+   "phones": [
+    "kh",
+    "ii"
+   ],
+   "start": 5361,
+   "end": 5373,
+   "line": 10,
+   "word": 24,
+   "conf": -3.107,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "रे",
+   "phones": [
+    "r",
+    "ee"
+   ],
+   "start": 5373,
+   "end": 5384,
+   "line": 10,
+   "word": 24,
+   "conf": -2.233,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "दि",
+   "phones": [
+    "d",
+    "i"
+   ],
+   "start": 5384,
+   "end": 5396,
+   "line": 10,
+   "word": 25,
+   "conf": -0.888,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "खा",
+   "phones": [
+    "kh",
+    "aa"
+   ],
+   "start": 5396,
+   "end": 5551,
+   "line": 10,
+   "word": 25,
+   "conf": -3.63,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "आ",
+   "phones": [
+    "aa"
+   ],
+   "start": 5551,
+   "end": 5674,
+   "line": -1,
+   "word": -1,
+   "conf": 0.318,
+   "flags": [
+    "vocable",
+    "vocable"
+   ]
+  },
+  {
+   "text": "wanna",
+   "phones": [
+    "v",
+    "aa"
+   ],
+   "start": 5674,
+   "end": 5678,
+   "line": 10,
+   "word": 26,
+   "conf": -7.345,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "~",
+   "phones": [
+    "n",
+    "a"
+   ],
+   "start": 5678,
+   "end": 5684,
+   "line": 10,
+   "word": 26,
+   "conf": -5.398,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "be",
+   "phones": [
+    "b",
+    "ii"
+   ],
+   "start": 5684,
+   "end": 5695,
+   "line": 10,
+   "word": 27,
+   "conf": -7.539,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "my",
+   "phones": [
+    "m",
+    "ai"
+   ],
+   "start": 5695,
+   "end": 5706,
+   "line": 10,
+   "word": 28,
+   "conf": -7.992,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "chha",
+   "phones": [
+    "ch",
+    "a"
+   ],
+   "start": 5706,
+   "end": 5718,
+   "line": 10,
+   "word": 29,
+   "conf": -8.341,
+   "flags": [
+    "ref+whisper"
+   ]
+  },
+  {
+   "text": "mmak",
+   "phones": [
+    "m",
+    "a",
+    "k"
+   ],
+   "start": 5718,
+   "end": 5728,
+   "line": 10,
+   "word": 29,
+   "conf": -6.798,
+   "flags": [
+    "ref+whisper"
+   ]
+  },
+  {
+   "text": "च",
+   "phones": [
+    "c",
+    "a"
+   ],
+   "start": 5728,
+   "end": 5740,
+   "line": 10,
+   "word": 30,
+   "conf": -6.77,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "लो",
+   "phones": [
+    "l",
+    "oo"
+   ],
+   "start": 5740,
+   "end": 5756,
+   "line": 10,
+   "word": 30,
+   "conf": -8.257,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "oh",
+   "phones": [
+    "oo"
+   ],
+   "start": 5756,
+   "end": 5770,
+   "line": 10,
+   "word": 31,
+   "conf": -10.027,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "oh",
+   "phones": [
+    "oo"
+   ],
+   "start": 5770,
+   "end": 5853,
+   "line": 10,
+   "word": 32,
+   "conf": -10.246,
+   "flags": [
+    "disputed->ref"
+   ]
+  },
+  {
+   "text": "wanna",
+   "phones": [
+    "v",
+    "aa"
+   ],
+   "start": 5853,
+   "end": 5857,
+   "line": 10,
+   "word": 33,
+   "conf": -10.107,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "~",
+   "phones": [
+    "n",
+    "a"
+   ],
+   "start": 5857,
+   "end": 5864,
+   "line": 10,
+   "word": 33,
+   "conf": -7.941,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "be",
+   "phones": [
+    "b",
+    "ii"
+   ],
+   "start": 5864,
+   "end": 5875,
+   "line": 10,
+   "word": 34,
+   "conf": -9.49,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "मक्",
+   "phones": [
+    "m",
+    "a",
+    "k"
+   ],
+   "start": 5875,
+   "end": 5885,
+   "line": 10,
+   "word": 35,
+   "conf": -9.935,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "ष",
+   "phones": [
+    "sh",
+    "a"
+   ],
+   "start": 5885,
+   "end": 5897,
+   "line": 10,
+   "word": 35,
+   "conf": -9.589,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "मक",
+   "phones": [
+    "m",
+    "a",
+    "k"
+   ],
+   "start": 5897,
+   "end": 5910,
+   "line": 10,
+   "word": 35,
+   "conf": -8.098,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "आ",
+   "phones": [
+    "aa"
+   ],
+   "start": 5910,
+   "end": 5954,
+   "line": -1,
+   "word": -1,
+   "conf": 0.453,
+   "flags": [
+    "vocable",
+    "vocable"
+   ]
+  },
+  {
+   "text": "आ",
+   "phones": [
+    "aa"
+   ],
+   "start": 5955,
+   "end": 6063,
+   "line": -1,
+   "word": -1,
+   "conf": 0.289,
+   "flags": [
+    "vocable",
+    "vocable"
+   ]
+  },
+  {
+   "text": "म",
+   "phones": [
+    "m",
+    "a"
+   ],
+   "start": 6065,
+   "end": 6086,
+   "line": 11,
+   "word": 0,
+   "conf": -5.217,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "चे",
+   "phones": [
+    "c",
+    "ee"
+   ],
+   "start": 6086,
+   "end": 6098,
+   "line": 11,
+   "word": 0,
+   "conf": -6.353,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "लो",
+   "phones": [
+    "l",
+    "oo"
+   ],
+   "start": 6098,
+   "end": 6104,
+   "line": 11,
+   "word": 0,
+   "conf": -6.931,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "oh",
+   "phones": [
+    "oo"
+   ],
+   "start": 6104,
+   "end": 6108,
+   "line": 11,
+   "word": 1,
+   "conf": -8.98,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "oh",
+   "phones": [
+    "oo"
+   ],
+   "start": 6108,
+   "end": 6111,
+   "line": 11,
+   "word": 2,
+   "conf": -8.43,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "wanna",
+   "phones": [
+    "v",
+    "aa"
+   ],
+   "start": 6111,
+   "end": 6116,
+   "line": 11,
+   "word": 3,
+   "conf": -7.84,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "~",
+   "phones": [
+    "n",
+    "a"
+   ],
+   "start": 6116,
+   "end": 6125,
+   "line": 11,
+   "word": 3,
+   "conf": -7.631,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "be",
+   "phones": [
+    "b",
+    "ii"
+   ],
+   "start": 6125,
+   "end": 6129,
+   "line": 11,
+   "word": 4,
+   "conf": -7.874,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "म",
+   "phones": [
+    "m",
+    "a"
+   ],
+   "start": 6129,
+   "end": 6132,
+   "line": 11,
+   "word": 5,
+   "conf": -7.359,
+   "flags": [
+    "disputed->asr"
+   ]
+  },
+  {
+   "text": "चे",
+   "phones": [
+    "c",
+    "ee"
+   ],
+   "start": 6132,
+   "end": 6140,
+   "line": 11,
+   "word": 5,
+   "conf": -6.719,
+   "flags": [
+    "disputed->asr"
+   ]
+  },
+  {
+   "text": "म",
+   "phones": [
+    "m",
+    "a"
+   ],
+   "start": 6140,
+   "end": 6142,
+   "line": 11,
+   "word": 6,
+   "conf": -6.926,
+   "flags": [
+    "disputed->asr"
+   ]
+  },
+  {
+   "text": "चे",
+   "phones": [
+    "c",
+    "ee"
+   ],
+   "start": 6142,
+   "end": 6155,
+   "line": 11,
+   "word": 6,
+   "conf": -6.753,
+   "flags": [
+    "disputed->asr"
+   ]
+  },
+  {
+   "text": "लो",
+   "phones": [
+    "l",
+    "oo"
+   ],
+   "start": 6155,
+   "end": 6236,
+   "line": 11,
+   "word": 6,
+   "conf": -5.828,
+   "flags": [
+    "disputed->asr"
+   ]
+  },
+  {
+   "text": "oh",
+   "phones": [
+    "oo"
+   ],
+   "start": 6236,
+   "end": 6269,
+   "line": 11,
+   "word": 7,
+   "conf": -4.165,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "oh",
+   "phones": [
+    "oo"
+   ],
+   "start": 6269,
+   "end": 6290,
+   "line": 11,
+   "word": 8,
+   "conf": -3.547,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "hey",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 6290,
+   "end": 6326,
+   "line": 11,
+   "word": 9,
+   "conf": -7.139,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "oh",
+   "phones": [
+    "oo"
+   ],
+   "start": 6326,
+   "end": 6424,
+   "line": 11,
+   "word": 10,
+   "conf": -3.403,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "oh",
+   "phones": [
+    "oo"
+   ],
+   "start": 6424,
+   "end": 6445,
+   "line": 11,
+   "word": 11,
+   "conf": -6.104,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "hey",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 6445,
+   "end": 6504,
+   "line": 11,
+   "word": 12,
+   "conf": -7.846,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "oh",
+   "phones": [
+    "oo"
+   ],
+   "start": 6504,
+   "end": 6608,
+   "line": 11,
+   "word": 13,
+   "conf": -3.776,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "oh",
+   "phones": [
+    "oo"
+   ],
+   "start": 6608,
+   "end": 6649,
+   "line": 11,
+   "word": 14,
+   "conf": -4.754,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "hey",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 6649,
+   "end": 6684,
+   "line": 11,
+   "word": 15,
+   "conf": -6.849,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "oh",
+   "phones": [
+    "oo"
+   ],
+   "start": 6684,
+   "end": 6807,
+   "line": 11,
+   "word": 16,
+   "conf": -4.539,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "oh",
+   "phones": [
+    "oo"
+   ],
+   "start": 6807,
+   "end": 6827,
+   "line": 11,
+   "word": 17,
+   "conf": -4.421,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "hey",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 6827,
+   "end": 6842,
+   "line": 11,
+   "word": 18,
+   "conf": -6.227,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "ओ",
+   "phones": [
+    "oo"
+   ],
+   "start": 6859,
+   "end": 6915,
+   "line": -1,
+   "word": -1,
+   "conf": 0.862,
+   "flags": [
+    "vocable",
+    "vocable"
+   ]
+  },
+  {
+   "text": "अम",
+   "phones": [
+    "a",
+    "m"
+   ],
+   "start": 6915,
+   "end": 6927,
+   "line": 12,
+   "word": 0,
+   "conf": -2.553,
+   "flags": [
+    "asr+whisper"
+   ]
+  },
+  {
+   "text": "ने",
+   "phones": [
+    "n",
+    "ee"
+   ],
+   "start": 6927,
+   "end": 6937,
+   "line": 12,
+   "word": 0,
+   "conf": -2.896,
+   "flags": [
+    "asr+whisper"
+   ]
+  },
+  {
+   "text": "तो",
+   "phones": [
+    "t",
+    "oo"
+   ],
+   "start": 6937,
+   "end": 6950,
+   "line": 12,
+   "word": 1,
+   "conf": -3.697,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "टा",
+   "phones": [
+    "T",
+    "aa"
+   ],
+   "start": 6950,
+   "end": 6963,
+   "line": 12,
+   "word": 1,
+   "conf": -1.899,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "अ",
+   "phones": [
+    "a"
+   ],
+   "start": 6963,
+   "end": 6973,
+   "line": 12,
+   "word": 2,
+   "conf": -1.329,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "नुल",
+   "phones": [
+    "n",
+    "u",
+    "l"
+   ],
+   "start": 6973,
+   "end": 6990,
+   "line": 12,
+   "word": 2,
+   "conf": -2.424,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "टा",
+   "phones": [
+    "T",
+    "aa"
+   ],
+   "start": 6990,
+   "end": 6999,
+   "line": 12,
+   "word": 2,
+   "conf": -5.764,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "ई",
+   "phones": [
+    "ii"
+   ],
+   "start": 6999,
+   "end": 7018,
+   "line": 12,
+   "word": 2,
+   "conf": -2.667,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "बुर्",
+   "phones": [
+    "b",
+    "u",
+    "r"
+   ],
+   "start": 7018,
+   "end": 7038,
+   "line": 12,
+   "word": 3,
+   "conf": -1.916,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "का",
+   "phones": [
+    "k",
+    "aa"
+   ],
+   "start": 7038,
+   "end": 7050,
+   "line": 12,
+   "word": 3,
+   "conf": -2.196,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "मार",
+   "phones": [
+    "m",
+    "aa",
+    "r"
+   ],
+   "start": 7050,
+   "end": 7066,
+   "line": 12,
+   "word": 4,
+   "conf": -2.029,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "दि",
+   "phones": [
+    "d",
+    "i"
+   ],
+   "start": 7066,
+   "end": 7074,
+   "line": 12,
+   "word": 5,
+   "conf": -1.083,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "यो",
+   "phones": [
+    "y",
+    "oo"
+   ],
+   "start": 7074,
+   "end": 7096,
+   "line": 12,
+   "word": 5,
+   "conf": -2.005,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "ये",
+   "phones": [
+    "y",
+    "ee"
+   ],
+   "start": 7096,
+   "end": 7107,
+   "line": 12,
+   "word": 6,
+   "conf": -4.079,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "नि",
+   "phones": [
+    "n",
+    "i"
+   ],
+   "start": 7107,
+   "end": 7117,
+   "line": 12,
+   "word": 7,
+   "conf": -1.326,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "पल",
+   "phones": [
+    "p",
+    "a",
+    "l"
+   ],
+   "start": 7117,
+   "end": 7139,
+   "line": 12,
+   "word": 7,
+   "conf": -1.297,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 7139,
+   "end": 7147,
+   "line": 12,
+   "word": 8,
+   "conf": -3.346,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "रे",
+   "phones": [
+    "r",
+    "ee"
+   ],
+   "start": 7147,
+   "end": 7152,
+   "line": 12,
+   "word": 8,
+   "conf": -6.104,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "नि",
+   "phones": [
+    "n",
+    "i"
+   ],
+   "start": 7152,
+   "end": 7161,
+   "line": 12,
+   "word": 9,
+   "conf": -1.167,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "पा",
+   "phones": [
+    "p",
+    "aa"
+   ],
+   "start": 7161,
+   "end": 7174,
+   "line": 12,
+   "word": 9,
+   "conf": -1.107,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 7174,
+   "end": 7197,
+   "line": 12,
+   "word": 9,
+   "conf": -3.391,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "मैं",
+   "phones": [
+    "m",
+    "E",
+    "nas"
+   ],
+   "start": 7197,
+   "end": 7211,
+   "line": 12,
+   "word": 10,
+   "conf": -2.726,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "अंग",
+   "phones": [
+    "a",
+    "ng",
+    "g"
+   ],
+   "start": 7211,
+   "end": 7229,
+   "line": 12,
+   "word": 11,
+   "conf": -1.732,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "मार",
+   "phones": [
+    "m",
+    "aa",
+    "r"
+   ],
+   "start": 7229,
+   "end": 7245,
+   "line": 12,
+   "word": 12,
+   "conf": -2.052,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "दि",
+   "phones": [
+    "d",
+    "i"
+   ],
+   "start": 7245,
+   "end": 7254,
+   "line": 12,
+   "word": 13,
+   "conf": -1.2,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "या",
+   "phones": [
+    "y",
+    "aa"
+   ],
+   "start": 7254,
+   "end": 7274,
+   "line": 12,
+   "word": 13,
+   "conf": -1.684,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "का",
+   "phones": [
+    "k",
+    "aa"
+   ],
+   "start": 7274,
+   "end": 7281,
+   "line": 12,
+   "word": 14,
+   "conf": -2.509,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "नल",
+   "phones": [
+    "n",
+    "a",
+    "l"
+   ],
+   "start": 7281,
+   "end": 7297,
+   "line": 12,
+   "word": 14,
+   "conf": -1.711,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "क",
+   "phones": [
+    "k",
+    "a"
+   ],
+   "start": 7297,
+   "end": 7309,
+   "line": 12,
+   "word": 15,
+   "conf": -1.279,
+   "flags": [
+    "asr+whisper"
+   ]
+  },
+  {
+   "text": "ने",
+   "phones": [
+    "n",
+    "ee"
+   ],
+   "start": 7309,
+   "end": 7319,
+   "line": 12,
+   "word": 15,
+   "conf": -2.549,
+   "flags": [
+    "asr+whisper"
+   ]
+  },
+  {
+   "text": "बू",
+   "phones": [
+    "b",
+    "uu"
+   ],
+   "start": 7319,
+   "end": 7335,
+   "line": 12,
+   "word": 16,
+   "conf": -2.894,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "टी",
+   "phones": [
+    "T",
+    "ii"
+   ],
+   "start": 7335,
+   "end": 7342,
+   "line": 12,
+   "word": 16,
+   "conf": -2.764,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "बि",
+   "phones": [
+    "b",
+    "i"
+   ],
+   "start": 7342,
+   "end": 7353,
+   "line": 12,
+   "word": 17,
+   "conf": -1.997,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "टा",
+   "phones": [
+    "T",
+    "aa"
+   ],
+   "start": 7353,
+   "end": 7376,
+   "line": 12,
+   "word": 17,
+   "conf": -1.178,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "से",
+   "phones": [
+    "s",
+    "ee"
+   ],
+   "start": 7376,
+   "end": 7387,
+   "line": 12,
+   "word": 18,
+   "conf": -3.281,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "रे",
+   "phones": [
+    "r",
+    "ee"
+   ],
+   "start": 7387,
+   "end": 7396,
+   "line": 12,
+   "word": 18,
+   "conf": -4.152,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "क",
+   "phones": [
+    "k",
+    "a"
+   ],
+   "start": 7396,
+   "end": 7406,
+   "line": 12,
+   "word": 19,
+   "conf": -1.387,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "मा",
+   "phones": [
+    "m",
+    "aa"
+   ],
+   "start": 7406,
+   "end": 7424,
+   "line": 12,
+   "word": 19,
+   "conf": -1.536,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 7424,
+   "end": 7453,
+   "line": 12,
+   "word": 19,
+   "conf": -3.96,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "ये",
+   "phones": [
+    "y",
+    "ee"
+   ],
+   "start": 7453,
+   "end": 7464,
+   "line": 12,
+   "word": 20,
+   "conf": -3.747,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "नि",
+   "phones": [
+    "n",
+    "i"
+   ],
+   "start": 7464,
+   "end": 7475,
+   "line": 12,
+   "word": 21,
+   "conf": -2.353,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "लू",
+   "phones": [
+    "l",
+    "uu"
+   ],
+   "start": 7475,
+   "end": 7486,
+   "line": 12,
+   "word": 21,
+   "conf": -2.351,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "मिस",
+   "phones": [
+    "m",
+    "i",
+    "s"
+   ],
+   "start": 7486,
+   "end": 7497,
+   "line": 12,
+   "word": 22,
+   "conf": -1.305,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "तू",
+   "phones": [
+    "t",
+    "uu"
+   ],
+   "start": 7497,
+   "end": 7514,
+   "line": 13,
+   "word": 0,
+   "conf": -3.79,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "भी",
+   "phones": [
+    "bh",
+    "ii"
+   ],
+   "start": 7514,
+   "end": 7521,
+   "line": 13,
+   "word": 1,
+   "conf": -3.805,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "सो",
+   "phones": [
+    "s",
+    "oo"
+   ],
+   "start": 7521,
+   "end": 7531,
+   "line": 13,
+   "word": 2,
+   "conf": -7.471,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "ती",
+   "phones": [
+    "t",
+    "ii"
+   ],
+   "start": 7531,
+   "end": 7555,
+   "line": 13,
+   "word": 2,
+   "conf": -3.736,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "रह",
+   "phones": [
+    "r",
+    "a",
+    "h"
+   ],
+   "start": 7555,
+   "end": 7565,
+   "line": 13,
+   "word": 3,
+   "conf": -3.56,
+   "flags": [
+    "asr+whisper"
+   ]
+  },
+  {
+   "text": "ती",
+   "phones": [
+    "t",
+    "ii"
+   ],
+   "start": 7565,
+   "end": 7576,
+   "line": 13,
+   "word": 3,
+   "conf": -2.351,
+   "flags": [
+    "asr+whisper"
+   ]
+  },
+  {
+   "text": "क",
+   "phones": [
+    "k",
+    "a"
+   ],
+   "start": 7576,
+   "end": 7584,
+   "line": 13,
+   "word": 4,
+   "conf": -1.057,
+   "flags": [
+    "asr+whisper"
+   ]
+  },
+  {
+   "text": "मा",
+   "phones": [
+    "m",
+    "aa"
+   ],
+   "start": 7584,
+   "end": 7604,
+   "line": 13,
+   "word": 4,
+   "conf": -1.527,
+   "flags": [
+    "asr+whisper"
+   ]
+  },
+  {
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 7604,
+   "end": 7612,
+   "line": 13,
+   "word": 4,
+   "conf": -3.947,
+   "flags": [
+    "asr+whisper"
+   ]
+  },
+  {
+   "text": "hey",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 7612,
+   "end": 7644,
+   "line": 13,
+   "word": 5,
+   "conf": -5.594,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "कै",
+   "phones": [
+    "k",
+    "E"
+   ],
+   "start": 7644,
+   "end": 7655,
+   "line": 13,
+   "word": 6,
+   "conf": -2.966,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "सा",
+   "phones": [
+    "s",
+    "aa"
+   ],
+   "start": 7655,
+   "end": 7665,
+   "line": 13,
+   "word": 6,
+   "conf": -1.604,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "शर्",
+   "phones": [
+    "sh",
+    "a",
+    "r"
+   ],
+   "start": 7665,
+   "end": 7678,
+   "line": 13,
+   "word": 7,
+   "conf": -0.917,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "म",
+   "phones": [
+    "m",
+    "a"
+   ],
+   "start": 7678,
+   "end": 7690,
+   "line": 13,
+   "word": 7,
+   "conf": -0.737,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "नाक",
+   "phones": [
+    "n",
+    "aa",
+    "k"
+   ],
+   "start": 7690,
+   "end": 7700,
+   "line": 13,
+   "word": 7,
+   "conf": -2.447,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "तु",
+   "phones": [
+    "t",
+    "u"
+   ],
+   "start": 7700,
+   "end": 7710,
+   "line": 13,
+   "word": 8,
+   "conf": -1.331,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "झे",
+   "phones": [
+    "jh",
+    "ee"
+   ],
+   "start": 7710,
+   "end": 7722,
+   "line": 13,
+   "word": 8,
+   "conf": -2.509,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "नच",
+   "phones": [
+    "n",
+    "a",
+    "c"
+   ],
+   "start": 7722,
+   "end": 7744,
+   "line": 13,
+   "word": 9,
+   "conf": -1.108,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "ke",
+   "phones": [
+    "k",
+    "e"
+   ],
+   "start": 7744,
+   "end": 7756,
+   "line": 13,
+   "word": 10,
+   "conf": -0.845,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "दि",
+   "phones": [
+    "d",
+    "i"
+   ],
+   "start": 7756,
+   "end": 7766,
+   "line": 13,
+   "word": 11,
+   "conf": -1.655,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "खा",
+   "phones": [
+    "kh",
+    "aa"
+   ],
+   "start": 7766,
+   "end": 7791,
+   "line": 13,
+   "word": 11,
+   "conf": -1.084,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "दूँ",
+   "phones": [
+    "d",
+    "uu",
+    "nas"
+   ],
+   "start": 7791,
+   "end": 7825,
+   "line": 13,
+   "word": 12,
+   "conf": -3.405,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "मे",
+   "phones": [
+    "m",
+    "ee"
+   ],
+   "start": 7825,
+   "end": 7836,
+   "line": 13,
+   "word": 13,
+   "conf": -3.761,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 7836,
+   "end": 7846,
+   "line": 13,
+   "word": 13,
+   "conf": -1.339,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "ho",
+   "phones": [
+    "h",
+    "oo"
+   ],
+   "start": 7846,
+   "end": 7856,
+   "line": 13,
+   "word": 14,
+   "conf": -2.762,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "जा",
+   "phones": [
+    "j",
+    "aa"
+   ],
+   "start": 7856,
+   "end": 7871,
+   "line": 13,
+   "word": 15,
+   "conf": -0.936,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "ए",
+   "phones": [
+    "ee"
+   ],
+   "start": 7871,
+   "end": 7878,
+   "line": 13,
+   "word": 15,
+   "conf": -4.065,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "jo",
+   "phones": [
+    "j",
+    "oo"
+   ],
+   "start": 7878,
+   "end": 7887,
+   "line": 13,
+   "word": 16,
+   "conf": -3.309,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "main",
+   "phones": [
+    "m",
+    "ee",
+    "n"
+   ],
+   "start": 7887,
+   "end": 7900,
+   "line": 13,
+   "word": 17,
+   "conf": -4.247,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "पर्",
+   "phones": [
+    "p",
+    "a",
+    "r"
+   ],
+   "start": 7900,
+   "end": 7924,
+   "line": 13,
+   "word": 18,
+   "conf": -0.787,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "दा",
+   "phones": [
+    "d",
+    "aa"
+   ],
+   "start": 7924,
+   "end": 7935,
+   "line": 13,
+   "word": 18,
+   "conf": -1.421,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "गि",
+   "phones": [
+    "g",
+    "i"
+   ],
+   "start": 7935,
+   "end": 7947,
+   "line": 13,
+   "word": 19,
+   "conf": -1.533,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "रा",
+   "phones": [
+    "r",
+    "aa"
+   ],
+   "start": 7947,
+   "end": 7970,
+   "line": 13,
+   "word": 19,
+   "conf": -1.447,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "दूँ",
+   "phones": [
+    "d",
+    "uu",
+    "nas"
+   ],
+   "start": 7970,
+   "end": 8002,
+   "line": 13,
+   "word": 20,
+   "conf": -3.276,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "हाँ",
+   "phones": [
+    "h",
+    "aa",
+    "nas"
+   ],
+   "start": 8002,
+   "end": 8013,
+   "line": 13,
+   "word": 21,
+   "conf": -2.345,
+   "flags": [
+    "asr+whisper"
+   ]
+  },
+  {
+   "text": "तु",
+   "phones": [
+    "t",
+    "u"
+   ],
+   "start": 8013,
+   "end": 8023,
+   "line": 13,
+   "word": 22,
+   "conf": -1.24,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "झे",
+   "phones": [
+    "jh",
+    "ee"
+   ],
+   "start": 8023,
+   "end": 8043,
+   "line": 13,
+   "word": 22,
+   "conf": -2.164,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "अ",
+   "phones": [
+    "a"
+   ],
+   "start": 8043,
+   "end": 8046,
+   "line": 13,
+   "word": 23,
+   "conf": -5.258,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "खि",
+   "phones": [
+    "kh",
+    "i"
+   ],
+   "start": 8046,
+   "end": 8059,
+   "line": 13,
+   "word": 23,
+   "conf": -1.517,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "यों",
+   "phones": [
+    "y",
+    "oo",
+    "nas"
+   ],
+   "start": 8059,
+   "end": 8074,
+   "line": 13,
+   "word": 23,
+   "conf": -3.701,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "mein",
+   "phones": [
+    "m",
+    "ii",
+    "n"
+   ],
+   "start": 8074,
+   "end": 8085,
+   "line": 13,
+   "word": 24,
+   "conf": -4.092,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "अप",
+   "phones": [
+    "a",
+    "p"
+   ],
+   "start": 8085,
+   "end": 8104,
+   "line": 13,
+   "word": 25,
+   "conf": -1.652,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "ने",
+   "phones": [
+    "n",
+    "ee"
+   ],
+   "start": 8104,
+   "end": 8114,
+   "line": 13,
+   "word": 25,
+   "conf": -2.944,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "basa",
+   "phones": [
+    "b",
+    "aa"
+   ],
+   "start": 8114,
+   "end": 8124,
+   "line": 13,
+   "word": 26,
+   "conf": -2.391,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "~",
+   "phones": [
+    "s",
+    "a"
+   ],
+   "start": 8124,
+   "end": 8149,
+   "line": 13,
+   "word": 26,
+   "conf": -0.73,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "loon",
+   "phones": [
+    "l",
+    "uu",
+    "n"
+   ],
+   "start": 8149,
+   "end": 8185,
+   "line": 13,
+   "word": 27,
+   "conf": -2.889,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "आ",
+   "phones": [
+    "aa"
+   ],
+   "start": 8185,
+   "end": 8192,
+   "line": 14,
+   "word": 0,
+   "conf": -1.528,
+   "flags": [
+    "asr+whisper"
+   ]
+  },
+  {
+   "text": "तुन",
+   "phones": [
+    "t",
+    "u",
+    "n"
+   ],
+   "start": 8192,
+   "end": 8215,
+   "line": 14,
+   "word": 0,
+   "conf": -1.202,
+   "flags": [
+    "asr+whisper"
+   ]
+  },
+  {
+   "text": "नख",
+   "phones": [
+    "n",
+    "a",
+    "kh"
+   ],
+   "start": 8215,
+   "end": 8238,
+   "line": 14,
+   "word": 1,
+   "conf": -1.007,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "रे",
+   "phones": [
+    "r",
+    "ee"
+   ],
+   "start": 8238,
+   "end": 8249,
+   "line": 14,
+   "word": 1,
+   "conf": -2.653,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "दि",
+   "phones": [
+    "d",
+    "i"
+   ],
+   "start": 8249,
+   "end": 8259,
+   "line": 14,
+   "word": 2,
+   "conf": -1.681,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "खा",
+   "phones": [
+    "kh",
+    "aa"
+   ],
+   "start": 8259,
+   "end": 8597,
+   "line": 14,
+   "word": 2,
+   "conf": -1.667,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "आ",
+   "phones": [
+    "aa"
+   ],
+   "start": 8597,
+   "end": 8674,
+   "line": -1,
+   "word": -1,
+   "conf": 0.436,
+   "flags": [
+    "vocable",
+    "vocable"
+   ]
+  },
+  {
+   "text": "आ",
+   "phones": [
+    "aa"
+   ],
+   "start": 8675,
+   "end": 8750,
+   "line": -1,
+   "word": -1,
+   "conf": 0.476,
+   "flags": [
+    "vocable",
+    "vocable"
+   ]
+  },
+  {
+   "text": "मच्",
+   "phones": [
+    "m",
+    "a",
+    "c"
+   ],
+   "start": 8752,
+   "end": 8773,
+   "line": 15,
+   "word": 0,
+   "conf": -5.918,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "छ",
+   "phones": [
+    "ch",
+    "a"
+   ],
+   "start": 8773,
+   "end": 8785,
+   "line": 15,
+   "word": 0,
+   "conf": -5.262,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "लों",
+   "phones": [
+    "l",
+    "oo",
+    "nas"
+   ],
+   "start": 8785,
+   "end": 8945,
+   "line": 15,
+   "word": 0,
+   "conf": -4.891,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "ओ",
+   "phones": [
+    "oo"
+   ],
+   "start": 8945,
+   "end": 9011,
+   "line": 15,
+   "word": 1,
+   "conf": -5.84,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "ओ",
+   "phones": [
+    "oo"
+   ],
+   "start": 9011,
+   "end": 9076,
+   "line": 15,
+   "word": 2,
+   "conf": -4.188,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "वा",
+   "phones": [
+    "v",
+    "aa"
+   ],
+   "start": 9076,
+   "end": 9082,
+   "line": 15,
+   "word": 3,
+   "conf": -4.204,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "ना",
+   "phones": [
+    "n",
+    "aa"
+   ],
+   "start": 9082,
+   "end": 9087,
+   "line": 15,
+   "word": 3,
+   "conf": -2.34,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "बी",
+   "phones": [
+    "b",
+    "ii"
+   ],
+   "start": 9087,
+   "end": 9099,
+   "line": 15,
+   "word": 4,
+   "conf": -1.549,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "मच्",
+   "phones": [
+    "m",
+    "a",
+    "c"
+   ],
+   "start": 9099,
+   "end": 9109,
+   "line": 15,
+   "word": 5,
+   "conf": -3.198,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "छ",
+   "phones": [
+    "ch",
+    "a"
+   ],
+   "start": 9109,
+   "end": 9121,
+   "line": 15,
+   "word": 5,
+   "conf": -2.397,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "लों",
+   "phones": [
+    "l",
+    "oo",
+    "nas"
+   ],
+   "start": 9121,
+   "end": 9128,
+   "line": 15,
+   "word": 5,
+   "conf": -5.258,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "ओ",
+   "phones": [
+    "oo"
+   ],
+   "start": 9128,
+   "end": 9135,
+   "line": 15,
+   "word": 6,
+   "conf": -5.643,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "ओ",
+   "phones": [
+    "oo"
+   ],
+   "start": 9135,
+   "end": 9136,
+   "line": 15,
+   "word": 7,
+   "conf": -4.973,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "मच्",
+   "phones": [
+    "m",
+    "a",
+    "c"
+   ],
+   "start": 9136,
+   "end": 9137,
+   "line": 16,
+   "word": 0,
+   "conf": -2.742,
+   "flags": [
+    "asr+whisper"
+   ]
+  },
+  {
+   "text": "छ",
+   "phones": [
+    "ch",
+    "a"
+   ],
+   "start": 9137,
+   "end": 9139,
+   "line": 16,
+   "word": 0,
+   "conf": -2.736,
+   "flags": [
+    "asr+whisper"
+   ]
+  },
+  {
+   "text": "लों",
+   "phones": [
+    "l",
+    "oo",
+    "nas"
+   ],
+   "start": 9139,
+   "end": 9145,
+   "line": 16,
+   "word": 0,
+   "conf": -5.646,
+   "flags": [
+    "asr+whisper"
+   ]
+  },
+  {
+   "text": "oh",
+   "phones": [
+    "oo"
+   ],
+   "start": 9145,
+   "end": 9153,
+   "line": 16,
+   "word": 1,
+   "conf": -4.039,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "oh",
+   "phones": [
+    "oo"
+   ],
+   "start": 9153,
+   "end": 9255,
+   "line": 16,
+   "word": 2,
+   "conf": -6.174,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "wanna",
+   "phones": [
+    "v",
+    "aa"
+   ],
+   "start": 9255,
+   "end": 9261,
+   "line": 16,
+   "word": 3,
+   "conf": -7.077,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "~",
+   "phones": [
+    "n",
+    "a"
+   ],
+   "start": 9261,
+   "end": 9266,
+   "line": 16,
+   "word": 3,
+   "conf": -4.768,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "be",
+   "phones": [
+    "b",
+    "ii"
+   ],
+   "start": 9266,
+   "end": 9278,
+   "line": 16,
+   "word": 4,
+   "conf": -5.887,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "मच्छ",
+   "phones": [
+    "m",
+    "a",
+    "c",
+    "ch"
+   ],
+   "start": 9278,
+   "end": 9300,
+   "line": 16,
+   "word": 5,
+   "conf": -7.875,
+   "flags": [
+    "asr+whisper"
+   ]
+  },
+  {
+   "text": "मच्",
+   "phones": [
+    "m",
+    "a",
+    "c"
+   ],
+   "start": 9300,
+   "end": 9310,
+   "line": 16,
+   "word": 6,
+   "conf": -7.274,
+   "flags": [
+    "asr+whisper"
+   ]
+  },
+  {
+   "text": "छ",
+   "phones": [
+    "ch",
+    "a"
+   ],
+   "start": 9310,
+   "end": 9323,
+   "line": 16,
+   "word": 6,
+   "conf": -7.015,
+   "flags": [
+    "asr+whisper"
+   ]
+  },
+  {
+   "text": "लों",
+   "phones": [
+    "l",
+    "oo",
+    "nas"
+   ],
+   "start": 9323,
+   "end": 9333,
+   "line": 16,
+   "word": 6,
+   "conf": -7.325,
+   "flags": [
+    "asr+whisper"
+   ]
+  },
+  {
+   "text": "oh",
+   "phones": [
+    "oo"
+   ],
+   "start": 9333,
+   "end": 9397,
+   "line": 16,
+   "word": 7,
+   "conf": -9.246,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "oh",
+   "phones": [
+    "oo"
+   ],
+   "start": 9397,
+   "end": 9435,
+   "line": 16,
+   "word": 8,
+   "conf": -9.367,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "wanna",
+   "phones": [
+    "v",
+    "aa"
+   ],
+   "start": 9435,
+   "end": 9440,
+   "line": 16,
+   "word": 9,
+   "conf": -6.874,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "~",
+   "phones": [
+    "n",
+    "a"
+   ],
+   "start": 9440,
+   "end": 9446,
+   "line": 16,
+   "word": 9,
+   "conf": -4.824,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "be",
+   "phones": [
+    "b",
+    "ii"
+   ],
+   "start": 9446,
+   "end": 9492,
+   "line": 16,
+   "word": 10,
+   "conf": -6.18,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "आ",
+   "phones": [
+    "aa"
+   ],
+   "start": 9492,
+   "end": 9529,
+   "line": -1,
+   "word": -1,
+   "conf": 0.416,
+   "flags": [
+    "vocable",
+    "vocable"
+   ]
+  },
+  {
+   "text": "आ",
+   "phones": [
+    "aa"
+   ],
+   "start": 9531,
+   "end": 9613,
+   "line": -1,
+   "word": -1,
+   "conf": 0.302,
+   "flags": [
+    "vocable",
+    "vocable"
+   ]
+  },
+  {
+   "text": "wanna",
+   "phones": [
+    "v",
+    "aa"
+   ],
+   "start": 9613,
+   "end": 9619,
+   "line": 17,
+   "word": 0,
+   "conf": -4.664,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "~",
+   "phones": [
+    "n",
+    "a"
+   ],
+   "start": 9619,
+   "end": 9625,
+   "line": 17,
+   "word": 0,
+   "conf": -1.658,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "be",
+   "phones": [
+    "b",
+    "ii"
+   ],
+   "start": 9625,
+   "end": 9636,
+   "line": 17,
+   "word": 1,
+   "conf": -2.148,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "my",
+   "phones": [
+    "m",
+    "ai"
+   ],
+   "start": 9636,
+   "end": 9646,
+   "line": 17,
+   "word": 2,
+   "conf": -2.784,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "che",
+   "phones": [
+    "c",
+    "ee"
+   ],
+   "start": 9646,
+   "end": 9659,
+   "line": 17,
+   "word": 3,
+   "conf": -3.756,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "ba",
+   "phones": [
+    "b",
+    "a"
+   ],
+   "start": 9659,
+   "end": 9669,
+   "line": 17,
+   "word": 3,
+   "conf": -3.313,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "cco",
+   "phones": [
+    "k",
+    "oo"
+   ],
+   "start": 9669,
+   "end": 10402,
+   "line": 17,
+   "word": 3,
+   "conf": -3.267,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "आ",
+   "phones": [
+    "aa"
+   ],
+   "start": 10426,
+   "end": 10475,
+   "line": -1,
+   "word": -1,
+   "conf": 0.251,
+   "flags": [
+    "vocable",
+    "vocable"
+   ]
+  },
+  {
+   "text": "आ",
+   "phones": [
+    "aa"
+   ],
+   "start": 10476,
+   "end": 10553,
+   "line": -1,
+   "word": -1,
+   "conf": 0.248,
+   "flags": [
+    "vocable",
+    "vocable"
+   ]
+  },
+  {
+   "text": "ऊ",
+   "phones": [
+    "uu"
+   ],
+   "start": 10565,
+   "end": 10733,
+   "line": -1,
+   "word": -1,
+   "conf": 0.235,
+   "flags": [
+    "vocable",
+    "vocable"
+   ]
+  },
+  {
+   "text": "ऊ",
+   "phones": [
+    "uu"
+   ],
+   "start": 10735,
+   "end": 10913,
+   "line": -1,
+   "word": -1,
+   "conf": 0.238,
+   "flags": [
+    "vocable",
+    "vocable"
+   ]
+  },
+  {
+   "text": "आ",
+   "phones": [
+    "aa"
+   ],
+   "start": 10919,
+   "end": 10981,
+   "line": -1,
+   "word": -1,
+   "conf": 0.282,
+   "flags": [
+    "vocable",
+    "vocable"
+   ]
+  },
+  {
+   "text": "oh",
+   "phones": [
+    "oo"
+   ],
+   "start": 10981,
+   "end": 11015,
+   "line": 18,
+   "word": 0,
+   "conf": -3.565,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "oh",
+   "phones": [
+    "oo"
+   ],
+   "start": 11015,
+   "end": 11039,
+   "line": 18,
+   "word": 1,
+   "conf": -3.22,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "hey",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 11039,
+   "end": 11047,
+   "line": 18,
+   "word": 2,
+   "conf": -4.448,
+   "flags": [
+    "ref+whisper"
+   ]
+  },
+  {
+   "text": "oh",
+   "phones": [
+    "oo"
+   ],
+   "start": 11047,
+   "end": 11091,
+   "line": 18,
+   "word": 3,
+   "conf": -4.667,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "आ",
+   "phones": [
+    "aa"
+   ],
+   "start": 11111,
+   "end": 11191,
+   "line": -1,
+   "word": -1,
+   "conf": 0.278,
+   "flags": [
+    "vocable",
+    "vocable"
+   ]
+  },
+  {
+   "text": "hey",
+   "phones": [
+    "h",
+    "ee"
+   ],
+   "start": 11216,
+   "end": 11233,
+   "line": 19,
+   "word": 0,
+   "conf": -3.808,
+   "flags": [
+    "ref+asr"
+   ]
+  },
+  {
+   "text": "तू",
+   "phones": [
+    "t",
+    "uu"
+   ],
+   "start": 11867,
+   "end": 11931,
+   "line": 20,
+   "word": 0,
+   "conf": -3.339,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 11931,
+   "end": 11939,
+   "line": 20,
+   "word": 1,
+   "conf": -4.085,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "रे",
+   "phones": [
+    "r",
+    "ee"
+   ],
+   "start": 11939,
+   "end": 11951,
+   "line": 20,
+   "word": 1,
+   "conf": -5.65,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "पक्ष",
+   "phones": [
+    "p",
+    "a",
+    "k",
+    "sh"
+   ],
+   "start": 11951,
+   "end": 12009,
+   "line": 20,
+   "word": 2,
+   "conf": -4.069,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "में",
+   "phones": [
+    "m",
+    "ee",
+    "nas"
+   ],
+   "start": 12009,
+   "end": 12016,
+   "line": 20,
+   "word": 3,
+   "conf": -4.449,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "व्या",
+   "phones": [
+    "v",
+    "y",
+    "aa"
+   ],
+   "start": 12016,
+   "end": 12029,
+   "line": 20,
+   "word": 4,
+   "conf": -3.679,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "पा",
+   "phones": [
+    "p",
+    "aa"
+   ],
+   "start": 12029,
+   "end": 12035,
+   "line": 20,
+   "word": 4,
+   "conf": -2.599,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "रे",
+   "phones": [
+    "r",
+    "ee"
+   ],
+   "start": 12035,
+   "end": 12049,
+   "line": 20,
+   "word": 4,
+   "conf": -3.228,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "अ",
+   "phones": [
+    "a"
+   ],
+   "start": 12049,
+   "end": 12057,
+   "line": 20,
+   "word": 5,
+   "conf": -4.043,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "गर",
+   "phones": [
+    "g",
+    "a",
+    "r"
+   ],
+   "start": 12057,
+   "end": 12109,
+   "line": 20,
+   "word": 5,
+   "conf": -5.938,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "ते",
+   "phones": [
+    "t",
+    "ee"
+   ],
+   "start": 12109,
+   "end": 12119,
+   "line": 20,
+   "word": 6,
+   "conf": -2.379,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "री",
+   "phones": [
+    "r",
+    "ii"
+   ],
+   "start": 12119,
+   "end": 12167,
+   "line": 20,
+   "word": 6,
+   "conf": -3.251,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "व",
+   "phones": [
+    "v",
+    "a"
+   ],
+   "start": 12167,
+   "end": 12178,
+   "line": 20,
+   "word": 7,
+   "conf": -1.047,
+   "flags": [
+    "asr1"
+   ]
+  },
+  {
+   "text": "जह",
+   "phones": [
+    "j",
+    "a",
+    "h"
+   ],
+   "start": 12178,
+   "end": 12229,
+   "line": 20,
+   "word": 7,
+   "conf": -3.893,
+   "flags": [
+    "asr1"
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "start": 0,
+   "end": 111,
+   "type": 1,
+   "syllable": -1,
+   "midi": 0,
+   "cents": null,
+   "swara": ""
+  },
+  {
+   "start": 111,
+   "end": 125,
+   "type": 2,
+   "syllable": 0,
+   "midi": 58,
+   "cents": 748.3,
+   "swara": "P"
+  },
+  {
+   "start": 125,
+   "end": 290,
+   "type": 1,
+   "syllable": -1,
+   "midi": 0,
+   "cents": null,
+   "swara": ""
+  },
+  {
+   "start": 290,
+   "end": 303,
+   "type": 2,
+   "syllable": 1,
+   "midi": 60,
+   "cents": 885.0,
+   "swara": "D"
+  },
+  {
+   "start": 303,
+   "end": 469,
+   "type": 1,
+   "syllable": -1,
+   "midi": 0,
+   "cents": null,
+   "swara": ""
+  },
+  {
+   "start": 469,
+   "end": 490,
+   "type": 2,
+   "syllable": 2,
+   "midi": 60,
+   "cents": 893.7,
+   "swara": "D"
+  },
+  {
+   "start": 490,
+   "end": 648,
+   "type": 1,
+   "syllable": -1,
+   "midi": 0,
+   "cents": null,
+   "swara": ""
+  },
+  {
+   "start": 648,
+   "end": 662,
+   "type": 2,
+   "syllable": 3,
+   "midi": 59,
+   "cents": 846.1,
+   "swara": "d"
+  },
+  {
+   "start": 662,
+   "end": 828,
+   "type": 1,
+   "syllable": -1,
+   "midi": 0,
+   "cents": null,
+   "swara": ""
+  },
+  {
+   "start": 828,
+   "end": 850,
+   "type": 2,
+   "syllable": 4,
+   "midi": 60,
+   "cents": 851.4,
+   "swara": "D"
+  },
+  {
+   "start": 850,
+   "end": 870,
+   "type": 2,
+   "syllable": 5,
+   "midi": 58,
+   "cents": 682.7,
+   "swara": "P"
+  },
+  {
+   "start": 870,
+   "end": 882,
+   "type": 2,
+   "syllable": 6,
+   "midi": 61,
+   "cents": 979.1,
+   "swara": "n"
+  },
+  {
+   "start": 882,
+   "end": 892,
+   "type": 2,
+   "syllable": 7,
+   "midi": 61,
+   "cents": 990.2,
+   "swara": "n"
+  },
+  {
+   "start": 892,
+   "end": 901,
+   "type": 2,
+   "syllable": 8,
+   "midi": 60,
+   "cents": 916.0,
+   "swara": "D"
+  },
+  {
+   "start": 901,
+   "end": 918,
+   "type": 2,
+   "syllable": 9,
+   "midi": 60,
+   "cents": 919.1,
+   "swara": "D"
+  },
+  {
+   "start": 918,
+   "end": 945,
+   "type": 2,
+   "syllable": 10,
+   "midi": 51,
+   "cents": 38.3,
+   "swara": "S"
+  },
+  {
+   "start": 945,
+   "end": 955,
+   "type": 3,
+   "syllable": 10,
+   "midi": 49,
+   "cents": -218.0,
+   "swara": ".n"
+  },
+  {
+   "start": 955,
+   "end": 989,
+   "type": 3,
+   "syllable": 10,
+   "midi": 48,
+   "cents": -289.5,
+   "swara": ".D"
+  },
+  {
+   "start": 989,
+   "end": 998,
+   "type": 3,
+   "syllable": 10,
+   "midi": 49,
+   "cents": -206.5,
+   "swara": ".n"
+  },
+  {
+   "start": 998,
+   "end": 1018,
+   "type": 3,
+   "syllable": 10,
+   "midi": 61,
+   "cents": 987.2,
+   "swara": "n"
+  },
+  {
+   "start": 1018,
+   "end": 1023,
+   "type": 2,
+   "syllable": 11,
+   "midi": 59,
+   "cents": 825.2,
+   "swara": "d"
+  },
+  {
+   "start": 1023,
+   "end": 1028,
+   "type": 2,
+   "syllable": 12,
+   "midi": 61,
+   "cents": 980.3,
+   "swara": "n"
+  },
+  {
+   "start": 1028,
+   "end": 1039,
+   "type": 2,
+   "syllable": 13,
+   "midi": 56,
+   "cents": 515.4,
+   "swara": "m"
+  },
+  {
+   "start": 1039,
+   "end": 1053,
+   "type": 2,
+   "syllable": 14,
+   "midi": 60,
+   "cents": 868.7,
+   "swara": "D"
+  },
+  {
+   "start": 1053,
+   "end": 1055,
+   "type": 2,
+   "syllable": 15,
+   "midi": 61,
+   "cents": 958.6,
+   "swara": "n"
+  },
+  {
+   "start": 1055,
+   "end": 1062,
+   "type": 2,
+   "syllable": 16,
+   "midi": 61,
+   "cents": 982.4,
+   "swara": "n"
+  },
+  {
+   "start": 1062,
+   "end": 1066,
+   "type": 2,
+   "syllable": 17,
+   "midi": 61,
+   "cents": 997.0,
+   "swara": "n"
+  },
+  {
+   "start": 1066,
+   "end": 1073,
+   "type": 2,
+   "syllable": 18,
+   "midi": 61,
+   "cents": 1018.8,
+   "swara": "n"
+  },
+  {
+   "start": 1073,
+   "end": 1084,
+   "type": 2,
+   "syllable": 19,
+   "midi": 60,
+   "cents": 903.8,
+   "swara": "D"
+  },
+  {
+   "start": 1084,
+   "end": 1097,
+   "type": 2,
+   "syllable": 20,
+   "midi": 60,
+   "cents": 902.3,
+   "swara": "D"
+  },
+  {
+   "start": 1097,
+   "end": 1133,
+   "type": 2,
+   "syllable": 21,
+   "midi": 49,
+   "cents": -210.8,
+   "swara": ".n"
+  },
+  {
+   "start": 1133,
+   "end": 1149,
+   "type": 3,
+   "syllable": 21,
+   "midi": 48,
+   "cents": -301.7,
+   "swara": ".D"
+  },
+  {
+   "start": 1149,
+   "end": 1177,
+   "type": 3,
+   "syllable": 21,
+   "midi": 49,
+   "cents": -219.4,
+   "swara": ".n"
+  },
+  {
+   "start": 1177,
+   "end": 1197,
+   "type": 3,
+   "syllable": 21,
+   "midi": 51,
+   "cents": 43.5,
+   "swara": "S"
+  },
+  {
+   "start": 1197,
+   "end": 1203,
+   "type": 2,
+   "syllable": 22,
+   "midi": 60,
+   "cents": 869.6,
+   "swara": "D"
+  },
+  {
+   "start": 1203,
+   "end": 1208,
+   "type": 2,
+   "syllable": 23,
+   "midi": 61,
+   "cents": 1028.2,
+   "swara": "n"
+  },
+  {
+   "start": 1208,
+   "end": 1217,
+   "type": 2,
+   "syllable": 24,
+   "midi": 56,
+   "cents": 526.5,
+   "swara": "m"
+  },
+  {
+   "start": 1217,
+   "end": 1228,
+   "type": 2,
+   "syllable": 25,
+   "midi": 59,
+   "cents": 842.2,
+   "swara": "d"
+  },
+  {
+   "start": 1228,
+   "end": 1241,
+   "type": 2,
+   "syllable": 26,
+   "midi": 63,
+   "cents": 1192.9,
+   "swara": "S'"
+  },
+  {
+   "start": 1241,
+   "end": 1253,
+   "type": 2,
+   "syllable": 27,
+   "midi": 65,
+   "cents": 1446.3,
+   "swara": "R'"
+  },
+  {
+   "start": 1253,
+   "end": 1263,
+   "type": 2,
+   "syllable": 28,
+   "midi": 61,
+   "cents": 1021.5,
+   "swara": "n"
+  },
+  {
+   "start": 1263,
+   "end": 1300,
+   "type": 2,
+   "syllable": 29,
+   "midi": 62,
+   "cents": 1141.9,
+   "swara": "N"
+  },
+  {
+   "start": 1300,
+   "end": 1323,
+   "type": 3,
+   "syllable": 29,
+   "midi": 61,
+   "cents": 1019.4,
+   "swara": "n"
+  },
+  {
+   "start": 1323,
+   "end": 1353,
+   "type": 3,
+   "syllable": 29,
+   "midi": 60,
+   "cents": 899.8,
+   "swara": "D"
+  },
+  {
+   "start": 1353,
+   "end": 1377,
+   "type": 2,
+   "syllable": 30,
+   "midi": 60,
+   "cents": 906.3,
+   "swara": "D"
+  },
+  {
+   "start": 1377,
+   "end": 1382,
+   "type": 2,
+   "syllable": 31,
+   "midi": 60,
+   "cents": 890.0,
+   "swara": "D"
+  },
+  {
+   "start": 1382,
+   "end": 1397,
+   "type": 2,
+   "syllable": 32,
+   "midi": 57,
+   "cents": 614.7,
+   "swara": "M"
+  },
+  {
+   "start": 1397,
+   "end": 1419,
+   "type": 2,
+   "syllable": 33,
+   "midi": 60,
+   "cents": 901.1,
+   "swara": "D"
+  },
+  {
+   "start": 1419,
+   "end": 1430,
+   "type": 2,
+   "syllable": 34,
+   "midi": 62,
+   "cents": 1099.0,
+   "swara": "N"
+  },
+  {
+   "start": 1430,
+   "end": 1438,
+   "type": 2,
+   "syllable": 35,
+   "midi": 61,
+   "cents": 967.6,
+   "swara": "n"
+  },
+  {
+   "start": 1438,
+   "end": 1476,
+   "type": 2,
+   "syllable": 36,
+   "midi": 60,
+   "cents": 908.8,
+   "swara": "D"
+  },
+  {
+   "start": 1476,
+   "end": 1492,
+   "type": 2,
+   "syllable": 37,
+   "midi": 49,
+   "cents": -192.9,
+   "swara": ".n"
+  },
+  {
+   "start": 1492,
+   "end": 1507,
+   "type": 3,
+   "syllable": 37,
+   "midi": 48,
+   "cents": -300.1,
+   "swara": ".D"
+  },
+  {
+   "start": 1507,
+   "end": 1553,
+   "type": 3,
+   "syllable": 37,
+   "midi": 49,
+   "cents": -196.8,
+   "swara": ".n"
+  },
+  {
+   "start": 1553,
+   "end": 1566,
+   "type": 2,
+   "syllable": 38,
+   "midi": 65,
+   "cents": 1371.5,
+   "swara": "R'"
+  },
+  {
+   "start": 1566,
+   "end": 1579,
+   "type": 2,
+   "syllable": 39,
+   "midi": 65,
+   "cents": 1401.4,
+   "swara": "R'"
+  },
+  {
+   "start": 1579,
+   "end": 1582,
+   "type": 2,
+   "syllable": 40,
+   "midi": 65,
+   "cents": 1398.3,
+   "swara": "R'"
+  },
+  {
+   "start": 1582,
+   "end": 1588,
+   "type": 2,
+   "syllable": 41,
+   "midi": 65,
+   "cents": 1394.1,
+   "swara": "R'"
+  },
+  {
+   "start": 1588,
+   "end": 1605,
+   "type": 2,
+   "syllable": 42,
+   "midi": 65,
+   "cents": 1411.6,
+   "swara": "R'"
+  },
+  {
+   "start": 1605,
+   "end": 1611,
+   "type": 2,
+   "syllable": 43,
+   "midi": 65,
+   "cents": 1362.8,
+   "swara": "R'"
+  },
+  {
+   "start": 1611,
+   "end": 1621,
+   "type": 2,
+   "syllable": 44,
+   "midi": 62,
+   "cents": 1086.9,
+   "swara": "N"
+  },
+  {
+   "start": 1621,
+   "end": 1644,
+   "type": 2,
+   "syllable": 45,
+   "midi": 60,
+   "cents": 881.2,
+   "swara": "D"
+  },
+  {
+   "start": 1644,
+   "end": 1655,
+   "type": 2,
+   "syllable": 46,
+   "midi": 65,
+   "cents": 1398.8,
+   "swara": "R'"
+  },
+  {
+   "start": 1655,
+   "end": 1670,
+   "type": 2,
+   "syllable": 47,
+   "midi": 65,
+   "cents": 1412.4,
+   "swara": "R'"
+  },
+  {
+   "start": 1670,
+   "end": 1673,
+   "type": 2,
+   "syllable": 48,
+   "midi": 65,
+   "cents": 1398.1,
+   "swara": "R'"
+  },
+  {
+   "start": 1673,
+   "end": 1679,
+   "type": 2,
+   "syllable": 49,
+   "midi": 65,
+   "cents": 1398.2,
+   "swara": "R'"
+  },
+  {
+   "start": 1679,
+   "end": 1695,
+   "type": 2,
+   "syllable": 50,
+   "midi": 65,
+   "cents": 1390.8,
+   "swara": "R'"
+  },
+  {
+   "start": 1695,
+   "end": 1702,
+   "type": 2,
+   "syllable": 51,
+   "midi": 64,
+   "cents": 1307.3,
+   "swara": "r'"
+  },
+  {
+   "start": 1702,
+   "end": 1711,
+   "type": 2,
+   "syllable": 52,
+   "midi": 56,
+   "cents": 457.1,
+   "swara": "m"
+  },
+  {
+   "start": 1711,
+   "end": 1718,
+   "type": 2,
+   "syllable": 53,
+   "midi": 60,
+   "cents": 913.9,
+   "swara": "D"
+  },
+  {
+   "start": 1718,
+   "end": 1734,
+   "type": 2,
+   "syllable": 54,
+   "midi": 60,
+   "cents": 878.5,
+   "swara": "D"
+  },
+  {
+   "start": 1734,
+   "end": 1744,
+   "type": 2,
+   "syllable": 55,
+   "midi": 64,
+   "cents": 1333.8,
+   "swara": "r'"
+  },
+  {
+   "start": 1744,
+   "end": 1759,
+   "type": 2,
+   "syllable": 56,
+   "midi": 65,
+   "cents": 1376.9,
+   "swara": "R'"
+  },
+  {
+   "start": 1759,
+   "end": 1766,
+   "type": 2,
+   "syllable": 57,
+   "midi": 65,
+   "cents": 1409.1,
+   "swara": "R'"
+  },
+  {
+   "start": 1766,
+   "end": 1770,
+   "type": 2,
+   "syllable": 58,
+   "midi": 66,
+   "cents": 1531.3,
+   "swara": "g'"
+  },
+  {
+   "start": 1770,
+   "end": 1777,
+   "type": 2,
+   "syllable": 59,
+   "midi": 67,
+   "cents": 1597.3,
+   "swara": "G'"
+  },
+  {
+   "start": 1777,
+   "end": 1788,
+   "type": 2,
+   "syllable": 60,
+   "midi": 53,
+   "cents": 204.9,
+   "swara": "R"
+  },
+  {
+   "start": 1788,
+   "end": 1802,
+   "type": 2,
+   "syllable": 61,
+   "midi": 53,
+   "cents": 194.0,
+   "swara": "R"
+  },
+  {
+   "start": 1802,
+   "end": 1811,
+   "type": 2,
+   "syllable": 62,
+   "midi": 53,
+   "cents": 206.9,
+   "swara": "R"
+  },
+  {
+   "start": 1811,
+   "end": 1824,
+   "type": 2,
+   "syllable": 63,
+   "midi": 55,
+   "cents": 411.8,
+   "swara": "G"
+  },
+  {
+   "start": 1824,
+   "end": 1825,
+   "type": 2,
+   "syllable": 64,
+   "midi": 55,
+   "cents": null,
+   "swara": "G"
+  },
+  {
+   "start": 1825,
+   "end": 1834,
+   "type": 2,
+   "syllable": 65,
+   "midi": 53,
+   "cents": 199.3,
+   "swara": "R"
+  },
+  {
+   "start": 1834,
+   "end": 1846,
+   "type": 2,
+   "syllable": 66,
+   "midi": 65,
+   "cents": 1390.4,
+   "swara": "R'"
+  },
+  {
+   "start": 1846,
+   "end": 1867,
+   "type": 2,
+   "syllable": 67,
+   "midi": 65,
+   "cents": 1376.1,
+   "swara": "R'"
+  },
+  {
+   "start": 1867,
+   "end": 1879,
+   "type": 2,
+   "syllable": 68,
+   "midi": 65,
+   "cents": 1361.8,
+   "swara": "R'"
+  },
+  {
+   "start": 1879,
+   "end": 1886,
+   "type": 2,
+   "syllable": 69,
+   "midi": 60,
+   "cents": 891.7,
+   "swara": "D"
+  },
+  {
+   "start": 1886,
+   "end": 1913,
+   "type": 2,
+   "syllable": 70,
+   "midi": 61,
+   "cents": 969.7,
+   "swara": "n"
+  },
+  {
+   "start": 1913,
+   "end": 1923,
+   "type": 2,
+   "syllable": 71,
+   "midi": 63,
+   "cents": 1199.3,
+   "swara": "S'"
+  },
+  {
+   "start": 1923,
+   "end": 1934,
+   "type": 2,
+   "syllable": 72,
+   "midi": 63,
+   "cents": 1206.3,
+   "swara": "S'"
+  },
+  {
+   "start": 1934,
+   "end": 1946,
+   "type": 2,
+   "syllable": 73,
+   "midi": 63,
+   "cents": 1199.2,
+   "swara": "S'"
+  },
+  {
+   "start": 1946,
+   "end": 1958,
+   "type": 2,
+   "syllable": 74,
+   "midi": 63,
+   "cents": 1199.8,
+   "swara": "S'"
+  },
+  {
+   "start": 1958,
+   "end": 1972,
+   "type": 2,
+   "syllable": 75,
+   "midi": 63,
+   "cents": 1200.3,
+   "swara": "S'"
+  },
+  {
+   "start": 1972,
+   "end": 1979,
+   "type": 2,
+   "syllable": 76,
+   "midi": 63,
+   "cents": 1194.4,
+   "swara": "S'"
+  },
+  {
+   "start": 1979,
+   "end": 1992,
+   "type": 2,
+   "syllable": 77,
+   "midi": 65,
+   "cents": 1389.3,
+   "swara": "R'"
+  },
+  {
+   "start": 1992,
+   "end": 2013,
+   "type": 2,
+   "syllable": 78,
+   "midi": 62,
+   "cents": 1124.5,
+   "swara": "N"
+  },
+  {
+   "start": 2013,
+   "end": 2025,
+   "type": 2,
+   "syllable": 79,
+   "midi": 62,
+   "cents": 1106.9,
+   "swara": "N"
+  },
+  {
+   "start": 2025,
+   "end": 2035,
+   "type": 2,
+   "syllable": 80,
+   "midi": 63,
+   "cents": 1192.0,
+   "swara": "S'"
+  },
+  {
+   "start": 2035,
+   "end": 2061,
+   "type": 2,
+   "syllable": 81,
+   "midi": 62,
+   "cents": 1131.4,
+   "swara": "N"
+  },
+  {
+   "start": 2061,
+   "end": 2096,
+   "type": 2,
+   "syllable": 82,
+   "midi": 60,
+   "cents": 890.9,
+   "swara": "D"
+  },
+  {
+   "start": 2096,
+   "end": 2104,
+   "type": 2,
+   "syllable": 83,
+   "midi": 63,
+   "cents": 1162.5,
+   "swara": "S'"
+  },
+  {
+   "start": 2104,
+   "end": 2115,
+   "type": 2,
+   "syllable": 84,
+   "midi": 63,
+   "cents": 1210.0,
+   "swara": "S'"
+  },
+  {
+   "start": 2115,
+   "end": 2137,
+   "type": 2,
+   "syllable": 85,
+   "midi": 63,
+   "cents": 1195.9,
+   "swara": "S'"
+  },
+  {
+   "start": 2137,
+   "end": 2151,
+   "type": 2,
+   "syllable": 86,
+   "midi": 63,
+   "cents": 1196.6,
+   "swara": "S'"
+  },
+  {
+   "start": 2151,
+   "end": 2158,
+   "type": 2,
+   "syllable": 87,
+   "midi": 63,
+   "cents": 1195.6,
+   "swara": "S'"
+  },
+  {
+   "start": 2158,
+   "end": 2171,
+   "type": 2,
+   "syllable": 88,
+   "midi": 65,
+   "cents": 1365.6,
+   "swara": "R'"
+  },
+  {
+   "start": 2171,
+   "end": 2183,
+   "type": 2,
+   "syllable": 89,
+   "midi": 62,
+   "cents": 1100.5,
+   "swara": "N"
+  },
+  {
+   "start": 2183,
+   "end": 2193,
+   "type": 2,
+   "syllable": 90,
+   "midi": 62,
+   "cents": 1100.7,
+   "swara": "N"
+  },
+  {
+   "start": 2193,
+   "end": 2205,
+   "type": 2,
+   "syllable": 91,
+   "midi": 62,
+   "cents": 1115.2,
+   "swara": "N"
+  },
+  {
+   "start": 2205,
+   "end": 2216,
+   "type": 2,
+   "syllable": 92,
+   "midi": 62,
+   "cents": 1095.5,
+   "swara": "N"
+  },
+  {
+   "start": 2216,
+   "end": 2240,
+   "type": 2,
+   "syllable": 93,
+   "midi": 62,
+   "cents": 1098.8,
+   "swara": "N"
+  },
+  {
+   "start": 2240,
+   "end": 2274,
+   "type": 2,
+   "syllable": 94,
+   "midi": 60,
+   "cents": 929.7,
+   "swara": "D"
+  },
+  {
+   "start": 2274,
+   "end": 2282,
+   "type": 2,
+   "syllable": 95,
+   "midi": 62,
+   "cents": 1119.1,
+   "swara": "N"
+  },
+  {
+   "start": 2282,
+   "end": 2294,
+   "type": 2,
+   "syllable": 96,
+   "midi": 63,
+   "cents": 1182.6,
+   "swara": "S'"
+  },
+  {
+   "start": 2294,
+   "end": 2308,
+   "type": 2,
+   "syllable": 97,
+   "midi": 61,
+   "cents": 973.9,
+   "swara": "n"
+  },
+  {
+   "start": 2308,
+   "end": 2315,
+   "type": 2,
+   "syllable": 98,
+   "midi": 62,
+   "cents": 1121.1,
+   "swara": "N"
+  },
+  {
+   "start": 2315,
+   "end": 2337,
+   "type": 2,
+   "syllable": 99,
+   "midi": 67,
+   "cents": 1599.0,
+   "swara": "G'"
+  },
+  {
+   "start": 2337,
+   "end": 2352,
+   "type": 2,
+   "syllable": 100,
+   "midi": 67,
+   "cents": 1598.4,
+   "swara": "G'"
+  },
+  {
+   "start": 2352,
+   "end": 2360,
+   "type": 2,
+   "syllable": 101,
+   "midi": 65,
+   "cents": 1439.4,
+   "swara": "R'"
+  },
+  {
+   "start": 2360,
+   "end": 2381,
+   "type": 2,
+   "syllable": 102,
+   "midi": 65,
+   "cents": 1399.4,
+   "swara": "R'"
+  },
+  {
+   "start": 2381,
+   "end": 2394,
+   "type": 2,
+   "syllable": 103,
+   "midi": 65,
+   "cents": 1399.9,
+   "swara": "R'"
+  },
+  {
+   "start": 2394,
+   "end": 2418,
+   "type": 2,
+   "syllable": 104,
+   "midi": 65,
+   "cents": 1396.7,
+   "swara": "R'"
+  },
+  {
+   "start": 2418,
+   "end": 2429,
+   "type": 2,
+   "syllable": 105,
+   "midi": 62,
+   "cents": 1103.2,
+   "swara": "N"
+  },
+  {
+   "start": 2429,
+   "end": 2451,
+   "type": 3,
+   "syllable": 105,
+   "midi": 65,
+   "cents": 1410.5,
+   "swara": "R'"
+  },
+  {
+   "start": 2451,
+   "end": 2462,
+   "type": 2,
+   "syllable": 106,
+   "midi": 63,
+   "cents": 1201.6,
+   "swara": "S'"
+  },
+  {
+   "start": 2462,
+   "end": 2473,
+   "type": 2,
+   "syllable": 107,
+   "midi": 63,
+   "cents": 1203.2,
+   "swara": "S'"
+  },
+  {
+   "start": 2473,
+   "end": 2507,
+   "type": 2,
+   "syllable": 108,
+   "midi": 63,
+   "cents": 1194.5,
+   "swara": "S'"
+  },
+  {
+   "start": 2507,
+   "end": 2519,
+   "type": 2,
+   "syllable": 109,
+   "midi": 63,
+   "cents": 1207.5,
+   "swara": "S'"
+  },
+  {
+   "start": 2519,
+   "end": 2530,
+   "type": 2,
+   "syllable": 110,
+   "midi": 63,
+   "cents": 1155.6,
+   "swara": "S'"
+  },
+  {
+   "start": 2530,
+   "end": 2551,
+   "type": 2,
+   "syllable": 111,
+   "midi": 62,
+   "cents": 1096.1,
+   "swara": "N"
+  },
+  {
+   "start": 2551,
+   "end": 2634,
+   "type": 2,
+   "syllable": 112,
+   "midi": 62,
+   "cents": 1098.2,
+   "swara": "N"
+  },
+  {
+   "start": 2634,
+   "end": 2637,
+   "type": 2,
+   "syllable": 113,
+   "midi": 63,
+   "cents": 1212.3,
+   "swara": "S'"
+  },
+  {
+   "start": 2637,
+   "end": 2651,
+   "type": 2,
+   "syllable": 114,
+   "midi": 63,
+   "cents": 1195.3,
+   "swara": "S'"
+  },
+  {
+   "start": 2651,
+   "end": 2673,
+   "type": 2,
+   "syllable": 115,
+   "midi": 63,
+   "cents": 1197.7,
+   "swara": "S'"
+  },
+  {
+   "start": 2673,
+   "end": 2683,
+   "type": 2,
+   "syllable": 116,
+   "midi": 63,
+   "cents": 1185.7,
+   "swara": "S'"
+  },
+  {
+   "start": 2683,
+   "end": 2695,
+   "type": 2,
+   "syllable": 117,
+   "midi": 63,
+   "cents": 1200.5,
+   "swara": "S'"
+  },
+  {
+   "start": 2695,
+   "end": 2711,
+   "type": 2,
+   "syllable": 118,
+   "midi": 63,
+   "cents": 1195.1,
+   "swara": "S'"
+  },
+  {
+   "start": 2711,
+   "end": 2721,
+   "type": 3,
+   "syllable": 118,
+   "midi": 62,
+   "cents": 1116.3,
+   "swara": "N"
+  },
+  {
+   "start": 2721,
+   "end": 2777,
+   "type": 3,
+   "syllable": 118,
+   "midi": 63,
+   "cents": 1195.1,
+   "swara": "S'"
+  },
+  {
+   "start": 2777,
+   "end": 2821,
+   "type": 3,
+   "syllable": 118,
+   "midi": 63,
+   "cents": 1191.4,
+   "swara": "S'"
+  },
+  {
+   "start": 2821,
+   "end": 2830,
+   "type": 3,
+   "syllable": 118,
+   "midi": 63,
+   "cents": 1199.6,
+   "swara": "S'"
+  },
+  {
+   "start": 2830,
+   "end": 2841,
+   "type": 2,
+   "syllable": 119,
+   "midi": 63,
+   "cents": 1192.5,
+   "swara": "S'"
+  },
+  {
+   "start": 2841,
+   "end": 2852,
+   "type": 2,
+   "syllable": 120,
+   "midi": 63,
+   "cents": 1200.6,
+   "swara": "S'"
+  },
+  {
+   "start": 2852,
+   "end": 2862,
+   "type": 2,
+   "syllable": 121,
+   "midi": 63,
+   "cents": 1196.2,
+   "swara": "S'"
+  },
+  {
+   "start": 2862,
+   "end": 2875,
+   "type": 2,
+   "syllable": 122,
+   "midi": 65,
+   "cents": 1400.5,
+   "swara": "R'"
+  },
+  {
+   "start": 2875,
+   "end": 2922,
+   "type": 2,
+   "syllable": 123,
+   "midi": 65,
+   "cents": 1396.4,
+   "swara": "R'"
+  },
+  {
+   "start": 2922,
+   "end": 2935,
+   "type": 2,
+   "syllable": 124,
+   "midi": 63,
+   "cents": 1198.7,
+   "swara": "S'"
+  },
+  {
+   "start": 2935,
+   "end": 2948,
+   "type": 3,
+   "syllable": 124,
+   "midi": 63,
+   "cents": 1195.5,
+   "swara": "S'"
+  },
+  {
+   "start": 2948,
+   "end": 2986,
+   "type": 2,
+   "syllable": 125,
+   "midi": 62,
+   "cents": 1058.7,
+   "swara": "N"
+  },
+  {
+   "start": 2986,
+   "end": 2992,
+   "type": 2,
+   "syllable": 126,
+   "midi": 62,
+   "cents": 1054.1,
+   "swara": "N"
+  },
+  {
+   "start": 2992,
+   "end": 2999,
+   "type": 2,
+   "syllable": 127,
+   "midi": 63,
+   "cents": 1206.3,
+   "swara": "S'"
+  },
+  {
+   "start": 2999,
+   "end": 3009,
+   "type": 2,
+   "syllable": 128,
+   "midi": 63,
+   "cents": 1208.1,
+   "swara": "S'"
+  },
+  {
+   "start": 3009,
+   "end": 3020,
+   "type": 2,
+   "syllable": 129,
+   "midi": 63,
+   "cents": 1207.3,
+   "swara": "S'"
+  },
+  {
+   "start": 3020,
+   "end": 3031,
+   "type": 2,
+   "syllable": 130,
+   "midi": 67,
+   "cents": 1598.5,
+   "swara": "G'"
+  },
+  {
+   "start": 3031,
+   "end": 3042,
+   "type": 2,
+   "syllable": 131,
+   "midi": 67,
+   "cents": 1606.7,
+   "swara": "G'"
+  },
+  {
+   "start": 3042,
+   "end": 3050,
+   "type": 2,
+   "syllable": 132,
+   "midi": 66,
+   "cents": 1493.5,
+   "swara": "g'"
+  },
+  {
+   "start": 3050,
+   "end": 3101,
+   "type": 2,
+   "syllable": 133,
+   "midi": 65,
+   "cents": 1403.8,
+   "swara": "R'"
+  },
+  {
+   "start": 3101,
+   "end": 3113,
+   "type": 2,
+   "syllable": 134,
+   "midi": 63,
+   "cents": 1203.5,
+   "swara": "S'"
+  },
+  {
+   "start": 3113,
+   "end": 3137,
+   "type": 3,
+   "syllable": 134,
+   "midi": 63,
+   "cents": 1196.2,
+   "swara": "S'"
+  },
+  {
+   "start": 3137,
+   "end": 3142,
+   "type": 3,
+   "syllable": 134,
+   "midi": 63,
+   "cents": 1204.7,
+   "swara": "S'"
+  },
+  {
+   "start": 3142,
+   "end": 3165,
+   "type": 2,
+   "syllable": 135,
+   "midi": 60,
+   "cents": 853.2,
+   "swara": "D"
+  },
+  {
+   "start": 3165,
+   "end": 3171,
+   "type": 2,
+   "syllable": 136,
+   "midi": 61,
+   "cents": 1004.6,
+   "swara": "n"
+  },
+  {
+   "start": 3171,
+   "end": 3178,
+   "type": 2,
+   "syllable": 137,
+   "midi": 63,
+   "cents": 1161.0,
+   "swara": "S'"
+  },
+  {
+   "start": 3178,
+   "end": 3188,
+   "type": 2,
+   "syllable": 138,
+   "midi": 64,
+   "cents": 1318.5,
+   "swara": "r'"
+  },
+  {
+   "start": 3188,
+   "end": 3221,
+   "type": 2,
+   "syllable": 139,
+   "midi": 67,
+   "cents": 1584.0,
+   "swara": "G'"
+  },
+  {
+   "start": 3221,
+   "end": 3260,
+   "type": 2,
+   "syllable": 140,
+   "midi": 66,
+   "cents": 1496.1,
+   "swara": "g'"
+  },
+  {
+   "start": 3260,
+   "end": 3265,
+   "type": 3,
+   "syllable": 140,
+   "midi": 73,
+   "cents": 2201.1,
+   "swara": "n'"
+  },
+  {
+   "start": 3265,
+   "end": 3276,
+   "type": 2,
+   "syllable": 141,
+   "midi": 78,
+   "cents": 2664.4,
+   "swara": "g''"
+  },
+  {
+   "start": 3276,
+   "end": 3314,
+   "type": 2,
+   "syllable": 142,
+   "midi": 58,
+   "cents": 710.4,
+   "swara": "P"
+  },
+  {
+   "start": 3314,
+   "end": 3359,
+   "type": 3,
+   "syllable": 142,
+   "midi": 60,
+   "cents": 904.2,
+   "swara": "D"
+  },
+  {
+   "start": 3359,
+   "end": 3389,
+   "type": 2,
+   "syllable": 143,
+   "midi": 74,
+   "cents": 2300.2,
+   "swara": "N'"
+  },
+  {
+   "start": 3389,
+   "end": 3424,
+   "type": 1,
+   "syllable": -1,
+   "midi": 0,
+   "cents": null,
+   "swara": ""
+  },
+  {
+   "start": 3424,
+   "end": 3460,
+   "type": 2,
+   "syllable": 144,
+   "midi": 63,
+   "cents": 1239.9,
+   "swara": "S'"
+  },
+  {
+   "start": 3460,
+   "end": 3513,
+   "type": 1,
+   "syllable": -1,
+   "midi": 0,
+   "cents": null,
+   "swara": ""
+  },
+  {
+   "start": 3513,
+   "end": 3554,
+   "type": 2,
+   "syllable": 145,
+   "midi": 64,
+   "cents": 1312.0,
+   "swara": "r'"
+  },
+  {
+   "start": 3554,
+   "end": 3693,
+   "type": 1,
+   "syllable": -1,
+   "midi": 0,
+   "cents": null,
+   "swara": ""
+  },
+  {
+   "start": 3693,
+   "end": 3716,
+   "type": 2,
+   "syllable": 146,
+   "midi": 60,
+   "cents": 902.9,
+   "swara": "D"
+  },
+  {
+   "start": 3716,
+   "end": 3727,
+   "type": 2,
+   "syllable": 147,
+   "midi": 57,
+   "cents": 592.2,
+   "swara": "M"
+  },
+  {
+   "start": 3727,
+   "end": 3736,
+   "type": 2,
+   "syllable": 148,
+   "midi": 60,
+   "cents": 890.4,
+   "swara": "D"
+  },
+  {
+   "start": 3736,
+   "end": 3744,
+   "type": 2,
+   "syllable": 149,
+   "midi": 61,
+   "cents": 1007.5,
+   "swara": "n"
+  },
+  {
+   "start": 3744,
+   "end": 3759,
+   "type": 2,
+   "syllable": 150,
+   "midi": 61,
+   "cents": 968.7,
+   "swara": "n"
+  },
+  {
+   "start": 3759,
+   "end": 3767,
+   "type": 2,
+   "syllable": 151,
+   "midi": 60,
+   "cents": 936.6,
+   "swara": "D"
+  },
+  {
+   "start": 3767,
+   "end": 3811,
+   "type": 2,
+   "syllable": 152,
+   "midi": 57,
+   "cents": 579.4,
+   "swara": "M"
+  },
+  {
+   "start": 3811,
+   "end": 3883,
+   "type": 3,
+   "syllable": 152,
+   "midi": 48,
+   "cents": -299.0,
+   "swara": ".D"
+  },
+  {
+   "start": 3883,
+   "end": 3888,
+   "type": 2,
+   "syllable": 153,
+   "midi": 60,
+   "cents": 894.9,
+   "swara": "D"
+  },
+  {
+   "start": 3888,
+   "end": 3894,
+   "type": 2,
+   "syllable": 154,
+   "midi": 60,
+   "cents": 856.3,
+   "swara": "D"
+  },
+  {
+   "start": 3894,
+   "end": 3904,
+   "type": 2,
+   "syllable": 155,
+   "midi": 57,
+   "cents": 607.6,
+   "swara": "M"
+  },
+  {
+   "start": 3904,
+   "end": 3915,
+   "type": 2,
+   "syllable": 156,
+   "midi": 60,
+   "cents": 897.1,
+   "swara": "D"
+  },
+  {
+   "start": 3915,
+   "end": 3927,
+   "type": 2,
+   "syllable": 157,
+   "midi": 61,
+   "cents": 1009.5,
+   "swara": "n"
+  },
+  {
+   "start": 3927,
+   "end": 3939,
+   "type": 2,
+   "syllable": 158,
+   "midi": 63,
+   "cents": 1245.1,
+   "swara": "S'"
+  },
+  {
+   "start": 3939,
+   "end": 3952,
+   "type": 2,
+   "syllable": 159,
+   "midi": 60,
+   "cents": 890.4,
+   "swara": "D"
+  },
+  {
+   "start": 3952,
+   "end": 4061,
+   "type": 2,
+   "syllable": 160,
+   "midi": 49,
+   "cents": -221.2,
+   "swara": ".n"
+  },
+  {
+   "start": 4061,
+   "end": 4072,
+   "type": 2,
+   "syllable": 161,
+   "midi": 60,
+   "cents": 855.0,
+   "swara": "D"
+  },
+  {
+   "start": 4072,
+   "end": 4078,
+   "type": 2,
+   "syllable": 162,
+   "midi": 56,
+   "cents": 542.8,
+   "swara": "m"
+  },
+  {
+   "start": 4078,
+   "end": 4085,
+   "type": 2,
+   "syllable": 163,
+   "midi": 56,
+   "cents": 503.1,
+   "swara": "m"
+  },
+  {
+   "start": 4085,
+   "end": 4096,
+   "type": 2,
+   "syllable": 164,
+   "midi": 60,
+   "cents": 945.4,
+   "swara": "D"
+  },
+  {
+   "start": 4096,
+   "end": 4108,
+   "type": 2,
+   "syllable": 165,
+   "midi": 63,
+   "cents": 1235.3,
+   "swara": "S'"
+  },
+  {
+   "start": 4108,
+   "end": 4119,
+   "type": 2,
+   "syllable": 166,
+   "midi": 63,
+   "cents": 1193.9,
+   "swara": "S'"
+  },
+  {
+   "start": 4119,
+   "end": 4131,
+   "type": 2,
+   "syllable": 167,
+   "midi": 61,
+   "cents": 965.9,
+   "swara": "n"
+  },
+  {
+   "start": 4131,
+   "end": 4194,
+   "type": 2,
+   "syllable": 168,
+   "midi": 62,
+   "cents": 1073.7,
+   "swara": "N"
+  },
+  {
+   "start": 4194,
+   "end": 4225,
+   "type": 3,
+   "syllable": 168,
+   "midi": 60,
+   "cents": 912.3,
+   "swara": "D"
+  },
+  {
+   "start": 4225,
+   "end": 4242,
+   "type": 3,
+   "syllable": 168,
+   "midi": 61,
+   "cents": 986.9,
+   "swara": "n"
+  },
+  {
+   "start": 4242,
+   "end": 4248,
+   "type": 2,
+   "syllable": 169,
+   "midi": 64,
+   "cents": 1290.3,
+   "swara": "r'"
+  },
+  {
+   "start": 4248,
+   "end": 4275,
+   "type": 2,
+   "syllable": 170,
+   "midi": 61,
+   "cents": 1018.0,
+   "swara": "n"
+  },
+  {
+   "start": 4275,
+   "end": 4286,
+   "type": 2,
+   "syllable": 171,
+   "midi": 61,
+   "cents": 1008.5,
+   "swara": "n"
+  },
+  {
+   "start": 4286,
+   "end": 4298,
+   "type": 2,
+   "syllable": 172,
+   "midi": 61,
+   "cents": 999.1,
+   "swara": "n"
+  },
+  {
+   "start": 4298,
+   "end": 4310,
+   "type": 2,
+   "syllable": 173,
+   "midi": 61,
+   "cents": 1014.9,
+   "swara": "n"
+  },
+  {
+   "start": 4310,
+   "end": 4323,
+   "type": 2,
+   "syllable": 174,
+   "midi": 61,
+   "cents": 1011.9,
+   "swara": "n"
+  },
+  {
+   "start": 4323,
+   "end": 4345,
+   "type": 3,
+   "syllable": 174,
+   "midi": 60,
+   "cents": 906.5,
+   "swara": "D"
+  },
+  {
+   "start": 4345,
+   "end": 4368,
+   "type": 2,
+   "syllable": 175,
+   "midi": 49,
+   "cents": -199.8,
+   "swara": ".n"
+  },
+  {
+   "start": 4368,
+   "end": 4381,
+   "type": 3,
+   "syllable": 175,
+   "midi": 48,
+   "cents": -293.8,
+   "swara": ".D"
+  },
+  {
+   "start": 4381,
+   "end": 4386,
+   "type": 3,
+   "syllable": 175,
+   "midi": 49,
+   "cents": -207.7,
+   "swara": ".n"
+  },
+  {
+   "start": 4386,
+   "end": 4410,
+   "type": 1,
+   "syllable": -1,
+   "midi": 0,
+   "cents": null,
+   "swara": ""
+  },
+  {
+   "start": 4410,
+   "end": 4432,
+   "type": 2,
+   "syllable": 176,
+   "midi": 65,
+   "cents": 1405.5,
+   "swara": "R'"
+  },
+  {
+   "start": 4432,
+   "end": 4445,
+   "type": 2,
+   "syllable": 177,
+   "midi": 65,
+   "cents": 1400.0,
+   "swara": "R'"
+  },
+  {
+   "start": 4445,
+   "end": 4449,
+   "type": 2,
+   "syllable": 178,
+   "midi": 65,
+   "cents": 1396.9,
+   "swara": "R'"
+  },
+  {
+   "start": 4449,
+   "end": 4454,
+   "type": 2,
+   "syllable": 179,
+   "midi": 65,
+   "cents": 1388.0,
+   "swara": "R'"
+  },
+  {
+   "start": 4454,
+   "end": 4466,
+   "type": 2,
+   "syllable": 180,
+   "midi": 65,
+   "cents": 1393.5,
+   "swara": "R'"
+  },
+  {
+   "start": 4466,
+   "end": 4477,
+   "type": 2,
+   "syllable": 181,
+   "midi": 65,
+   "cents": 1371.6,
+   "swara": "R'"
+  },
+  {
+   "start": 4477,
+   "end": 4488,
+   "type": 2,
+   "syllable": 182,
+   "midi": 60,
+   "cents": 863.7,
+   "swara": "D"
+  },
+  {
+   "start": 4488,
+   "end": 4503,
+   "type": 2,
+   "syllable": 183,
+   "midi": 65,
+   "cents": 1410.1,
+   "swara": "R'"
+  },
+  {
+   "start": 4503,
+   "end": 4510,
+   "type": 1,
+   "syllable": -1,
+   "midi": 0,
+   "cents": null,
+   "swara": ""
+  },
+  {
+   "start": 4510,
+   "end": 4521,
+   "type": 2,
+   "syllable": 184,
+   "midi": 65,
+   "cents": 1396.9,
+   "swara": "R'"
+  },
+  {
+   "start": 4521,
+   "end": 4535,
+   "type": 2,
+   "syllable": 185,
+   "midi": 65,
+   "cents": 1413.1,
+   "swara": "R'"
+  },
+  {
+   "start": 4535,
+   "end": 4538,
+   "type": 2,
+   "syllable": 186,
+   "midi": 65,
+   "cents": 1393.7,
+   "swara": "R'"
+  },
+  {
+   "start": 4538,
+   "end": 4544,
+   "type": 2,
+   "syllable": 187,
+   "midi": 61,
+   "cents": 990.3,
+   "swara": "n"
+  },
+  {
+   "start": 4544,
+   "end": 4560,
+   "type": 2,
+   "syllable": 188,
+   "midi": 65,
+   "cents": 1406.8,
+   "swara": "R'"
+  },
+  {
+   "start": 4560,
+   "end": 4566,
+   "type": 2,
+   "syllable": 189,
+   "midi": 64,
+   "cents": 1298.9,
+   "swara": "r'"
+  },
+  {
+   "start": 4566,
+   "end": 4577,
+   "type": 2,
+   "syllable": 190,
+   "midi": 60,
+   "cents": 944.9,
+   "swara": "D"
+  },
+  {
+   "start": 4577,
+   "end": 4600,
+   "type": 2,
+   "syllable": 191,
+   "midi": 62,
+   "cents": 1073.7,
+   "swara": "N"
+  },
+  {
+   "start": 4600,
+   "end": 4611,
+   "type": 2,
+   "syllable": 192,
+   "midi": 64,
+   "cents": 1319.0,
+   "swara": "r'"
+  },
+  {
+   "start": 4611,
+   "end": 4624,
+   "type": 2,
+   "syllable": 193,
+   "midi": 65,
+   "cents": 1402.0,
+   "swara": "R'"
+  },
+  {
+   "start": 4624,
+   "end": 4633,
+   "type": 2,
+   "syllable": 194,
+   "midi": 65,
+   "cents": 1409.7,
+   "swara": "R'"
+  },
+  {
+   "start": 4633,
+   "end": 4637,
+   "type": 2,
+   "syllable": 195,
+   "midi": 65,
+   "cents": 1409.2,
+   "swara": "R'"
+  },
+  {
+   "start": 4637,
+   "end": 4644,
+   "type": 2,
+   "syllable": 196,
+   "midi": 67,
+   "cents": 1602.2,
+   "swara": "G'"
+  },
+  {
+   "start": 4644,
+   "end": 4656,
+   "type": 2,
+   "syllable": 197,
+   "midi": 53,
+   "cents": 201.7,
+   "swara": "R"
+  },
+  {
+   "start": 4656,
+   "end": 4666,
+   "type": 2,
+   "syllable": 198,
+   "midi": 53,
+   "cents": 200.1,
+   "swara": "R"
+  },
+  {
+   "start": 4666,
+   "end": 4676,
+   "type": 2,
+   "syllable": 199,
+   "midi": 65,
+   "cents": 1408.8,
+   "swara": "R'"
+  },
+  {
+   "start": 4676,
+   "end": 4689,
+   "type": 2,
+   "syllable": 200,
+   "midi": 67,
+   "cents": 1566.9,
+   "swara": "G'"
+  },
+  {
+   "start": 4689,
+   "end": 4698,
+   "type": 2,
+   "syllable": 201,
+   "midi": 65,
+   "cents": 1420.0,
+   "swara": "R'"
+  },
+  {
+   "start": 4698,
+   "end": 4710,
+   "type": 2,
+   "syllable": 202,
+   "midi": 65,
+   "cents": 1379.2,
+   "swara": "R'"
+  },
+  {
+   "start": 4710,
+   "end": 4721,
+   "type": 2,
+   "syllable": 203,
+   "midi": 65,
+   "cents": 1390.4,
+   "swara": "R'"
+  },
+  {
+   "start": 4721,
+   "end": 4728,
+   "type": 2,
+   "syllable": 204,
+   "midi": 65,
+   "cents": 1362.2,
+   "swara": "R'"
+  },
+  {
+   "start": 4728,
+   "end": 4729,
+   "type": 2,
+   "syllable": 205,
+   "midi": 65,
+   "cents": 1415.2,
+   "swara": "R'"
+  },
+  {
+   "start": 4729,
+   "end": 4730,
+   "type": 2,
+   "syllable": 206,
+   "midi": 65,
+   "cents": 1407.2,
+   "swara": "R'"
+  },
+  {
+   "start": 4730,
+   "end": 4732,
+   "type": 2,
+   "syllable": 207,
+   "midi": 65,
+   "cents": 1396.4,
+   "swara": "R'"
+  },
+  {
+   "start": 4732,
+   "end": 4744,
+   "type": 2,
+   "syllable": 208,
+   "midi": 65,
+   "cents": 1396.6,
+   "swara": "R'"
+  },
+  {
+   "start": 4744,
+   "end": 4756,
+   "type": 2,
+   "syllable": 209,
+   "midi": 60,
+   "cents": 934.7,
+   "swara": "D"
+  },
+  {
+   "start": 4756,
+   "end": 4779,
+   "type": 2,
+   "syllable": 210,
+   "midi": 67,
+   "cents": 1610.0,
+   "swara": "G'"
+  },
+  {
+   "start": 4779,
+   "end": 4789,
+   "type": 2,
+   "syllable": 211,
+   "midi": 63,
+   "cents": 1179.9,
+   "swara": "S'"
+  },
+  {
+   "start": 4789,
+   "end": 4799,
+   "type": 2,
+   "syllable": 212,
+   "midi": 63,
+   "cents": 1205.0,
+   "swara": "S'"
+  },
+  {
+   "start": 4799,
+   "end": 4812,
+   "type": 2,
+   "syllable": 213,
+   "midi": 63,
+   "cents": 1195.6,
+   "swara": "S'"
+  },
+  {
+   "start": 4812,
+   "end": 4823,
+   "type": 2,
+   "syllable": 214,
+   "midi": 63,
+   "cents": 1199.0,
+   "swara": "S'"
+  },
+  {
+   "start": 4823,
+   "end": 4838,
+   "type": 2,
+   "syllable": 215,
+   "midi": 63,
+   "cents": 1201.4,
+   "swara": "S'"
+  },
+  {
+   "start": 4838,
+   "end": 4845,
+   "type": 2,
+   "syllable": 216,
+   "midi": 63,
+   "cents": 1186.1,
+   "swara": "S'"
+  },
+  {
+   "start": 4845,
+   "end": 4858,
+   "type": 2,
+   "syllable": 217,
+   "midi": 65,
+   "cents": 1387.7,
+   "swara": "R'"
+  },
+  {
+   "start": 4858,
+   "end": 4879,
+   "type": 2,
+   "syllable": 218,
+   "midi": 62,
+   "cents": 1148.4,
+   "swara": "N"
+  },
+  {
+   "start": 4879,
+   "end": 4891,
+   "type": 2,
+   "syllable": 219,
+   "midi": 62,
+   "cents": 1113.4,
+   "swara": "N"
+  },
+  {
+   "start": 4891,
+   "end": 4905,
+   "type": 2,
+   "syllable": 220,
+   "midi": 63,
+   "cents": 1197.1,
+   "swara": "S'"
+  },
+  {
+   "start": 4905,
+   "end": 4970,
+   "type": 2,
+   "syllable": 221,
+   "midi": 62,
+   "cents": 1060.8,
+   "swara": "N"
+  },
+  {
+   "start": 4970,
+   "end": 4981,
+   "type": 2,
+   "syllable": 222,
+   "midi": 63,
+   "cents": 1169.8,
+   "swara": "S'"
+  },
+  {
+   "start": 4981,
+   "end": 5002,
+   "type": 2,
+   "syllable": 223,
+   "midi": 63,
+   "cents": 1160.6,
+   "swara": "S'"
+  },
+  {
+   "start": 5002,
+   "end": 5016,
+   "type": 2,
+   "syllable": 224,
+   "midi": 63,
+   "cents": 1199.4,
+   "swara": "S'"
+  },
+  {
+   "start": 5016,
+   "end": 5024,
+   "type": 2,
+   "syllable": 225,
+   "midi": 63,
+   "cents": 1194.4,
+   "swara": "S'"
+  },
+  {
+   "start": 5024,
+   "end": 5036,
+   "type": 2,
+   "syllable": 226,
+   "midi": 65,
+   "cents": 1385.8,
+   "swara": "R'"
+  },
+  {
+   "start": 5036,
+   "end": 5048,
+   "type": 2,
+   "syllable": 227,
+   "midi": 62,
+   "cents": 1102.0,
+   "swara": "N"
+  },
+  {
+   "start": 5048,
+   "end": 5059,
+   "type": 2,
+   "syllable": 228,
+   "midi": 62,
+   "cents": 1099.5,
+   "swara": "N"
+  },
+  {
+   "start": 5059,
+   "end": 5071,
+   "type": 2,
+   "syllable": 229,
+   "midi": 62,
+   "cents": 1118.3,
+   "swara": "N"
+  },
+  {
+   "start": 5071,
+   "end": 5082,
+   "type": 2,
+   "syllable": 230,
+   "midi": 62,
+   "cents": 1099.7,
+   "swara": "N"
+  },
+  {
+   "start": 5082,
+   "end": 5105,
+   "type": 2,
+   "syllable": 231,
+   "midi": 62,
+   "cents": 1103.5,
+   "swara": "N"
+  },
+  {
+   "start": 5105,
+   "end": 5139,
+   "type": 2,
+   "syllable": 232,
+   "midi": 60,
+   "cents": 918.4,
+   "swara": "D"
+  },
+  {
+   "start": 5139,
+   "end": 5148,
+   "type": 2,
+   "syllable": 233,
+   "midi": 62,
+   "cents": 1110.2,
+   "swara": "N"
+  },
+  {
+   "start": 5148,
+   "end": 5160,
+   "type": 2,
+   "syllable": 234,
+   "midi": 63,
+   "cents": 1185.5,
+   "swara": "S'"
+  },
+  {
+   "start": 5160,
+   "end": 5170,
+   "type": 2,
+   "syllable": 235,
+   "midi": 63,
+   "cents": 1194.0,
+   "swara": "S'"
+  },
+  {
+   "start": 5170,
+   "end": 5181,
+   "type": 2,
+   "syllable": 236,
+   "midi": 64,
+   "cents": 1309.9,
+   "swara": "r'"
+  },
+  {
+   "start": 5181,
+   "end": 5203,
+   "type": 2,
+   "syllable": 237,
+   "midi": 67,
+   "cents": 1599.1,
+   "swara": "G'"
+  },
+  {
+   "start": 5203,
+   "end": 5215,
+   "type": 2,
+   "syllable": 238,
+   "midi": 67,
+   "cents": 1598.3,
+   "swara": "G'"
+  },
+  {
+   "start": 5215,
+   "end": 5226,
+   "type": 2,
+   "syllable": 239,
+   "midi": 66,
+   "cents": 1495.6,
+   "swara": "g'"
+  },
+  {
+   "start": 5226,
+   "end": 5236,
+   "type": 2,
+   "syllable": 240,
+   "midi": 65,
+   "cents": 1401.8,
+   "swara": "R'"
+  },
+  {
+   "start": 5236,
+   "end": 5260,
+   "type": 2,
+   "syllable": 241,
+   "midi": 65,
+   "cents": 1399.2,
+   "swara": "R'"
+  },
+  {
+   "start": 5260,
+   "end": 5283,
+   "type": 2,
+   "syllable": 242,
+   "midi": 65,
+   "cents": 1397.6,
+   "swara": "R'"
+  },
+  {
+   "start": 5283,
+   "end": 5295,
+   "type": 2,
+   "syllable": 243,
+   "midi": 62,
+   "cents": 1105.7,
+   "swara": "N"
+  },
+  {
+   "start": 5295,
+   "end": 5316,
+   "type": 3,
+   "syllable": 243,
+   "midi": 62,
+   "cents": 1092.3,
+   "swara": "N"
+  },
+  {
+   "start": 5316,
+   "end": 5339,
+   "type": 2,
+   "syllable": 244,
+   "midi": 63,
+   "cents": 1196.6,
+   "swara": "S'"
+  },
+  {
+   "start": 5339,
+   "end": 5350,
+   "type": 2,
+   "syllable": 245,
+   "midi": 63,
+   "cents": 1194.3,
+   "swara": "S'"
+  },
+  {
+   "start": 5350,
+   "end": 5361,
+   "type": 2,
+   "syllable": 246,
+   "midi": 63,
+   "cents": 1153.6,
+   "swara": "S'"
+  },
+  {
+   "start": 5361,
+   "end": 5373,
+   "type": 2,
+   "syllable": 247,
+   "midi": 63,
+   "cents": 1204.7,
+   "swara": "S'"
+  },
+  {
+   "start": 5373,
+   "end": 5384,
+   "type": 2,
+   "syllable": 248,
+   "midi": 63,
+   "cents": 1215.4,
+   "swara": "S'"
+  },
+  {
+   "start": 5384,
+   "end": 5396,
+   "type": 2,
+   "syllable": 249,
+   "midi": 63,
+   "cents": 1159.4,
+   "swara": "S'"
+  },
+  {
+   "start": 5396,
+   "end": 5508,
+   "type": 2,
+   "syllable": 250,
+   "midi": 62,
+   "cents": 1097.2,
+   "swara": "N"
+  },
+  {
+   "start": 5508,
+   "end": 5551,
+   "type": 3,
+   "syllable": 250,
+   "midi": 63,
+   "cents": 1197.3,
+   "swara": "S'"
+  },
+  {
+   "start": 5551,
+   "end": 5621,
+   "type": 2,
+   "syllable": 251,
+   "midi": 63,
+   "cents": 1197.5,
+   "swara": "S'"
+  },
+  {
+   "start": 5621,
+   "end": 5643,
+   "type": 3,
+   "syllable": 251,
+   "midi": 63,
+   "cents": 1183.8,
+   "swara": "S'"
+  },
+  {
+   "start": 5643,
+   "end": 5674,
+   "type": 3,
+   "syllable": 251,
+   "midi": 63,
+   "cents": 1208.5,
+   "swara": "S'"
+  },
+  {
+   "start": 5674,
+   "end": 5678,
+   "type": 2,
+   "syllable": 252,
+   "midi": 61,
+   "cents": 1002.4,
+   "swara": "n"
+  },
+  {
+   "start": 5678,
+   "end": 5684,
+   "type": 2,
+   "syllable": 253,
+   "midi": 63,
+   "cents": 1185.0,
+   "swara": "S'"
+  },
+  {
+   "start": 5684,
+   "end": 5695,
+   "type": 2,
+   "syllable": 254,
+   "midi": 63,
+   "cents": 1200.7,
+   "swara": "S'"
+  },
+  {
+   "start": 5695,
+   "end": 5706,
+   "type": 2,
+   "syllable": 255,
+   "midi": 63,
+   "cents": 1178.4,
+   "swara": "S'"
+  },
+  {
+   "start": 5706,
+   "end": 5718,
+   "type": 2,
+   "syllable": 256,
+   "midi": 63,
+   "cents": 1199.0,
+   "swara": "S'"
+  },
+  {
+   "start": 5718,
+   "end": 5728,
+   "type": 2,
+   "syllable": 257,
+   "midi": 63,
+   "cents": 1196.5,
+   "swara": "S'"
+  },
+  {
+   "start": 5728,
+   "end": 5740,
+   "type": 2,
+   "syllable": 258,
+   "midi": 65,
+   "cents": 1409.0,
+   "swara": "R'"
+  },
+  {
+   "start": 5740,
+   "end": 5756,
+   "type": 2,
+   "syllable": 259,
+   "midi": 65,
+   "cents": 1393.9,
+   "swara": "R'"
+  },
+  {
+   "start": 5756,
+   "end": 5770,
+   "type": 2,
+   "syllable": 260,
+   "midi": 62,
+   "cents": 1134.4,
+   "swara": "N"
+  },
+  {
+   "start": 5770,
+   "end": 5801,
+   "type": 2,
+   "syllable": 261,
+   "midi": 65,
+   "cents": 1360.9,
+   "swara": "R'"
+  },
+  {
+   "start": 5801,
+   "end": 5823,
+   "type": 3,
+   "syllable": 261,
+   "midi": 63,
+   "cents": 1216.0,
+   "swara": "S'"
+  },
+  {
+   "start": 5823,
+   "end": 5853,
+   "type": 3,
+   "syllable": 261,
+   "midi": 69,
+   "cents": 1762.0,
+   "swara": "M'"
+  },
+  {
+   "start": 5853,
+   "end": 5857,
+   "type": 2,
+   "syllable": 262,
+   "midi": 63,
+   "cents": 1173.1,
+   "swara": "S'"
+  },
+  {
+   "start": 5857,
+   "end": 5864,
+   "type": 2,
+   "syllable": 263,
+   "midi": 63,
+   "cents": 1179.0,
+   "swara": "S'"
+  },
+  {
+   "start": 5864,
+   "end": 5875,
+   "type": 2,
+   "syllable": 264,
+   "midi": 63,
+   "cents": 1210.6,
+   "swara": "S'"
+  },
+  {
+   "start": 5875,
+   "end": 5885,
+   "type": 2,
+   "syllable": 265,
+   "midi": 63,
+   "cents": 1206.3,
+   "swara": "S'"
+  },
+  {
+   "start": 5885,
+   "end": 5897,
+   "type": 2,
+   "syllable": 266,
+   "midi": 67,
+   "cents": 1599.8,
+   "swara": "G'"
+  },
+  {
+   "start": 5897,
+   "end": 5910,
+   "type": 2,
+   "syllable": 267,
+   "midi": 67,
+   "cents": 1603.1,
+   "swara": "G'"
+  },
+  {
+   "start": 5910,
+   "end": 5954,
+   "type": 2,
+   "syllable": 268,
+   "midi": 65,
+   "cents": 1398.4,
+   "swara": "R'"
+  },
+  {
+   "start": 5954,
+   "end": 5955,
+   "type": 1,
+   "syllable": -1,
+   "midi": 0,
+   "cents": null,
+   "swara": ""
+  },
+  {
+   "start": 5955,
+   "end": 5979,
+   "type": 2,
+   "syllable": 269,
+   "midi": 63,
+   "cents": 1207.2,
+   "swara": "S'"
+  },
+  {
+   "start": 5979,
+   "end": 6000,
+   "type": 3,
+   "syllable": 269,
+   "midi": 63,
+   "cents": 1205.9,
+   "swara": "S'"
+  },
+  {
+   "start": 6000,
+   "end": 6063,
+   "type": 3,
+   "syllable": 269,
+   "midi": 63,
+   "cents": 1213.8,
+   "swara": "S'"
+  },
+  {
+   "start": 6063,
+   "end": 6065,
+   "type": 1,
+   "syllable": -1,
+   "midi": 0,
+   "cents": null,
+   "swara": ""
+  },
+  {
+   "start": 6065,
+   "end": 6086,
+   "type": 2,
+   "syllable": 270,
+   "midi": 67,
+   "cents": 1600.9,
+   "swara": "G'"
+  },
+  {
+   "start": 6086,
+   "end": 6098,
+   "type": 2,
+   "syllable": 271,
+   "midi": 65,
+   "cents": 1400.4,
+   "swara": "R'"
+  },
+  {
+   "start": 6098,
+   "end": 6104,
+   "type": 2,
+   "syllable": 272,
+   "midi": 65,
+   "cents": 1402.4,
+   "swara": "R'"
+  },
+  {
+   "start": 6104,
+   "end": 6108,
+   "type": 2,
+   "syllable": 273,
+   "midi": 66,
+   "cents": 1470.8,
+   "swara": "g'"
+  },
+  {
+   "start": 6108,
+   "end": 6111,
+   "type": 2,
+   "syllable": 274,
+   "midi": 65,
+   "cents": 1398.8,
+   "swara": "R'"
+  },
+  {
+   "start": 6111,
+   "end": 6116,
+   "type": 2,
+   "syllable": 275,
+   "midi": 62,
+   "cents": 1108.9,
+   "swara": "N"
+  },
+  {
+   "start": 6116,
+   "end": 6125,
+   "type": 2,
+   "syllable": 276,
+   "midi": 68,
+   "cents": 1739.9,
+   "swara": "m'"
+  },
+  {
+   "start": 6125,
+   "end": 6129,
+   "type": 2,
+   "syllable": 277,
+   "midi": 78,
+   "cents": 2740.4,
+   "swara": "g''"
+  },
+  {
+   "start": 6129,
+   "end": 6132,
+   "type": 2,
+   "syllable": 278,
+   "midi": 77,
+   "cents": 2614.3,
+   "swara": "R''"
+  },
+  {
+   "start": 6132,
+   "end": 6140,
+   "type": 2,
+   "syllable": 279,
+   "midi": 77,
+   "cents": 2611.6,
+   "swara": "R''"
+  },
+  {
+   "start": 6140,
+   "end": 6142,
+   "type": 2,
+   "syllable": 280,
+   "midi": 59,
+   "cents": 816.5,
+   "swara": "d"
+  },
+  {
+   "start": 6142,
+   "end": 6155,
+   "type": 2,
+   "syllable": 281,
+   "midi": 58,
+   "cents": 698.4,
+   "swara": "P"
+  },
+  {
+   "start": 6155,
+   "end": 6236,
+   "type": 2,
+   "syllable": 282,
+   "midi": 60,
+   "cents": 887.9,
+   "swara": "D"
+  },
+  {
+   "start": 6236,
+   "end": 6248,
+   "type": 2,
+   "syllable": 283,
+   "midi": 63,
+   "cents": 1199.1,
+   "swara": "S'"
+  },
+  {
+   "start": 6248,
+   "end": 6269,
+   "type": 3,
+   "syllable": 283,
+   "midi": 63,
+   "cents": 1195.2,
+   "swara": "S'"
+  },
+  {
+   "start": 6269,
+   "end": 6290,
+   "type": 2,
+   "syllable": 284,
+   "midi": 60,
+   "cents": 898.8,
+   "swara": "D"
+  },
+  {
+   "start": 6290,
+   "end": 6326,
+   "type": 2,
+   "syllable": 285,
+   "midi": 63,
+   "cents": 1211.5,
+   "swara": "S'"
+  },
+  {
+   "start": 6326,
+   "end": 6338,
+   "type": 2,
+   "syllable": 286,
+   "midi": 63,
+   "cents": 1198.2,
+   "swara": "S'"
+  },
+  {
+   "start": 6338,
+   "end": 6359,
+   "type": 3,
+   "syllable": 286,
+   "midi": 63,
+   "cents": 1195.4,
+   "swara": "S'"
+  },
+  {
+   "start": 6359,
+   "end": 6424,
+   "type": 3,
+   "syllable": 286,
+   "midi": 63,
+   "cents": 1201.0,
+   "swara": "S'"
+  },
+  {
+   "start": 6424,
+   "end": 6445,
+   "type": 2,
+   "syllable": 287,
+   "midi": 66,
+   "cents": 1527.3,
+   "swara": "g'"
+  },
+  {
+   "start": 6445,
+   "end": 6504,
+   "type": 2,
+   "syllable": 288,
+   "midi": 64,
+   "cents": 1252.4,
+   "swara": "r'"
+  },
+  {
+   "start": 6504,
+   "end": 6517,
+   "type": 2,
+   "syllable": 289,
+   "midi": 63,
+   "cents": 1198.3,
+   "swara": "S'"
+  },
+  {
+   "start": 6517,
+   "end": 6535,
+   "type": 3,
+   "syllable": 289,
+   "midi": 63,
+   "cents": 1195.1,
+   "swara": "S'"
+  },
+  {
+   "start": 6535,
+   "end": 6608,
+   "type": 3,
+   "syllable": 289,
+   "midi": 63,
+   "cents": 1211.6,
+   "swara": "S'"
+  },
+  {
+   "start": 6608,
+   "end": 6628,
+   "type": 2,
+   "syllable": 290,
+   "midi": 65,
+   "cents": 1379.0,
+   "swara": "R'"
+  },
+  {
+   "start": 6628,
+   "end": 6649,
+   "type": 3,
+   "syllable": 290,
+   "midi": 60,
+   "cents": 905.4,
+   "swara": "D"
+  },
+  {
+   "start": 6649,
+   "end": 6684,
+   "type": 2,
+   "syllable": 291,
+   "midi": 69,
+   "cents": 1829.9,
+   "swara": "M'"
+  },
+  {
+   "start": 6684,
+   "end": 6696,
+   "type": 2,
+   "syllable": 292,
+   "midi": 63,
+   "cents": 1198.4,
+   "swara": "S'"
+  },
+  {
+   "start": 6696,
+   "end": 6708,
+   "type": 3,
+   "syllable": 292,
+   "midi": 62,
+   "cents": 1105.9,
+   "swara": "N"
+  },
+  {
+   "start": 6708,
+   "end": 6717,
+   "type": 3,
+   "syllable": 292,
+   "midi": 69,
+   "cents": 1794.5,
+   "swara": "M'"
+  },
+  {
+   "start": 6717,
+   "end": 6807,
+   "type": 3,
+   "syllable": 292,
+   "midi": 63,
+   "cents": 1201.1,
+   "swara": "S'"
+  },
+  {
+   "start": 6807,
+   "end": 6827,
+   "type": 2,
+   "syllable": 293,
+   "midi": 60,
+   "cents": 901.8,
+   "swara": "D"
+  },
+  {
+   "start": 6827,
+   "end": 6842,
+   "type": 2,
+   "syllable": 294,
+   "midi": 69,
+   "cents": 1796.7,
+   "swara": "M'"
+  },
+  {
+   "start": 6842,
+   "end": 6859,
+   "type": 1,
+   "syllable": -1,
+   "midi": 0,
+   "cents": null,
+   "swara": ""
+  },
+  {
+   "start": 6859,
+   "end": 6896,
+   "type": 2,
+   "syllable": 295,
+   "midi": 58,
+   "cents": 704.5,
+   "swara": "P"
+  },
+  {
+   "start": 6896,
+   "end": 6915,
+   "type": 3,
+   "syllable": 295,
+   "midi": 60,
+   "cents": 900.6,
+   "swara": "D"
+  },
+  {
+   "start": 6915,
+   "end": 6927,
+   "type": 2,
+   "syllable": 296,
+   "midi": 60,
+   "cents": 947.3,
+   "swara": "D"
+  },
+  {
+   "start": 6927,
+   "end": 6937,
+   "type": 2,
+   "syllable": 297,
+   "midi": 55,
+   "cents": 391.0,
+   "swara": "G"
+  },
+  {
+   "start": 6937,
+   "end": 6950,
+   "type": 2,
+   "syllable": 298,
+   "midi": 60,
+   "cents": 921.6,
+   "swara": "D"
+  },
+  {
+   "start": 6950,
+   "end": 6963,
+   "type": 2,
+   "syllable": 299,
+   "midi": 67,
+   "cents": 1583.7,
+   "swara": "G'"
+  },
+  {
+   "start": 6963,
+   "end": 6973,
+   "type": 2,
+   "syllable": 300,
+   "midi": 60,
+   "cents": 903.1,
+   "swara": "D"
+  },
+  {
+   "start": 6973,
+   "end": 6990,
+   "type": 2,
+   "syllable": 301,
+   "midi": 60,
+   "cents": 910.8,
+   "swara": "D"
+  },
+  {
+   "start": 6990,
+   "end": 6999,
+   "type": 2,
+   "syllable": 302,
+   "midi": 55,
+   "cents": 427.9,
+   "swara": "G"
+  },
+  {
+   "start": 6999,
+   "end": 7018,
+   "type": 2,
+   "syllable": 303,
+   "midi": 55,
+   "cents": 409.7,
+   "swara": "G"
+  },
+  {
+   "start": 7018,
+   "end": 7038,
+   "type": 2,
+   "syllable": 304,
+   "midi": 67,
+   "cents": 1606.3,
+   "swara": "G'"
+  },
+  {
+   "start": 7038,
+   "end": 7050,
+   "type": 2,
+   "syllable": 305,
+   "midi": 68,
+   "cents": 1661.3,
+   "swara": "m'"
+  },
+  {
+   "start": 7050,
+   "end": 7066,
+   "type": 2,
+   "syllable": 306,
+   "midi": 68,
+   "cents": 1698.1,
+   "swara": "m'"
+  },
+  {
+   "start": 7066,
+   "end": 7074,
+   "type": 2,
+   "syllable": 307,
+   "midi": 72,
+   "cents": 2125.8,
+   "swara": "D'"
+  },
+  {
+   "start": 7074,
+   "end": 7096,
+   "type": 2,
+   "syllable": 308,
+   "midi": 67,
+   "cents": 1596.9,
+   "swara": "G'"
+  },
+  {
+   "start": 7096,
+   "end": 7107,
+   "type": 2,
+   "syllable": 309,
+   "midi": 61,
+   "cents": 965.9,
+   "swara": "n"
+  },
+  {
+   "start": 7107,
+   "end": 7117,
+   "type": 2,
+   "syllable": 310,
+   "midi": 55,
+   "cents": 398.8,
+   "swara": "G"
+  },
+  {
+   "start": 7117,
+   "end": 7134,
+   "type": 2,
+   "syllable": 311,
+   "midi": 60,
+   "cents": 924.1,
+   "swara": "D"
+  },
+  {
+   "start": 7134,
+   "end": 7139,
+   "type": 3,
+   "syllable": 311,
+   "midi": 67,
+   "cents": 1587.2,
+   "swara": "G'"
+  },
+  {
+   "start": 7139,
+   "end": 7147,
+   "type": 2,
+   "syllable": 312,
+   "midi": 60,
+   "cents": 948.6,
+   "swara": "D"
+  },
+  {
+   "start": 7147,
+   "end": 7152,
+   "type": 2,
+   "syllable": 313,
+   "midi": 56,
+   "cents": 470.7,
+   "swara": "m"
+  },
+  {
+   "start": 7152,
+   "end": 7161,
+   "type": 2,
+   "syllable": 314,
+   "midi": 55,
+   "cents": 373.8,
+   "swara": "G"
+  },
+  {
+   "start": 7161,
+   "end": 7174,
+   "type": 2,
+   "syllable": 315,
+   "midi": 60,
+   "cents": 903.2,
+   "swara": "D"
+  },
+  {
+   "start": 7174,
+   "end": 7197,
+   "type": 2,
+   "syllable": 316,
+   "midi": 64,
+   "cents": 1319.0,
+   "swara": "r'"
+  },
+  {
+   "start": 7197,
+   "end": 7211,
+   "type": 2,
+   "syllable": 317,
+   "midi": 72,
+   "cents": 2081.2,
+   "swara": "D'"
+  },
+  {
+   "start": 7211,
+   "end": 7222,
+   "type": 2,
+   "syllable": 318,
+   "midi": 72,
+   "cents": 2102.5,
+   "swara": "D'"
+  },
+  {
+   "start": 7222,
+   "end": 7229,
+   "type": 3,
+   "syllable": 318,
+   "midi": 74,
+   "cents": 2308.3,
+   "swara": "N'"
+  },
+  {
+   "start": 7229,
+   "end": 7245,
+   "type": 2,
+   "syllable": 319,
+   "midi": 75,
+   "cents": 2399.8,
+   "swara": "S''"
+  },
+  {
+   "start": 7245,
+   "end": 7254,
+   "type": 2,
+   "syllable": 320,
+   "midi": 76,
+   "cents": 2510.0,
+   "swara": "r''"
+  },
+  {
+   "start": 7254,
+   "end": 7274,
+   "type": 2,
+   "syllable": 321,
+   "midi": 74,
+   "cents": 2302.2,
+   "swara": "N'"
+  },
+  {
+   "start": 7274,
+   "end": 7281,
+   "type": 2,
+   "syllable": 322,
+   "midi": 60,
+   "cents": 942.6,
+   "swara": "D"
+  },
+  {
+   "start": 7281,
+   "end": 7297,
+   "type": 2,
+   "syllable": 323,
+   "midi": 59,
+   "cents": 751.1,
+   "swara": "d"
+  },
+  {
+   "start": 7297,
+   "end": 7309,
+   "type": 2,
+   "syllable": 324,
+   "midi": 60,
+   "cents": 945.2,
+   "swara": "D"
+  },
+  {
+   "start": 7309,
+   "end": 7319,
+   "type": 2,
+   "syllable": 325,
+   "midi": 67,
+   "cents": 1610.4,
+   "swara": "G'"
+  },
+  {
+   "start": 7319,
+   "end": 7335,
+   "type": 2,
+   "syllable": 326,
+   "midi": 60,
+   "cents": 871.3,
+   "swara": "D"
+  },
+  {
+   "start": 7335,
+   "end": 7342,
+   "type": 2,
+   "syllable": 327,
+   "midi": 67,
+   "cents": 1562.1,
+   "swara": "G'"
+  },
+  {
+   "start": 7342,
+   "end": 7353,
+   "type": 2,
+   "syllable": 328,
+   "midi": 65,
+   "cents": 1410.1,
+   "swara": "R'"
+  },
+  {
+   "start": 7353,
+   "end": 7376,
+   "type": 2,
+   "syllable": 329,
+   "midi": 55,
+   "cents": 415.2,
+   "swara": "G"
+  },
+  {
+   "start": 7376,
+   "end": 7387,
+   "type": 2,
+   "syllable": 330,
+   "midi": 72,
+   "cents": 2113.1,
+   "swara": "D'"
+  },
+  {
+   "start": 7387,
+   "end": 7396,
+   "type": 2,
+   "syllable": 331,
+   "midi": 70,
+   "cents": 1879.3,
+   "swara": "P'"
+  },
+  {
+   "start": 7396,
+   "end": 7406,
+   "type": 2,
+   "syllable": 332,
+   "midi": 68,
+   "cents": 1690.1,
+   "swara": "m'"
+  },
+  {
+   "start": 7406,
+   "end": 7424,
+   "type": 2,
+   "syllable": 333,
+   "midi": 63,
+   "cents": 1205.4,
+   "swara": "S'"
+  },
+  {
+   "start": 7424,
+   "end": 7449,
+   "type": 2,
+   "syllable": 334,
+   "midi": 65,
+   "cents": 1402.9,
+   "swara": "R'"
+  },
+  {
+   "start": 7449,
+   "end": 7453,
+   "type": 3,
+   "syllable": 334,
+   "midi": 67,
+   "cents": 1588.2,
+   "swara": "G'"
+  },
+  {
+   "start": 7453,
+   "end": 7464,
+   "type": 2,
+   "syllable": 335,
+   "midi": 61,
+   "cents": 972.8,
+   "swara": "n"
+  },
+  {
+   "start": 7464,
+   "end": 7475,
+   "type": 2,
+   "syllable": 336,
+   "midi": 67,
+   "cents": 1587.4,
+   "swara": "G'"
+  },
+  {
+   "start": 7475,
+   "end": 7486,
+   "type": 2,
+   "syllable": 337,
+   "midi": 58,
+   "cents": 677.0,
+   "swara": "P"
+  },
+  {
+   "start": 7486,
+   "end": 7497,
+   "type": 2,
+   "syllable": 338,
+   "midi": 67,
+   "cents": 1580.7,
+   "swara": "G'"
+  },
+  {
+   "start": 7497,
+   "end": 7514,
+   "type": 2,
+   "syllable": 339,
+   "midi": 60,
+   "cents": 942.9,
+   "swara": "D"
+  },
+  {
+   "start": 7514,
+   "end": 7521,
+   "type": 2,
+   "syllable": 340,
+   "midi": 55,
+   "cents": 375.9,
+   "swara": "G"
+  },
+  {
+   "start": 7521,
+   "end": 7531,
+   "type": 2,
+   "syllable": 341,
+   "midi": 59,
+   "cents": 768.9,
+   "swara": "d"
+  },
+  {
+   "start": 7531,
+   "end": 7555,
+   "type": 2,
+   "syllable": 342,
+   "midi": 55,
+   "cents": 377.2,
+   "swara": "G"
+  },
+  {
+   "start": 7555,
+   "end": 7565,
+   "type": 2,
+   "syllable": 343,
+   "midi": 72,
+   "cents": 2092.6,
+   "swara": "D'"
+  },
+  {
+   "start": 7565,
+   "end": 7576,
+   "type": 2,
+   "syllable": 344,
+   "midi": 72,
+   "cents": 2109.3,
+   "swara": "D'"
+  },
+  {
+   "start": 7576,
+   "end": 7584,
+   "type": 2,
+   "syllable": 345,
+   "midi": 74,
+   "cents": 2285.0,
+   "swara": "N'"
+  },
+  {
+   "start": 7584,
+   "end": 7604,
+   "type": 2,
+   "syllable": 346,
+   "midi": 75,
+   "cents": 2392.1,
+   "swara": "S''"
+  },
+  {
+   "start": 7604,
+   "end": 7612,
+   "type": 2,
+   "syllable": 347,
+   "midi": 74,
+   "cents": 2343.1,
+   "swara": "N'"
+  },
+  {
+   "start": 7612,
+   "end": 7644,
+   "type": 2,
+   "syllable": 348,
+   "midi": 74,
+   "cents": 2300.5,
+   "swara": "N'"
+  },
+  {
+   "start": 7644,
+   "end": 7655,
+   "type": 2,
+   "syllable": 349,
+   "midi": 63,
+   "cents": 1209.6,
+   "swara": "S'"
+  },
+  {
+   "start": 7655,
+   "end": 7665,
+   "type": 2,
+   "syllable": 350,
+   "midi": 63,
+   "cents": 1235.9,
+   "swara": "S'"
+  },
+  {
+   "start": 7665,
+   "end": 7678,
+   "type": 2,
+   "syllable": 351,
+   "midi": 63,
+   "cents": 1189.1,
+   "swara": "S'"
+  },
+  {
+   "start": 7678,
+   "end": 7690,
+   "type": 2,
+   "syllable": 352,
+   "midi": 63,
+   "cents": 1198.0,
+   "swara": "S'"
+  },
+  {
+   "start": 7690,
+   "end": 7700,
+   "type": 2,
+   "syllable": 353,
+   "midi": 63,
+   "cents": 1186.2,
+   "swara": "S'"
+  },
+  {
+   "start": 7700,
+   "end": 7710,
+   "type": 2,
+   "syllable": 354,
+   "midi": 63,
+   "cents": 1194.0,
+   "swara": "S'"
+  },
+  {
+   "start": 7710,
+   "end": 7722,
+   "type": 2,
+   "syllable": 355,
+   "midi": 62,
+   "cents": 1103.5,
+   "swara": "N"
+  },
+  {
+   "start": 7722,
+   "end": 7744,
+   "type": 2,
+   "syllable": 356,
+   "midi": 65,
+   "cents": 1373.9,
+   "swara": "R'"
+  },
+  {
+   "start": 7744,
+   "end": 7756,
+   "type": 2,
+   "syllable": 357,
+   "midi": 62,
+   "cents": 1092.8,
+   "swara": "N"
+  },
+  {
+   "start": 7756,
+   "end": 7766,
+   "type": 2,
+   "syllable": 358,
+   "midi": 62,
+   "cents": 1087.5,
+   "swara": "N"
+  },
+  {
+   "start": 7766,
+   "end": 7791,
+   "type": 2,
+   "syllable": 359,
+   "midi": 62,
+   "cents": 1102.4,
+   "swara": "N"
+  },
+  {
+   "start": 7791,
+   "end": 7825,
+   "type": 2,
+   "syllable": 360,
+   "midi": 62,
+   "cents": 1063.7,
+   "swara": "N"
+  },
+  {
+   "start": 7825,
+   "end": 7836,
+   "type": 2,
+   "syllable": 361,
+   "midi": 63,
+   "cents": 1198.7,
+   "swara": "S'"
+  },
+  {
+   "start": 7836,
+   "end": 7846,
+   "type": 2,
+   "syllable": 362,
+   "midi": 63,
+   "cents": 1167.1,
+   "swara": "S'"
+  },
+  {
+   "start": 7846,
+   "end": 7856,
+   "type": 2,
+   "syllable": 363,
+   "midi": 61,
+   "cents": 999.1,
+   "swara": "n"
+  },
+  {
+   "start": 7856,
+   "end": 7871,
+   "type": 2,
+   "syllable": 364,
+   "midi": 63,
+   "cents": 1157.8,
+   "swara": "S'"
+  },
+  {
+   "start": 7871,
+   "end": 7878,
+   "type": 2,
+   "syllable": 365,
+   "midi": 56,
+   "cents": 472.6,
+   "swara": "m"
+  },
+  {
+   "start": 7878,
+   "end": 7887,
+   "type": 2,
+   "syllable": 366,
+   "midi": 63,
+   "cents": 1200.1,
+   "swara": "S'"
+  },
+  {
+   "start": 7887,
+   "end": 7900,
+   "type": 2,
+   "syllable": 367,
+   "midi": 65,
+   "cents": 1351.0,
+   "swara": "R'"
+  },
+  {
+   "start": 7900,
+   "end": 7924,
+   "type": 2,
+   "syllable": 368,
+   "midi": 62,
+   "cents": 1101.1,
+   "swara": "N"
+  },
+  {
+   "start": 7924,
+   "end": 7935,
+   "type": 2,
+   "syllable": 369,
+   "midi": 62,
+   "cents": 1092.3,
+   "swara": "N"
+  },
+  {
+   "start": 7935,
+   "end": 7947,
+   "type": 2,
+   "syllable": 370,
+   "midi": 62,
+   "cents": 1091.6,
+   "swara": "N"
+  },
+  {
+   "start": 7947,
+   "end": 7970,
+   "type": 2,
+   "syllable": 371,
+   "midi": 62,
+   "cents": 1104.0,
+   "swara": "N"
+  },
+  {
+   "start": 7970,
+   "end": 8002,
+   "type": 2,
+   "syllable": 372,
+   "midi": 62,
+   "cents": 1099.3,
+   "swara": "N"
+  },
+  {
+   "start": 8002,
+   "end": 8013,
+   "type": 2,
+   "syllable": 373,
+   "midi": 62,
+   "cents": 1092.0,
+   "swara": "N"
+  },
+  {
+   "start": 8013,
+   "end": 8023,
+   "type": 2,
+   "syllable": 374,
+   "midi": 63,
+   "cents": 1181.0,
+   "swara": "S'"
+  },
+  {
+   "start": 8023,
+   "end": 8043,
+   "type": 2,
+   "syllable": 375,
+   "midi": 63,
+   "cents": 1198.2,
+   "swara": "S'"
+  },
+  {
+   "start": 8043,
+   "end": 8046,
+   "type": 2,
+   "syllable": 376,
+   "midi": 63,
+   "cents": 1212.5,
+   "swara": "S'"
+  },
+  {
+   "start": 8046,
+   "end": 8059,
+   "type": 2,
+   "syllable": 377,
+   "midi": 63,
+   "cents": 1199.3,
+   "swara": "S'"
+  },
+  {
+   "start": 8059,
+   "end": 8074,
+   "type": 2,
+   "syllable": 378,
+   "midi": 65,
+   "cents": 1412.1,
+   "swara": "R'"
+  },
+  {
+   "start": 8074,
+   "end": 8085,
+   "type": 2,
+   "syllable": 379,
+   "midi": 67,
+   "cents": 1603.6,
+   "swara": "G'"
+  },
+  {
+   "start": 8085,
+   "end": 8104,
+   "type": 2,
+   "syllable": 380,
+   "midi": 65,
+   "cents": 1403.2,
+   "swara": "R'"
+  },
+  {
+   "start": 8104,
+   "end": 8114,
+   "type": 2,
+   "syllable": 381,
+   "midi": 65,
+   "cents": 1398.4,
+   "swara": "R'"
+  },
+  {
+   "start": 8114,
+   "end": 8124,
+   "type": 2,
+   "syllable": 382,
+   "midi": 65,
+   "cents": 1395.0,
+   "swara": "R'"
+  },
+  {
+   "start": 8124,
+   "end": 8149,
+   "type": 2,
+   "syllable": 383,
+   "midi": 65,
+   "cents": 1398.4,
+   "swara": "R'"
+  },
+  {
+   "start": 8149,
+   "end": 8185,
+   "type": 2,
+   "syllable": 384,
+   "midi": 64,
+   "cents": 1313.1,
+   "swara": "r'"
+  },
+  {
+   "start": 8185,
+   "end": 8192,
+   "type": 2,
+   "syllable": 385,
+   "midi": 63,
+   "cents": 1156.1,
+   "swara": "S'"
+  },
+  {
+   "start": 8192,
+   "end": 8215,
+   "type": 2,
+   "syllable": 386,
+   "midi": 63,
+   "cents": 1202.3,
+   "swara": "S'"
+  },
+  {
+   "start": 8215,
+   "end": 8238,
+   "type": 2,
+   "syllable": 387,
+   "midi": 63,
+   "cents": 1199.0,
+   "swara": "S'"
+  },
+  {
+   "start": 8238,
+   "end": 8249,
+   "type": 2,
+   "syllable": 388,
+   "midi": 63,
+   "cents": 1193.4,
+   "swara": "S'"
+  },
+  {
+   "start": 8249,
+   "end": 8259,
+   "type": 2,
+   "syllable": 389,
+   "midi": 62,
+   "cents": 1142.9,
+   "swara": "N"
+  },
+  {
+   "start": 8259,
+   "end": 8348,
+   "type": 2,
+   "syllable": 390,
+   "midi": 58,
+   "cents": 711.1,
+   "swara": "P"
+  },
+  {
+   "start": 8348,
+   "end": 8371,
+   "type": 3,
+   "syllable": 390,
+   "midi": 57,
+   "cents": 585.9,
+   "swara": "M"
+  },
+  {
+   "start": 8371,
+   "end": 8422,
+   "type": 3,
+   "syllable": 390,
+   "midi": 60,
+   "cents": 904.3,
+   "swara": "D"
+  },
+  {
+   "start": 8422,
+   "end": 8509,
+   "type": 3,
+   "syllable": 390,
+   "midi": 63,
+   "cents": 1201.2,
+   "swara": "S'"
+  },
+  {
+   "start": 8509,
+   "end": 8553,
+   "type": 3,
+   "syllable": 390,
+   "midi": 68,
+   "cents": 1691.1,
+   "swara": "m'"
+  },
+  {
+   "start": 8553,
+   "end": 8597,
+   "type": 3,
+   "syllable": 390,
+   "midi": 63,
+   "cents": 1198.6,
+   "swara": "S'"
+  },
+  {
+   "start": 8597,
+   "end": 8655,
+   "type": 2,
+   "syllable": 391,
+   "midi": 65,
+   "cents": 1397.5,
+   "swara": "R'"
+  },
+  {
+   "start": 8655,
+   "end": 8667,
+   "type": 3,
+   "syllable": 391,
+   "midi": 63,
+   "cents": 1200.6,
+   "swara": "S'"
+  },
+  {
+   "start": 8667,
+   "end": 8674,
+   "type": 3,
+   "syllable": 391,
+   "midi": 62,
+   "cents": 1102.4,
+   "swara": "N"
+  },
+  {
+   "start": 8674,
+   "end": 8675,
+   "type": 1,
+   "syllable": -1,
+   "midi": 0,
+   "cents": null,
+   "swara": ""
+  },
+  {
+   "start": 8675,
+   "end": 8750,
+   "type": 2,
+   "syllable": 392,
+   "midi": 63,
+   "cents": 1189.5,
+   "swara": "S'"
+  },
+  {
+   "start": 8750,
+   "end": 8752,
+   "type": 1,
+   "syllable": -1,
+   "midi": 0,
+   "cents": null,
+   "swara": ""
+  },
+  {
+   "start": 8752,
+   "end": 8773,
+   "type": 2,
+   "syllable": 393,
+   "midi": 67,
+   "cents": 1599.2,
+   "swara": "G'"
+  },
+  {
+   "start": 8773,
+   "end": 8785,
+   "type": 2,
+   "syllable": 394,
+   "midi": 65,
+   "cents": 1401.8,
+   "swara": "R'"
+  },
+  {
+   "start": 8785,
+   "end": 8833,
+   "type": 2,
+   "syllable": 395,
+   "midi": 77,
+   "cents": 2569.2,
+   "swara": "R''"
+  },
+  {
+   "start": 8833,
+   "end": 8845,
+   "type": 3,
+   "syllable": 395,
+   "midi": 63,
+   "cents": 1192.3,
+   "swara": "S'"
+  },
+  {
+   "start": 8845,
+   "end": 8865,
+   "type": 3,
+   "syllable": 395,
+   "midi": 63,
+   "cents": 1149.8,
+   "swara": "N"
+  },
+  {
+   "start": 8865,
+   "end": 8937,
+   "type": 3,
+   "syllable": 395,
+   "midi": 63,
+   "cents": 1203.3,
+   "swara": "S'"
+  },
+  {
+   "start": 8937,
+   "end": 8945,
+   "type": 3,
+   "syllable": 395,
+   "midi": 67,
+   "cents": 1602.2,
+   "swara": "G'"
+  },
+  {
+   "start": 8945,
+   "end": 9011,
+   "type": 2,
+   "syllable": 396,
+   "midi": 65,
+   "cents": 1395.1,
+   "swara": "R'"
+  },
+  {
+   "start": 9011,
+   "end": 9046,
+   "type": 2,
+   "syllable": 397,
+   "midi": 58,
+   "cents": 697.7,
+   "swara": "P"
+  },
+  {
+   "start": 9046,
+   "end": 9076,
+   "type": 3,
+   "syllable": 397,
+   "midi": 61,
+   "cents": 999.1,
+   "swara": "n"
+  },
+  {
+   "start": 9076,
+   "end": 9082,
+   "type": 2,
+   "syllable": 398,
+   "midi": 59,
+   "cents": 828.5,
+   "swara": "d"
+  },
+  {
+   "start": 9082,
+   "end": 9087,
+   "type": 2,
+   "syllable": 399,
+   "midi": 63,
+   "cents": 1191.0,
+   "swara": "S'"
+  },
+  {
+   "start": 9087,
+   "end": 9099,
+   "type": 2,
+   "syllable": 400,
+   "midi": 63,
+   "cents": 1197.5,
+   "swara": "S'"
+  },
+  {
+   "start": 9099,
+   "end": 9109,
+   "type": 2,
+   "syllable": 401,
+   "midi": 63,
+   "cents": 1197.7,
+   "swara": "S'"
+  },
+  {
+   "start": 9109,
+   "end": 9121,
+   "type": 2,
+   "syllable": 402,
+   "midi": 63,
+   "cents": 1197.6,
+   "swara": "S'"
+  },
+  {
+   "start": 9121,
+   "end": 9128,
+   "type": 2,
+   "syllable": 403,
+   "midi": 63,
+   "cents": 1201.0,
+   "swara": "S'"
+  },
+  {
+   "start": 9128,
+   "end": 9135,
+   "type": 2,
+   "syllable": 404,
+   "midi": 63,
+   "cents": 1248.1,
+   "swara": "S'"
+  },
+  {
+   "start": 9135,
+   "end": 9136,
+   "type": 2,
+   "syllable": 405,
+   "midi": 63,
+   "cents": 1216.5,
+   "swara": "S'"
+  },
+  {
+   "start": 9136,
+   "end": 9137,
+   "type": 2,
+   "syllable": 406,
+   "midi": 63,
+   "cents": 1187.7,
+   "swara": "S'"
+  },
+  {
+   "start": 9137,
+   "end": 9139,
+   "type": 2,
+   "syllable": 407,
+   "midi": 63,
+   "cents": 1198.3,
+   "swara": "S'"
+  },
+  {
+   "start": 9139,
+   "end": 9145,
+   "type": 2,
+   "syllable": 408,
+   "midi": 63,
+   "cents": 1197.1,
+   "swara": "S'"
+  },
+  {
+   "start": 9145,
+   "end": 9153,
+   "type": 2,
+   "syllable": 409,
+   "midi": 63,
+   "cents": 1199.7,
+   "swara": "S'"
+  },
+  {
+   "start": 9153,
+   "end": 9216,
+   "type": 2,
+   "syllable": 410,
+   "midi": 63,
+   "cents": 1191.1,
+   "swara": "S'"
+  },
+  {
+   "start": 9216,
+   "end": 9226,
+   "type": 3,
+   "syllable": 410,
+   "midi": 69,
+   "cents": 1798.1,
+   "swara": "M'"
+  },
+  {
+   "start": 9226,
+   "end": 9255,
+   "type": 3,
+   "syllable": 410,
+   "midi": 69,
+   "cents": 1816.1,
+   "swara": "M'"
+  },
+  {
+   "start": 9255,
+   "end": 9261,
+   "type": 2,
+   "syllable": 411,
+   "midi": 60,
+   "cents": 946.3,
+   "swara": "D"
+  },
+  {
+   "start": 9261,
+   "end": 9266,
+   "type": 2,
+   "syllable": 412,
+   "midi": 63,
+   "cents": 1192.0,
+   "swara": "S'"
+  },
+  {
+   "start": 9266,
+   "end": 9278,
+   "type": 2,
+   "syllable": 413,
+   "midi": 63,
+   "cents": 1199.3,
+   "swara": "S'"
+  },
+  {
+   "start": 9278,
+   "end": 9300,
+   "type": 2,
+   "syllable": 414,
+   "midi": 63,
+   "cents": 1198.3,
+   "swara": "S'"
+  },
+  {
+   "start": 9300,
+   "end": 9310,
+   "type": 2,
+   "syllable": 415,
+   "midi": 63,
+   "cents": 1206.0,
+   "swara": "S'"
+  },
+  {
+   "start": 9310,
+   "end": 9323,
+   "type": 2,
+   "syllable": 416,
+   "midi": 65,
+   "cents": 1400.5,
+   "swara": "R'"
+  },
+  {
+   "start": 9323,
+   "end": 9333,
+   "type": 2,
+   "syllable": 417,
+   "midi": 65,
+   "cents": 1398.4,
+   "swara": "R'"
+  },
+  {
+   "start": 9333,
+   "end": 9383,
+   "type": 2,
+   "syllable": 418,
+   "midi": 64,
+   "cents": 1251.0,
+   "swara": "r'"
+  },
+  {
+   "start": 9383,
+   "end": 9397,
+   "type": 3,
+   "syllable": 418,
+   "midi": 63,
+   "cents": 1184.9,
+   "swara": "S'"
+  },
+  {
+   "start": 9397,
+   "end": 9435,
+   "type": 2,
+   "syllable": 419,
+   "midi": 61,
+   "cents": 1017.4,
+   "swara": "n"
+  },
+  {
+   "start": 9435,
+   "end": 9440,
+   "type": 2,
+   "syllable": 420,
+   "midi": 62,
+   "cents": 1080.4,
+   "swara": "N"
+  },
+  {
+   "start": 9440,
+   "end": 9446,
+   "type": 2,
+   "syllable": 421,
+   "midi": 63,
+   "cents": 1195.0,
+   "swara": "S'"
+  },
+  {
+   "start": 9446,
+   "end": 9474,
+   "type": 2,
+   "syllable": 422,
+   "midi": 64,
+   "cents": 1252.4,
+   "swara": "r'"
+  },
+  {
+   "start": 9474,
+   "end": 9492,
+   "type": 3,
+   "syllable": 422,
+   "midi": 67,
+   "cents": 1603.5,
+   "swara": "G'"
+  },
+  {
+   "start": 9492,
+   "end": 9529,
+   "type": 2,
+   "syllable": 423,
+   "midi": 65,
+   "cents": 1445.0,
+   "swara": "R'"
+  },
+  {
+   "start": 9529,
+   "end": 9531,
+   "type": 1,
+   "syllable": -1,
+   "midi": 0,
+   "cents": null,
+   "swara": ""
+  },
+  {
+   "start": 9531,
+   "end": 9562,
+   "type": 2,
+   "syllable": 424,
+   "midi": 67,
+   "cents": 1581.7,
+   "swara": "G'"
+  },
+  {
+   "start": 9562,
+   "end": 9584,
+   "type": 3,
+   "syllable": 424,
+   "midi": 63,
+   "cents": 1188.8,
+   "swara": "S'"
+  },
+  {
+   "start": 9584,
+   "end": 9613,
+   "type": 3,
+   "syllable": 424,
+   "midi": 63,
+   "cents": 1207.3,
+   "swara": "S'"
+  },
+  {
+   "start": 9613,
+   "end": 9619,
+   "type": 2,
+   "syllable": 425,
+   "midi": 61,
+   "cents": 1034.9,
+   "swara": "n"
+  },
+  {
+   "start": 9619,
+   "end": 9625,
+   "type": 2,
+   "syllable": 426,
+   "midi": 63,
+   "cents": 1202.9,
+   "swara": "S'"
+  },
+  {
+   "start": 9625,
+   "end": 9636,
+   "type": 2,
+   "syllable": 427,
+   "midi": 63,
+   "cents": 1203.6,
+   "swara": "S'"
+  },
+  {
+   "start": 9636,
+   "end": 9646,
+   "type": 2,
+   "syllable": 428,
+   "midi": 63,
+   "cents": 1205.3,
+   "swara": "S'"
+  },
+  {
+   "start": 9646,
+   "end": 9659,
+   "type": 2,
+   "syllable": 429,
+   "midi": 67,
+   "cents": 1601.6,
+   "swara": "G'"
+  },
+  {
+   "start": 9659,
+   "end": 9669,
+   "type": 2,
+   "syllable": 430,
+   "midi": 67,
+   "cents": 1612.0,
+   "swara": "G'"
+  },
+  {
+   "start": 9669,
+   "end": 9727,
+   "type": 2,
+   "syllable": 431,
+   "midi": 65,
+   "cents": 1403.5,
+   "swara": "R'"
+  },
+  {
+   "start": 9727,
+   "end": 9819,
+   "type": 3,
+   "syllable": 431,
+   "midi": 60,
+   "cents": 897.4,
+   "swara": "D"
+  },
+  {
+   "start": 9819,
+   "end": 9841,
+   "type": 3,
+   "syllable": 431,
+   "midi": 63,
+   "cents": 1195.7,
+   "swara": "S'"
+  },
+  {
+   "start": 9841,
+   "end": 9852,
+   "type": 3,
+   "syllable": 431,
+   "midi": 75,
+   "cents": 2384.0,
+   "swara": "S''"
+  },
+  {
+   "start": 9852,
+   "end": 9867,
+   "type": 3,
+   "syllable": 431,
+   "midi": 60,
+   "cents": 905.4,
+   "swara": "D"
+  },
+  {
+   "start": 9867,
+   "end": 9903,
+   "type": 3,
+   "syllable": 431,
+   "midi": 72,
+   "cents": 2137.8,
+   "swara": "D'"
+  },
+  {
+   "start": 9903,
+   "end": 9919,
+   "type": 3,
+   "syllable": 431,
+   "midi": 63,
+   "cents": 1195.7,
+   "swara": "S'"
+  },
+  {
+   "start": 9919,
+   "end": 9941,
+   "type": 3,
+   "syllable": 431,
+   "midi": 65,
+   "cents": 1396.5,
+   "swara": "R'"
+  },
+  {
+   "start": 9941,
+   "end": 10009,
+   "type": 3,
+   "syllable": 431,
+   "midi": 63,
+   "cents": 1204.5,
+   "swara": "S'"
+  },
+  {
+   "start": 10009,
+   "end": 10031,
+   "type": 3,
+   "syllable": 431,
+   "midi": 63,
+   "cents": 1237.7,
+   "swara": "S'"
+  },
+  {
+   "start": 10031,
+   "end": 10086,
+   "type": 3,
+   "syllable": 431,
+   "midi": 65,
+   "cents": 1364.0,
+   "swara": "R'"
+  },
+  {
+   "start": 10086,
+   "end": 10099,
+   "type": 3,
+   "syllable": 431,
+   "midi": 63,
+   "cents": 1197.3,
+   "swara": "S'"
+  },
+  {
+   "start": 10099,
+   "end": 10111,
+   "type": 3,
+   "syllable": 431,
+   "midi": 62,
+   "cents": 1115.1,
+   "swara": "N"
+  },
+  {
+   "start": 10111,
+   "end": 10121,
+   "type": 3,
+   "syllable": 431,
+   "midi": 69,
+   "cents": 1791.4,
+   "swara": "M'"
+  },
+  {
+   "start": 10121,
+   "end": 10188,
+   "type": 3,
+   "syllable": 431,
+   "midi": 63,
+   "cents": 1201.9,
+   "swara": "S'"
+  },
+  {
+   "start": 10188,
+   "end": 10200,
+   "type": 3,
+   "syllable": 431,
+   "midi": 62,
+   "cents": 1136.1,
+   "swara": "N"
+  },
+  {
+   "start": 10200,
+   "end": 10210,
+   "type": 3,
+   "syllable": 431,
+   "midi": 75,
+   "cents": 2376.3,
+   "swara": "S''"
+  },
+  {
+   "start": 10210,
+   "end": 10222,
+   "type": 3,
+   "syllable": 431,
+   "midi": 72,
+   "cents": 2104.9,
+   "swara": "D'"
+  },
+  {
+   "start": 10222,
+   "end": 10267,
+   "type": 3,
+   "syllable": 431,
+   "midi": 74,
+   "cents": 2309.1,
+   "swara": "N'"
+  },
+  {
+   "start": 10267,
+   "end": 10277,
+   "type": 3,
+   "syllable": 431,
+   "midi": 63,
+   "cents": 1191.0,
+   "swara": "S'"
+  },
+  {
+   "start": 10277,
+   "end": 10301,
+   "type": 3,
+   "syllable": 431,
+   "midi": 74,
+   "cents": 2337.7,
+   "swara": "N'"
+  },
+  {
+   "start": 10301,
+   "end": 10356,
+   "type": 3,
+   "syllable": 431,
+   "midi": 74,
+   "cents": 2270.3,
+   "swara": "N'"
+  },
+  {
+   "start": 10356,
+   "end": 10388,
+   "type": 3,
+   "syllable": 431,
+   "midi": 63,
+   "cents": 1198.9,
+   "swara": "S'"
+  },
+  {
+   "start": 10388,
+   "end": 10402,
+   "type": 3,
+   "syllable": 431,
+   "midi": 60,
+   "cents": 907.3,
+   "swara": "D"
+  },
+  {
+   "start": 10402,
+   "end": 10426,
+   "type": 1,
+   "syllable": -1,
+   "midi": 0,
+   "cents": null,
+   "swara": ""
+  },
+  {
+   "start": 10426,
+   "end": 10475,
+   "type": 2,
+   "syllable": 432,
+   "midi": 70,
+   "cents": 1898.4,
+   "swara": "P'"
+  },
+  {
+   "start": 10475,
+   "end": 10476,
+   "type": 1,
+   "syllable": -1,
+   "midi": 0,
+   "cents": null,
+   "swara": ""
+  },
+  {
+   "start": 10476,
+   "end": 10514,
+   "type": 2,
+   "syllable": 433,
+   "midi": 64,
+   "cents": 1299.5,
+   "swara": "r'"
+  },
+  {
+   "start": 10514,
+   "end": 10523,
+   "type": 3,
+   "syllable": 433,
+   "midi": 67,
+   "cents": 1578.3,
+   "swara": "G'"
+  },
+  {
+   "start": 10523,
+   "end": 10544,
+   "type": 3,
+   "syllable": 433,
+   "midi": 64,
+   "cents": 1309.1,
+   "swara": "r'"
+  },
+  {
+   "start": 10544,
+   "end": 10553,
+   "type": 3,
+   "syllable": 433,
+   "midi": 70,
+   "cents": 1896.9,
+   "swara": "P'"
+  },
+  {
+   "start": 10553,
+   "end": 10565,
+   "type": 1,
+   "syllable": -1,
+   "midi": 0,
+   "cents": null,
+   "swara": ""
+  },
+  {
+   "start": 10565,
+   "end": 10618,
+   "type": 2,
+   "syllable": 434,
+   "midi": 67,
+   "cents": 1630.0,
+   "swara": "G'"
+  },
+  {
+   "start": 10618,
+   "end": 10657,
+   "type": 3,
+   "syllable": 434,
+   "midi": 70,
+   "cents": 1896.9,
+   "swara": "P'"
+  },
+  {
+   "start": 10657,
+   "end": 10673,
+   "type": 3,
+   "syllable": 434,
+   "midi": 72,
+   "cents": 2095.4,
+   "swara": "D'"
+  },
+  {
+   "start": 10673,
+   "end": 10690,
+   "type": 3,
+   "syllable": 434,
+   "midi": 64,
+   "cents": 1302.0,
+   "swara": "r'"
+  },
+  {
+   "start": 10690,
+   "end": 10703,
+   "type": 3,
+   "syllable": 434,
+   "midi": 67,
+   "cents": 1591.1,
+   "swara": "G'"
+  },
+  {
+   "start": 10703,
+   "end": 10733,
+   "type": 3,
+   "syllable": 434,
+   "midi": 67,
+   "cents": 1572.4,
+   "swara": "G'"
+  },
+  {
+   "start": 10733,
+   "end": 10735,
+   "type": 1,
+   "syllable": -1,
+   "midi": 0,
+   "cents": null,
+   "swara": ""
+  },
+  {
+   "start": 10735,
+   "end": 10802,
+   "type": 2,
+   "syllable": 435,
+   "midi": 67,
+   "cents": 1617.8,
+   "swara": "G'"
+  },
+  {
+   "start": 10802,
+   "end": 10837,
+   "type": 3,
+   "syllable": 435,
+   "midi": 70,
+   "cents": 1895.9,
+   "swara": "P'"
+  },
+  {
+   "start": 10837,
+   "end": 10848,
+   "type": 3,
+   "syllable": 435,
+   "midi": 72,
+   "cents": 2099.3,
+   "swara": "D'"
+  },
+  {
+   "start": 10848,
+   "end": 10869,
+   "type": 3,
+   "syllable": 435,
+   "midi": 70,
+   "cents": 1900.7,
+   "swara": "P'"
+  },
+  {
+   "start": 10869,
+   "end": 10882,
+   "type": 3,
+   "syllable": 435,
+   "midi": 67,
+   "cents": 1586.9,
+   "swara": "G'"
+  },
+  {
+   "start": 10882,
+   "end": 10897,
+   "type": 3,
+   "syllable": 435,
+   "midi": 60,
+   "cents": 904.2,
+   "swara": "D"
+  },
+  {
+   "start": 10897,
+   "end": 10913,
+   "type": 3,
+   "syllable": 435,
+   "midi": 70,
+   "cents": 1899.2,
+   "swara": "P'"
+  },
+  {
+   "start": 10913,
+   "end": 10919,
+   "type": 1,
+   "syllable": -1,
+   "midi": 0,
+   "cents": null,
+   "swara": ""
+  },
+  {
+   "start": 10919,
+   "end": 10981,
+   "type": 2,
+   "syllable": 436,
+   "midi": 69,
+   "cents": 1779.5,
+   "swara": "M'"
+  },
+  {
+   "start": 10981,
+   "end": 11015,
+   "type": 2,
+   "syllable": 437,
+   "midi": 70,
+   "cents": 1898.0,
+   "swara": "P'"
+  },
+  {
+   "start": 11015,
+   "end": 11039,
+   "type": 2,
+   "syllable": 438,
+   "midi": 70,
+   "cents": 1907.2,
+   "swara": "P'"
+  },
+  {
+   "start": 11039,
+   "end": 11047,
+   "type": 2,
+   "syllable": 439,
+   "midi": 70,
+   "cents": 1896.2,
+   "swara": "P'"
+  },
+  {
+   "start": 11047,
+   "end": 11073,
+   "type": 2,
+   "syllable": 440,
+   "midi": 71,
+   "cents": 1967.0,
+   "swara": "d'"
+  },
+  {
+   "start": 11073,
+   "end": 11091,
+   "type": 3,
+   "syllable": 440,
+   "midi": 70,
+   "cents": 1897.1,
+   "swara": "P'"
+  },
+  {
+   "start": 11091,
+   "end": 11111,
+   "type": 1,
+   "syllable": -1,
+   "midi": 0,
+   "cents": null,
+   "swara": ""
+  },
+  {
+   "start": 11111,
+   "end": 11166,
+   "type": 2,
+   "syllable": 441,
+   "midi": 67,
+   "cents": 1633.3,
+   "swara": "G'"
+  },
+  {
+   "start": 11166,
+   "end": 11191,
+   "type": 3,
+   "syllable": 441,
+   "midi": 70,
+   "cents": 1871.5,
+   "swara": "P'"
+  },
+  {
+   "start": 11191,
+   "end": 11216,
+   "type": 1,
+   "syllable": -1,
+   "midi": 0,
+   "cents": null,
+   "swara": ""
+  },
+  {
+   "start": 11216,
+   "end": 11233,
+   "type": 2,
+   "syllable": 442,
+   "midi": 63,
+   "cents": 1157.2,
+   "swara": "S'"
+  },
+  {
+   "start": 11233,
+   "end": 11867,
+   "type": 1,
+   "syllable": -1,
+   "midi": 0,
+   "cents": null,
+   "swara": ""
+  },
+  {
+   "start": 11867,
+   "end": 11890,
+   "type": 2,
+   "syllable": 443,
+   "midi": 67,
+   "cents": 1636.3,
+   "swara": "G'"
+  },
+  {
+   "start": 11890,
+   "end": 11901,
+   "type": 3,
+   "syllable": 443,
+   "midi": 68,
+   "cents": 1661.7,
+   "swara": "m'"
+  },
+  {
+   "start": 11901,
+   "end": 11931,
+   "type": 3,
+   "syllable": 443,
+   "midi": 56,
+   "cents": 488.1,
+   "swara": "m"
+  },
+  {
+   "start": 11931,
+   "end": 11939,
+   "type": 2,
+   "syllable": 444,
+   "midi": 54,
+   "cents": 268.8,
+   "swara": "g"
+  },
+  {
+   "start": 11939,
+   "end": 11951,
+   "type": 2,
+   "syllable": 445,
+   "midi": 55,
+   "cents": 415.5,
+   "swara": "G"
+  },
+  {
+   "start": 11951,
+   "end": 12009,
+   "type": 2,
+   "syllable": 446,
+   "midi": 55,
+   "cents": 413.5,
+   "swara": "G"
+  },
+  {
+   "start": 12009,
+   "end": 12016,
+   "type": 2,
+   "syllable": 447,
+   "midi": 54,
+   "cents": 264.0,
+   "swara": "g"
+  },
+  {
+   "start": 12016,
+   "end": 12029,
+   "type": 2,
+   "syllable": 448,
+   "midi": 68,
+   "cents": 1653.7,
+   "swara": "m'"
+  },
+  {
+   "start": 12029,
+   "end": 12035,
+   "type": 2,
+   "syllable": 449,
+   "midi": 57,
+   "cents": 567.8,
+   "swara": "M"
+  },
+  {
+   "start": 12035,
+   "end": 12049,
+   "type": 2,
+   "syllable": 450,
+   "midi": 56,
+   "cents": 452.3,
+   "swara": "m"
+  },
+  {
+   "start": 12049,
+   "end": 12057,
+   "type": 2,
+   "syllable": 451,
+   "midi": 56,
+   "cents": 450.6,
+   "swara": "m"
+  },
+  {
+   "start": 12057,
+   "end": 12109,
+   "type": 2,
+   "syllable": 452,
+   "midi": 56,
+   "cents": 459.7,
+   "swara": "m"
+  },
+  {
+   "start": 12109,
+   "end": 12119,
+   "type": 2,
+   "syllable": 453,
+   "midi": 55,
+   "cents": 419.7,
+   "swara": "G"
+  },
+  {
+   "start": 12119,
+   "end": 12167,
+   "type": 2,
+   "syllable": 454,
+   "midi": 55,
+   "cents": 421.6,
+   "swara": "G"
+  },
+  {
+   "start": 12167,
+   "end": 12178,
+   "type": 2,
+   "syllable": 455,
+   "midi": 55,
+   "cents": 440.2,
+   "swara": "G"
+  },
+  {
+   "start": 12178,
+   "end": 12229,
+   "type": 2,
+   "syllable": 456,
+   "midi": 75,
+   "cents": 2384.0,
+   "swara": "S''"
+  },
+  {
+   "start": 12229,
+   "end": 12277,
+   "type": 1,
+   "syllable": -1,
+   "midi": 0,
+   "cents": null,
+   "swara": ""
+  }
+ ],
+ "status": "auto",
+ "qc": {
+  "identity": "relabeled"
+ },
+ "history": [
+  "p1"
+ ]
+}

@@ -1,0 +1,179 @@
+{
+ "inventory": {
+  "status": "done",
+  "version": 1,
+  "config": "bf21a9e8fb",
+  "seconds": 1.0,
+  "finished": "2026-11-15T04:46:57",
+  "job": "386350",
+  "duration_s": 299.9,
+  "decode_ok": true
+ },
+ "fingerprint": {
+  "status": "done",
+  "version": 1,
+  "config": "bf21a9e8fb",
+  "seconds": 0.51,
+  "finished": "2026-11-15T04:46:58",
+  "job": "386350",
+  "values": 1432
+ },
+ "separate": {
+  "status": "done",
+  "version": 1,
+  "config": "ca61032720",
+  "seconds": 29.86,
+  "finished": "2026-11-15T05:48:37.889337",
+  "job": "386544",
+  "deps": {
+   "inventory": "2026-11-15T04:46:57"
+  },
+  "vocal_db": -20.0,
+  "lead_db": -21.0,
+  "seconds_audio": 299.9
+ },
+ "f0": {
+  "status": "done",
+  "version": 1,
+  "config": "cf6bc7cdba",
+  "seconds": 2.35,
+  "finished": "2026-11-15T05:48:40.311939",
+  "job": "386544",
+  "deps": {
+   "separate": "2026-11-15T05:48:37.889337"
+  },
+  "voiced": 0.756,
+  "agree_voiced": 0.942
+ },
+ "voices": {
+  "status": "done",
+  "version": 2,
+  "config": "5b2d3ce884",
+  "seconds": 1.19,
+  "finished": "2026-11-15T05:48:41.517825",
+  "job": "386544",
+  "deps": {
+   "f0": "2026-11-15T05:48:40.311939"
+  },
+  "single_share": 0.571,
+  "clusters": 7
+ },
+ "asr": {
+  "status": "done",
+  "version": 1,
+  "config": "e499d47e9a",
+  "seconds": 8.19,
+  "finished": "2026-11-15T05:48:49.776971",
+  "job": "386544",
+  "deps": {
+   "f0": "2026-11-15T05:48:40.311939"
+  },
+  "qwen_s": 4.6,
+  "whisper_s": 3.4,
+  "phrases": 18,
+  "qwen_kept": 18,
+  "whisper_kept": 18
+ },
+ "emissions": {
+  "status": "done",
+  "version": 1,
+  "config": "bf21a9e8fb",
+  "seconds": 0.89,
+  "finished": "2026-11-15T05:48:50.704935",
+  "job": "386544",
+  "deps": {
+   "f0": "2026-11-15T05:48:40.311939"
+  },
+  "frames": 14995
+ },
+ "singers": {
+  "status": "done",
+  "version": 1,
+  "config": "cc4b1d041e",
+  "seconds": 0.02,
+  "finished": "2026-11-15T05:52:00.756027",
+  "job": "386627",
+  "deps": {
+   "voices": "2026-11-15T05:48:41.517825"
+  },
+  "clusters": 2
+ },
+ "identify": {
+  "status": "claimed",
+  "version": 1,
+  "config": "fa933800e4",
+  "seconds": 0.27,
+  "finished": "2026-11-15T05:55:26.482074",
+  "job": "386648",
+  "deps": {
+   "asr": "2026-11-15T05:48:49.776971"
+  },
+  "coverage": 0.916,
+  "track": "Aashiquii Kaa Gum"
+ },
+ "reconcile": {
+  "status": "done",
+  "version": 1,
+  "config": "fa933800e4",
+  "seconds": 0.12,
+  "finished": "2026-11-15T05:55:26.724785",
+  "job": "386648",
+  "deps": {
+   "identify": "2026-11-15T05:55:26.482074",
+   "singers": "2026-11-15T05:52:00.756027"
+  },
+  "phrases": 18,
+  "words": 340,
+  "ref_backed": 0.953
+ },
+ "align": {
+  "status": "done",
+  "version": 1,
+  "config": "e5a90fd491",
+  "seconds": 0.48,
+  "finished": "2026-11-15T05:55:27.246918",
+  "job": "386648",
+  "deps": {
+   "reconcile": "2026-11-15T05:55:26.724785",
+   "emissions": "2026-11-15T05:48:50.704935"
+  },
+  "syllables": 501,
+  "vocalise": 0,
+  "choices": 5,
+  "mean_conf": -3.6
+ },
+ "vocables": {
+  "status": "done",
+  "version": 1,
+  "config": "bf21a9e8fb",
+  "seconds": 0.11,
+  "finished": "2026-11-15T05:55:27.468654",
+  "job": "386648",
+  "deps": {
+   "align": "2026-11-15T05:55:27.246918"
+  },
+  "melisma": 0,
+  "vocables": 0
+ },
+ "notes_qc": {
+  "status": "done",
+  "version": 2,
+  "config": "36eeca3765",
+  "seconds": 0.15,
+  "finished": "2026-11-15T05:55:27.682867",
+  "job": "386648",
+  "deps": {
+   "vocables": "2026-11-15T05:55:27.468654",
+   "singers": "2026-11-15T05:52:00.756027"
+  },
+  "clips": 12,
+  "rejected_units": {
+   "overlap": 190,
+   "unvoiced": 1,
+   "no_singer": 1,
+   "too_short": 17
+  },
+  "clip_s": 72.1,
+  "notes": 573
+ }
+}

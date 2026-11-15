@@ -1,0 +1,347 @@
+{
+ "fps": 50,
+ "clips": [
+  {
+   "start": 1352,
+   "end": 2145,
+   "syllables": [
+    7,
+    37
+   ],
+   "cluster": 0,
+   "features": {
+    "dur_s": 15.86,
+    "good_src_share": 0.933,
+    "asr1_share": 0.067,
+    "ref_backed_share": 0.0,
+    "mean_conf": -2.403,
+    "min_conf": -5.661,
+    "f0_agree": 0.926,
+    "unlabelled_voiced": 0.0,
+    "vocables": 0,
+    "identity": "unidentified"
+   }
+  },
+  {
+   "start": 2160,
+   "end": 2921,
+   "syllables": [
+    37,
+    54
+   ],
+   "cluster": 0,
+   "features": {
+    "dur_s": 15.22,
+    "good_src_share": 1.0,
+    "asr1_share": 0.0,
+    "ref_backed_share": 0.0,
+    "mean_conf": -2.03,
+    "min_conf": -4.171,
+    "f0_agree": 0.937,
+    "unlabelled_voiced": 0.0,
+    "vocables": 0,
+    "identity": "unidentified"
+   }
+  },
+  {
+   "start": 2921,
+   "end": 3699,
+   "syllables": [
+    54,
+    81
+   ],
+   "cluster": 0,
+   "features": {
+    "dur_s": 15.56,
+    "good_src_share": 0.889,
+    "asr1_share": 0.111,
+    "ref_backed_share": 0.0,
+    "mean_conf": -1.774,
+    "min_conf": -5.004,
+    "f0_agree": 0.918,
+    "unlabelled_voiced": 0.0,
+    "vocables": 0,
+    "identity": "unidentified"
+   }
+  },
+  {
+   "start": 3715,
+   "end": 4381,
+   "syllables": [
+    81,
+    97
+   ],
+   "cluster": 0,
+   "features": {
+    "dur_s": 13.32,
+    "good_src_share": 0.938,
+    "asr1_share": 0.062,
+    "ref_backed_share": 0.0,
+    "mean_conf": -1.886,
+    "min_conf": -4.317,
+    "f0_agree": 0.941,
+    "unlabelled_voiced": 0.0,
+    "vocables": 0,
+    "identity": "unidentified"
+   }
+  },
+  {
+   "start": 6101,
+   "end": 6274,
+   "syllables": [
+    105,
+    115
+   ],
+   "cluster": 0,
+   "features": {
+    "dur_s": 3.46,
+    "good_src_share": 0.6,
+    "asr1_share": 0.4,
+    "ref_backed_share": 0.0,
+    "mean_conf": -2.927,
+    "min_conf": -4.908,
+    "f0_agree": 0.967,
+    "unlabelled_voiced": 0.0,
+    "vocables": 0,
+    "identity": "unidentified"
+   }
+  },
+  {
+   "start": 6337,
+   "end": 6537,
+   "syllables": [
+    118,
+    124
+   ],
+   "cluster": 0,
+   "features": {
+    "dur_s": 4.0,
+    "good_src_share": 0.333,
+    "asr1_share": 0.667,
+    "ref_backed_share": 0.0,
+    "mean_conf": -1.905,
+    "min_conf": -3.802,
+    "f0_agree": 0.926,
+    "unlabelled_voiced": 0.0,
+    "vocables": 0,
+    "identity": "unidentified"
+   }
+  },
+  {
+   "start": 6537,
+   "end": 7325,
+   "syllables": [
+    124,
+    160
+   ],
+   "cluster": 0,
+   "features": {
+    "dur_s": 15.76,
+    "good_src_share": 0.833,
+    "asr1_share": 0.167,
+    "ref_backed_share": 0.0,
+    "mean_conf": -2.46,
+    "min_conf": -5.274,
+    "f0_agree": 0.939,
+    "unlabelled_voiced": 0.0,
+    "vocables": 0,
+    "identity": "unidentified"
+   }
+  },
+  {
+   "start": 8003,
+   "end": 8802,
+   "syllables": [
+    185,
+    210
+   ],
+   "cluster": 0,
+   "features": {
+    "dur_s": 15.98,
+    "good_src_share": 0.84,
+    "asr1_share": 0.16,
+    "ref_backed_share": 0.0,
+    "mean_conf": -2.016,
+    "min_conf": -6.033,
+    "f0_agree": 0.936,
+    "unlabelled_voiced": 0.0,
+    "vocables": 0,
+    "identity": "unidentified"
+   }
+  },
+  {
+   "start": 8854,
+   "end": 8954,
+   "syllables": [
+    211,
+    214
+   ],
+   "cluster": 1,
+   "features": {
+    "dur_s": 2.0,
+    "good_src_share": 1.0,
+    "asr1_share": 0.0,
+    "ref_backed_share": 0.0,
+    "mean_conf": -3.487,
+    "min_conf": -4.428,
+    "f0_agree": 0.962,
+    "unlabelled_voiced": 0.0,
+    "vocables": 0,
+    "identity": "unidentified"
+   }
+  },
+  {
+   "start": 9049,
+   "end": 9163,
+   "syllables": [
+    215,
+    219
+   ],
+   "cluster": 1,
+   "features": {
+    "dur_s": 2.28,
+    "good_src_share": 1.0,
+    "asr1_share": 0.0,
+    "ref_backed_share": 0.0,
+    "mean_conf": -3.008,
+    "min_conf": -3.658,
+    "f0_agree": 0.954,
+    "unlabelled_voiced": 0.0,
+    "vocables": 0,
+    "identity": "unidentified"
+   }
+  },
+  {
+   "start": 11007,
+   "end": 11264,
+   "syllables": [
+    225,
+    238
+   ],
+   "cluster": 1,
+   "features": {
+    "dur_s": 5.14,
+    "good_src_share": 1.0,
+    "asr1_share": 0.0,
+    "ref_backed_share": 0.0,
+    "mean_conf": -4.63,
+    "min_conf": -7.431,
+    "f0_agree": 0.965,
+    "unlabelled_voiced": 0.0,
+    "vocables": 0,
+    "identity": "unidentified"
+   }
+  },
+  {
+   "start": 11285,
+   "end": 11657,
+   "syllables": [
+    240,
+    258
+   ],
+   "cluster": 1,
+   "features": {
+    "dur_s": 7.44,
+    "good_src_share": 0.944,
+    "asr1_share": 0.056,
+    "ref_backed_share": 0.0,
+    "mean_conf": -4.092,
+    "min_conf": -9.253,
+    "f0_agree": 0.964,
+    "unlabelled_voiced": 0.0,
+    "vocables": 0,
+    "identity": "unidentified"
+   }
+  },
+  {
+   "start": 11769,
+   "end": 11896,
+   "syllables": [
+    265,
+    268
+   ],
+   "cluster": 1,
+   "features": {
+    "dur_s": 2.54,
+    "good_src_share": 1.0,
+    "asr1_share": 0.0,
+    "ref_backed_share": 0.0,
+    "mean_conf": -3.592,
+    "min_conf": -5.346,
+    "f0_agree": 0.974,
+    "unlabelled_voiced": 0.0,
+    "vocables": 0,
+    "identity": "unidentified"
+   }
+  },
+  {
+   "start": 11965,
+   "end": 12101,
+   "syllables": [
+    273,
+    280
+   ],
+   "cluster": 1,
+   "features": {
+    "dur_s": 2.72,
+    "good_src_share": 1.0,
+    "asr1_share": 0.0,
+    "ref_backed_share": 0.0,
+    "mean_conf": -3.098,
+    "min_conf": -5.496,
+    "f0_agree": 0.966,
+    "unlabelled_voiced": 0.0,
+    "vocables": 0,
+    "identity": "unidentified"
+   }
+  },
+  {
+   "start": 12173,
+   "end": 12313,
+   "syllables": [
+    287,
+    292
+   ],
+   "cluster": 1,
+   "features": {
+    "dur_s": 2.8,
+    "good_src_share": 0.2,
+    "asr1_share": 0.8,
+    "ref_backed_share": 0.0,
+    "mean_conf": -2.282,
+    "min_conf": -6.509,
+    "f0_agree": 0.943,
+    "unlabelled_voiced": 0.0,
+    "vocables": 0,
+    "identity": "unidentified"
+   }
+  },
+  {
+   "start": 14049,
+   "end": 14352,
+   "syllables": [
+    353,
+    359
+   ],
+   "cluster": 0,
+   "features": {
+    "dur_s": 6.06,
+    "good_src_share": 1.0,
+    "asr1_share": 0.0,
+    "ref_backed_share": 0.0,
+    "mean_conf": -2.453,
+    "min_conf": -3.591,
+    "f0_agree": 0.959,
+    "unlabelled_voiced": 0.0,
+    "vocables": 0,
+    "identity": "unidentified"
+   }
+  }
+ ],
+ "rejected_units": {
+  "overlap": 58,
+  "unvoiced": 2,
+  "no_singer": 1,
+  "too_short": 9
+ }
+}

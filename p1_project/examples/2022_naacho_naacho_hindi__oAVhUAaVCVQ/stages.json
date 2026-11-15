@@ -1,0 +1,179 @@
+{
+ "inventory": {
+  "status": "done",
+  "version": 1,
+  "config": "bf21a9e8fb",
+  "seconds": 0.68,
+  "finished": "2026-11-15T04:47:19",
+  "job": "386350",
+  "duration_s": 245.5,
+  "decode_ok": true
+ },
+ "fingerprint": {
+  "status": "done",
+  "version": 1,
+  "config": "bf21a9e8fb",
+  "seconds": 0.48,
+  "finished": "2026-11-15T04:47:19",
+  "job": "386350",
+  "values": 1432
+ },
+ "separate": {
+  "status": "done",
+  "version": 1,
+  "config": "ca61032720",
+  "seconds": 26.94,
+  "finished": "2026-11-15T05:49:31.207201",
+  "job": "386543",
+  "deps": {
+   "inventory": "2026-11-15T04:47:19"
+  },
+  "vocal_db": -20.0,
+  "lead_db": -22.6,
+  "seconds_audio": 245.5
+ },
+ "f0": {
+  "status": "done",
+  "version": 1,
+  "config": "cf6bc7cdba",
+  "seconds": 7.17,
+  "finished": "2026-11-15T05:49:38.422949",
+  "job": "386543",
+  "deps": {
+   "separate": "2026-11-15T05:49:31.207201"
+  },
+  "voiced": 0.816,
+  "agree_voiced": 0.83
+ },
+ "voices": {
+  "status": "done",
+  "version": 2,
+  "config": "5b2d3ce884",
+  "seconds": 1.44,
+  "finished": "2026-11-15T05:49:39.981101",
+  "job": "386543",
+  "deps": {
+   "f0": "2026-11-15T05:49:38.422949"
+  },
+  "single_share": 0.249,
+  "clusters": 11
+ },
+ "asr": {
+  "status": "done",
+  "version": 1,
+  "config": "e499d47e9a",
+  "seconds": 16.18,
+  "finished": "2026-11-15T05:49:56.208881",
+  "job": "386543",
+  "deps": {
+   "f0": "2026-11-15T05:49:38.422949"
+  },
+  "qwen_s": 7.4,
+  "whisper_s": 8.7,
+  "phrases": 21,
+  "qwen_kept": 21,
+  "whisper_kept": 21
+ },
+ "emissions": {
+  "status": "done",
+  "version": 1,
+  "config": "bf21a9e8fb",
+  "seconds": 0.73,
+  "finished": "2026-11-15T05:49:56.988662",
+  "job": "386543",
+  "deps": {
+   "f0": "2026-11-15T05:49:38.422949"
+  },
+  "frames": 12277
+ },
+ "singers": {
+  "status": "done",
+  "version": 1,
+  "config": "cc4b1d041e",
+  "seconds": 0.02,
+  "finished": "2026-11-15T05:52:06.731380",
+  "job": "386627",
+  "deps": {
+   "voices": "2026-11-15T05:49:39.981101"
+  },
+  "clusters": 5
+ },
+ "identify": {
+  "status": "relabeled",
+  "version": 1,
+  "config": "fa933800e4",
+  "seconds": 0.29,
+  "finished": "2026-11-15T05:55:31.152886",
+  "job": "386648",
+  "deps": {
+   "asr": "2026-11-15T05:49:56.208881"
+  },
+  "coverage": 0.653,
+  "track": "Chammak Challo"
+ },
+ "reconcile": {
+  "status": "done",
+  "version": 1,
+  "config": "fa933800e4",
+  "seconds": 0.08,
+  "finished": "2026-11-15T05:55:31.257763",
+  "job": "386648",
+  "deps": {
+   "identify": "2026-11-15T05:55:31.152886",
+   "singers": "2026-11-15T05:52:06.731380"
+  },
+  "phrases": 21,
+  "words": 330,
+  "ref_backed": 0.688
+ },
+ "align": {
+  "status": "done",
+  "version": 1,
+  "config": "e5a90fd491",
+  "seconds": 0.72,
+  "finished": "2026-11-15T05:55:32.005484",
+  "job": "386648",
+  "deps": {
+   "reconcile": "2026-11-15T05:55:31.257763",
+   "emissions": "2026-11-15T05:49:56.988662"
+  },
+  "syllables": 441,
+  "vocalise": 16,
+  "choices": 7,
+  "mean_conf": -3.718
+ },
+ "vocables": {
+  "status": "done",
+  "version": 1,
+  "config": "bf21a9e8fb",
+  "seconds": 0.05,
+  "finished": "2026-11-15T05:55:32.069747",
+  "job": "386648",
+  "deps": {
+   "align": "2026-11-15T05:55:32.005484"
+  },
+  "melisma": 0,
+  "vocables": 16
+ },
+ "notes_qc": {
+  "status": "done",
+  "version": 2,
+  "config": "36eeca3765",
+  "seconds": 0.16,
+  "finished": "2026-11-15T05:55:32.245842",
+  "job": "386648",
+  "deps": {
+   "vocables": "2026-11-15T05:55:32.069747",
+   "singers": "2026-11-15T05:52:06.731380"
+  },
+  "clips": 2,
+  "rejected_units": {
+   "no_singer": 10,
+   "overlap": 193,
+   "unvoiced": 1,
+   "too_short": 12
+  },
+  "clip_s": 6.4,
+  "notes": 589
+ }
+}

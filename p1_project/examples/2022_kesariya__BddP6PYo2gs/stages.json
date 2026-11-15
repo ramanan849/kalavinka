@@ -1,0 +1,170 @@
+{
+ "inventory": {
+  "status": "done",
+  "version": 1,
+  "config": "bf21a9e8fb",
+  "seconds": 0.5,
+  "finished": "2026-11-15T04:47:16",
+  "job": "386350",
+  "duration_s": 172.2,
+  "decode_ok": true
+ },
+ "fingerprint": {
+  "status": "done",
+  "version": 1,
+  "config": "bf21a9e8fb",
+  "seconds": 0.48,
+  "finished": "2026-11-15T04:47:17",
+  "job": "386350",
+  "values": 1369
+ },
+ "separate": {
+  "status": "done",
+  "version": 1,
+  "config": "ca61032720",
+  "seconds": 22.78,
+  "finished": "2026-11-15T05:15:01",
+  "job": "386417",
+  "vocal_db": -20.0,
+  "lead_db": -20.3,
+  "seconds_audio": 172.2
+ },
+ "f0": {
+  "status": "done",
+  "version": 1,
+  "config": "cf6bc7cdba",
+  "seconds": 6.6,
+  "finished": "2026-11-15T05:15:08",
+  "job": "386417",
+  "voiced": 0.847,
+  "agree_voiced": 0.931
+ },
+ "voices": {
+  "status": "done",
+  "version": 2,
+  "config": "5b2d3ce884",
+  "seconds": 1.54,
+  "finished": "2026-11-15T05:49:00.563384",
+  "job": "386543",
+  "deps": {
+   "f0": "2026-11-15T05:15:08"
+  },
+  "single_share": 0.731,
+  "clusters": 10
+ },
+ "asr": {
+  "status": "done",
+  "version": 1,
+  "config": "e499d47e9a",
+  "seconds": 3.6,
+  "finished": "2026-11-15T05:49:04.184965",
+  "job": "386543",
+  "deps": {
+   "f0": "2026-11-15T05:15:08"
+  },
+  "qwen_s": 1.8,
+  "whisper_s": 1.7,
+  "phrases": 12,
+  "qwen_kept": 12,
+  "whisper_kept": 12
+ },
+ "emissions": {
+  "status": "done",
+  "version": 1,
+  "config": "bf21a9e8fb",
+  "seconds": 1.52,
+  "finished": "2026-11-15T05:15:28",
+  "job": "386417",
+  "frames": 8611
+ },
+ "singers": {
+  "status": "done",
+  "version": 1,
+  "config": "cc4b1d041e",
+  "seconds": 0.06,
+  "finished": "2026-11-15T05:52:05.539653",
+  "job": "386627",
+  "deps": {
+   "voices": "2026-11-15T05:49:00.563384"
+  },
+  "clusters": 2
+ },
+ "identify": {
+  "status": "claimed",
+  "version": 1,
+  "config": "fa933800e4",
+  "seconds": 0.22,
+  "finished": "2026-11-15T05:55:30.136464",
+  "job": "386648",
+  "deps": {
+   "asr": "2026-11-15T05:49:04.184965"
+  },
+  "coverage": 0.756,
+  "track": "Kesariya"
+ },
+ "reconcile": {
+  "status": "done",
+  "version": 1,
+  "config": "fa933800e4",
+  "seconds": 0.09,
+  "finished": "2026-11-15T05:55:30.251487",
+  "job": "386648",
+  "deps": {
+   "identify": "2026-11-15T05:55:30.136464",
+   "singers": "2026-11-15T05:52:05.539653"
+  },
+  "phrases": 12,
+  "words": 169,
+  "ref_backed": 0.775
+ },
+ "align": {
+  "status": "done",
+  "version": 1,
+  "config": "e5a90fd491",
+  "seconds": 0.34,
+  "finished": "2026-11-15T05:55:30.623611",
+  "job": "386648",
+  "deps": {
+   "reconcile": "2026-11-15T05:55:30.251487",
+   "emissions": "2026-11-15T05:15:28"
+  },
+  "syllables": 277,
+  "vocalise": 0,
+  "choices": 4,
+  "mean_conf": -2.359
+ },
+ "vocables": {
+  "status": "done",
+  "version": 1,
+  "config": "bf21a9e8fb",
+  "seconds": 0.04,
+  "finished": "2026-11-15T05:55:30.671686",
+  "job": "386648",
+  "deps": {
+   "align": "2026-11-15T05:55:30.623611"
+  },
+  "melisma": 0,
+  "vocables": 0
+ },
+ "notes_qc": {
+  "status": "done",
+  "version": 2,
+  "config": "36eeca3765",
+  "seconds": 0.13,
+  "finished": "2026-11-15T05:55:30.817167",
+  "job": "386648",
+  "deps": {
+   "vocables": "2026-11-15T05:55:30.671686",
+   "singers": "2026-11-15T05:52:05.539653"
+  },
+  "clips": 9,
+  "rejected_units": {
+   "overlap": 77,
+   "no_singer": 2,
+   "unvoiced": 2,
+   "too_short": 18
+  },
+  "clip_s": 57.7,
+  "notes": 348
+ }
+}
