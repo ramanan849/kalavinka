@@ -1,0 +1,73 @@
+submitted	job_id	partition	name	kind	minutes	args
+2026-11-15T04:32:15+05:30	386336	a40	smoke	test	10	tests/test_asr.py
+2026-11-15T04:36:55+05:30	386344	a40	pdftext	cpu	5	extract manual
+2026-11-15T04:38:36+05:30	386347	a40	t-framework	test	10	tests/test_p1_framework.py tests/test_docs.py
+2026-11-15T04:38:46+05:30	386348	a40	t-framework	test	10	tests/test_p1_framework.py tests/test_docs.py
+2026-11-15T04:38:57+05:30	386349	a40	init	cpu	5	p1-init
+2026-11-15T04:39:05+05:30	386350	a40	clean1	cpu	30	p1-run --stages clean --budget-min 25
+2026-11-15T04:39:05+05:30	386351	a40	clean2	cpu	30	p1-run --stages clean --budget-min 25
+2026-11-15T04:39:05+05:30	386352	a40	clean3	cpu	30	p1-run --stages clean --budget-min 25
+2026-11-15T04:40:58+05:30	386356	a40	t-gpuhelp	test	10	tests/test_p1_gpu_helpers.py tests/test_docs.py
+2026-11-15T04:48:20+05:30	386370	a40	dedupe	cpu	10	p1-dedupe
+2026-11-15T04:49:00+05:30	386374	a40	t-fw	test	10	tests/test_p1_framework.py
+2026-11-15T04:49:04+05:30	386375	a40	dedupe	cpu	15	p1-dedupe
+2026-11-15T04:49:25+05:30	386378	l40	gputest	gpu	30	p1-run --stages gpu --songs 2013_tum_hi_ho__Umqb9KENgmk,2022_kesariya__BddP6PYo2gs,2013_dilliwaali_girlfriend__PdjC8e7GFWg,2014_abhi_toh_party_shuru_hui_hai__8LZgzAZ2lpQ --budget-min 22
+2026-11-15T05:02:52+05:30	386378	l40	gputest	note	-	NODE_FAIL on cn45 then launch failure on cn44 (held); cancelled
+2026-11-15T05:02:52+05:30	386417	a40	gputest	gpu	30	p1-run --stages gpu --songs 2013_tum_hi_ho__Umqb9KENgmk,2022_kesariya__BddP6PYo2gs,2013_dilliwaali_girlfriend__PdjC8e7GFWg,2014_abhi_toh_party_shuru_hui_hai__8LZgzAZ2lpQ --budget-min 22
+2026-11-15T05:04:07+05:30	386421	a40	fetchlist	cpu	5	p1-fetchlist
+2026-11-15T05:06:32+05:30	386435	a40	t-text	test	15	tests/test_p1_text.py tests/test_docs.py
+2026-11-15T05:17:23+05:30	386488	a40	t-all	test	10	tests/test_p1_framework.py tests/test_p1_text.py tests/test_p1_gpu_helpers.py tests/test_docs.py
+2026-11-15T05:17:35+05:30	386489	a40	t-all	test	10	tests/test_p1_framework.py tests/test_p1_text.py tests/test_p1_gpu_helpers.py tests/test_docs.py
+2026-11-15T05:18:29+05:30	386494	a40	gpu-pilot1	gpu	60	p1-run --stages gpu --songs work/pilot.txt --budget-min 50
+2026-11-15T05:18:29+05:30	386495	a40	gpu-pilot2	gpu	60	p1-run --stages gpu --songs work/pilot.txt --budget-min 50
+2026-11-15T05:18:29+05:30	386496	a40	gpu-all1	gpu	60	p1-run --stages gpu --budget-min 50
+2026-11-15T05:18:29+05:30	386497	a40	gpu-all2	gpu	60	p1-run --stages gpu --budget-min 50
+2026-11-15T05:19:14+05:30	386501	a40	gpu-pilot1	gpu	60	p1-run --stages gpu --songs /home/fmea/23b1529/projects/P1/work/pilot.txt --budget-min 50
+2026-11-15T05:19:14+05:30	386502	a40	gpu-pilot2	gpu	60	p1-run --stages gpu --songs /home/fmea/23b1529/projects/P1/work/pilot.txt --budget-min 50
+2026-11-15T05:20:45+05:30	386510	a40	t-all	test	10	tests/test_p1_framework.py tests/test_p1_text.py tests/test_p1_gpu_helpers.py tests/test_docs.py
+2026-11-15T05:21:07+05:30	386516	l40	gpu-pilot1	gpu	60	p1-run --stages gpu --songs work/pilot.txt --budget-min 50
+2026-11-15T05:21:07+05:30	386517	l40	gpu-pilot2	gpu	60	p1-run --stages gpu --songs work/pilot.txt --budget-min 50
+2026-11-15T05:21:37+05:30	386518	a40	t-exp	test	10	tests/test_p1_export_gold.py tests/test_docs.py
+2026-11-15T05:22:06+05:30	386520	l40	gpu-all2	gpu	60	p1-run --stages gpu --budget-min 50
+2026-11-15T05:33:01+05:30	386540	a40	t-all	test	10	tests/test_p1_framework.py tests/test_p1_text.py tests/test_p1_gpu_helpers.py tests/test_p1_export_gold.py tests/test_asr.py tests/test_docs.py
+2026-11-15T05:33:16+05:30	386543	l40	gpu-pilot1	gpu	60	p1-run --stages gpu --songs work/pilot.txt --budget-min 50
+2026-11-15T05:33:16+05:30	386544	l40	gpu-pilot2	gpu	60	p1-run --stages gpu --songs work/pilot.txt --budget-min 50
+2026-11-15T05:33:16+05:30	386545	a40	gpu-all1	gpu	60	p1-run --stages gpu --budget-min 50
+2026-11-15T05:33:16+05:30	386546	l40	gpu-all2	gpu	60	p1-run --stages gpu --budget-min 50
+2026-11-15T05:41:29+05:30	386582	a40	refpool	cpu	10	p1-refpool
+2026-11-15T05:43:16+05:30	386591	a40	text-pilot	cpu	20	p1-run --stages text --songs work/pilot.txt --budget-min 15
+2026-11-15T05:44:02+05:30	386596	a40	report	cpu	5	p1-report --songs work/pilot.txt
+2026-11-15T05:46:07+05:30	386605	a40	t-all	test	10	tests/test_p1_framework.py tests/test_p1_text.py tests/test_p1_gpu_helpers.py tests/test_p1_export_gold.py tests/test_docs.py
+2026-11-15T05:46:47+05:30	386606	a40	t-text	test	10	tests/test_p1_text.py tests/test_docs.py
+2026-11-15T05:47:00+05:30	386610	a40	t-text	test	10	tests/test_p1_text.py
+2026-11-15T05:47:09+05:30	386611	a40	status	cpu	5	p1-status --songs work/pilot.txt
+2026-11-15T05:51:00+05:30	386627	a40	text-pilot	cpu	20	p1-run --stages text --songs work/pilot.txt --budget-min 15
+2026-11-15T05:52:16+05:30	386634	a40	retrylist	cpu	5	p1-fetchlist --kind retry --songs work/pilot.txt
+2026-11-15T05:52:37+05:30	386635	l40	gpu-all3	gpu	60	p1-run --stages gpu --budget-min 50
+2026-11-15T05:52:37+05:30	386636	l40	gpu-retry	gpu	20	p1-run --stages gpu --retry-failed --songs 2000_aankhen_khuli__A3NwA-GakHU --budget-min 15
+2026-11-15T05:52:48+05:30	386637	a40	report	cpu	5	p1-report --songs work/pilot.txt
+2026-11-15T05:54:18+05:30	386647	a40	refpool	cpu	10	p1-refpool
+2026-11-15T05:54:24+05:30	386648	a40	text-pilot	cpu	20	p1-run --stages identify,reconcile,align,vocables,notes_qc --force --songs work/pilot.txt --budget-min 15
+2026-11-15T05:55:50+05:30	386657	a40	report	cpu	5	p1-report --songs work/pilot.txt
+2026-11-15T05:55:59+05:30	386661	a40	goldpack	cpu	20	p1-goldpack --songs work/gold_songs.txt
+2026-11-15T05:57:57+05:30	386673	a40	gpu-all1-c1	gpu	60	p1-run --stages gpu --budget-min 50
+2026-11-15T05:57:57+05:30	386674	a40	gpu-all1-c2	gpu	60	p1-run --stages gpu --budget-min 50
+2026-11-15T05:57:57+05:30	386675	a40	gpu-all1-c3	gpu	60	p1-run --stages gpu --budget-min 50
+2026-11-15T05:57:57+05:30	386676	a40	gpu-all1-c4	gpu	60	p1-run --stages gpu --budget-min 50
+2026-11-15T05:57:57+05:30	386677	l40	gpu-all2-c1	gpu	60	p1-run --stages gpu --budget-min 50
+2026-11-15T05:57:57+05:30	386678	l40	gpu-all3-c1	gpu	60	p1-run --stages gpu --budget-min 50
+2026-11-15T05:57:57+05:30	386679	dgx	gpu-dgx	gpu	60	p1-run --stages gpu --budget-min 50
+2026-11-15T05:57:57+05:30	386680	dgx	gpu-dgx-c1	gpu	60	p1-run --stages gpu --budget-min 50
+2026-11-15T05:57:57+05:30	386681	dgx	gpu-dgx-c2	gpu	60	p1-run --stages gpu --budget-min 50
+2026-11-15T09:53:54+05:30	387447	a40	r2a-c1	gpu	60	p1-run --stages gpu --budget-min 50
+2026-11-15T09:53:54+05:30	387448	a40	r2a-c2	gpu	60	p1-run --stages gpu --budget-min 50
+2026-11-15T09:53:54+05:30	387449	a40	r2a-c3	gpu	60	p1-run --stages gpu --budget-min 50
+2026-11-15T09:53:54+05:30	387450	a40	r2b-c1	gpu	60	p1-run --stages gpu --budget-min 50
+2026-11-15T09:53:54+05:30	387451	a40	r2b-c2	gpu	60	p1-run --stages gpu --budget-min 50
+2026-11-15T09:53:54+05:30	387452	a40	r2b-c3	gpu	60	p1-run --stages gpu --budget-min 50
+2026-11-15T09:53:54+05:30	387453	l40	r2c-c1	gpu	60	p1-run --stages gpu --budget-min 50
+2026-11-15T09:53:54+05:30	387454	l40	r2c-c2	gpu	60	p1-run --stages gpu --budget-min 50
+2026-11-15T09:53:54+05:30	387455	l40	r2c-c3	gpu	60	p1-run --stages gpu --budget-min 50
+2026-11-15T09:53:54+05:30	387456	dgx	r2d-c1	gpu	60	p1-run --stages gpu --budget-min 50
+2026-11-15T09:53:54+05:30	387457	dgx	r2d-c2	gpu	60	p1-run --stages gpu --budget-min 50
+2026-11-15T09:53:54+05:30	387458	dgx	r2d-c3	gpu	60	p1-run --stages gpu --budget-min 50
