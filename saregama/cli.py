@@ -1557,7 +1557,12 @@ def cmd_p1_fetchlist(a):
     from .p1.state import read_json
     cfg, work, songs = _p1_setup(a)
     dup = (read_json(work / "dupes.json", {}) or {}).get("duplicate_of", {})
-    p = write_fetchlist(songs, work, dup)
+    if a.kind == "retry":
+        from .p1.lyrics_ref import write_retry_list
+        p, n = write_retry_list(songs, work, dup)
+        print(f"{n} songs need a second lookup")
+    else:
+        p = write_fetchlist(songs, work, dup)
     print(f"{sum(1 for _ in open(p))} URLs -> {p}")
 
 
@@ -1927,6 +1932,7 @@ def main(argv=None):
     s.set_defaults(fn=cmd_p1_dedupe)
     s = sub.add_parser("p1-fetchlist", help="P1: URL list for ops/fetch.sh (login node)")
     p1_common(s)
+    s.add_argument("--kind", default="title", help="title (first round) | retry (unidentified songs)")
     s.set_defaults(fn=cmd_p1_fetchlist)
     s = sub.add_parser("p1-refpool", help="P1: fetched LRCLIB results -> <work>/refpool.json")
     p1_common(s)

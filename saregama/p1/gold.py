@@ -116,7 +116,7 @@ def make_pack(songs: Sequence[Song], work: Path, out: Path) -> List[str]:
                 words.append({"key": key, "start": s["start"], "end": s["end"], "text": s["word_text"]})
         voc_items = [s for s in sylls if s["kind"] == "vocable"] + \
                     [{"start": s["start"], "end": s["end"], "text": "mel"} for s in lyr if s.get("melisma")]
-        vj = read_json(sdir / "voices.json", {}) or {}
+        vj = read_json(sdir / "singers.json", {}) or {}
         letters = "ABCDEFGHIJ"
         singers = [{"start": int(s["start"] * FPS), "end": int(s["end"] * FPS),
                     "text": letters[s["cluster"] % len(letters)]} for s in vj.get("segments", [])]
