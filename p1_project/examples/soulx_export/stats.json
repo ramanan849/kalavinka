@@ -1,0 +1,24 @@
+{
+ "clips": {
+  "train": 25
+ },
+ "hours": {
+  "train": 0.048
+ },
+ "bands": {
+  "accept": 23,
+  "review": 2,
+  "reject": 14
+ },
+ "excluded": 14,
+ "qc": {
+  "min_good_src": 0.8,
+  "max_asr1": 0.1,
+  "min_mean_conf": -2.5,
+  "min_f0_agree": 0.85,
+  "max_unlabelled": 0.05,
+  "review_margin": 0.1,
+  "clip_min_single": 0.9,
+  "clip_min_purity": 0.9
+ }
+}

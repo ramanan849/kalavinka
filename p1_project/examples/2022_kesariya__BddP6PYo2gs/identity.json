@@ -1,0 +1,80 @@
+{
+ "status": "claimed",
+ "best": {
+  "ref_id": "8208537",
+  "track": "Kesariya",
+  "artist": "Arijit Singh, Amitabh Bhattacharya (Pagalworld.pw)",
+  "coverage": 0.756,
+  "claimed": true,
+  "duration": 268.0,
+  "synced": true
+ },
+ "claimed_title": "Kesariya",
+ "claimed_best": {
+  "ref_id": "8208537",
+  "track": "Kesariya",
+  "artist": "Arijit Singh, Amitabh Bhattacharya (Pagalworld.pw)",
+  "coverage": 0.756,
+  "claimed": true,
+  "duration": 268.0,
+  "synced": true
+ },
+ "audio_duration": 172.2275,
+ "asr_words": 160,
+ "candidates": [
+  {
+   "ref_id": "8208537",
+   "track": "Kesariya",
+   "artist": "Arijit Singh, Amitabh Bhattacharya (Pagalworld.pw)",
+   "coverage": 0.756,
+   "claimed": true,
+   "duration": 268.0,
+   "synced": true
+  },
+  {
+   "ref_id": "4398941",
+   "track": "Kesariya",
+   "artist": "Pritam, Arijit Singh, Amitabh Bhattacharya",
+   "coverage": 0.756,
+   "claimed": true,
+   "duration": 268.0,
+   "synced": true
+  },
+  {
+   "ref_id": "6607414",
+   "track": "Kesariya",
+   "artist": "VIBIE, Arijit Singh, Pritam",
+   "coverage": 0.756,
+   "claimed": true,
+   "duration": 240.0,
+   "synced": true
+  },
+  {
+   "ref_id": "6281076",
+   "track": "Kesariya",
+   "artist": "Pritam",
+   "coverage": 0.756,
+   "claimed": true,
+   "duration": 268.0,
+   "synced": true
+  },
+  {
+   "ref_id": "6135288",
+   "track": "Kesariya",
+   "artist": "Pritam, Arijit Singh, Amitabh Bhattacharya",
+   "coverage": 0.756,
+   "claimed": true,
+   "duration": 268.0,
+   "synced": true
+  },
+  {
+   "ref_id": "6609188",
+   "track": "Kesariya",
+   "artist": "Pritam, Arijit Singh, Amitabh Bhattacharya",
+   "coverage": 0.756,
+   "claimed": true,
+   "duration": 268.0,
+   "synced": true
+  }
+ ]
+}

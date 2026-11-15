@@ -1,0 +1,2210 @@
+{
+ "ref_id": "5891632",
+ "identity": "claimed",
+ "phrases": [
+  {
+   "start": 8.82,
+   "end": 9.14,
+   "cluster": -1,
+   "single_share": 0.0,
+   "ref_match": 1.0,
+   "words": [
+    {
+     "text": "है",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    }
+   ]
+  },
+  {
+   "start": 11.02,
+   "end": 14.32,
+   "cluster": 0,
+   "single_share": 0.948,
+   "ref_match": 1.0,
+   "words": [
+    {
+     "text": "तुम्हारी",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "मोहब्बत",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "में",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "हम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तुम्हारे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "ज़र",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "ख़रीद",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "ग़ुलाम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "हो",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "चुके",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "हैं",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    }
+   ]
+  },
+  {
+   "start": 16.26,
+   "end": 18.28,
+   "cluster": 0,
+   "single_share": 0.973,
+   "ref_match": 1.0,
+   "words": [
+    {
+     "text": "हर",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जगह",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तुम्हारे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "लिए",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "बदनाम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "हो",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "चुके",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "हैं",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    }
+   ]
+  },
+  {
+   "start": 18.72,
+   "end": 20.28,
+   "cluster": -1,
+   "single_share": 0.136,
+   "ref_match": 0.5,
+   "words": [
+    {
+     "text": "लेकर",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "लाड़",
+     "lang": "hi",
+     "src": "asr1",
+     "optional": false
+    }
+   ]
+  },
+  {
+   "start": 21.68,
+   "end": 44.76,
+   "cluster": 1,
+   "single_share": 0.154,
+   "ref_match": 0.25,
+   "words": [
+    {
+     "text": "आह",
+     "lang": "hi",
+     "src": "asr1",
+     "optional": false
+    },
+    {
+     "text": "आह",
+     "lang": "hi",
+     "src": "asr1",
+     "optional": false
+    },
+    {
+     "text": "आह",
+     "lang": "hi",
+     "src": "asr1",
+     "optional": false
+    },
+    {
+     "text": "आह",
+     "lang": "hi",
+     "src": "asr1",
+     "optional": false
+    }
+   ]
+  },
+  {
+   "start": 53.02,
+   "end": 74.58,
+   "cluster": 0,
+   "single_share": 0.851,
+   "ref_match": 0.862,
+   "words": [
+    {
+     "text": "आशिक़ी",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "का",
+     "lang": "hi",
+     "src": "ref+whisper",
+     "optional": false
+    },
+    {
+     "text": "ग़म",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "हम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "भी",
+     "lang": "hi",
+     "src": "asr1",
+     "optional": false
+    },
+    {
+     "text": "पिए",
+     "lang": "hi",
+     "src": "ref+whisper",
+     "optional": false
+    },
+    {
+     "text": "जा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रहे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "आशिक़ी",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "का",
+     "lang": "hi",
+     "src": "ref+whisper",
+     "optional": false
+    },
+    {
+     "text": "ग़म",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "हम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "भी",
+     "lang": "hi",
+     "src": "asr1",
+     "optional": false
+    },
+    {
+     "text": "पिए",
+     "lang": "hi",
+     "src": "ref+whisper",
+     "optional": false
+    },
+    {
+     "text": "जा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रहे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "लेकर",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "हम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जिए",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रहे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "लेकर",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "हम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जिए",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रहे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "आशिक़ी",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    }
+   ]
+  },
+  {
+   "start": 74.58,
+   "end": 92.3,
+   "cluster": 0,
+   "single_share": 0.423,
+   "ref_match": 0.893,
+   "words": [
+    {
+     "text": "आशिक़ी",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "का",
+     "lang": "hi",
+     "src": "ref+whisper",
+     "optional": false
+    },
+    {
+     "text": "ग़म",
+     "lang": "hi",
+     "src": "ref_only",
+     "optional": true
+    },
+    {
+     "text": "हम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "पिए",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रहे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "लेकर",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "हम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जिए",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रहे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "ਚੰਨਾ",
+     "lang": "hi",
+     "src": "ref+whisper",
+     "optional": false
+    },
+    {
+     "text": "ਵੇ",
+     "lang": "hi",
+     "src": "ref+whisper",
+     "optional": false
+    },
+    {
+     "text": "तेरे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "लिए",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रात",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "भर",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "हम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तो",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "पिए",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रहे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "ਚੰਨਾ",
+     "lang": "hi",
+     "src": "ref+whisper",
+     "optional": false
+    },
+    {
+     "text": "ਵੇ",
+     "lang": "hi",
+     "src": "ref+whisper",
+     "optional": false
+    },
+    {
+     "text": "तेरे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "लिए",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रात",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "भर",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    }
+   ]
+  },
+  {
+   "start": 92.3,
+   "end": 115.8,
+   "cluster": 0,
+   "single_share": 0.409,
+   "ref_match": 0.909,
+   "words": [
+    {
+     "text": "हम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तो",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "पिए",
+     "lang": "hi",
+     "src": "ref+whisper",
+     "optional": false
+    },
+    {
+     "text": "जा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रहे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+whisper",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+whisper",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+whisper",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+whisper",
+     "optional": false
+    },
+    {
+     "text": "लिए",
+     "lang": "hi",
+     "src": "ref+whisper",
+     "optional": false
+    },
+    {
+     "text": "जा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रहे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+whisper",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+whisper",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+whisper",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+whisper",
+     "optional": false
+    },
+    {
+     "text": "लिए",
+     "lang": "hi",
+     "src": "ref+whisper",
+     "optional": false
+    },
+    {
+     "text": "जा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रहे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "कितनी",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "चोटें",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "दिल",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "पे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "हम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "लिए",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रहे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "कितनी",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "चोटें",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "दिल",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "पे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "हम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "लिए",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रहे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    }
+   ]
+  },
+  {
+   "start": 115.8,
+   "end": 139.58,
+   "cluster": 0,
+   "single_share": 0.385,
+   "ref_match": 1.0,
+   "words": [
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "लेकर",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "हम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जिए",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रहे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "लेकर",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "हम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जिए",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रहे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    }
+   ]
+  },
+  {
+   "start": 145.96,
+   "end": 147.44,
+   "cluster": -1,
+   "single_share": 0.0,
+   "ref_match": 1.0,
+   "words": [
+    {
+     "text": "हम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    }
+   ]
+  },
+  {
+   "start": 147.84,
+   "end": 171.5,
+   "cluster": 0,
+   "single_share": 0.954,
+   "ref_match": 1.0,
+   "words": [
+    {
+     "text": "यारी",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तेरी",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "मेरी",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "है",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "अतरंगी",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "यारा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तुझसे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "मेरी",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "दुनिया",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "है",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "सतरंगी",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "यारा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तेरे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "इश्क़",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "में",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "हम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "अपने",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "ही",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "दिल",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "से",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "मात",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "खा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रहे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "दिल",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "से",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "मात",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "खा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रहे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    }
+   ]
+  },
+  {
+   "start": 171.5,
+   "end": 193.3,
+   "cluster": 0,
+   "single_share": 0.496,
+   "ref_match": 0.925,
+   "words": [
+    {
+     "text": "ਚੰਨਾ",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "भी",
+     "lang": "hi",
+     "src": "disputed",
+     "optional": false,
+     "alt": "ਵੇ"
+    },
+    {
+     "text": "तेरे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "लिए",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रात",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "भर",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "हम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तो",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "पिए",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रहे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+whisper",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+whisper",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+whisper",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+whisper",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "लिए",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रहे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "हैं",
+     "lang": "hi",
+     "src": "asr+whisper",
+     "optional": false
+    },
+    {
+     "text": "कितनी",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "चोटें",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "दिल",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "पे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "हम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "लिए",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रहे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "लेकर",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "हम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जिए",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रहे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "आशिक़ी",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    }
+   ]
+  },
+  {
+   "start": 193.3,
+   "end": 204.16,
+   "cluster": 0,
+   "single_share": 0.531,
+   "ref_match": 0.857,
+   "words": [
+    {
+     "text": "प्याश",
+     "lang": "hi",
+     "src": "asr1",
+     "optional": false
+    },
+    {
+     "text": "के",
+     "lang": "hi",
+     "src": "asr1",
+     "optional": false
+    },
+    {
+     "text": "ग़म",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "हम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "पिए",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रहे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "लेकर",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "हम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जिए",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रहे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    }
+   ]
+  },
+  {
+   "start": 219.82,
+   "end": 244.7,
+   "cluster": 0,
+   "single_share": 0.772,
+   "ref_match": 0.969,
+   "words": [
+    {
+     "text": "मेरे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "आसमाँ",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "का",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तू",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "है",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "चाँद",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "और",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तारा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जग",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "से",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "कह",
+     "lang": "hi",
+     "src": "ref+whisper",
+     "optional": false
+    },
+    {
+     "text": "दिया",
+     "lang": "hi",
+     "src": "ref_only",
+     "optional": true
+    },
+    {
+     "text": "है",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तू",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "है",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "सिर्फ़",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "हमारा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तेरे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "इश्क़",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "में",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "हम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "अपने",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "ही",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "दिल",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "से",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "मात",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "खा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रहे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "दिल",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "से",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "मात",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "खा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रहे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    }
+   ]
+  },
+  {
+   "start": 245.54,
+   "end": 267.12,
+   "cluster": 0,
+   "single_share": 0.432,
+   "ref_match": 0.86,
+   "words": [
+    {
+     "text": "ਚੰਨਾ",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "भी",
+     "lang": "hi",
+     "src": "disputed",
+     "optional": false,
+     "alt": "ਵੇ"
+    },
+    {
+     "text": "तेरे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "लिए",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रात",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "भर",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "हम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तो",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "पिए",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रहे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+whisper",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+whisper",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+whisper",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+whisper",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "लिए",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रहे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "हैं",
+     "lang": "hi",
+     "src": "asr+whisper",
+     "optional": false
+    },
+    {
+     "text": "कितनी",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "चोटें",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "दिल",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "पे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "हम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "लिए",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रहे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "हैं",
+     "lang": "hi",
+     "src": "asr+whisper",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "ले",
+     "lang": "hi",
+     "src": "asr+whisper",
+     "optional": false
+    },
+    {
+     "text": "लेकर",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "हम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जिए",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रहे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "हैं",
+     "lang": "hi",
+     "src": "asr+whisper",
+     "optional": false
+    },
+    {
+     "text": "आशिक़ी",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    }
+   ]
+  },
+  {
+   "start": 267.12,
+   "end": 276.44,
+   "cluster": 0,
+   "single_share": 0.807,
+   "ref_match": 1.0,
+   "words": [
+    {
+     "text": "आशिक़ी",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "का",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "ग़म",
+     "lang": "hi",
+     "src": "ref_only",
+     "optional": true
+    },
+    {
+     "text": "हम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "पिए",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रहे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "लेकर",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    }
+   ]
+  },
+  {
+   "start": 276.44,
+   "end": 285.38,
+   "cluster": 0,
+   "single_share": 0.949,
+   "ref_match": 1.0,
+   "words": [
+    {
+     "text": "हम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जिए",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रहे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "तेरा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "नाम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "लेकर",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "हम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जिए",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "जा",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    },
+    {
+     "text": "रहे",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    }
+   ]
+  },
+  {
+   "start": 293.66,
+   "end": 294.42,
+   "cluster": -1,
+   "single_share": 0.0,
+   "ref_match": 1.0,
+   "words": [
+    {
+     "text": "हम",
+     "lang": "hi",
+     "src": "ref+asr",
+     "optional": false
+    }
+   ]
+  }
+ ]
+}

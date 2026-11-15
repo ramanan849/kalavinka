@@ -1,0 +1,72 @@
+{
+ "status": "relabeled",
+ "best": {
+  "ref_id": "39103384",
+  "track": "Chammak Challo",
+  "artist": "Akon & Hamsika Iyer",
+  "coverage": 0.653,
+  "claimed": false,
+  "duration": 258.0,
+  "synced": true
+ },
+ "claimed_title": "Naacho Naacho (Hindi)",
+ "claimed_best": null,
+ "audio_duration": 245.5475,
+ "asr_words": 288,
+ "candidates": [
+  {
+   "ref_id": "39103384",
+   "track": "Chammak Challo",
+   "artist": "Akon & Hamsika Iyer",
+   "coverage": 0.653,
+   "claimed": false,
+   "duration": 258.0,
+   "synced": true
+  },
+  {
+   "ref_id": "34625937",
+   "track": "Chammak Challo",
+   "artist": "Akon & Hamsika Iyer",
+   "coverage": 0.653,
+   "claimed": false,
+   "duration": 227.0,
+   "synced": true
+  },
+  {
+   "ref_id": "30296905",
+   "track": "Chammak Challo",
+   "artist": "Vishal-Shekhar, Akon, Hamsika Iyer, Vishal Dadlani, Niranjan Iyengar",
+   "coverage": 0.653,
+   "claimed": false,
+   "duration": 227.0,
+   "synced": true
+  },
+  {
+   "ref_id": "36106122",
+   "track": "Chammak Challo",
+   "artist": "Vishal-Shekhar, Akon, Hamsika Iyer, Vishal Dadlani, Niranjan Iyengar",
+   "coverage": 0.653,
+   "claimed": false,
+   "duration": null,
+   "synced": true
+  },
+  {
+   "ref_id": "30087514",
+   "track": "Chammak Challo",
+   "artist": "Vishal-Shekhar/Akon/Hamsika Iyer/Vishal Dadlani/Niranjan Iyengar",
+   "coverage": 0.653,
+   "claimed": false,
+   "duration": 227.0,
+   "synced": true
+  },
+  {
+   "ref_id": "33354978",
+   "track": "Chammak Challo",
+   "artist": "Akon, Hamsika Iyer",
+   "coverage": 0.653,
+   "claimed": false,
+   "duration": 277.0,
+   "synced": true
+  }
+ ]
+}

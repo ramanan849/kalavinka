@@ -1,0 +1,158 @@
+{
+ "segments": [
+  {
+   "start": 9.64,
+   "end": 17.64,
+   "median_hz": 326.4,
+   "cluster": 0
+  },
+  {
+   "start": 19.26,
+   "end": 22.86,
+   "median_hz": 330.2,
+   "cluster": 0
+  },
+  {
+   "start": 23.26,
+   "end": 27.9,
+   "median_hz": 258.0,
+   "cluster": 0
+  },
+  {
+   "start": 29.92,
+   "end": 46.04,
+   "median_hz": 324.9,
+   "cluster": 0
+  },
+  {
+   "start": 46.26,
+   "end": 51.1,
+   "median_hz": 292.6,
+   "cluster": 0
+  },
+  {
+   "start": 54.34,
+   "end": 56.3,
+   "median_hz": 292.3,
+   "cluster": 0
+  },
+  {
+   "start": 56.52,
+   "end": 58.22,
+   "median_hz": 298.3,
+   "cluster": 0
+  },
+  {
+   "start": 59.16,
+   "end": 61.34,
+   "median_hz": 310.9,
+   "cluster": 0
+  },
+  {
+   "start": 64.4,
+   "end": 66.76,
+   "median_hz": 293.8,
+   "cluster": 0
+  },
+  {
+   "start": 67.48,
+   "end": 69.2,
+   "median_hz": 261.6,
+   "cluster": 1
+  },
+  {
+   "start": 76.7,
+   "end": 77.84,
+   "median_hz": 197.5,
+   "cluster": 1
+  },
+  {
+   "start": 82.34,
+   "end": 86.54,
+   "median_hz": 294.8,
+   "cluster": 0
+  },
+  {
+   "start": 87.24,
+   "end": 102.34,
+   "median_hz": 294.6,
+   "cluster": 0
+  },
+  {
+   "start": 102.6,
+   "end": 122.86,
+   "median_hz": 299.7,
+   "cluster": 0
+  },
+  {
+   "start": 123.04,
+   "end": 130.3,
+   "median_hz": 294.8,
+   "cluster": 0
+  },
+  {
+   "start": 131.02,
+   "end": 132.7,
+   "median_hz": 355.2,
+   "cluster": 0
+  },
+  {
+   "start": 134.08,
+   "end": 135.54,
+   "median_hz": 290.3,
+   "cluster": 0
+  },
+  {
+   "start": 137.02,
+   "end": 138.22,
+   "median_hz": 329.3,
+   "cluster": 0
+  },
+  {
+   "start": 139.6,
+   "end": 140.76,
+   "median_hz": 330.7,
+   "cluster": 0
+  },
+  {
+   "start": 143.54,
+   "end": 145.64,
+   "median_hz": 293.1,
+   "cluster": 0
+  },
+  {
+   "start": 149.24,
+   "end": 150.76,
+   "median_hz": 293.8,
+   "cluster": 1
+  },
+  {
+   "start": 154.2,
+   "end": 156.06,
+   "median_hz": 347.8,
+   "cluster": 0
+  },
+  {
+   "start": 159.36,
+   "end": 160.98,
+   "median_hz": 261.9,
+   "cluster": 0
+  },
+  {
+   "start": 163.86,
+   "end": 168.02,
+   "median_hz": 261.7,
+   "cluster": 1
+  }
+ ],
+ "clusters": {
+  "0": {
+   "seconds": 103.3,
+   "median_hz": 296.6
+  },
+  "1": {
+   "seconds": 8.5,
+   "median_hz": 261.6
+  }
+ }
+}

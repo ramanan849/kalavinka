@@ -71,3 +71,4 @@ submitted	job_id	partition	name	kind	minutes	args
 2026-11-15T09:53:54+05:30	387456	dgx	r2d-c1	gpu	60	p1-run --stages gpu --budget-min 50
 2026-11-15T09:53:54+05:30	387457	dgx	r2d-c2	gpu	60	p1-run --stages gpu --budget-min 50
 2026-11-15T09:53:54+05:30	387458	dgx	r2d-c3	gpu	60	p1-run --stages gpu --budget-min 50
+2026-11-15T10:18:00+05:30	387549	l40	p1-examples	cpu	10	p1-export --songs /home/fmea/23b1529/projects/P1/work/examples.txt --out /home/fmea/23b1529/projects/P1/examples_export --include-review

@@ -1,0 +1,218 @@
+{
+ "models": {
+  "qwen": "Qwen/Qwen3-ASR-1.7B",
+  "whisper": "openai/whisper-large-v3"
+ },
+ "phrases": [
+  {
+   "start": 2.24,
+   "end": 2.5,
+   "qwen": "है",
+   "qwen_raw": "है",
+   "qwen_dropped": "",
+   "whisper": "हुआ है",
+   "whisper_raw": "हुआ है",
+   "whisper_dropped": ""
+  },
+  {
+   "start": 5.8,
+   "end": 6.06,
+   "qwen": "है",
+   "qwen_raw": "है",
+   "qwen_dropped": "",
+   "whisper": "हुआ है",
+   "whisper_raw": "हुआ है",
+   "whisper_dropped": ""
+  },
+  {
+   "start": 9.38,
+   "end": 9.8,
+   "qwen": "है",
+   "qwen_raw": "है",
+   "qwen_dropped": "",
+   "whisper": "हुई",
+   "whisper_raw": "हुई",
+   "whisper_dropped": ""
+  },
+  {
+   "start": 12.96,
+   "end": 13.6,
+   "qwen": "है",
+   "qwen_raw": "है",
+   "qwen_dropped": "",
+   "whisper": "हुआ है",
+   "whisper_raw": "हुआ है",
+   "whisper_dropped": ""
+  },
+  {
+   "start": 16.56,
+   "end": 36.42,
+   "qwen": "girl you're my chamachello where you go girl i'm gonna follow what you want girl just let me know you can be my chamachello shorty i'm gonna get ya you know i'm gonna get ya you know i'll even let you let you",
+   "qwen_raw": "Girl you're my chamachello, where you go girl I'm gonna follow. What you want girl just let me know. You can be my chamachello, shorty I'm gonna get ya, you know I'm gonna get ya, you know I'll even let you let you.",
+   "qwen_dropped": "",
+   "whisper": "कि अब आप लोग विचार नहीं लेते हैं",
+   "whisper_raw": "कि अब आप लोग विचार नहीं लेते हैं",
+   "whisper_dropped": ""
+  },
+  {
+   "start": 36.42,
+   "end": 56.82,
+   "qwen": "लेच्पी मचमक चलो कैसा शर्माना आजा नच के दिखा दे आमेरी होले आजा बारिदा गिरा दे आमेरी अकी उसे अकी आमिला दे हम तूना नकली रे दिखा वरना भी मचमक चलो",
+   "qwen_raw": "लेच्पी मचमक चलो कैसा शर्माना आजा नच के दिखा दे आमेरी होले आजा बारिदा गिरा दे आमेरी अकी उसे अकी आमिला दे हम तूना नकली रे दिखा वरना भी मचमक चलो",
+   "qwen_dropped": "",
+   "whisper": "अपने अपने अपने अपने",
+   "whisper_raw": "अपने अपने अपने अपने",
+   "whisper_dropped": ""
+  },
+  {
+   "start": 56.82,
+   "end": 67.78,
+   "qwen": "माचा माचा लो ओ ओ वाना भी माचा माचा लो ओ ओ वाना भी माचा माचा",
+   "qwen_raw": "माचा माचा लो ओ ओ वाना भी माचा माचा लो ओ ओ वाना भी माचा माचा",
+   "qwen_dropped": "",
+   "whisper": "वाना भी माचमचलो",
+   "whisper_raw": "वाना भी माचमचलो",
+   "whisper_dropped": ""
+  },
+  {
+   "start": 68.32,
+   "end": 69.6,
+   "qwen": "है",
+   "qwen_raw": "है",
+   "qwen_dropped": "",
+   "whisper": "हे",
+   "whisper_raw": "हे!",
+   "whisper_dropped": ""
+  },
+  {
+   "start": 70.3,
+   "end": 71.38,
+   "qwen": "है",
+   "qwen_raw": "है",
+   "qwen_dropped": "",
+   "whisper": "हे",
+   "whisper_raw": "हे",
+   "whisper_dropped": ""
+  },
+  {
+   "start": 71.82,
+   "end": 94.42,
+   "qwen": "तू मेरी चमक चलो तेरी पिक्चर का मै हीरो गिव टू मी जल्द मुझको दे दो ये कभी माचमक चलो शॉरी i'm gonna get ya you know i'm gonna get ya maybe i'll even let you be my चमक चमक",
+   "qwen_raw": "तू मेरी चमक चलो तेरी पिक्चर का मै हीरो गिव टू मी जल्द मुझको दे दो ये कभी माचमक चलो शॉरी I'm gonna get ya, you know I'm gonna get ya, maybe I'll even let you be my चमक चमक",
+   "qwen_dropped": "",
+   "whisper": "कि तुम एडिट चमक चलो तेरी पिक्चर का में ही रोग तुम इजल मुझे दो दे दो वह पीमा चमक चलो चलो चलो चलो",
+   "whisper_raw": "कि तुम एडिट चमक चलो तेरी पिक्चर का में ही रोग तुम इजल मुझे दो दे दो वह पीमा चमक चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो",
+   "whisper_dropped": ""
+  },
+  {
+   "start": 94.42,
+   "end": 118.14,
+   "qwen": "मक्षमक चलो कैसा शर्माना आजा नच तेरी खादे आ मेरी होले आजा पारिदा गिरा दे आ मेरी यकीन से यकीन अमीला दे आ तूना नखीरे दिखा wanna be मक्षमक चलो चलो ओ ओ wanna be मक्षमक",
+   "qwen_raw": "मक्षमक चलो कैसा शर्माना आजा नच तेरी खादे आ मेरी होले आजा पारिदा गिरा दे आ मेरी यकीन से यकीन अमीला दे आ तूना नखीरे दिखा wanna be मक्षमक चलो चलो ओ ओ wanna be मक्षमक",
+   "qwen_dropped": "",
+   "whisper": "चम्मक चलो",
+   "whisper_raw": "चम्मक चलो",
+   "whisper_dropped": ""
+  },
+  {
+   "start": 118.14,
+   "end": 136.94,
+   "qwen": "मचेलो oh oh wanna be मचे मचेलो oh oh hey oh oh hey oh oh hey oh oh hey",
+   "qwen_raw": "मचेलो, oh oh, wanna be मचे मचेलो, oh oh, hey oh oh, hey oh oh, hey oh oh, hey oh oh, hey oh oh, hey",
+   "qwen_dropped": "",
+   "whisper": "ओ ओ ओ",
+   "whisper_raw": "ओ ओ ओ",
+   "whisper_dropped": ""
+  },
+  {
+   "start": 136.94,
+   "end": 149.96,
+   "qwen": "अमने तोटा अनुलटाई बुर्का मार दियो ये निपल तेरे निपाते मैं अंग मार दिया कानल कने बूटी बिटा सेरे कमाते ये निलू मिस",
+   "qwen_raw": "अमने तोटा अनुलटाई बुर्का मार दियो ये निपल तेरे निपाते मैं अंग मार दिया कानल कने बूटी बिटा सेरे कमाते ये निलू मिस",
+   "qwen_dropped": "",
+   "whisper": "अपने तो तो अपने तो तो तो तो",
+   "whisper_raw": "अपने तो तो अपने तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो तो",
+   "whisper_dropped": ""
+  },
+  {
+   "start": 149.96,
+   "end": 163.38,
+   "qwen": "तू भी सोती रहती कमाते हैं कैसा शर्मनाक तुझे नच के दिखा दूँ मेरा हो जाए जो मैं पर्दा गिरा दूँ हाँ तुझे अखियों में अपने बसा लूँ",
+   "qwen_raw": "तू भी सोती रहती कमाते हैं कैसा शर्मनाक तुझे नच के दिखा दूँ मेरा हो जाए जो मैं पर्दा गिरा दूँ हाँ तुझे अखियों में अपने बसा लूँ",
+   "qwen_dropped": "",
+   "whisper": "प्रति कमा दया हूँ कैसा शर्मना तुझे नच के दिखा दूँ मेरा हो जाए जो मैं फर्दा गिरा दूँ हाँ तुझे अखियों में अपने बसा लूँ हाँ",
+   "whisper_raw": "प्रति कमा दया हूँ कैसा शर्मना तुझे नच के दिखा दूँ मेरा हो जाए जो मैं फर्दा गिरा दूँ हाँ तुझे अखियों में अपने बसा लूँ हाँ",
+   "whisper_dropped": ""
+  },
+  {
+   "start": 163.38,
+   "end": 175.46,
+   "qwen": "आतुन नखरे दिखा",
+   "qwen_raw": "आतुन नखरे दिखा",
+   "qwen_dropped": "",
+   "whisper": "आतुना नकरे दिखाँ वना बी मा चम्मक चलो वना बी मा चम्मक चलो वना बी मा चम्मक चलो",
+   "whisper_raw": "आतुना नकरे दिखाँ वना बी मा चम्मक चलो वना बी मा चम्मक चलो वना बी मा चम्मक चलो",
+   "whisper_dropped": ""
+  },
+  {
+   "start": 175.46,
+   "end": 182.62,
+   "qwen": "मच्छलों ओ ओ वाना बी मच्छलों ओ ओ",
+   "qwen_raw": "मच्छलों, ओ, ओ, वाना बी मच्छलों, ओ, ओ",
+   "qwen_dropped": "",
+   "whisper": "चलो चलो चलो चलो",
+   "whisper_raw": "चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो चलो",
+   "whisper_dropped": ""
+  },
+  {
+   "start": 182.62,
+   "end": 189.34,
+   "qwen": "मच्छलों oh oh wanna be मच्छ मच्छलों oh oh wanna be",
+   "qwen_raw": "मच्छलों, oh, oh, wanna be मच्छ मच्छलों, oh, oh, wanna be",
+   "qwen_dropped": "",
+   "whisper": "वाना भी मचम मचलो वाना भी मचम",
+   "whisper_raw": "वाना भी मचम मचलो वाना भी मचम",
+   "whisper_dropped": ""
+  },
+  {
+   "start": 189.34,
+   "end": 208.14,
+   "qwen": "wanna be my chebacco",
+   "qwen_raw": "Wanna be my chebacco?",
+   "qwen_dropped": "",
+   "whisper": "वरणवी माचम अचलो ओ ओ ठे ओ ठे ओ ठे ओ ठे",
+   "whisper_raw": "वरणवी माचम अचलो ओ ओ ठे ओ ठे ओ ठे ओ ठे ओ ठे ओ ठे ओ ठे",
+   "whisper_dropped": ""
+  },
+  {
+   "start": 208.14,
+   "end": 221.82,
+   "qwen": "ओह ओह ओह",
+   "qwen_raw": "ओह ओह ओह",
+   "qwen_dropped": "",
+   "whisper": "हे",
+   "whisper_raw": "हे!",
+   "whisper_dropped": ""
+  },
+  {
+   "start": 222.22,
+   "end": 225.04,
+   "qwen": "हे",
+   "qwen_raw": "हे",
+   "qwen_dropped": "",
+   "whisper": "हे",
+   "whisper_raw": "हे",
+   "whisper_dropped": ""
+  },
+  {
+   "start": 237.44,
+   "end": 244.58,
+   "qwen": "तू तेरे पक्ष में व्यापारे अगर तेरी वजह",
+   "qwen_raw": "तू तेरे पक्ष में व्यापारे अगर तेरी वजह",
+   "qwen_dropped": "",
+   "whisper": "त्रहत कभ वैसा भरे अलवर ने वर्दरा",
+   "whisper_raw": "त्रहत कभ वैसा भरे अलवर ने वर्दरा",
+   "whisper_dropped": ""
+  }
+ ]
+}

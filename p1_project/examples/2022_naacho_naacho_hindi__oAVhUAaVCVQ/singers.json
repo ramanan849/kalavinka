@@ -1,0 +1,116 @@
+{
+ "segments": [
+  {
+   "start": 16.56,
+   "end": 17.7,
+   "median_hz": 260.5,
+   "cluster": 0
+  },
+  {
+   "start": 38.36,
+   "end": 45.16,
+   "median_hz": 301.3,
+   "cluster": 0
+  },
+  {
+   "start": 46.02,
+   "end": 48.44,
+   "median_hz": 350.0,
+   "cluster": 0
+  },
+  {
+   "start": 50.56,
+   "end": 52.58,
+   "median_hz": 293.6,
+   "cluster": 0
+  },
+  {
+   "start": 81.98,
+   "end": 85.02,
+   "median_hz": 290.2,
+   "cluster": 4
+  },
+  {
+   "start": 95.42,
+   "end": 103.16,
+   "median_hz": 301.6,
+   "cluster": 0
+  },
+  {
+   "start": 103.32,
+   "end": 105.56,
+   "median_hz": 350.5,
+   "cluster": 0
+  },
+  {
+   "start": 106.94,
+   "end": 109.66,
+   "median_hz": 293.8,
+   "cluster": 0
+  },
+  {
+   "start": 112.44,
+   "end": 113.5,
+   "median_hz": 309.7,
+   "cluster": 3
+  },
+  {
+   "start": 140.4,
+   "end": 141.94,
+   "median_hz": 400.2,
+   "cluster": 1
+  },
+  {
+   "start": 143.98,
+   "end": 145.46,
+   "median_hz": 588.7,
+   "cluster": 1
+  },
+  {
+   "start": 147.96,
+   "end": 149.06,
+   "median_hz": 349.6,
+   "cluster": 1
+  },
+  {
+   "start": 154.92,
+   "end": 156.5,
+   "median_hz": 291.6,
+   "cluster": 2
+  },
+  {
+   "start": 157.86,
+   "end": 159.88,
+   "median_hz": 293.6,
+   "cluster": 2
+  },
+  {
+   "start": 168.36,
+   "end": 170.7,
+   "median_hz": 312.2,
+   "cluster": 3
+  }
+ ],
+ "clusters": {
+  "0": {
+   "seconds": 25.1,
+   "median_hz": 301.3
+  },
+  "1": {
+   "seconds": 4.1,
+   "median_hz": 400.2
+  },
+  "2": {
+   "seconds": 3.6,
+   "median_hz": 292.6
+  },
+  "3": {
+   "seconds": 3.4,
+   "median_hz": 310.9
+  },
+  "4": {
+   "seconds": 3.0,
+   "median_hz": 290.2
+  }
+ }
+}

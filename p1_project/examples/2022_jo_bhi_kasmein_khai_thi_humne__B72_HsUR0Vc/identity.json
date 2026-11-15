@@ -1,0 +1,64 @@
+{
+ "status": "unidentified",
+ "best": null,
+ "claimed_title": "Jo Bhi Kasmein Khai Thi Humne",
+ "claimed_best": null,
+ "audio_duration": 335.1875,
+ "asr_words": 267,
+ "candidates": [
+  {
+   "ref_id": "17863631",
+   "track": "Manike",
+   "artist": "Jubin Nautiyal",
+   "coverage": 0.157,
+   "claimed": false,
+   "duration": 198.0,
+   "synced": false
+  },
+  {
+   "ref_id": "514197",
+   "track": "Manike",
+   "artist": "Tanishk Bagchi",
+   "coverage": 0.154,
+   "claimed": false,
+   "duration": 197.0,
+   "synced": true
+  },
+  {
+   "ref_id": "514198",
+   "track": "Manike",
+   "artist": "Yohani, Jubin Nautiyal & Surya Ragunnathan",
+   "coverage": 0.154,
+   "claimed": false,
+   "duration": 197.0,
+   "synced": true
+  },
+  {
+   "ref_id": "12225123",
+   "track": "Manike",
+   "artist": "Yohani, Jubin Nautiyal",
+   "coverage": 0.146,
+   "claimed": false,
+   "duration": 198.0,
+   "synced": true
+  },
+  {
+   "ref_id": "36000651",
+   "track": "Manike",
+   "artist": "Yohani, Jubin Nautiyal, Surya Ragunaathan",
+   "coverage": 0.146,
+   "claimed": false,
+   "duration": 193.0,
+   "synced": true
+  },
+  {
+   "ref_id": "36000637",
+   "track": "Manike",
+   "artist": "Yohani, Jubin Nautiyal, Surya Ragunaathan",
+   "coverage": 0.146,
+   "claimed": false,
+   "duration": 198.0,
+   "synced": true
+  }
+ ]
+}
