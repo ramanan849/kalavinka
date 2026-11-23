@@ -87,6 +87,28 @@ Runs (each <= 5k steps, early stopping at patience 5) -- filled in as they are l
 Smoke checks done: 30-step run and a 300-step overfit on the 25 example clips
 (val loss 0.337 -> 0.265).
 
+## Launching the experiments
+
+```
+kalavinka/ops/build_sx_cache.sh $PROJECT/export/v1 $PROJECT/runs/cache_v1         # train/val/test .pt (mels via SoulX's encoder)
+kalavinka/ops/launch_sx_runs.sh $PROJECT/runs/cache_v1 v1 16 R1 R2 R3 R4          # supervised, one GPU each, + live plots
+kalavinka/ops/launch_ir_runs.sh $PROJECT/export/v1 v1                             # I1 (regression) and I2 (flow)
+```
+Each run lives in `runs/<R>_<tag>/` (`train_<ts>.log`, `supervise_<ts>.log`,
+`metrics.jsonl`, `best.pt`, `last.pt`, `live.png`, `DONE`); the val overlay is
+`runs/monitoring/val_overlay.png`.
+
+## Evaluation
+
+```
+.venv-sx/bin/python -m kalavinka.eval.render --export $PROJECT/export/v1 --run {zero-shot|$PROJECT/runs/R4_v1} \
+    --out $PROJECT/runs/eval_v1/<name> --control {score|melody|melody-ir} [--f0-json runs/I2_v1/test_f0.json]
+.venv-p1/bin/python -m kalavinka.eval.score --render $PROJECT/runs/eval_v1/<name> --export $PROJECT/export/v1
+```
+`score` reports loose-phonetic CER (Whisper-large-v3) for the render and the
+real clip, RMVPE F0 error against the given and the real contour (cents,
+ornament frames, voicing F1) and WavLM speaker similarity to the prompt.
+
 ## Tests
 
 ```

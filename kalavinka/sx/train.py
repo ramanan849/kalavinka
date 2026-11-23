@@ -245,6 +245,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     p.add_argument("--seed", type=int, default=0)
     p.add_argument("--workers", type=int, default=4)
     p.add_argument("--max-steps-smoke", type=int, default=0, help="stop after N steps (smoke test)")
+    p.add_argument("--no-preflight", action="store_true", help="skip collating every batch once before training")
     a = p.parse_args(argv)
 
     a.out.mkdir(parents=True, exist_ok=True)
@@ -268,6 +269,13 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
                                          collate_fn=collate, num_workers=a.workers, persistent_workers=a.workers > 0)
     vloader = torch.utils.data.DataLoader(vds, batch_sampler=FrameBudgetSampler(vds, a.max_frames, 0, shuffle=False),
                                           collate_fn=collate, num_workers=0)
+    if not a.no_preflight and not (a.out / "last.pt").exists():
+        n_b, n_f = 0, 0
+        for batch in torch.utils.data.DataLoader(ds, batch_sampler=FrameBudgetSampler(ds, a.max_frames, a.seed),
+                                                 collate_fn=collate, num_workers=a.workers):
+            assert torch.isfinite(batch["mel"]).all() and batch["mel2note"].max() < batch["tokens"].shape[1]
+            n_b += 1; n_f += int(batch["x_mask"].sum())
+        log(f"preflight ok: {n_b} batches, {n_f / 50 / 3600:.2f} h of frames per epoch")
     model, _ = build_model(a.phones_table, a.phones, a.lora_r, a.lora_alpha, a.train_f0_emb, device)
     phone_params = [p for n, p in model.named_parameters() if p.requires_grad and n.startswith("note_text_encoder")]
     other = [p for n, p in model.named_parameters() if p.requires_grad and not n.startswith("note_text_encoder")]
@@ -307,11 +315,12 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
             run_loss += float(loss); run_n += 1
             if step % 25 == 0:
                 rec = {"step": step, "loss": run_loss / run_n, "gnorm": float(gn), "lr": sched.get_last_lr()[0],
-                       "frames": int(batch["x_mask"].sum()), "sec": round(time.time() - t0, 1)}
+                       "frames": int(batch["x_mask"].sum()), "sec": round(time.time() - t0, 1),
+                       "peak_gb": round(torch.cuda.max_memory_allocated() / 1e9, 2)}
                 if hasattr(model.note_text_encoder, "shared_share"):
                     rec["shared_share"] = model.note_text_encoder.shared_share()
                 metrics.write(json.dumps(rec) + "\n")
-                log(f"step {step} loss {rec['loss']:.4f} gn {rec['gnorm']:.2f} lr {rec['lr']:.2e}")
+                log(f"step {step} loss {rec['loss']:.4f} gn {rec['gnorm']:.2f} lr {rec['lr']:.2e} peak {rec['peak_gb']} GB")
                 run_loss, run_n = 0.0, 0
             if step % a.val_every == 0 or step >= a.steps:
                 v = validate(model, vloader, device)
