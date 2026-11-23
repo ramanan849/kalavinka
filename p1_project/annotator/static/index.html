@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>P1 Gold Annotator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <aside id="sidebar">
+    <div class="side-head"><b>P1 gold set</b><span id="progress-total" class="muted small"></span></div>
+    <div id="song-list"></div>
+    <div class="side-foot">
+      <button id="btn-open-folder" title="Open the corrected/ folder in Explorer">📂 corrected/ folder</button>
+      <div class="muted small" id="corr-path"></div>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header id="topbar">
+      <div class="title-block">
+        <div id="song-title">Select a song on the left</div>
+        <div id="song-sub" class="muted small"></div>
+      </div>
+      <div class="spacer"></div>
+      <span id="save-status" class="chip">—</span>
+      <span id="timer" class="chip" title="Active time spent on this song">⏱ 0:00</span>
+      <label class="chip done-chip" title="Mark this song finished (saves first)"><input type="checkbox" id="chk-done"> Done</label>
+      <button id="btn-save" class="primary" title="Save to corrected/&lt;song_id&gt;.TextGrid (Ctrl+S)">💾 Save</button>
+      <div class="menu">
+        <button class="menu-btn" title="Tier operations (applies to the active tier)">Tier ▾</button>
+        <div class="menu-pop">
+          <button data-act="tier-add-int">Add interval tier…</button>
+          <button data-act="tier-add-pt">Add point tier…</button>
+          <button data-act="tier-dup">Duplicate active tier</button>
+          <button data-act="tier-rename">Rename active tier…</button>
+          <button data-act="tier-up">Move active tier up</button>
+          <button data-act="tier-down">Move active tier down</button>
+          <hr>
+          <button data-act="tier-clear">Remove all text from active tier…</button>
+          <button data-act="tier-reset">Reset active tier to the prediction…</button>
+          <button data-act="tier-remove">Remove active tier…</button>
+        </div>
+      </div>
+      <div class="menu">
+        <button class="menu-btn" title="File, export, Praat">File ▾</button>
+        <div class="menu-pop">
+          <button data-act="reload">Reload from disk</button>
+          <button data-act="praat">Save &amp; open in Praat</button>
+          <hr>
+          <button data-act="dl-tg">Download current TextGrid</button>
+          <button data-act="dl-tg-sel">Download selected part as TextGrid</button>
+          <button data-act="dl-tsv">Download all intervals as TSV</button>
+          <button data-act="dl-wav-v">Extract selection as WAV (vocals)</button>
+          <button data-act="dl-wav-m">Extract selection as WAV (mix)</button>
+          <hr>
+          <button data-act="revert">Revert everything to pipeline prediction…</button>
+          <button data-act="discard">Discard unsaved changes / draft…</button>
+        </div>
+      </div>
+      <button id="btn-settings" title="Analysis &amp; display settings">⚙</button>
+      <button id="btn-help" title="Keyboard shortcuts (F1)">?</button>
+    </header>
+
+    <div id="toolbar">
+      <div class="group">
+        <button id="btn-play" title="Play from the cursor / play the selection (Space)">▶</button>
+        <button id="btn-play-sel" title="Play selected interval / selection (Tab). Tab again while playing = stop there and leave a reference line. Click again to stop.">▶ sel</button>
+        <button id="btn-play-view" title="Play exactly the visible window (Shift+Tab). Click again to stop.">▶ view</button>
+        <button id="btn-play-before" title="Play the 1.5 s before the cursor (Q). Click again to stop.">◀▶ before</button>
+        <label class="tog"><input type="checkbox" id="chk-loop"> loop</label>
+      </div>
+      <div class="group">
+        <span class="lbl">Hear</span>
+        <div class="seg" id="src-seg">
+          <button data-src="0" class="on">Vocals</button><button data-src="0.5">Both</button><button data-src="1" title="Original mix (M toggles)">Mix</button>
+        </div>
+        <span class="lbl">Speed</span>
+        <select id="sel-rate" title="Slower playback keeps the pitch (S toggles 0.7×)">
+          <option value="1">1×</option><option value="0.85">0.85×</option><option value="0.7">0.7×</option><option value="0.5">0.5×</option>
+        </select>
+        <input type="range" id="vol" min="0" max="3" step="0.05" value="1" title="Volume (up to 300%)">
+      </div>
+      <div class="group">
+        <button id="btn-zin" title="Zoom in (+)">＋</button>
+        <button id="btn-zout" title="Zoom out (-)">－</button>
+        <button id="btn-zsel" title="Zoom to selection (Z)">sel</button>
+        <button id="btn-zback" title="Zoom back (X)">back</button>
+        <button id="btn-zall" title="Show all (A)">all</button>
+        <label class="tog" title="Scroll with the playhead"><input type="checkbox" id="chk-follow" checked> follow</label>
+        <label class="tog" title="Play an interval when you click it"><input type="checkbox" id="chk-clickplay" checked> click plays</label>
+      </div>
+      <div class="group">
+        <label class="tog" title="Moving a word boundary rescales the syllable boundaries inside the two neighbouring words in proportion (fine-tune them afterwards; Alt+drag moves one tier only)"><input type="checkbox" id="chk-sylf" checked> syllables follow words</label>
+        <div class="menu">
+          <button class="menu-btn" title="What to draw on the display">Show ▾</button>
+          <div class="menu-pop menu-left keep-open">
+            <label class="mrow"><input type="checkbox" id="chk-pitch" checked> pitch track</label>
+            <label class="mrow"><input type="checkbox" id="chk-int"> intensity</label>
+            <label class="mrow"><input type="checkbox" id="chk-form"> formants</label>
+            <label class="mrow" title="Draw the boundaries of every tier through the waveform/spectrogram"><input type="checkbox" id="chk-allb"> boundaries of all tiers through the spectrogram</label>
+            <label class="mrow" title="Show the pipeline prediction under the active tier"><input type="checkbox" id="chk-ghost" checked> prediction row under the active tier</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="findbar" class="hidden">
+      <b>Find</b> <input id="f-q" placeholder="text or regex" size="16">
+      <span class="lbl">in</span> <select id="f-tier"></select>
+      <label class="tog"><input type="checkbox" id="f-re"> regex</label>
+      <label class="tog"><input type="checkbox" id="f-whole" checked> whole label</label>
+      <button id="f-prev" title="Shift+F3">◀</button><button id="f-next" title="F3 / Enter">▶ find</button>
+      <span class="lbl">replace with</span> <input id="f-r" size="12">
+      <button id="f-rep">replace</button><button id="f-repall">replace all</button>
+      <span id="f-info" class="muted small"></span>
+      <button id="f-close">✕</button>
+    </div>
+
+    <canvas id="overview" height="34"></canvas>
+    <div id="canvas-wrap"><canvas id="cv" tabindex="-1"></canvas><div id="pos" class="mono small"></div><div id="loading">Loading…</div></div>
+    <div id="splitter" title="Drag to give the display or the editor more room (double-click: reset)"></div>
+
+    <section id="editor">
+      <div id="edit-row">
+        <div id="edit-where" class="mono small"></div>
+        <input id="txt" type="text" spellcheck="false" autocomplete="off" placeholder="select an interval, then type (Enter)">
+        <button id="btn-commit" title="Commit and go to next interval (Enter)">↵ next</button>
+        <div id="orig" class="muted small"></div>
+      </div>
+      <div id="time-row" class="small">
+        <span class="lbl">start</span><input id="t-a" class="tnum" type="number" step="0.001">
+        <span class="lbl">end</span><input id="t-b" class="tnum" type="number" step="0.001">
+        <span class="muted">(type exact times; linked boundaries in other tiers move too)</span>
+      </div>
+      <div id="helpers"></div>
+      <div id="block-row">
+        <b title="Copies / moves every boundary inside the time selection on the ticked tiers">⇔ Block</b>
+        <span id="blk-tiers"></span>
+        <button id="blk-copy" title="Copy the selected stretch of the ticked tiers (Ctrl+C)">⧉ copy</button>
+        <button id="blk-paste" title="Paste at the cursor / selection start, same length (Ctrl+V)">📋 paste</button>
+        <button id="blk-paste-fit" title="Paste stretched to fill the current selection">📋 paste fitted</button>
+        <button id="blk-paste-text" title="Fill intervals with the words on the system clipboard (Ctrl+Shift+V)">📋 text→intervals</button>
+        <span id="clip-info" class="muted small">clipboard empty</span>
+        <span class="lbl">| shift</span>
+        <button data-dt="-0.05">◀ 50</button><button data-dt="-0.01">◀ 10</button><button data-dt="-0.002">◀ 2</button>
+        <button data-dt="0.002">2 ▶</button><button data-dt="0.01">10 ▶</button><button data-dt="0.05">50 ▶</button>
+        <span class="lbl">ms</span>
+        <input id="blk-ms" type="number" step="1" size="6" placeholder="-120" title="Shift by this many ms (negative = left)">
+        <button id="blk-apply">apply</button>
+        <span class="lbl">stretch end</span><button data-st="-0.02">−20</button><button data-st="0.02">+20</button>
+        <span id="blk-info" class="muted small"></span>
+      </div>
+    </section>
+  </main>
+
+  <aside id="right">
+    <div class="tabs">
+      <button data-tab="issues" class="on">Checks <span id="issue-count" class="badge">0</span></button>
+      <button data-tab="query">Query</button>
+      <button data-tab="notes">Notes</button>
+      <button data-tab="guide">Guide</button>
+    </div>
+    <div class="tab-body" id="tab-issues">
+      <div id="issue-summary" class="small"></div>
+      <div id="issue-filters" class="small">
+        <label><input type="checkbox" data-sev="error" checked> errors</label>
+        <label><input type="checkbox" data-sev="warn" checked> warnings</label>
+        <label><input type="checkbox" data-sev="info"> hints</label>
+        <label><input type="checkbox" id="chk-show-ignored"> ignored</label>
+      </div>
+      <div id="issues"></div>
+    </div>
+    <div class="tab-body hidden small" id="tab-query">
+      <table id="q-table"></table>
+      <h4>Spectral slice at cursor</h4>
+      <canvas id="slice" width="270" height="140"></canvas>
+      <div class="qbtns">
+        <button id="q-pitch-list">Copy pitch listing (selection)</button>
+        <button id="q-int-list">Copy intensity listing (selection)</button>
+        <button id="q-form-list">Copy formant listing (selection)</button>
+      </div>
+    </div>
+    <div class="tab-body hidden" id="tab-notes">
+      <p class="small muted">Notes for this song (kept in .annotator/state.json, not in the TextGrid).</p>
+      <textarea id="notes" placeholder="e.g. 41–44 s: chorus, unsure who sings"></textarea>
+    </div>
+    <div class="tab-body hidden small" id="tab-guide">
+      <h4>Tiers</h4>
+      <p><b>words</b>: every sung word, in the order sung, spelled as sung. Devanagari for Hindi, Latin for English. Repeats and half lines are written as sung.</p>
+      <p><b>syllables</b>: boundaries at syllable onsets. Fix the text only where the word changed (auto-filled when you change a word). <code>~</code> = held continuation of the previous syllable.</p>
+      <p><b>vocables</b>: every aakar / humming stretch that is not a word: आ ओ ई ए ऊ म्म (the vowel heard), or <code>mel</code> for a long vowel continuing the previous syllable.</p>
+      <p><b>singers</b>: A, B, C… (same letter = same person in this song), AB = two or more voices at once, empty = nobody.</p>
+      <h4>When unsure</h4>
+      <p>Leave the prediction as it is and mark the word uncertain with <kbd>U</kbd> (adds <code>?</code>). Precision matters more than speed.</p>
+      <h4>Whole stretch is early / late?</h4>
+      <p>Drag over the stretch (or click the first word, Shift+click the last), then use <b>Shift block</b> below the editor, the <kbd>[</kbd> <kbd>]</kbd> keys (10 ms, with Shift 50 ms), or <b>Ctrl+drag</b> inside the selection. Ctrl+drag near a selection edge stretches the block instead. Choose which tiers move with the checkboxes.</p>
+      <h4>Repeated lines (chorus)</h4>
+      <p>Fix the first occurrence, select it (click first word, Shift+click last), <kbd>Ctrl</kbd>+<kbd>C</kbd>, click where the repeat starts, <kbd>Ctrl</kbd>+<kbd>V</kbd>. The pasted block stays selected: nudge it with <kbd>[</kbd> <kbd>]</kbd>, or use <b>paste fitted</b> to stretch it into a selected range. Lyrics text from elsewhere: select intervals, <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd>.</p>
+      <h4>Workflow per song (≈15–25 min)</h4>
+      <ol>
+        <li><kbd>A</kbd> to see everything: singer bands, red “unlabelled voice” marks.</li>
+        <li>Zoom to ~8 s. Walk the <b>words</b> with <kbd>→</kbd> (each step plays). Fix text with <kbd>Enter</kbd>; drag boundaries; <kbd>B</kbd> adds one (also while playing).</li>
+        <li>Adjust syllable onsets; ✨ re-syllabifies a word.</li>
+        <li>Aakars: drag over the waveform, then <kbd>1</kbd>–<kbd>7</kbd> on the vocables tier.</li>
+        <li>Singer turns: drag a range, then <kbd>1</kbd>–<kbd>6</kbd> on the singers tier.</li>
+        <li>Clear the Checks list (fix or ignore false alarms), Save, tick Done.</li>
+      </ol>
+    </div>
+  </aside>
+</div>
+
+<div id="help" class="modal hidden">
+  <div class="modal-box">
+    <h3>Keyboard &amp; mouse</h3>
+    <div class="cols">
+      <div>
+        <h4>Play</h4>
+        <table>
+          <tr><td><kbd>Space</kbd></td><td>play / stop (selection, else from cursor)</td></tr>
+          <tr><td><kbd>Tab</kbd></td><td>play selected interval / selection; <b>press Tab again while playing to stop and leave a purple reference line there</b></td></tr>
+          <tr><td><kbd>K</kbd></td><td>add reference line at cursor / remove it</td></tr>
+          <tr><td><kbd>R</kbd></td><td>jump cursor back to the reference line</td></tr>
+          <tr><td>drag word boundary</td><td>syllables inside both neighbouring words stretch/squeeze in proportion (toggle "syllables follow words"); drag a syllable boundary to fine-tune it alone</td></tr>
+          <tr><td><kbd>C</kbd> (with ref)</td><td>move selected boundary onto the reference line (dragged boundaries also snap to it)</td></tr>
+          <tr><td><kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>play exactly the visible window (each ▶ button stops if clicked again)</td></tr>
+          <tr><td><kbd>Q</kbd></td><td>play 1.5 s before the cursor</td></tr>
+          <tr><td><kbd>M</kbd> / <kbd>S</kbd></td><td>vocals ↔ mix / slow 0.7× (pitch kept)</td></tr>
+        </table>
+        <h4>Navigate &amp; select</h4>
+        <table>
+          <tr><td><kbd>←</kbd> <kbd>→</kbd></td><td>previous / next interval (Ctrl: non-empty only)</td></tr>
+          <tr><td><kbd>↑</kbd> <kbd>↓</kbd></td><td>change active tier</td></tr>
+          <tr><td>drag on signal</td><td>time selection; <kbd>Shift</kbd>+click extends it</td></tr>
+          <tr><td><kbd>Shift</kbd>+click interval</td><td>extend the selection over several intervals</td></tr>
+          <tr><td><kbd>Ctrl</kbd>+<kbd>A</kbd></td><td>select the whole file</td></tr>
+          <tr><td><kbd>Home</kbd> / <kbd>End</kbd></td><td>cursor to selection start / end</td></tr>
+          <tr><td><kbd>+</kbd> <kbd>-</kbd> <kbd>Z</kbd> <kbd>X</kbd> <kbd>A</kbd></td><td>zoom in / out / to selection / back / all</td></tr>
+          <tr><td>wheel, <kbd>Ctrl</kbd>+wheel</td><td>scroll, zoom</td></tr>
+          <tr><td><kbd>N</kbd></td><td>next open check</td></tr>
+          <tr><td><kbd>Ctrl</kbd>+<kbd>F</kbd>, <kbd>F3</kbd></td><td>find / replace, find again</td></tr>
+        </table>
+      </div>
+      <div>
+        <h4>Edit</h4>
+        <table>
+          <tr><td><kbd>Enter</kbd></td><td>edit text; again = commit + next. With a drag-selection: create an interval there</td></tr>
+          <tr><td><kbd>Esc</kbd></td><td>cancel edit / clear selection</td></tr>
+          <tr><td><kbd>B</kbd></td><td>boundary at cursor, or at the playhead while playing (words: also in syllables; text with a space is split)</td></tr>
+          <tr><td><kbd>Shift</kbd>+<kbd>B</kbd></td><td>boundary on all interval tiers</td></tr>
+          <tr><td><kbd>Ctrl</kbd>+<kbd>1</kbd>…<kbd>9</kbd></td><td>boundary on tier 1…9</td></tr>
+          <tr><td>double-click tier</td><td>add boundary / point there</td></tr>
+          <tr><td>drag boundary</td><td>move it (coincident boundaries follow; <kbd>Alt</kbd> = alone, <kbd>Shift</kbd> = no snapping)</td></tr>
+          <tr><td><kbd>Del</kbd></td><td>remove selected boundary / point</td></tr>
+          <tr><td><kbd>,</kbd> <kbd>.</kbd></td><td>nudge selected boundary ∓5 ms (<kbd>&lt;</kbd> <kbd>&gt;</kbd>: 20 ms)</td></tr>
+          <tr><td><kbd>C</kbd> / <kbd>O</kbd></td><td>move selected boundary to cursor / nearest zero crossing</td></tr>
+          <tr><td><kbd>[</kbd> <kbd>]</kbd></td><td>shift block (selection) ∓10 ms; <kbd>{</kbd> <kbd>}</kbd> ∓50 ms</td></tr>
+          <tr><td><kbd>Ctrl</kbd>+drag in selection</td><td>move block; near an edge: stretch block</td></tr>
+          <tr><td><kbd>Ctrl</kbd>+<kbd>C</kbd> / <kbd>Ctrl</kbd>+<kbd>V</kbd></td><td>copy the selected stretch (ticked tiers: boundaries + text) / paste it at the cursor, e.g. a repeated chorus line</td></tr>
+          <tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd></td><td>fill the selected intervals with the words on the clipboard (one word each)</td></tr>
+          <tr><td><kbd>U</kbd> / <kbd>Y</kbd></td><td>toggle “?” on word / re-syllabify word</td></tr>
+          <tr><td><kbd>1</kbd>–<kbd>9</kbd>, <kbd>0</kbd></td><td>quick label on vocables / singers tier; 0 = clear</td></tr>
+          <tr><td><kbd>Ctrl</kbd>+<kbd>Z</kbd> / <kbd>Ctrl</kbd>+<kbd>Y</kbd></td><td>undo / redo</td></tr>
+          <tr><td><kbd>Ctrl</kbd>+<kbd>S</kbd></td><td>save to corrected/</td></tr>
+        </table>
+      </div>
+    </div>
+    <p class="small muted">Work autosaves as a draft every few seconds; <b>Save</b> writes <code>gold/corrected/&lt;song_id&gt;.TextGrid</code> and keeps a backup of the previous version in <code>gold/.annotator/history/</code>.</p>
+    <button class="primary modal-close">Close</button>
+  </div>
+</div>
+
+<div id="settings" class="modal hidden">
+  <div class="modal-box">
+    <h3>Analysis &amp; display settings</h3>
+    <table class="form">
+      <tr><td>Analyse</td><td><select id="s-src"><option value="v">vocals</option><option value="m">mix</option></select></td></tr>
+      <tr><td>Pitch floor / ceiling (Hz)</td><td><input id="s-pf" type="number" value="70"> <input id="s-pc" type="number" value="1100"></td></tr>
+      <tr><td>Voicing threshold (0–1)</td><td><input id="s-vt" type="number" step="0.05" value="0.75"></td></tr>
+      <tr><td>Spectrogram window (s)</td><td><input id="s-sw" type="number" step="0.001" value="0.025"> <span class="muted small">0.005 = wideband (timing), 0.025–0.04 = narrowband (harmonics)</span></td></tr>
+      <tr><td>Spectrogram max frequency (Hz)</td><td><input id="s-fm" type="number" value="5000"></td></tr>
+      <tr><td>Spectrogram dynamic range (dB)</td><td><input id="s-dr" type="number" value="50"></td></tr>
+      <tr><td>Formant ceiling (Hz)</td><td><input id="s-fc" type="number" value="5500"> <span class="muted small">5000 male, 5500 female</span></td></tr>
+      <tr><td>Pitch display range (Hz)</td><td><input id="s-plo" type="number" value="70"> <input id="s-phi" type="number" value="1000"></td></tr>
+      <tr><td>Minimum unlabelled-voice length (s)</td><td><input id="s-ul" type="number" step="0.05" value="0.35"></td></tr>
+      <tr><td>Tier row height (px)</td><td><input id="s-th" type="number" value="44"></td></tr>
+      <tr><td colspan="2"><h4>Mouse &amp; keyboard sensitivity</h4></td></tr>
+      <tr><td>Boundary grab distance (px)</td><td><input id="s-grab" type="number" value="6"> <span class="muted small">how close the mouse must be to pick up a boundary (it turns orange when grabbable)</span></td></tr>
+      <tr><td>Snap distance (px)</td><td><input id="s-snap" type="number" value="8"> <span class="muted small">dragged boundaries snap to other tiers / cursor / reference line; 0 = never (or hold Shift)</span></td></tr>
+      <tr><td>Click-vs-drag threshold (px)</td><td><input id="s-drag" type="number" value="4"> <span class="muted small">raise this if clicks accidentally move boundaries or make tiny selections</span></td></tr>
+      <tr><td>Nudge <kbd>,</kbd> <kbd>.</kbd> / <kbd>&lt;</kbd> <kbd>&gt;</kbd> (ms)</td><td><input id="s-nud" type="number" step="0.5" value="5"> <input id="s-bnud" type="number" value="20"></td></tr>
+      <tr><td>Wheel scroll speed / Ctrl+wheel zoom speed</td><td><input id="s-wheel" type="number" step="0.1" value="1"> <input id="s-zoom" type="number" step="0.1" value="1"> <span class="muted small">1 = normal; lower for touchpads</span></td></tr>
+    </table>
+    <button class="primary" id="s-apply">Apply</button> <button class="modal-close">Cancel</button> <button id="s-reset" title="Fill in the default values (then Apply)">Defaults</button>
+  </div>
+</div>
+
+<div id="toast"></div>
+<script src="devanagari.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
