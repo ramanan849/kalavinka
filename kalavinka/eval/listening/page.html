@@ -1,0 +1,272 @@
+<title>Kalavinka Listening Test</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;1,400&family=Noto+Sans+Devanagari:wght@400;500&display=swap">
+<style>
+/* layout: one column, one trial per screen; crimson = the question, blue = the action (deck style) */
+:root {
+  --bg: #FFFFFF; --fg: #1A1A1A; --muted: #6B6B6B; --rule: #C8C8C8; --tint: #F2F2F2;
+  --crimson: #9E1B32; --blue: #1F4E79; --blue-tint: #DCE8F4; --focus: #1F4E79;
+  --serif: "STIX Two Text", "STIX Two", Georgia, "Times New Roman", serif;
+  --deva: "Noto Sans Devanagari", "Mangal", "Kohinoor Devanagari", sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #15171A; --fg: #ECEAE6; --muted: #A3A09A; --rule: #3A3D42; --tint: #202328;
+  --crimson: #E0697E; --blue: #8DB8E3; --blue-tint: #1E3247; --focus: #8DB8E3; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #15171A; --fg: #ECEAE6; --muted: #A3A09A; --rule: #3A3D42; --tint: #202328;
+  --crimson: #E0697E; --blue: #8DB8E3; --blue-tint: #1E3247; --focus: #8DB8E3; color-scheme: dark }
+body { background: var(--bg); color: var(--fg); font-family: var(--serif); font-size: 17px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+main { max-width: 760px; margin: 0 auto; padding-block: 28px 56px; display: grid; gap: 22px; }
+h1 { font-size: 2rem; font-weight: 600; color: var(--crimson); margin: 0; text-wrap: balance; line-height: 1.15; }
+h2 { font-size: 1.35rem; font-weight: 600; margin: 0; text-wrap: balance; }
+p { margin: 0; max-width: 65ch; }
+.muted { color: var(--muted); font-size: 0.92rem; }
+.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
+.fields { display: grid; gap: 14px; }
+label.f { display: grid; gap: 6px; font-weight: 600; }
+input[type=text], select { font: inherit; font-weight: 400; padding: 8px 10px; border: 1px solid var(--rule); border-radius: 4px;
+  background: var(--bg); color: var(--fg); max-width: 420px; }
+.scale-key { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; font-size: 0.85rem; color: var(--muted); }
+.scale-key span b { display: block; color: var(--fg); font-size: 1rem; }
+button { font: inherit; cursor: pointer; border-radius: 4px; padding: 10px 18px; border: 1px solid var(--blue); }
+button.primary { background: var(--blue); color: var(--bg); font-weight: 600; }
+button.secondary { background: transparent; color: var(--blue); }
+button:disabled { opacity: 0.45; cursor: not-allowed; }
+button:focus-visible, input:focus-visible, select:focus-visible, audio:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.progress { font-variant-numeric: tabular-nums; color: var(--muted); }
+.bar { height: 4px; background: var(--tint); border-radius: 2px; overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--blue); width: 0; transition: width .3s; }
+.lyric { font-family: var(--deva); font-size: 1.15rem; color: var(--fg); }
+.stims { display: grid; gap: 12px; }
+.stim { display: grid; grid-template-columns: 2.2rem minmax(0, 1fr); gap: 4px 14px; align-items: center;
+  padding: 12px 14px; border: 1px solid var(--rule); border-radius: 6px; }
+.stim.done { border-color: var(--blue); background: var(--blue-tint); }
+.stim .letter { font-weight: 600; font-size: 1.3rem; color: var(--blue); grid-row: span 2; text-align: center; }
+.stim audio { width: 100%; min-width: 0; height: 36px; }
+.rate { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.rate input { position: absolute; opacity: 0; pointer-events: none; }
+.rate label { min-width: 2.4rem; text-align: center; padding: 4px 0; border: 1px solid var(--rule); border-radius: 4px;
+  cursor: pointer; font-variant-numeric: tabular-nums; background: var(--bg); }
+.rate input:checked + label { background: var(--blue); color: var(--bg); border-color: var(--blue); font-weight: 600; }
+.rate input:focus-visible + label { outline: 2px solid var(--focus); outline-offset: 2px; }
+.rate input:disabled + label { opacity: 0.4; cursor: not-allowed; }
+.rate .hint { font-size: 0.82rem; color: var(--muted); }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.status { font-size: 0.9rem; color: var(--muted); }
+textarea { width: 100%; min-height: 7rem; font: 0.8rem ui-monospace, monospace; background: var(--tint); color: var(--fg);
+  border: 1px solid var(--rule); border-radius: 4px; padding: 8px; box-sizing: border-box; }
+@media (prefers-reduced-motion: reduce) { .bar i { transition: none; } }
+</style>
+
+<main id="app" aria-live="polite">
+  <section id="intro" class="fields">
+    <h1>How natural does this singing sound?</h1>
+    <p>This is a short listening test for our course project on synthesising Hindi film singing. Each page plays the same lyric line sung five ways, labelled A to E in a random order. Some versions are synthesised and one may be a real recording. Please rate each one for how <b>natural</b> it sounds as singing: the voice, the pronunciation and the melody line together.</p>
+    <p class="muted">There are <span id="n-trials">15</span> pages and the whole test takes about 10 minutes. Headphones help. Play each version at least once before rating it. Your answers are saved after every page, so you can stop and come back.</p>
+    <div class="scale-key" aria-label="Rating scale">
+      <span><b>1</b>Very unnatural</span><span><b>2</b>Unnatural</span><span><b>3</b>Fair</span><span><b>4</b>Natural</span><span><b>5</b>Completely natural</span>
+    </div>
+    <hr class="rule">
+    <label class="f" for="initials">Your initials (optional)
+      <input type="text" id="initials" maxlength="12" autocomplete="off">
+    </label>
+    <label class="f" for="fluency">How well do you understand Hindi?
+      <select id="fluency">
+        <option value="">Choose one</option>
+        <option value="native">Native or first language</option>
+        <option value="fluent">Fluent</option>
+        <option value="some">Some</option>
+        <option value="none">Not at all</option>
+      </select>
+    </label>
+    <label class="f" for="headphones">What are you listening on?
+      <select id="headphones">
+        <option value="">Choose one</option>
+        <option value="headphones">Headphones or earphones</option>
+        <option value="speakers">Laptop or phone speakers</option>
+      </select>
+    </label>
+    <div class="actions">
+      <button class="primary" id="start" disabled>Start the test</button>
+      <span class="status" id="intro-status"></span>
+    </div>
+  </section>
+
+  <section id="trial" hidden>
+    <div class="top">
+      <h2 id="trial-title">Page 1</h2>
+      <span class="progress" id="progress">1 / 15</span>
+    </div>
+    <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+    <p class="lyric" id="lyric" lang="hi"></p>
+    <div class="stims" id="stims"></div>
+    <div class="actions">
+      <button class="secondary" id="back">Previous page</button>
+      <button class="primary" id="next" disabled>Next page</button>
+      <span class="status" id="save-status"></span>
+    </div>
+  </section>
+
+  <section id="end" class="fields" hidden>
+    <h1>Thank you</h1>
+    <p id="end-msg">Your ratings are saved.</p>
+    <div id="fallback" class="fields" hidden>
+      <p>Your answers could not be saved online from this view. Please save them as a file and send it to the person who shared this test with you.</p>
+      <div class="actions">
+        <button class="primary" id="dl">Save my answers (.json)</button>
+        <button class="secondary" id="copy">Copy my answers</button>
+        <span class="status" id="fb-status"></span>
+      </div>
+      <textarea id="json" readonly aria-label="Your answers as JSON"></textarea>
+    </div>
+  </section>
+</main>
+
+<script>
+const MANIFEST = /*__MANIFEST__*/null;
+const LETTERS = ["A", "B", "C", "D", "E", "F", "G"];
+const $ = (id) => document.getElementById(id);
+const DRAFT_KEY = "kalavinka-listening-v1";
+
+function shuffle(a, rnd) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+function mulberry(seed) { return function () { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+  t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function loadDraft() { try { return JSON.parse(localStorage.getItem(DRAFT_KEY) || "null"); } catch (e) { return null; } }
+function saveDraft(s) { try { localStorage.setItem(DRAFT_KEY, JSON.stringify(s)); } catch (e) { /* storage blocked: the store still has it */ } }
+
+let state = loadDraft();
+if (!state || state.version !== MANIFEST.version) {
+  const seed = Math.floor(Math.random() * 2 ** 31);
+  const rnd = mulberry(seed);
+  const trialOrder = shuffle(MANIFEST.trials.map((t) => t.t), rnd);
+  const stimOrder = {};
+  for (const t of MANIFEST.trials) stimOrder[t.t] = shuffle(t.stimuli.slice(), rnd);
+  state = { version: MANIFEST.version, seed, trialOrder, stimOrder, ratings: {}, played: {}, page: 0,
+            initials: "", fluency: "", headphones: "", started: null, finished: null };
+}
+const byId = Object.fromEntries(MANIFEST.trials.map((t) => [t.t, t]));
+$("n-trials").textContent = String(MANIFEST.trials.length);
+
+let db = null, docRef = null, saving = Promise.resolve(), onlineOk = null;
+async function connect() {
+  try {
+    const [d, u] = await Promise.all([window.claude?.use?.("db"), window.claude?.use?.("user")]);
+    const uid = u ? await u.id() : null;
+    if (d && uid) { db = d; docRef = d.doc("responses/" + uid); }
+  } catch (e) { db = null; }
+  onlineOk = !!docRef;
+}
+const ready = connect();
+
+function payload() {
+  return { version: state.version, seed: state.seed, initials: state.initials, fluency: state.fluency,
+           headphones: state.headphones, trialOrder: state.trialOrder, stimOrder: state.stimOrder,
+           ratings: state.ratings, started: state.started, finished: state.finished, updated: new Date().toISOString() };
+}
+function persist(final) {
+  saveDraft(state);
+  saving = saving.then(async () => {
+    await ready;
+    if (!docRef) { $("save-status").textContent = ""; return; }
+    try { await docRef.set(payload()); onlineOk = true; $("save-status").textContent = "Saved"; }
+    catch (e) {
+      if (e && e.code === "unavailable") {
+        await new Promise((r) => setTimeout(r, 400 + Math.random() * 600));
+        try { await docRef.set(payload()); onlineOk = true; $("save-status").textContent = "Saved"; return; } catch (e2) { /* fall through */ }
+      }
+      onlineOk = false; $("save-status").textContent = "Saving online is not available here; you can save a file at the end.";
+    }
+  });
+  return saving;
+}
+
+function introValid() { return $("fluency").value && $("headphones").value; }
+for (const id of ["fluency", "headphones"]) $(id).addEventListener("change", () => { $("start").disabled = !introValid(); });
+$("initials").value = state.initials; $("fluency").value = state.fluency; $("headphones").value = state.headphones;
+$("start").disabled = !introValid();
+if (state.started) { $("start").textContent = "Continue the test"; $("intro-status").textContent = "You have started already; your earlier ratings are kept."; }
+
+$("start").addEventListener("click", () => {
+  state.initials = $("initials").value.trim().slice(0, 12);
+  state.fluency = $("fluency").value; state.headphones = $("headphones").value;
+  state.started = state.started || new Date().toISOString();
+  persist(false);
+  if (state.finished) return showEnd();
+  $("intro").hidden = true; $("trial").hidden = false; renderTrial();
+});
+
+function trialComplete(tid) { return state.stimOrder[tid].every((s) => state.ratings[s]); }
+
+function renderTrial() {
+  const n = state.trialOrder.length, k = state.page, tid = state.trialOrder[k], t = byId[tid];
+  $("trial-title").textContent = "Page " + (k + 1);
+  $("progress").textContent = (k + 1) + " / " + n;
+  $("bar").style.width = (100 * k / n) + "%";
+  $("lyric").textContent = t.text;
+  const box = $("stims"); box.textContent = "";
+  state.stimOrder[tid].forEach((sid, i) => {
+    const row = document.createElement("div"); row.className = "stim" + (state.ratings[sid] ? " done" : "");
+    const letter = document.createElement("div"); letter.className = "letter"; letter.textContent = LETTERS[i];
+    const audio = document.createElement("audio"); audio.controls = true; audio.preload = "none";
+    audio.src = "stimuli/" + sid + ".mp3"; audio.setAttribute("aria-label", "Version " + LETTERS[i]);
+    const rate = document.createElement("div"); rate.className = "rate"; rate.setAttribute("role", "radiogroup");
+    rate.setAttribute("aria-label", "Rating for version " + LETTERS[i]);
+    for (let v = 1; v <= 5; v++) {
+      const id = "r-" + sid + "-" + v;
+      const inp = document.createElement("input"); inp.type = "radio"; inp.name = "r-" + sid; inp.id = id; inp.value = String(v);
+      inp.checked = state.ratings[sid] === v; inp.disabled = !state.played[sid];
+      const lab = document.createElement("label"); lab.htmlFor = id; lab.textContent = String(v);
+      inp.addEventListener("change", () => { state.ratings[sid] = v; row.classList.add("done"); saveDraft(state);
+        $("next").disabled = !trialComplete(tid); });
+      rate.append(inp, lab);
+    }
+    const hint = document.createElement("span"); hint.className = "hint"; hint.textContent = state.played[sid] ? "" : "play first";
+    rate.append(hint);
+    audio.addEventListener("play", () => {
+      for (const other of box.querySelectorAll("audio")) if (other !== audio) other.pause();
+      if (!state.played[sid]) { state.played[sid] = true; saveDraft(state); hint.textContent = "";
+        for (const inp of rate.querySelectorAll("input")) inp.disabled = false; }
+    });
+    row.append(letter, audio, rate); box.append(row);
+  });
+  $("back").disabled = k === 0;
+  $("next").textContent = k === n - 1 ? "Finish" : "Next page";
+  $("next").disabled = !trialComplete(tid);
+}
+
+$("next").addEventListener("click", async () => {
+  for (const a of $("stims").querySelectorAll("audio")) a.pause();
+  if (state.page === state.trialOrder.length - 1) {
+    state.finished = new Date().toISOString(); await persist(true); return showEnd();
+  }
+  state.page += 1; persist(false); renderTrial(); window.scrollTo(0, 0);
+});
+$("back").addEventListener("click", () => {
+  for (const a of $("stims").querySelectorAll("audio")) a.pause();
+  if (state.page > 0) { state.page -= 1; saveDraft(state); renderTrial(); window.scrollTo(0, 0); }
+});
+
+async function showEnd() {
+  $("intro").hidden = true; $("trial").hidden = true; $("end").hidden = false;
+  await saving;
+  const json = JSON.stringify(payload(), null, 1);
+  $("json").value = json;
+  if (onlineOk) { $("end-msg").textContent = "Your ratings are saved. You can close this page."; $("fallback").hidden = true; }
+  else { $("end-msg").textContent = "You have rated every page."; $("fallback").hidden = false; }
+}
+$("dl").addEventListener("click", async () => {
+  const dl = await window.claude?.use?.("downloads");
+  if (!dl) { $("fb-status").textContent = "Saving a file is not available here; use Copy instead."; return; }
+  try { await dl.save({ filename: "kalavinka-listening-" + (state.initials || "answers") + ".json", data: $("json").value });
+        $("fb-status").textContent = "Saved"; }
+  catch (e) { $("fb-status").textContent = e && e.code === "declined" ? "Not saved" : "Saving a file failed; use Copy instead."; }
+});
+$("copy").addEventListener("click", () => {
+  navigator.clipboard.writeText($("json").value).then(() => { $("fb-status").textContent = "Copied"; },
+    () => { $("json").select(); $("fb-status").textContent = "Select all and copy the text below."; });
+});
+if (state.finished) { showEnd(); }
+</script>
