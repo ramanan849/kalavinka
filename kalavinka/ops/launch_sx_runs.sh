@@ -5,6 +5,8 @@
 #
 # Usage: kalavinka/ops/launch_sx_runs.sh <cache dir> <tag> [MIN_FREE_GB] [runs...]
 #   e.g. kalavinka/ops/launch_sx_runs.sh $PROJECT/runs/cache_v1 v1 16 R1 R2 R3 R4
+# QUEUE=1 submits each run to the shared job queue (ops/jobq.py) instead, so whichever node has a
+# free GPU trains it (no tmux window, no GPU check here).
 set -euo pipefail
 CACHE=$1; TAG=$2; MIN=${3:-16}; shift 3 || true
 RUNS=("$@"); [ ${#RUNS[@]} -eq 0 ] && RUNS=(R1 R2 R3 R4)
@@ -34,7 +36,20 @@ declare -A ARGS=(
   # third seed (run on the second node)
   [H1c]="--phones nearest --bands accept --weighting none --exclude-phones Th,Dh,Rh --seed 2"
   [H2c]="--phones articulatory --bands accept --weighting none --exclude-phones Th,Dh,Rh --seed 2"
+  # second seed of the headline models (L4 vs L1 retroflex was single-seed)
+  [L1b]="--phones nearest --bands accept --weighting none --steps 15000 --max-frames 7200 --val-every 500 --patience 8 --seed 1"
+  [L4b]="--phones articulatory --bands accept,review --weighting conf --steps 15000 --max-frames 7200 --val-every 500 --patience 8 --seed 1"
 )
+if [ "${QUEUE:-0}" = 1 ]; then
+  for r in "${RUNS[@]}"; do
+    name="${r}_${TAG}"; out="$PROJECT/runs/$name"
+    [ -e "$out" ] && { echo "$out exists -- refusing to reuse a run dir"; exit 1; }
+    "$PY" "$REPO/kalavinka/ops/jobq.py" submit --name "$name" --needs sx --min-free-gb "$MIN" -- \
+      bash kalavinka/ops/supervise.sh "'$out'" "'$PY'" -m kalavinka.sx.train --cache "'$CACHE'" --phones-table "'$TABLE'" \
+      --out "'$out'" --steps 5000 --patience 5 ${ARGS[$r]}
+  done
+  exit 0
+fi
 GPUS=($("$PY" "$REPO/kalavinka/ops/gpu_pick.py" --min-free-gb "$MIN" | tr ',' ' '))
 [ ${#GPUS[@]} -lt ${#RUNS[@]} ] && { echo "only ${#GPUS[@]} GPUs with >= ${MIN} GiB free for ${#RUNS[@]} runs"; exit 1; }
 names=()

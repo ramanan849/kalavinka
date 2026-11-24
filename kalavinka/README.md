@@ -95,6 +95,20 @@ kalavinka/ops/build_sx_cache.sh $PROJECT/export/v1 $PROJECT/runs/cache_v1       
 kalavinka/ops/launch_sx_runs.sh $PROJECT/runs/cache_v1 v1 16 R1 R2 R3 R4          # supervised, one GPU each, + live plots
 kalavinka/ops/launch_ir_runs.sh $PROJECT/export/v1 v1                             # I1 (regression) and I2 (flow)
 ```
+**Two nodes (shared `/workspace`).** `ops/jobq.py` is a job queue on the shared disk: one worker per
+node takes the next job when that node has a GPU with room, so idle GPUs on either node get used.
+The second node (gokul-bench) is set up once with `ops/setup_other_node.sh`; it runs `sx` jobs (training,
+rendering), while `p1` jobs (Whisper / contrast scoring) need the dev container's model caches.
+
+```
+# workers (gokul-bench first pick; gokul-dev takes jobs that waited 5 min)
+setsid nohup .venv-sx/bin/python kalavinka/ops/jobq.py worker --node gokul-dev --can sx,p1 --max-jobs 4 --delay 300 >> runs/jobq/worker_gokul-dev.log 2>&1 &
+ssh -i ~/.ssh/id_ed25519_bench gokula@10.20.227.19 "docker exec -d gokul-bench bash -lc 'cd $PROJECT/saregama624 && exec $PROJECT/.venv-sx/bin/python kalavinka/ops/jobq.py worker --node gokul-bench --can sx >> $PROJECT/runs/jobq/worker_gokul-bench.log 2>&1'"
+QUEUE=1 kalavinka/ops/launch_sx_runs.sh $PROJECT/runs/cache_v1 v2 16 L1b L4b             # runs go to the queue
+.venv-sx/bin/python kalavinka/ops/jobq.py submit --name X --needs sx --after <path> -- <cmd using $JOB_GPU>
+.venv-sx/bin/python kalavinka/ops/jobq.py status
+```
+
 Each run lives in `runs/<R>_<tag>/` (`train_<ts>.log`, `supervise_<ts>.log`,
 `metrics.jsonl`, `best.pt`, `last.pt`, `live.png`, `DONE`); the val overlay is
 `runs/monitoring/val_overlay.png`.
