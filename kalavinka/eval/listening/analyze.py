@@ -14,7 +14,9 @@ Outputs (stdout and ``--out``):
   the first condition);
 * listener screening: each listener's mean rating of the hidden real clip;
   listeners whose real-clip mean is below ``--min-real`` are reported and,
-  with ``--screen``, left out (the anchor tells whether someone was listening).
+  with ``--screen``, left out (the anchor tells whether someone was listening);
+* listeners' free-text comments: per page (resolved to the clip, never to a
+  condition, since a comment can refer to any of the five versions) and overall.
 
 Only complete responses count (every stimulus rated), unless ``--partial``.
 
@@ -126,6 +128,21 @@ def screen(rows: Sequence[Tuple[int, str, str, int]], min_real: float) -> Tuple[
     return [li for li, m in real.items() if m < min_real], real
 
 
+def comments(key: Dict, responses: Sequence[Dict]) -> List[Dict]:
+    """Free-text comments as {listener, initials, clip, text}; clip is None for the overall comment."""
+    stim = key["stimuli"]
+    out = []
+    for li, r in enumerate(responses):
+        for tid, text in (r.get("comments") or {}).items():
+            if not isinstance(text, str) or not text.strip():
+                continue
+            ids = (r.get("stimOrder") or {}).get(tid) or []
+            clip = next((stim[s]["clip"] for s in ids if s in stim), None)
+            out.append({"listener": li, "initials": r.get("initials", ""), "clip": None if tid == "_overall" else clip,
+                        "text": text.strip()})
+    return out
+
+
 def main(argv: Optional[Sequence[str]] = None) -> None:
     """CLI."""
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -139,7 +156,8 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     p.add_argument("--out", type=Path, default=None)
     a = p.parse_args(argv)
     key = json.loads(a.key.read_text())
-    rows = table(key, load_responses(a.responses), a.partial)
+    responses = load_responses(a.responses)
+    rows = table(key, responses, a.partial)
     flagged, real = screen(rows, a.min_real)
     if a.screen:
         rows = [r for r in rows if r[0] not in flagged]
@@ -148,6 +166,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     res = bootstrap(rows, pairs, a.n)
     res["screening"] = {"min_real": a.min_real, "flagged": flagged, "applied": a.screen,
                         "real_means": {str(k): round(v, 2) for k, v in real.items()}}
+    res["comments"] = comments(key, responses)
     print(json.dumps(res, indent=1))
     if a.out:
         a.out.write_text(json.dumps(res, indent=1))

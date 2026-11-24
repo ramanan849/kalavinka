@@ -63,3 +63,14 @@ def test_build_id_changes_with_salt():
     a = build_manifest(["clipA"], ["score", "real"], "s1", {})
     b = build_manifest(["clipA"], ["score", "real"], "s2", {})
     assert a["build"] != b["build"] and a["build"] == build_manifest(["clipA"], ["score", "real"], "s1", {})["build"]
+
+
+def test_comments_resolve_to_clip_not_condition():
+    """Per-page comments map to the clip of that page; the overall comment has no clip."""
+    from kalavinka.eval.listening.analyze import comments
+    key = {"stimuli": {"s1": {"clip": "c1", "cond": "i1"}, "s2": {"clip": "c1", "cond": "real"}}}
+    resp = [{"initials": "AB", "stimOrder": {"t00": ["s2", "s1"]},
+             "comments": {"t00": " C sounds robotic ", "_overall": "nice", "t01": "  "}}]
+    out = comments(key, resp)
+    assert {"listener": 0, "initials": "AB", "clip": "c1", "text": "C sounds robotic"} in out
+    assert any(c["clip"] is None and c["text"] == "nice" for c in out) and len(out) == 2

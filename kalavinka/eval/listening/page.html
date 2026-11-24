@@ -59,6 +59,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, audio:focus-vis
 .status { font-size: 0.9rem; color: var(--muted); }
 textarea { width: 100%; min-height: 7rem; font: 0.8rem ui-monospace, monospace; background: var(--tint); color: var(--fg);
   border: 1px solid var(--rule); border-radius: 4px; padding: 8px; box-sizing: border-box; }
+textarea.note { font: inherit; font-weight: 400; min-height: 4.5rem; background: var(--bg); max-width: 640px; }
 @media (prefers-reduced-motion: reduce) { .bar i { transition: none; } }
 </style>
 
@@ -107,6 +108,9 @@ textarea { width: 100%; min-height: 7rem; font: 0.8rem ui-monospace, monospace; 
       <span><b>1</b>Very unnatural</span><span><b>2</b>Unnatural</span><span><b>3</b>Fair</span><span><b>4</b>Natural</span><span><b>5</b>Completely natural</span>
     </div>
     <div class="stims" id="stims"></div>
+    <label class="f" for="page-note">Anything you noticed on this page? (optional)
+      <textarea id="page-note" class="note" maxlength="1000" placeholder="For example: a word sounded wrong in version C, or a glitch in version A"></textarea>
+    </label>
     <div class="actions">
       <button class="secondary" id="back">Previous page</button>
       <button class="primary" id="next" disabled>Next page</button>
@@ -117,6 +121,10 @@ textarea { width: 100%; min-height: 7rem; font: 0.8rem ui-monospace, monospace; 
   <section id="end" class="fields" hidden>
     <h1>Thank you</h1>
     <p id="end-msg">Your ratings are saved.</p>
+    <label class="f" for="overall-note">Any other comments on the test or the singing? (optional)
+      <textarea id="overall-note" class="note" maxlength="2000"></textarea>
+    </label>
+    <div class="actions"><button class="secondary" id="save-note">Save comment</button><span class="status" id="note-status"></span></div>
     <div id="fallback" class="fields" hidden>
       <p>Your answers could not be saved online from this view. Please save them as a file and send it to the person who shared this test with you.</p>
       <div class="actions">
@@ -152,6 +160,7 @@ if (!state || state.version !== MANIFEST.version) {
   state = { version: MANIFEST.version, seed, trialOrder, stimOrder, ratings: {}, played: {}, page: 0,
             initials: "", fluency: "", headphones: "", started: null, finished: null };
 }
+state.comments = state.comments || {};   // per trial id, plus "_overall"
 const byId = Object.fromEntries(MANIFEST.trials.map((t) => [t.t, t]));
 $("n-trials").textContent = String(MANIFEST.trials.length);
 $("n-min").textContent = String(Math.max(5, Math.round(MANIFEST.trials.length * 0.9 / 5) * 5));
@@ -164,13 +173,33 @@ async function connect() {
     if (d && uid) { db = d; docRef = d.doc("responses/" + uid); }
   } catch (e) { db = null; }
   onlineOk = !!docRef;
+  if (docRef && !state.started) await restoreFromStore();
+}
+// A listener whose browser lost the draft gets their saved answers back, so a fresh page never overwrites them.
+async function restoreFromStore() {
+  try {
+    const snap = await docRef.get();
+    const d = snap.exists ? snap.data() : null;
+    if (!d || !d.started || !d.stimOrder || !Array.isArray(d.trialOrder) || state.started) return;
+    const ids = new Set(MANIFEST.trials.flatMap((t) => t.stimuli));
+    const sids = Object.values(d.stimOrder).flat();
+    if (!sids.length || !sids.every((x) => ids.has(x)) || d.trialOrder.length !== MANIFEST.trials.length) return;
+    const ratings = d.ratings || {};
+    state = { version: MANIFEST.version, seed: d.seed, trialOrder: d.trialOrder, stimOrder: d.stimOrder, ratings,
+              played: Object.fromEntries(Object.keys(ratings).map((x) => [x, true])), comments: d.comments || {},
+              page: 0, initials: d.initials || "", fluency: d.fluency || "", headphones: d.headphones || "",
+              started: d.started, finished: d.finished || null };
+    const firstOpen = state.trialOrder.findIndex((t) => !state.stimOrder[t].every((x) => ratings[x]));
+    state.page = firstOpen < 0 ? state.trialOrder.length - 1 : firstOpen;
+    saveDraft(state); resume();
+  } catch (e) { /* nothing saved, or not readable here: start fresh */ }
 }
 const ready = connect();
 
 function payload() {
   return { version: state.version, seed: state.seed, initials: state.initials, fluency: state.fluency,
            headphones: state.headphones, trialOrder: state.trialOrder, stimOrder: state.stimOrder,
-           ratings: state.ratings, started: state.started, finished: state.finished, updated: new Date().toISOString() };
+           ratings: state.ratings, comments: state.comments, started: state.started, finished: state.finished, updated: new Date().toISOString() };
 }
 function persist(final) {
   saveDraft(state);
@@ -195,7 +224,9 @@ $("initials").value = state.initials; $("fluency").value = state.fluency; $("hea
 $("start").disabled = !introValid();
 if (state.started) { $("start").textContent = "Continue the test"; $("intro-status").textContent = "You have started already; your earlier ratings are kept."; }
 
-$("start").addEventListener("click", () => {
+$("start").addEventListener("click", async () => {
+  $("start").disabled = true; await ready; $("start").disabled = false;   // a saved copy may have been restored
+  if (state.started && !$("trial").hidden) return;
   state.initials = $("initials").value.trim().slice(0, 12);
   state.fluency = $("fluency").value; state.headphones = $("headphones").value;
   state.started = state.started || new Date().toISOString();
@@ -203,6 +234,13 @@ $("start").addEventListener("click", () => {
   if (state.finished) return showEnd();
   $("intro").hidden = true; $("trial").hidden = false; renderTrial();
 });
+
+$("page-note").addEventListener("input", () => {
+  const tid = state.trialOrder[state.page], v = $("page-note").value.slice(0, 1000);
+  if (v.trim()) state.comments[tid] = v; else delete state.comments[tid];
+  saveDraft(state);
+});
+$("page-note").addEventListener("change", () => { persist(false); });
 
 function trialComplete(tid) { return state.stimOrder[tid].every((s) => state.ratings[s]); }
 
@@ -212,6 +250,7 @@ function renderTrial() {
   $("progress").textContent = (k + 1) + " / " + n;
   $("bar").style.width = (100 * k / n) + "%";
   $("lyric").textContent = t.text;
+  $("page-note").value = state.comments[tid] || "";
   const box = $("stims"); box.textContent = "";
   state.stimOrder[tid].forEach((sid, i) => {
     const row = document.createElement("div"); row.className = "stim" + (state.ratings[sid] ? " done" : "");
@@ -252,7 +291,7 @@ $("next").addEventListener("click", async () => {
 });
 $("back").addEventListener("click", () => {
   for (const a of $("stims").querySelectorAll("audio")) a.pause();
-  if (state.page > 0) { state.page -= 1; saveDraft(state); renderTrial(); window.scrollTo(0, 0); }
+  if (state.page > 0) { state.page -= 1; persist(false); renderTrial(); window.scrollTo(0, 0); }
 });
 
 async function showEnd() {
@@ -274,5 +313,20 @@ $("copy").addEventListener("click", () => {
   navigator.clipboard.writeText($("json").value).then(() => { $("fb-status").textContent = "Copied"; },
     () => { $("json").select(); $("fb-status").textContent = "Select all and copy the text below."; });
 });
-if (state.finished) { showEnd(); }
+$("overall-note").value = state.comments._overall || "";
+$("save-note").addEventListener("click", async () => {
+  const v = $("overall-note").value.slice(0, 2000);
+  if (v.trim()) state.comments._overall = v; else delete state.comments._overall;
+  await persist(false);
+  $("json").value = JSON.stringify(payload(), null, 1);
+  $("note-status").textContent = onlineOk ? "Comment saved" : "Added to the answers below";
+});
+// After a reload (for example when the page is updated) go straight back to where the listener was.
+function resume() {
+  $("initials").value = state.initials; $("fluency").value = state.fluency; $("headphones").value = state.headphones;
+  $("overall-note").value = state.comments._overall || "";
+  if (state.finished) { showEnd(); return; }
+  if (state.started) { $("intro").hidden = true; $("end").hidden = true; $("trial").hidden = false; renderTrial(); }
+}
+resume();
 </script>
