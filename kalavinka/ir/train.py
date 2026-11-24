@@ -64,15 +64,16 @@ def batches(scs: Sequence[Dict], max_frames: int, shuffle: bool, rng: random.Ran
 
 
 @torch.no_grad()
-def evaluate(model, scs, items, device, max_frames, steps=10, seed=0) -> Dict:
-    """Generated F0 for every clip + corpus metrics vs the real F0 and the flat-MIDI baseline."""
+def evaluate(model, scs, items, device, max_frames, steps=10, seed=0, temperature=1.0) -> Dict:
+    """Generated F0 for every clip + corpus metrics vs the real F0 and the flat-MIDI baseline
+    (``temperature`` scales the flow model's starting noise; ignored in regress mode)."""
     model.eval()
     gen = torch.Generator(device=device); gen.manual_seed(seed)
     preds, refs, flats, notes, out_f0 = [], [], [], [], {}
     for idx in batches(scs, max_frames, False, random.Random(0)):
         arrs, mask = batchify([scs[i] for i in idx])
         b, m = to_torch(arrs, mask, device)
-        r, v = model.generate(b, m, steps=steps, gen=gen)
+        r, v = model.generate(b, m, steps=steps, gen=gen, temperature=temperature)
         r, v = r.float().cpu().numpy(), v.float().cpu().numpy()
         for j, i in enumerate(idx):
             n = len(scs[i]["f0"])

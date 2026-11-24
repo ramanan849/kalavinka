@@ -11,7 +11,12 @@ like upstream ``cli/inference.py`` (prompt + target through
 * ``--control``: ``score`` (MIDI notes only), ``melody`` (the clip's real F0) or
   ``melody-ir`` with ``--f0-json`` (a stage-1 IR model's generated F0,
   ``kalavinka.ir.train`` writes ``test_f0.json``);
-* fixed seed per clip, so every system renders from the same noise.
+* fixed seed per clip, so every system renders from the same noise;
+* ``--split`` takes a comma list (``val,test``); ``--indices FILE`` renders only
+  the listed clip indices (one per line; e.g. the phone-holdout clips, which
+  live in the train split); ``--prompt-exclude-phones Th,Dh,Rh`` keeps clips
+  containing those Indic phones from being used as prompts, so a holdout
+  model never hears them in context either.
 
 Writes ``<out>/<index>.wav`` (24 kHz) and ``<out>/render.jsonl`` (index,
 prompt, text, control, the F0 that was given).
@@ -49,6 +54,11 @@ def load_items(path: Path, bands=("accept",)):
             if it.get("band", "accept") in bands:
                 out.append(it)
     return out
+
+
+def item_phones(item: Dict) -> set:
+    """Indic phone names used in an item's ``phoneme`` field."""
+    return {ph for tok in item["phoneme"].split() if tok.startswith("in_") for ph in tok[3:].split("-")}
 
 
 def load_system(run: str, phone_table: Path, device: str):
@@ -95,6 +105,8 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     p.add_argument("--limit", type=int, default=0)
     p.add_argument("--n-steps", type=int, default=32)
     p.add_argument("--cfg", type=float, default=3.0)
+    p.add_argument("--indices", type=Path, default=None, help="render only these clip indices (file, one per line)")
+    p.add_argument("--prompt-exclude-phones", default="", help="comma list of Indic phones barred from prompts")
     a = p.parse_args(argv)
     device = "cuda"
     a.out.mkdir(parents=True, exist_ok=True)
@@ -102,10 +114,14 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     model, remap = load_system(a.run, table, device)
     proc = IndicDataProcessor(hop_size=HOP, sample_rate=SR, device=device,
                               phoneset_path=str(UPSTREAM_PHONES if remap else table))
-    items = load_items(a.export / f"{a.split}.jsonl")
-    pm = prompt_map([{"band": "accept", "singer_id": it["singer_id"], "time": it["time"]} for it in items])
+    items = [it for s in a.split.split(",") for it in load_items(a.export / f"{s}.jsonl")]
+    barred = set(x for x in a.prompt_exclude_phones.split(",") if x)
+    pm = prompt_map([{"band": "excluded" if barred & item_phones(it) else "accept", "singer_id": it["singer_id"],
+                      "time": it["time"]} for it in items])
+    wanted = set(a.indices.read_text().split()) if a.indices else None
     ir_f0 = json.loads(a.f0_json.read_text()) if a.f0_json else {}
-    todo = [(i, j) for i, j in enumerate(pm) if j is not None and (a.control != "melody-ir" or items[i]["index"] in ir_f0)]
+    todo = [(i, j) for i, j in enumerate(pm) if j is not None and (a.control != "melody-ir" or items[i]["index"] in ir_f0)
+            and (wanted is None or items[i]["index"] in wanted)]
     if a.limit:
         todo = todo[: a.limit]
     log = open(a.out / "render.jsonl", "w")

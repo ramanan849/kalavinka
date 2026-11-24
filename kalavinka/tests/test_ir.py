@@ -53,3 +53,13 @@ def test_model_shapes_and_losses():
         loss.backward()
         r, v = net.generate(b, m, steps=2)
         assert r.shape == (2, 50) and float(v.min()) >= 0 and np.isfinite(float(loss))
+
+
+def test_pick_tau_prefers_accuracy_within_vibrato_slack():
+    """The sweep picks the most accurate temperature whose vibrato distance is within the slack."""
+    from kalavinka.ir.sweep import pick_tau
+    rows = [{"tau": 0.3, "val_vib": 60.0, "val_cents_rmse": 130.0},
+            {"tau": 0.85, "val_vib": 15.0, "val_cents_rmse": 160.0},
+            {"tau": 1.0, "val_vib": 20.0, "val_cents_rmse": 185.0}]
+    assert pick_tau(rows, 1.5) == 0.85
+    assert pick_tau(rows, 5.0) == 0.3
