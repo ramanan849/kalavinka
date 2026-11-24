@@ -31,6 +31,7 @@ PROJECT/
 
 ```
 kalavinka/ops/setup_envs.sh all      # .venv-p1 (py3.12, torch 2.8, P1) and .venv-sx (py3.10, torch 2.2, SoulX pins)
+kalavinka/ops/setup_other_node.sh    # once per extra node's container: links the shared copy of .venv-sx's Python, tmux session
 ```
 `.venv-sx` gets the repo and the SoulX clone on its path via a `.pth` file
 (`saregama` itself needs py>=3.11, so only its pure-python modules are used there):
