@@ -126,8 +126,9 @@ textarea.note { font: inherit; font-weight: 400; min-height: 4.5rem; background:
     </label>
     <div class="actions"><button class="secondary" id="save-note">Save comment</button><span class="status" id="note-status"></span></div>
     <div id="fallback" class="fields" hidden>
-      <p>Your answers could not be saved online from this view. Please save them as a file and send it to the person who shared this test with you.</p>
+      <p id="fb-intro">Please save your answers as a file and send it to the person who shared this test with you.</p>
       <div class="actions">
+        <button class="primary" id="retry" hidden>Try saving online again</button>
         <button class="primary" id="dl">Save my answers (.json)</button>
         <button class="secondary" id="copy">Copy my answers</button>
         <span class="status" id="fb-status"></span>
@@ -206,11 +207,13 @@ function persist(final) {
   saving = saving.then(async () => {
     await ready;
     if (!docRef) { $("save-status").textContent = ""; return; }
-    try { await docRef.set(payload()); onlineOk = true; $("save-status").textContent = "Saved"; }
+    const setWithTimeout = () => Promise.race([docRef.set(payload()),
+      new Promise((_, rej) => setTimeout(() => rej({ code: "timeout" }), 15000))]);
+    try { await setWithTimeout(); onlineOk = true; $("save-status").textContent = "Saved"; }
     catch (e) {
       if (e && e.code === "unavailable") {
         await new Promise((r) => setTimeout(r, 400 + Math.random() * 600));
-        try { await docRef.set(payload()); onlineOk = true; $("save-status").textContent = "Saved"; return; } catch (e2) { /* fall through */ }
+        try { await setWithTimeout(); onlineOk = true; $("save-status").textContent = "Saved"; return; } catch (e2) { /* fall through */ }
       }
       onlineOk = false; $("save-status").textContent = "Saving online is not available here; you can save a file at the end.";
     }
@@ -285,7 +288,7 @@ function renderTrial() {
 $("next").addEventListener("click", async () => {
   for (const a of $("stims").querySelectorAll("audio")) a.pause();
   if (state.page === state.trialOrder.length - 1) {
-    state.finished = new Date().toISOString(); await persist(true); return showEnd();
+    state.finished = new Date().toISOString(); saveDraft(state); return showEnd();
   }
   state.page += 1; persist(false); renderTrial(); window.scrollTo(0, 0);
 });
@@ -296,12 +299,22 @@ $("back").addEventListener("click", () => {
 
 async function showEnd() {
   $("intro").hidden = true; $("trial").hidden = true; $("end").hidden = false;
-  await saving;
-  const json = JSON.stringify(payload(), null, 1);
-  $("json").value = json;
-  if (onlineOk) { $("end-msg").textContent = "Your ratings are saved. You can close this page."; $("fallback").hidden = true; }
-  else { $("end-msg").textContent = "You have rated every page."; $("fallback").hidden = false; }
+  $("json").value = JSON.stringify(payload(), null, 1);
+  $("fallback").hidden = false; $("retry").hidden = true;
+  $("end-msg").textContent = "Saving your answers...";
+  await ready;
+  if (docRef) { onlineOk = null; await persist(true); }
+  $("json").value = JSON.stringify(payload(), null, 1);
+  if (onlineOk) {
+    $("end-msg").textContent = "Your ratings are saved. You can close this page.";
+    $("fb-intro").textContent = "Optional: keep a copy of your answers.";
+  } else {
+    $("end-msg").textContent = "You have rated every page, but your answers could not be saved online from this view.";
+    $("fb-intro").textContent = "Please save them as a file (or copy them) and send them to the person who shared this test with you.";
+    $("retry").hidden = !docRef;
+  }
 }
+$("retry").addEventListener("click", () => { showEnd(); });
 $("dl").addEventListener("click", async () => {
   const dl = await window.claude?.use?.("downloads");
   if (!dl) { $("fb-status").textContent = "Saving a file is not available here; use Copy instead."; return; }
