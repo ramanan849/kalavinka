@@ -25,6 +25,12 @@ and the target's ``mel2note`` offset, exactly as ``SoulXSinger.infer`` does.
 released code): per sample, with ``p_score`` only note pitches are kept (F0 ->
 0, i.e. score mode), with ``p_melody`` only F0 (note pitch -> 0, melody mode),
 else both.
+
+**Ablation switches** (``PairDataset``): ``exclude_tokens`` drops every clip that
+contains one of those phone ids, both as a target *and* as a prompt candidate
+(the phone-holdout experiment: the model must never hear or read them);
+``subset_s`` keeps a seeded random subset of targets totalling that many
+seconds (low-data experiment).
 """
 from __future__ import annotations
 
@@ -137,16 +143,39 @@ def prompt_map(clips: Sequence[Dict], prompt_bands=("accept",)) -> List[Optional
     return out
 
 
+def has_tokens(phoneme: torch.Tensor, tokens: Sequence[int]) -> bool:
+    """Does a clip's phone-id sequence contain any of ``tokens``?"""
+    return bool(tokens) and bool(torch.isin(phoneme.long(), torch.tensor(list(tokens))).any())
+
+
+def seeded_subset(idx: Sequence[int], secs: Sequence[float], total_s: float, seed: int) -> List[int]:
+    """A seeded random subset of ``idx`` whose durations add up to about ``total_s`` (sorted)."""
+    order = list(range(len(idx)))
+    random.Random(seed).shuffle(order)
+    out, acc = [], 0.0
+    for k in order:
+        if acc >= total_s:
+            break
+        out.append(idx[k]); acc += secs[k]
+    return sorted(out)
+
+
 class PairDataset(torch.utils.data.Dataset):
     """[prompt | target] samples over the cached clips of chosen bands."""
 
     def __init__(self, cache: Path, bands=("accept",), prompt_max_s: float = 6.0, max_total_s: float = 22.0,
-                 gate: Optional[GateProbs] = GateProbs(), seed: int = 0):
-        """Load the cache and the prompt map; ``gate=None`` keeps both controls (eval)."""
+                 gate: Optional[GateProbs] = GateProbs(), seed: int = 0,
+                 exclude_tokens: Sequence[int] = (), subset_s: float = 0.0):
+        """Load the cache and the prompt map; ``gate=None`` keeps both controls (eval).
+        ``exclude_tokens`` / ``subset_s``: see the module doc."""
         data = torch.load(cache)
         self.all = data["clips"]
-        self.idx = [i for i, c in enumerate(self.all) if c["band"] in bands]
-        self.prompt = prompt_map(self.all)
+        bad = set(i for i, c in enumerate(self.all) if has_tokens(c["phoneme"], exclude_tokens))
+        self.n_excluded = sum(1 for i in bad if self.all[i]["band"] in bands)
+        self.idx = [i for i, c in enumerate(self.all) if c["band"] in bands and i not in bad]
+        if subset_s > 0:
+            self.idx = seeded_subset(self.idx, [self.all[i]["mel"].shape[0] / FPS for i in self.idx], subset_s, seed)
+        self.prompt = prompt_map([dict(c, band="excluded") if i in bad else c for i, c in enumerate(self.all)])
         self.prompt_max = int(prompt_max_s * FPS)
         self.max_total = int(max_total_s * FPS)
         self.gate = gate

@@ -30,12 +30,18 @@ weight the loss per frame::
     c_f  = sigmoid((conf_f - tau) / s)     tau, s from the train-set quantiles
     c_f  = 0 if c_f < --conf-floor          (hard mask on clearly wrong frames)
     w_f  = smooth5(c_f) * clip_w * clamp(mean f0_agree, 0.5, 1)
-    clip_w = 1 (accept) | --review-weight (review)
+    clip_w = 1 (accept) | --review-weight (review) | --reject-weight (reject)
     loss = sum(l_f * m_f * w_f) / sum(m_f * w_f)
 
 ``--weighting none`` is the uniform baseline.  Validation is always the
 *unweighted* loss on accepted val clips with fixed noise and times, so arms
 are comparable.
+
+Ablation switches: ``--exclude-phones Th,Dh,Rh`` removes every training clip
+(target or prompt) containing those Indic phones (phone-holdout test of the
+articulatory embedding); ``--subset-hours H`` trains on a seeded random H-hour
+subset (low-data test); ``--bands accept,review,reject`` with ``--weighting
+conf`` is the noisy-data test of the confidence weighting.
 
 Runs are resumable (``<out>/last.pt``), log to ``<out>/train_<ts>.log`` and
 ``metrics.jsonl``, keep ``best.pt`` (lowest val loss) and stop early after
@@ -139,7 +145,8 @@ def conf_stats(conf: torch.Tensor) -> Dict[str, float]:
     return {"tau": med - 0.5 * iqr, "s": iqr / 4}
 
 
-def frame_weights(batch: Dict, mode: str, tau: float, s: float, floor: float, review_w: float) -> torch.Tensor:
+def frame_weights(batch: Dict, mode: str, tau: float, s: float, floor: float, review_w: float,
+                  reject_w: Optional[float] = None) -> torch.Tensor:
     """Per-frame loss weights (B, T): ones for ``mode='none'``, else the confidence weights (module doc)."""
     x_mask = batch["x_mask"]
     if mode == "none":
@@ -148,7 +155,8 @@ def frame_weights(batch: Dict, mode: str, tau: float, s: float, floor: float, re
     c = torch.where(c < floor, torch.zeros_like(c), c)
     c = F.avg_pool1d(c[:, None], 5, stride=1, padding=2, count_include_pad=False)[:, 0]
     agree = (batch["f0_agree"] * x_mask).sum(1) / x_mask.sum(1).clamp(min=1)
-    clip_w = torch.tensor([1.0 if b == "accept" else review_w for b in batch["band"]], device=c.device)
+    band_w = {"accept": 1.0, "review": review_w, "reject": review_w if reject_w is None else reject_w}
+    clip_w = torch.tensor([band_w.get(b, review_w) for b in batch["band"]], device=c.device)
     return c * (clip_w * agree.clamp(0.5, 1.0))[:, None]
 
 
@@ -228,6 +236,9 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     p.add_argument("--bands", default="accept", help="comma list of bands to train on")
     p.add_argument("--weighting", choices=["none", "conf"], default="none")
     p.add_argument("--review-weight", type=float, default=0.4)
+    p.add_argument("--reject-weight", type=float, default=0.2, help="clip weight of reject-band clips (conf mode)")
+    p.add_argument("--exclude-phones", default="", help="comma list of Indic phone names to hold out (e.g. Th,Dh,Rh)")
+    p.add_argument("--subset-hours", type=float, default=0.0, help="train on a seeded random subset of this size")
     p.add_argument("--conf-floor", type=float, default=0.2)
     p.add_argument("--lora-r", type=int, default=32)
     p.add_argument("--lora-alpha", type=int, default=64)
@@ -261,7 +272,13 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     device = "cuda"
     log(f"args {json.dumps({k: str(v) for k, v in vars(a).items()})}")
     bands = tuple(a.bands.split(","))
-    ds = PairDataset(a.cache / "train.pt", bands=bands, gate=GateProbs(a.p_score, a.p_melody), seed=a.seed)
+    table = json.loads(a.phones_table.read_text())
+    excl = [table.index(f"in_{p}") for p in a.exclude_phones.split(",") if p]
+    ds = PairDataset(a.cache / "train.pt", bands=bands, gate=GateProbs(a.p_score, a.p_melody), seed=a.seed,
+                     exclude_tokens=excl, subset_s=a.subset_hours * 3600)
+    if excl or a.subset_hours:
+        log(f"ablation: excluded {ds.n_excluded} target clips containing {a.exclude_phones or '-'}; "
+            f"subset {a.subset_hours} h -> {len(ds)} targets")
     vds = PairDataset(a.cache / "val.pt", bands=("accept",), gate=None, seed=0)
     stats = conf_stats(torch.cat([ds.all[i]["conf"] for i in ds.idx]))
     log(f"train targets {len(ds)} ({bands}), val {len(vds)}; conf weighting stats {stats}")
@@ -304,7 +321,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     while not done:
         for batch in loader:
             batch = to_device(batch, device)
-            w = frame_weights(batch, a.weighting, stats["tau"], stats["s"], a.conf_floor, a.review_weight)
+            w = frame_weights(batch, a.weighting, stats["tau"], stats["s"], a.conf_floor, a.review_weight, a.reject_weight)
             with torch.autocast("cuda", dtype=torch.bfloat16):
                 loss = fm_loss(model, batch, w, a.cfg_drop)
             loss = loss + model.note_text_encoder.penalty() if hasattr(model.note_text_encoder, "penalty") else loss
