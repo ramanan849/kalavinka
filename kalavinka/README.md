@@ -7,8 +7,8 @@ annotation package (which stays unmodified; kalavinka wraps it).
 |---|---|---|
 | `annot/` | P1 finishing: gold-set threshold calibration (C3), v1 export with per-frame confidence | calibration done; export in progress |
 | `sx/` | stage 2: SoulX fine-tune -- Indic phone table + `IndicDataProcessor`, articulatory phone embeddings (B), confidence-aware flow matching (C), trainer | trainer smoke-tested |
-| `ir/` | stage 1: expressive-contour IR model (note scaffold -> expressive F0) | planned |
-| `eval/` | held-out rendering and metrics | planned |
+| `ir/` | stage 1: expressive-contour IR model (note scaffold -> expressive F0), temperature sweep | done |
+| `eval/` | held-out rendering, CER/F0/SIM, minimal-pair contrasts, paired bootstrap, listening test, demo tracks | done |
 | `ops/` | env setup, local (no-Slurm) P1 runner, GPU picker, web fetcher | done |
 
 ## Layout on disk
@@ -109,6 +109,20 @@ Each run lives in `runs/<R>_<tag>/` (`train_<ts>.log`, `supervise_<ts>.log`,
 `score` reports loose-phonetic CER (Whisper-large-v3) for the render and the
 real clip, RMVPE F0 error against the given and the real contour (cents,
 ornament frames, voicing F1) and WavLM speaker similarity to the prompt.
+
+| Module | What |
+|---|---|
+| `eval/contrast_eval.py` | minimal-pair pronunciation scores (retroflex vs dental, aspirated vs plain) with a character CTC model and forced alignment |
+| `eval/compare.py` | paired bootstrap between systems for any per-clip metric (`cer@1`, `place_retro_sum/place_retro_n`, ...) |
+| `eval/listening/` | blind naturalness test: `build.py` (page + stimuli + private key), `page.html`, `analyze.py` (two-way bootstrap, screening, comments) |
+| `eval/demo_song.py` | one held-out song's clips stitched in order, one track per system plus the real singer |
+| `eval/phone_eval.py` | IPA phone recogniser check (failed its gate; kept as a record) |
+| `ops/eval_queue.sh` | per-GPU queue: wait for a run, render, contrast, score |
+
+```
+.venv-p1/bin/python -m kalavinka.eval.demo_song --export $PROJECT/export/v1 --song <song id> --out $PROJECT/demo \
+    --sys score=$PROJECT/runs/eval_v1/L4_score --sys twostage_i2=$PROJECT/runs/eval_v1/L4_irI2t085
+```
 
 ## Tests
 
