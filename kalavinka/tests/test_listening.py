@@ -56,3 +56,10 @@ def test_analysis_recovers_condition_gap_and_screens():
     assert res["pairs"]["b-a"]["mean"] == 1.0 and res["pairs"]["b-a"]["significant"]
     assert res["listeners"] == 6 and res["clips"] == 8
     assert table(key, [{"ratings": {"0a": 3}}]) == []          # incomplete responses are skipped
+
+
+def test_build_id_changes_with_salt():
+    """A rebuild (new salt) gets a new build id, so the page starts a fresh draft."""
+    a = build_manifest(["clipA"], ["score", "real"], "s1", {})
+    b = build_manifest(["clipA"], ["score", "real"], "s2", {})
+    assert a["build"] != b["build"] and a["build"] == build_manifest(["clipA"], ["score", "real"], "s1", {})["build"]

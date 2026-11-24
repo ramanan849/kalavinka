@@ -29,6 +29,7 @@ label.f { display: grid; gap: 6px; font-weight: 600; }
 input[type=text], select { font: inherit; font-weight: 400; padding: 8px 10px; border: 1px solid var(--rule); border-radius: 4px;
   background: var(--bg); color: var(--fg); max-width: 420px; }
 .scale-key { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; font-size: 0.85rem; color: var(--muted); }
+.trial-key { padding: 8px 10px; background: var(--tint); border-radius: 4px; }
 .scale-key span b { display: block; color: var(--fg); font-size: 1rem; }
 button { font: inherit; cursor: pointer; border-radius: 4px; padding: 10px 18px; border: 1px solid var(--blue); }
 button.primary { background: var(--blue); color: var(--bg); font-weight: 600; }
@@ -65,7 +66,7 @@ textarea { width: 100%; min-height: 7rem; font: 0.8rem ui-monospace, monospace; 
   <section id="intro" class="fields">
     <h1>How natural does this singing sound?</h1>
     <p>This is a short listening test for our course project on synthesising Hindi film singing. Each page plays the same lyric line sung five ways, labelled A to E in a random order. Some versions are synthesised and one may be a real recording. Please rate each one for how <b>natural</b> it sounds as singing: the voice, the pronunciation and the melody line together.</p>
-    <p class="muted">There are <span id="n-trials">15</span> pages and the whole test takes about 10 minutes. Headphones help. Play each version at least once before rating it. Your answers are saved after every page, so you can stop and come back.</p>
+    <p class="muted">There are <span id="n-trials">15</span> pages and the whole test takes about <span id="n-min">15</span> minutes. Headphones help. Play each version at least once before rating it. Your answers are saved after every page, so you can stop and come back.</p>
     <div class="scale-key" aria-label="Rating scale">
       <span><b>1</b>Very unnatural</span><span><b>2</b>Unnatural</span><span><b>3</b>Fair</span><span><b>4</b>Natural</span><span><b>5</b>Completely natural</span>
     </div>
@@ -102,6 +103,9 @@ textarea { width: 100%; min-height: 7rem; font: 0.8rem ui-monospace, monospace; 
     </div>
     <div class="bar" aria-hidden="true"><i id="bar"></i></div>
     <p class="lyric" id="lyric" lang="hi"></p>
+    <div class="scale-key trial-key" aria-label="Rating scale">
+      <span><b>1</b>Very unnatural</span><span><b>2</b>Unnatural</span><span><b>3</b>Fair</span><span><b>4</b>Natural</span><span><b>5</b>Completely natural</span>
+    </div>
     <div class="stims" id="stims"></div>
     <div class="actions">
       <button class="secondary" id="back">Previous page</button>
@@ -128,8 +132,9 @@ textarea { width: 100%; min-height: 7rem; font: 0.8rem ui-monospace, monospace; 
 <script>
 const MANIFEST = /*__MANIFEST__*/null;
 const LETTERS = ["A", "B", "C", "D", "E", "F", "G"];
+const SCALE = ["Very unnatural", "Unnatural", "Fair", "Natural", "Completely natural"];
 const $ = (id) => document.getElementById(id);
-const DRAFT_KEY = "kalavinka-listening-v1";
+const DRAFT_KEY = "kalavinka-listening-" + (MANIFEST.build || "v1");   // a rebuild starts a fresh draft
 
 function shuffle(a, rnd) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
 function mulberry(seed) { return function () { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
@@ -149,6 +154,7 @@ if (!state || state.version !== MANIFEST.version) {
 }
 const byId = Object.fromEntries(MANIFEST.trials.map((t) => [t.t, t]));
 $("n-trials").textContent = String(MANIFEST.trials.length);
+$("n-min").textContent = String(Math.max(5, Math.round(MANIFEST.trials.length * 0.9 / 5) * 5));
 
 let db = null, docRef = null, saving = Promise.resolve(), onlineOk = null;
 async function connect() {
@@ -218,7 +224,7 @@ function renderTrial() {
       const id = "r-" + sid + "-" + v;
       const inp = document.createElement("input"); inp.type = "radio"; inp.name = "r-" + sid; inp.id = id; inp.value = String(v);
       inp.checked = state.ratings[sid] === v; inp.disabled = !state.played[sid];
-      const lab = document.createElement("label"); lab.htmlFor = id; lab.textContent = String(v);
+      const lab = document.createElement("label"); lab.htmlFor = id; lab.textContent = String(v); lab.title = SCALE[v - 1];
       inp.addEventListener("change", () => { state.ratings[sid] = v; row.classList.add("done"); saveDraft(state);
         $("next").disabled = !trialComplete(tid); });
       rate.append(inp, lab);

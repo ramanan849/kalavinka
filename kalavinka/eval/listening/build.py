@@ -74,9 +74,12 @@ def select_clips(candidates: Dict[str, float], n: int, min_s: float, max_s: floa
 
 def build_manifest(clips: Sequence[str], conds: Sequence[str], salt: str, texts: Dict[str, str]) -> Dict:
     """What the page is allowed to know: trials of opaque stimulus ids (+ the lyric line)."""
-    return {"version": 1, "trials": [{"t": f"t{k:02d}", "text": texts.get(c, ""),
-                                      "stimuli": [stim_id(salt, c, cond) for cond in conds]}
-                                     for k, c in enumerate(clips)]}
+    trials = [{"t": f"t{k:02d}", "text": texts.get(c, ""), "stimuli": [stim_id(salt, c, cond) for cond in conds]}
+              for k, c in enumerate(clips)]
+    # build id: changes with every rebuild (new salt -> new ids) so the page drops drafts from an older build;
+    # derived from the public ids only, so it reveals nothing about the key
+    build = hashlib.sha1("".join(s for t in trials for s in t["stimuli"]).encode()).hexdigest()[:10]
+    return {"version": 1, "build": build, "trials": trials}
 
 
 def encode(y: np.ndarray, sr: int, dst: Path) -> None:
