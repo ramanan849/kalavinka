@@ -25,6 +25,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import zlib
 from pathlib import Path
 from typing import Dict, Optional, Sequence
 
@@ -113,7 +114,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
         f0 = ir_f0.get(t["index"]) if a.control == "melody-ir" else None
         meta = {"prompt": side(proc, pr, a.export / pr["wav"], remap, None, device),
                 "target": side(proc, t, None, remap, f0, device)}
-        torch.manual_seed(abs(hash(t["index"])) % (2 ** 31))
+        torch.manual_seed(zlib.crc32(t["index"].encode()) % (2 ** 31))   # stable across processes (hash() is salted)
         with torch.no_grad():
             wav = model.infer(meta, auto_shift=False, pitch_shift=0, n_steps=a.n_steps, cfg=a.cfg,
                               control="score" if a.control == "score" else "melody")
