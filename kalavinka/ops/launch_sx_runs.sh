@@ -26,6 +26,11 @@ declare -A ARGS=(
   [N2]="--phones articulatory --bands accept,review,reject --weighting conf"     # needs the v1_all cache
   [S1]="--phones nearest --bands accept --weighting none --subset-hours 1"
   [S2]="--phones articulatory --bands accept --weighting none --subset-hours 1"
+  # second seed of the (B) tests (the H and S results were single-seed); same data, different init/order
+  [H1b]="--phones nearest --bands accept --weighting none --exclude-phones Th,Dh,Rh --seed 1"
+  [H2b]="--phones articulatory --bands accept --weighting none --exclude-phones Th,Dh,Rh --seed 1"
+  [S1b]="--phones nearest --bands accept --weighting none --subset-hours 1 --seed 1"
+  [S2b]="--phones articulatory --bands accept --weighting none --subset-hours 1 --seed 1"
 )
 GPUS=($("$PY" "$REPO/kalavinka/ops/gpu_pick.py" --min-free-gb "$MIN" | tr ',' ' '))
 [ ${#GPUS[@]} -lt ${#RUNS[@]} ] && { echo "only ${#GPUS[@]} GPUs with >= ${MIN} GiB free for ${#RUNS[@]} runs"; exit 1; }
