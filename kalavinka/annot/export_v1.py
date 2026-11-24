@@ -21,7 +21,10 @@ Splits are the P1 ones: by identified reference (else song), 3 % test, 3 % val.
 Usage::
 
     python -m kalavinka.annot.export_v1 --work <PROJECT>/work --out <PROJECT>/export/v1 \
-        --calibration <PROJECT>/export/calibration/calibration.json
+        --calibration <PROJECT>/export/calibration/calibration.json [--workers 32]
+
+``--workers`` exports songs in a process pool (default 32); results are
+merged in song order, so the output does not depend on it.
 """
 from __future__ import annotations
 
@@ -64,53 +67,73 @@ def conf_track(sylls: Sequence[Dict], f0: np.ndarray, a: int, b: int) -> np.ndar
     return out[:n]
 
 
-def export_v1(work: Path, out: Path, qc: Dict, bands=("accept", "review"),
-              songs: Optional[Sequence[manifest.Song]] = None) -> Dict:
-    """Write wavs/, {train,val,test}.jsonl, excluded.jsonl and stats.json into ``out``."""
+def _export_song(job) -> Dict:
+    """Export one song's clips (wav + item); returns its items/excluded/counters.
+    Runs in a worker process, so everything it needs comes in ``job``."""
     from saregama.export import Clip, clip_item
+    song, work, out, qc, bands = job
+    res = {"items": [], "excluded": [], "band_n": Counter(), "secs": Counter()}
+    sdir = work / "songs" / song.song_id
+    cj, sj = read_json(sdir / "clips.json", None), read_json(sdir / "syllables.json", None)
+    if not cj or not sj or not (sdir / "annotation.json").exists():
+        return res
+    ann = SongAnnotation.load(sdir)
+    ident = read_json(sdir / "identity.json", {}) or {}
+    group = (ident.get("best") or {}).get("ref_id") or song.song_id
+    split = split_of(f"ref:{group}")
+    vocals = None
+    for k, c in enumerate(cj["clips"]):
+        band = accept_band(c["features"], qc)
+        res["band_n"][band] += 1
+        if band not in bands:
+            res["excluded"].append({"song_id": song.song_id, "clip": k, "band": band, **c["features"]})
+            continue
+        a, b = int(c["start"]), int(c["end"])
+        ann.singer_id = f"{song.song_id}#{c['cluster']}"
+        ann.status = "auto" if band == "accept" else "review"
+        cid = f"{song.song_id}_c{k:03d}"
+        item = clip_item(Clip(ann, a, b, clip_notes(ann, a, b)), cid, f"wavs/{cid}.wav")
+        conf = conf_track(sj["syllables"], ann.f0, a, b)
+        item.update({"split_group": group, "band": band, "identity": ident.get("status"),
+                     "features": c["features"], "year": song.year,
+                     "conf": " ".join(f"{x:.2f}" for x in conf)})
+        problem = check_item(item) or (None if len(conf) == item["n_frames"] else "conf length")
+        if problem:
+            res["excluded"].append({"song_id": song.song_id, "clip": k, "band": "invalid", "problem": problem})
+            continue
+        if vocals is None:
+            vocals = load_audio(sdir / "vocals.flac", SR)
+        seg = vocals[a * HOP: b * HOP]
+        save_audio(out / "wavs" / f"{cid}.wav", np.pad(seg, (0, max(0, (b - a) * HOP - len(seg)))), SR)
+        res["items"].append((split, item))
+        res["secs"][(split, band)] += (b - a) / FPS
+    return res
+
+
+def export_v1(work: Path, out: Path, qc: Dict, bands=("accept", "review"),
+              songs: Optional[Sequence[manifest.Song]] = None, workers: int = 1) -> Dict:
+    """Write wavs/, {train,val,test}.jsonl, excluded.jsonl and stats.json into ``out``.
+    ``workers`` > 1 exports songs in a process pool (output is identical and in
+    song order)."""
     songs = songs if songs is not None else manifest.read(work / "songs.tsv")
     dup = (read_json(work / "dupes.json", {}) or {}).get("duplicate_of", {})
     out.mkdir(parents=True, exist_ok=True)
     (out / "wavs").mkdir(exist_ok=True)
+    jobs = [(s, work, out, qc, tuple(bands)) for s in songs if s.song_id not in dup]
+    if workers > 1:
+        from multiprocessing import Pool
+        with Pool(workers) as pool:
+            results = pool.map(_export_song, jobs, chunksize=1)
+    else:
+        results = [_export_song(j) for j in jobs]
     items: Dict[str, List[Dict]] = defaultdict(list)
     excluded, band_n, secs = [], Counter(), Counter()
-    for song in songs:
-        if song.song_id in dup:
-            continue
-        sdir = work / "songs" / song.song_id
-        cj, sj = read_json(sdir / "clips.json", None), read_json(sdir / "syllables.json", None)
-        if not cj or not sj or not (sdir / "annotation.json").exists():
-            continue
-        ann = SongAnnotation.load(sdir)
-        ident = read_json(sdir / "identity.json", {}) or {}
-        group = (ident.get("best") or {}).get("ref_id") or song.song_id
-        split = split_of(f"ref:{group}")
-        vocals = None
-        for k, c in enumerate(cj["clips"]):
-            band = accept_band(c["features"], qc)
-            band_n[band] += 1
-            if band not in bands:
-                excluded.append({"song_id": song.song_id, "clip": k, "band": band, **c["features"]})
-                continue
-            a, b = int(c["start"]), int(c["end"])
-            ann.singer_id = f"{song.song_id}#{c['cluster']}"
-            ann.status = "auto" if band == "accept" else "review"
-            cid = f"{song.song_id}_c{k:03d}"
-            item = clip_item(Clip(ann, a, b, clip_notes(ann, a, b)), cid, f"wavs/{cid}.wav")
-            conf = conf_track(sj["syllables"], ann.f0, a, b)
-            item.update({"split_group": group, "band": band, "identity": ident.get("status"),
-                         "features": c["features"], "year": song.year,
-                         "conf": " ".join(f"{x:.2f}" for x in conf)})
-            problem = check_item(item) or (None if len(conf) == item["n_frames"] else "conf length")
-            if problem:
-                excluded.append({"song_id": song.song_id, "clip": k, "band": "invalid", "problem": problem})
-                continue
-            if vocals is None:
-                vocals = load_audio(sdir / "vocals.flac", SR)
-            seg = vocals[a * HOP: b * HOP]
-            save_audio(out / "wavs" / f"{cid}.wav", np.pad(seg, (0, max(0, (b - a) * HOP - len(seg)))), SR)
+    for r in results:
+        for split, item in r["items"]:
             items[split].append(item)
-            secs[(split, band)] += (b - a) / FPS
+        excluded += r["excluded"]
+        band_n.update(r["band_n"])
+        secs.update(r["secs"])
     for split in ("train", "val", "test"):
         atomic_bytes(out / f"{split}.jsonl",
                      "".join(json.dumps(x, ensure_ascii=False) + "\n" for x in items.get(split, [])).encode())
@@ -130,9 +153,10 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     p.add_argument("--out", type=Path, required=True)
     p.add_argument("--calibration", type=Path, default=None, help="calibration.json (else provisional thresholds)")
     p.add_argument("--bands", default="accept,review")
+    p.add_argument("--workers", type=int, default=32, help="parallel song exports")
     a = p.parse_args(argv)
     qc = json.loads(a.calibration.read_text())["qc"] if a.calibration else dict(DEFAULT_QC)
-    print(json.dumps(export_v1(a.work, a.out, qc, tuple(a.bands.split(","))), indent=1))
+    print(json.dumps(export_v1(a.work, a.out, qc, tuple(a.bands.split(",")), workers=a.workers), indent=1))
 
 
 if __name__ == "__main__":
