@@ -25,7 +25,7 @@ WORK="$PROJECT/work"
 LOGS="$PROJECT/logs/p1"; mkdir -p "$LOGS"
 TS=$(date +%Y%m%d-%H%M%S)
 export PATH="$HOME/bin:$PATH" PYTHONUNBUFFERED=1 PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
-SG=( "$PY" -m saregama )
+SG=( "$PY" -m kalavinka.ops.p1_run )   # saregama CLI + stage-marker status fix (see p1_run.py)
 cd "$REPO"
 
 win() {   # win <name> <command...>: run in a new tmux window, log to $LOGS/<name>_<ts>.log
