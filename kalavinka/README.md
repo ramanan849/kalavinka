@@ -116,6 +116,7 @@ ornament frames, voicing F1) and WavLM speaker similarity to the prompt.
 | `eval/compare.py` | paired bootstrap between systems for any per-clip metric (`cer@1`, `place_retro_sum/place_retro_n`, ...) |
 | `eval/listening/` | blind naturalness test: `build.py` (page + stimuli + private key), `page.html`, `analyze.py` (two-way bootstrap, screening, comments) |
 | `eval/demo_song.py` | one held-out song's clips stitched in order, one track per system plus the real singer |
+| `eval/sing_new.py` | new lyrics (checked absent from training) via the dataset G2P, set to a held-out line's tune, sung by a run |
 | `eval/phone_eval.py` | IPA phone recogniser check (failed its gate; kept as a record) |
 | `ops/eval_queue.sh` | per-GPU queue: wait for a run, render, contrast, score |
 
