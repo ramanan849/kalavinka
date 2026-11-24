@@ -31,6 +31,9 @@ declare -A ARGS=(
   [H2b]="--phones articulatory --bands accept --weighting none --exclude-phones Th,Dh,Rh --seed 1"
   [S1b]="--phones nearest --bands accept --weighting none --subset-hours 1 --seed 1"
   [S2b]="--phones articulatory --bands accept --weighting none --subset-hours 1 --seed 1"
+  # third seed (run on the second node)
+  [H1c]="--phones nearest --bands accept --weighting none --exclude-phones Th,Dh,Rh --seed 2"
+  [H2c]="--phones articulatory --bands accept --weighting none --exclude-phones Th,Dh,Rh --seed 2"
 )
 GPUS=($("$PY" "$REPO/kalavinka/ops/gpu_pick.py" --min-free-gb "$MIN" | tr ',' ' '))
 [ ${#GPUS[@]} -lt ${#RUNS[@]} ] && { echo "only ${#GPUS[@]} GPUs with >= ${MIN} GiB free for ${#RUNS[@]} runs"; exit 1; }

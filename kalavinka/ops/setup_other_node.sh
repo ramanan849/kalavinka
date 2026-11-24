@@ -18,4 +18,4 @@ mkdir -p "$DST"
 tmux has-session -t kalavinka 2>/dev/null || tmux new-session -d -s kalavinka -n home
 "$PROJECT/.venv-sx/bin/python" -c "import torch; print('torch', torch.__version__, 'cuda', torch.cuda.is_available(), 'gpus', torch.cuda.device_count())"
 "$PROJECT/.venv-sx/bin/python" "$REPO/kalavinka/ops/gpu_pick.py" --min-free-gb 16 | sed 's/^/GPUs with >= 16 GiB free: /'
-echo "ready: e.g. bash kalavinka/ops/launch_sx_runs.sh $PROJECT/runs/cache_v1 v3 16 H1b H2b"
+echo "ready: e.g. bash kalavinka/ops/launch_sx_runs.sh $PROJECT/runs/cache_v1 v2 16 H1c H2c"
