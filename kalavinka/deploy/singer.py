@@ -27,6 +27,10 @@ Usage::
     wav, sr, info = s.sing("ठंडी हवा में गीत नया")              # auto-picked tune, the tune's own voice
     wav, sr, info = s.sing("...", tune=3, voice=7, mode="expressive")
     out = s.resing(3)                                          # {"model": (wav, sr), "real": (wav, sr), ...}
+    wav, sr, info = s.sing("...", model="base")                # the released SoulX-Singer, for comparison
+
+``model="base"`` is our zero-shot baseline (V0): the released SoulX-Singer with every Hindi phone mapped to its
+nearest English phone. It is loaded on first use (another ~2 GB of memory) and works with every call.
 """
 from __future__ import annotations
 
@@ -149,6 +153,7 @@ class KalavinkaSinger:
         self.device = pick_device(device)
         self._load(self.device)
         self._cflow = None
+        self._base = None
 
     # ---------------------------------------------------------------- setup
     def log(self, msg: str) -> None:
@@ -178,7 +183,29 @@ class KalavinkaSinger:
         from kalavinka.eval.render import HOP
         from kalavinka.sx.adapter import IndicDataProcessor
         self.proc = IndicDataProcessor(hop_size=HOP, sample_rate=SR, device="cpu", phoneset_path=str(self.table))
+        if self._base is not None:
+            from kalavinka.sx.adapter import UPSTREAM_PHONES
+            self._base[0].to("cpu")
+            self._base = (self._base[0], IndicDataProcessor(hop_size=HOP, sample_rate=SR, device="cpu",
+                                                            phoneset_path=str(UPSTREAM_PHONES)))
         self.device = "cpu"
+
+    def system(self, model: str = "kalavinka"):
+        """(model, data processor, remap_english) for ``kalavinka`` (V4-L) or ``base`` (zero-shot SoulX, loaded lazily)."""
+        if model == "kalavinka":
+            return self.model, self.proc, False
+        if model != "base":
+            raise SingError("model must be 'kalavinka' or 'base'")
+        if self._base is None:
+            from kalavinka.eval.render import HOP, load_system
+            from kalavinka.sx.adapter import UPSTREAM_PHONES, IndicDataProcessor
+            t0 = time.time()
+            self.log(f"loading the base SoulX-Singer (zero-shot, Hindi phones -> nearest English) on {self.device} ...")
+            m, _ = load_system("zero-shot", self.table, self.device)
+            self._base = (m, IndicDataProcessor(hop_size=HOP, sample_rate=SR, device=self.device,
+                                                phoneset_path=str(UPSTREAM_PHONES)))
+            self.log(f"base model ready in {time.time() - t0:.0f} s")
+        return self._base[0], self._base[1], True
 
     def _contour_model(self):
         """The stage-1 C-flow model (loaded on first use; small, so it always runs on CPU)."""
@@ -250,17 +277,19 @@ class KalavinkaSinger:
         return random.Random(seed).choice(fits)
 
     # ---------------------------------------------------------------- singing
-    def _render(self, target: Dict, voice: Dict, f0: Optional[List[float]], seed: int, shift: bool) -> np.ndarray:
+    def _render(self, target: Dict, voice: Dict, f0: Optional[List[float]], seed: int, shift: bool,
+                model: str = "kalavinka") -> np.ndarray:
         """One phrase. ``f0=None``: score mode (SoulX makes its own pitch); else melody mode following ``f0``.
-        Runs SoulX with an MPS -> CPU fallback."""
+        ``model``: kalavinka or base. Runs SoulX with an MPS -> CPU fallback."""
         import torch
         from kalavinka.eval.render import side
         for attempt in (0, 1):
             try:
-                meta = {"prompt": side(self.proc, voice["item"], self.bundle / "data" / voice["item"]["wav"], False, None, self.device),
-                        "target": side(self.proc, target, None, False, f0, self.device)}
+                net, proc, remap = self.system(model)
+                meta = {"prompt": side(proc, voice["item"], self.bundle / "data" / voice["item"]["wav"], remap, None, self.device),
+                        "target": side(proc, target, None, remap, f0, self.device)}
                 torch.manual_seed(seed)
-                wav = self.model.infer(meta, auto_shift=shift, pitch_shift=0, n_steps=self.steps, cfg=3.0,
+                wav = net.infer(meta, auto_shift=shift, pitch_shift=0, n_steps=self.steps, cfg=3.0,
                                        control="score" if f0 is None else "melody")
                 return wav[0].float().cpu().numpy().reshape(-1)
             except (RuntimeError, NotImplementedError, TypeError) as e:
@@ -283,8 +312,9 @@ class KalavinkaSinger:
         return [round(float(x), 1) for x in to_f0(sc["flat_hz"], r[0, :n].numpy(), v[0, :n].numpy())]
 
     def sing(self, lyrics: str, tune: Optional[int] = None, voice: Optional[int] = None, mode: str = "score",
-             steps: Optional[int] = None, seed: int = 0) -> Tuple[np.ndarray, int, Dict]:
-        """Sing new lyrics. Several lines (newline or ``|``) are sung one after another, each on its own tune
+             steps: Optional[int] = None, seed: int = 0, model: str = "kalavinka") -> Tuple[np.ndarray, int, Dict]:
+        """Sing new lyrics (``model``: kalavinka or base). One voice sings every line: ``voice``, or else the first
+        line's tune singer (later lines on other tunes are transposed into that voice's range). Several lines (newline or ``|``) are sung one after another, each on its own tune
         (consecutive tunes if ``tune`` is given). Returns (waveform float32, 24000, info)."""
         from kalavinka.eval.sing_new import set_lyrics
         if mode not in ("score", "expressive"):
@@ -294,7 +324,7 @@ class KalavinkaSinger:
             raise SingError("type some lyrics first")
         self.steps = int(steps or default_steps(self.device))
         t0 = time.time()
-        pieces, info = [], {"lines": [], "mode": mode, "device": self.device}
+        pieces, info = [], {"lines": [], "mode": mode, "model": model, "device": self.device}
         for k, line in enumerate(lines):
             sylls = self.syllables(line)
             if tune is not None:
@@ -304,11 +334,14 @@ class KalavinkaSinger:
                                     "Pick a longer tune, leave the tune on auto, or shorten the line.")
             else:
                 tu = self.auto_tune(len(sylls), seed + k)
-            vo = self._voice(voice) if voice is not None else self._voice(tu["voice"])
+            if k == 0:
+                # one singer for the whole song: the chosen voice, else the first line's tune singer
+                song_voice = self._voice(voice) if voice is not None else self._voice(tu["voice"])
+            vo = song_voice
             target = set_lyrics(tu["item"], sylls)
             seed_k = zlib.crc32(f"{line}|{tu['no']}|{seed}".encode()) % (2 ** 31)
             f0 = self.contour(target, seed_k) if mode == "expressive" else None
-            pieces.append(self._render(target, vo, f0, seed_k, shift=vo["no"] != tu["voice"]))
+            pieces.append(self._render(target, vo, f0, seed_k, shift=vo["no"] != tu["voice"], model=model))
             info["lines"].append({"line": line, "syllables": " ".join(s["text"] for s in sylls), "tune": tu["no"],
                                   "tune_song": f"{tu['song']} ({tu['year']})", "voice": vo["no"],
                                   "seen_in_training": round(self.novelty(sylls), 2),
@@ -319,7 +352,8 @@ class KalavinkaSinger:
         info["took_s"] = round(time.time() - t0, 1)
         return wav, SR, info
 
-    def resing(self, tune: int, mode: str = "score", steps: Optional[int] = None, seed: int = 0) -> Dict:
+    def resing(self, tune: int, mode: str = "score", steps: Optional[int] = None, seed: int = 0,
+               model: str = "kalavinka") -> Dict:
         """Sing a bundled line with its original lyrics, plus the real singer's clip for comparison.
         ``mode``: score | expressive | real-pitch (SoulX given the real singer's own pitch curve)."""
         import soundfile as sf
@@ -331,10 +365,10 @@ class KalavinkaSinger:
             raise SingError("mode must be score, expressive or real-pitch")
         f0 = {"score": None, "expressive": lambda: self.contour(tu["item"], seed),
               "real-pitch": lambda: [float(x) for x in tu["item"]["f0"].split()]}[mode]
-        wav = self._render(tu["item"], vo, f0() if f0 else None, seed, shift=False)
+        wav = self._render(tu["item"], vo, f0() if f0 else None, seed, shift=False, model=model)
         real, sr = sf.read(self.bundle / "data" / tu["item"]["wav"], dtype="float32")
         return {"model": (wav, SR), "real": (real, sr), "lyric": tu["lyric"], "song": f"{tu['song']} ({tu['year']})",
-                "mode": mode, "took_s": round(time.time() - t0, 1)}
+                "mode": mode, "model": model, "took_s": round(time.time() - t0, 1)}
 
 
 def save_wav(path: str | Path, wav: np.ndarray, sr: int = SR) -> Path:

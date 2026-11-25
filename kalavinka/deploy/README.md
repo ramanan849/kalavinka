@@ -15,14 +15,25 @@ code, and a library of 17 held-out test lines (tunes) with 10 voice clips. SoulX
 | File | What |
 |---|---|
 | `singer.py` | `KalavinkaSinger`: load once, then `sing(lyrics, tune, voice, mode)` / `resing(tune, mode)`; device auto (cuda > mps > cpu) with an MPS -> CPU fallback |
-| `cli.py` | `python -m kalavinka_app sing/resing/tunes/voices/demo/ui/fetch` inside a bundle |
-| `app.py` | Gradio page (two tabs: new lyrics; compare with the real singer) |
+| `cli.py` | `python -m kalavinka_app sing/resing/alankar/sargam/history/prompt/tunes/voices/demo/ui/fetch` inside a bundle; `--model kalavinka\|base\|both`, `--fresh` |
+| `app.py` | Gradio page (tabs: new lyrics; compare with the real singer; alankars/sargam; history), model choice kalavinka / base / both |
+| `sargam.py` | sargam notation + JSON score (``LLM_PROMPT``), 7 built-in alankars, ``SargamSinger``, note-by-note pitch check (pYIN) |
+| `history.py` | ``outputs/history.jsonl`` log and request cache (same request = saved take reused) |
 | `build_bundle.py` | chooses the tunes and voices, vendors the code, cleans the checkpoints, writes both zips |
 | `bundle_main.py` | becomes `kalavinka_app/__main__.py` in the bundle |
 | `bundle_files/` | README, NOTICE, requirements, notebook, Mac scripts copied into the bundles |
 
-Pitch modes: `score` (the model's own pitch, default) and `expressive` (two-stage: C-flow at temperature 0.85 draws
+Models: `kalavinka` (V4-L) and `base` (released SoulX-Singer, Hindi phones mapped to the nearest English ones = our
+zero-shot V0; loaded on first use). Pitch modes: `score` (the model's own pitch, default) and `expressive` (two-stage: C-flow at temperature 0.85 draws
 the F0, SoulX sings it in melody mode). `resing` also offers `real-pitch` (the real singer's F0).
+
+## Alankar benchmark
+
+```
+cd <bundle> && for v in 1 4 5 7 10; do python -m kalavinka_app alankar all --model both --voice $v; done
+cd saregama624 && ../.venv-p1/bin/python -m kalavinka.eval.alankar_eval --history <bundle>/outputs/history.jsonl \
+    --out ../runs/eval_v1/alankars          # pitch + Whisper syllable CER, paired bootstrap; alankar_bench.md
+```
 
 ## Build
 

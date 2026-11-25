@@ -43,7 +43,7 @@ VENDOR_FILES = [
     "kalavinka/eval/sing_new.py", "kalavinka/ir/__init__.py", "kalavinka/ir/features.py", "kalavinka/ir/model.py",
     "saregama/g2p.py", "saregama/phoneset.py", "saregama/paths.py",
 ]
-APP_FILES = ["singer.py", "cli.py", "app.py"]
+APP_FILES = ["singer.py", "cli.py", "app.py", "sargam.py", "history.py"]
 DROP_FIELDS = ("conf", "energy_db", "hnr_db", "h1h2_db", "f0_agree", "features", "swara", "note_cents")
 
 

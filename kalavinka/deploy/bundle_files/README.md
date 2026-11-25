@@ -25,8 +25,13 @@ python -m kalavinka_app resing 3                                # a bundled line
 python -m kalavinka_app tunes        # list tunes          python -m kalavinka_app voices   # list voices
 python -m kalavinka_app demo         # three example lines in both pitch modes
 python -m kalavinka_app ui           # web page            (add --share for a public link)
+python -m kalavinka_app sing "..." --model both                 # compare with the base SoulX-Singer
+python -m kalavinka_app alankar 2                               # an alankar, both models, pitch checked note by note
+python -m kalavinka_app sargam "Sa Re Ga | Re Ga ma"             # your own swaras (or --json score.json)
+python -m kalavinka_app prompt       # the prompt that lets ChatGPT write a sargam JSON
+python -m kalavinka_app history      # earlier takes (each request is cached: asking again reuses the take)
 ```
-Takes are saved in `outputs/` with a `.json` that says what was sung on which tune.
+Takes are saved in `outputs/` with a `.json` that says what was sung, and logged in `outputs/history.jsonl`.
 Options (before the command): `--device auto|cuda|mps|cpu`, `--steps N` (32 on a GPU, 16 on CPU by default),
 `--seed N` (another take), `--play`. The word `sing` can be left out: `python -m kalavinka_app "..."`.
 
@@ -40,12 +45,14 @@ Options (before the command): `--device auto|cuda|mps|cpu`, `--steps N` (32 on a
   two-stage system: a small contour model draws a vibrato-rich pitch curve and SoulX sings it.
 * **Speed** for a 3-second line: about 5 s on a data-centre GPU (Colab's T4 is slower), about 20 s on a 100-core
   server CPU; a laptop CPU takes minutes. On a CPU the default is 16 steps instead of 32.
+* **Base model**: `--model base` is the released SoulX-Singer with Hindi phones mapped to English ones (our zero-shot
+  baseline); `both` gives one take from each, for comparison.
 * "x% of its phrases occur in the training lyrics" tells you how new your line is to the model (0% = all new).
 
 ## What is inside
 
 ```
-kalavinka_app/   singer (KalavinkaSinger), command line, web page
+kalavinka_app/   singer (KalavinkaSinger), command line, web page, sargam/alankars, history + cache
 vendor/          the project code inference needs, and SoulX-Singer's code
 weights/         our fine-tune (kalavinka_v4l, 64 MB) and the contour model (contour_cflow, 164 MB)
 data/            tunes, voices and their audio clips, the Hindi phone table
