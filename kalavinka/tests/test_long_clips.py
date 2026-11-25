@@ -37,3 +37,15 @@ def test_prompt_keeps_its_length_with_a_bigger_sample_cap():
     old = min(10 * FPS, prompt_max, max(22 * FPS - T, FPS))
     new = min(10 * FPS, prompt_max, max(36 * FPS - T, FPS))
     assert old == FPS and new == prompt_max
+
+
+def test_mix_adds_back_only_uncovered_short_clips():
+    """Short clips that overlap a long clip of the same song are left out; the others come back, renamed."""
+    from kalavinka.annot.mix_exports import mix
+    long = [{"index": "s1_c001", "time": [0, 20000], "wav": "wavs/s1_c001.wav"}]
+    short = [{"index": "s1_c001", "time": [1000, 5000], "wav": "wavs/s1_c001.wav"},
+             {"index": "s1_c007", "time": [30000, 34000], "wav": "wavs/s1_c007.wav"},
+             {"index": "s2_c001", "time": [0, 4000], "wav": "wavs/s2_c001.wav"}]
+    out = mix(long, short)
+    assert [it["index"] for it in out] == ["s1_c001", "s1_c007_s", "s2_c001_s"]
+    assert out[1]["wav"] == "wavs/s1_c007_s.wav"
