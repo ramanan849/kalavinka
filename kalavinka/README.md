@@ -132,6 +132,7 @@ ornament frames, voicing F1) and WavLM speaker similarity to the prompt.
 | `eval/listening/` | blind naturalness test: `build.py` (page + stimuli + private key), `page.html`, `analyze.py` (two-way bootstrap, screening, comments) |
 | `eval/demo_song.py` | one held-out song's clips stitched in order, one track per system plus the real singer |
 | `eval/sing_new.py` | new lyrics (checked absent from training) via the dataset G2P, set to a held-out line's tune, sung by a run |
+| `eval/demo_song_timed.py` | demo tracks stitched with the song's real gaps (0 s = crossfade) instead of a fixed 0.6 s, so words split across clips are not broken by a pause |
 | `eval/alankar_eval.py` | alankar benchmark: base SoulX vs V4-L on sargam exercises (note-by-note pitch, Whisper syllable CER, paired bootstrap) |
 | `eval/phone_eval.py` | IPA phone recogniser check (failed its gate; kept as a record) |
 | `ops/eval_queue.sh` | per-GPU queue: wait for a run, render, contrast, score |
