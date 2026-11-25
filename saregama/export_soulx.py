@@ -246,6 +246,17 @@ def clip_notes(notes: Sequence[Note], a: int, b: int) -> List[Note]:
     return out
 
 
+def sung_pitches(notes: Sequence[Note]) -> List[int]:
+    """note_pitch per note: 0 for rests; a sung note with no voiced frame (an unvoiced syllable such as "s") takes
+    the pitch of the nearest sung note, because 0 means *rest* to SoulX."""
+    pitch = [0 if n.kind == NOTE_REST else int(n.midi or 0) for n in notes]
+    sung = [i for i, n in enumerate(notes) if n.kind != NOTE_REST and pitch[i] > 0]
+    for i, n in enumerate(notes):
+        if n.kind != NOTE_REST and pitch[i] == 0 and sung:
+            pitch[i] = pitch[min(sung, key=lambda j: (abs(j - i), j))]
+    return pitch
+
+
 def clip_item(notes: Sequence[Note], a: int, b: int, f0_100: np.ndarray, meta: dict) -> dict:
     """SoulX metadata item of one clip (fields as SoulX's preprocessing writes
     them, plus extras); durations sum exactly to the clip's frames."""
@@ -261,7 +272,7 @@ def clip_item(notes: Sequence[Note], a: int, b: int, f0_100: np.ndarray, meta: d
         "duration": " ".join([f"{d:.2f}" for d in durs[:-1]] + [f"{durs[-1] + 1e-4:.4f}"]),
         "text": " ".join(n.text if n.kind != NOTE_REST else "<SP>" for n in notes),
         "phoneme": " ".join(note_phoneme_string(n.phones) if n.kind != NOTE_REST else "<SP>" for n in notes),
-        "note_pitch": " ".join(str(n.midi if n.kind != NOTE_REST else 0) for n in notes),
+        "note_pitch": " ".join(map(str, sung_pitches(notes))),
         "note_type": " ".join(str(n.kind) for n in notes),
         "f0": " ".join(f"{x:.1f}" for x in f0),
         "n_frames": b - a,

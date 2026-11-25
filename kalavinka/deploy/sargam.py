@@ -106,6 +106,8 @@ def parse_sargam(text: str) -> List[List[Dict]]:
             low1, name, mark, ups, beats, low2 = m.groups()
             octave = len(ups) - len(low1) - len(low2)
             semis = swara_semitones(name, mark or "", octave)
+            if beats is not None and float(beats) <= 0:
+                raise SargamError(f"{tok!r}: a note must last more than 0 beats")
             notes.append({"swara": name.lower(), "semis": semis, "beats": float(beats or 1)})
         if notes:
             lines.append(notes)
@@ -121,14 +123,21 @@ def from_json(obj: Dict | str) -> Tuple[List[List[Dict]], Dict]:
             obj = json.loads(obj)
         except json.JSONDecodeError as e:
             raise SargamError(f"not valid JSON: {e}") from e
-    if "lines" not in obj:
+    if not isinstance(obj, dict) or not isinstance(obj.get("lines"), list):
         raise SargamError('the JSON needs a "lines" list (see LLM_PROMPT)')
     lines = []
     for ln in obj["lines"]:
         notes = []
-        for n in ln:
+        for n in ln if isinstance(ln, list) else []:
+            if not isinstance(n, dict):
+                raise SargamError(f"each note is an object like {{\"swara\": \"Sa\", \"beats\": 1}}, not {n!r}")
             sw = str(n.get("swara", "")).strip()
-            beats = float(n.get("beats", 1))
+            try:
+                beats = float(n.get("beats", 1))
+            except (TypeError, ValueError):
+                raise SargamError(f"beats {n.get('beats')!r} is not a number") from None
+            if beats <= 0:
+                raise SargamError(f"{sw or 'a note'}: beats must be more than 0")
             if sw.lower() in ("rest", "_", ""):
                 notes.append({"swara": "rest", "semis": None, "beats": beats})
                 continue
@@ -140,7 +149,16 @@ def from_json(obj: Dict | str) -> Tuple[List[List[Dict]], Dict]:
                           "beats": beats})
         if notes:
             lines.append(notes)
+    if not lines:
+        raise SargamError("the JSON has no notes")
     settings = {k: obj[k] for k in ("title", "tonic", "beat_s", "syllables") if k in obj}
+    if "beat_s" in settings:
+        try:
+            settings["beat_s"] = float(settings["beat_s"])
+        except (TypeError, ValueError):
+            raise SargamError(f"beat_s {settings['beat_s']!r} is not a number") from None
+        if settings["beat_s"] <= 0:
+            raise SargamError("beat_s must be more than 0")
     return lines, settings
 
 
@@ -205,14 +223,40 @@ def to_text(lines: List[List[Dict]]) -> str:
 
 
 # ------------------------------------------------------------------------------------------- items
+def fold_tonic(tonic_hz: float, f0_median: float) -> float:
+    """The octave of ``tonic_hz`` that suits a voice singing around ``f0_median`` Hz: Sa about a fourth below the
+    median (so Sa..Sa' sits in the voice's range). The dataset's tonic estimate is sometimes an octave off for the
+    singer (voice 1: Sa 335 Hz for a male voice singing around 196 Hz), which put exercises an octave too high."""
+    if tonic_hz <= 0 or f0_median <= 0:
+        return tonic_hz
+    target = f0_median * 2 ** (-5 / 12)
+    k = int(np.round(np.log2(target / tonic_hz)))
+    return float(tonic_hz * 2.0 ** k)
+
+
+def voice_f0_median(voice_item: Dict) -> float:
+    """Median sung F0 (Hz) of a voice clip (0 if unknown)."""
+    try:
+        f0 = np.array(str(voice_item.get("f0", "")).split(), float)
+    except ValueError:
+        return 0.0
+    v = f0[f0 > 0]
+    return float(np.median(v)) if len(v) else 0.0
+
+
 def tonic_midi(tonic, voice_item: Dict) -> float:
-    """Tonic as a (fractional) MIDI number: 'auto' = the voice clip's own tonic; else a name like C#3 or Hz."""
+    """Tonic as a (fractional) MIDI number: 'auto' = the voice clip's own tonic, in the octave that suits the voice
+    (``fold_tonic``); else a name like C#3 or a frequency in Hz (also as text, "138.6")."""
     if tonic in (None, "", "auto"):
-        hz = float(voice_item.get("tonic_hz") or 0)
+        hz = fold_tonic(float(voice_item.get("tonic_hz") or 0), voice_f0_median(voice_item))
         if hz <= 0:
             return 60.0
         return 69 + 12 * np.log2(hz / 440)
+    if isinstance(tonic, str) and re.match(r"^\s*\d+(\.\d+)?\s*$", tonic):
+        tonic = float(tonic)                               # "138.6" typed in a box = Hz
     if isinstance(tonic, (int, float)):
+        if not 30 <= float(tonic) <= 2000:
+            raise SargamError(f"tonic {tonic} Hz: use a frequency between 30 and 2000 Hz")
         return 69 + 12 * np.log2(float(tonic) / 440)
     m = re.match(r"^([A-Ga-g])([#b]?)(-?\d)$", str(tonic).strip())
     if not m:
@@ -234,7 +278,10 @@ def phrase_item(notes: Sequence[Dict], sa_midi: int, beat_s: float, syllables: s
             text.append("आ" if syllables == "aa" else DEV[n["swara"]])
         dur.append(n["beats"] * beat_s)
     ph.append("<SP>"); pitch.append(0); typ.append(1); dur.append(EDGE_REST); text.append("_")
-    frames = [int(round(d * FPS)) for d in dur]
+    if beat_s <= 0 or any(d <= 0 for d in dur):
+        raise SargamError("note lengths must be more than 0")
+    ends = np.round(np.cumsum(dur) * FPS).astype(int)          # rounded on the running total: no drift
+    frames = [int(f) for f in np.diff(np.concatenate([[0], ends]))]
     n_frames = sum(frames)
     return {"index": "sargam", "language": "Hindi", "text": " ".join(text), "phoneme": " ".join(ph),
             "note_pitch": " ".join(map(str, pitch)), "note_type": " ".join(map(str, typ)),

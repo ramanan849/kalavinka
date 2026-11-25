@@ -65,7 +65,8 @@ def submit(root: Path, name: str, cmd: str, needs: str = "sx", min_free_gb: floa
     ensure(root)
     if needs not in ("sx", "p1"):
         raise ValueError("needs must be sx or p1")
-    stem = f"{time.strftime('%Y%m%d-%H%M%S')}_{name}"
+    # time first (queue order), then a random tag so two submits in the same second never overwrite each other
+    stem = f"{time.strftime('%Y%m%d-%H%M%S')}_{os.urandom(3).hex()}_{name}"
     path = root / "pending" / f"{stem}.json"
     write_atomic(path, {"name": name, "cmd": cmd, "needs": needs, "min_free_gb": min_free_gb, "after": after,
                         "submitted": time.time()})
@@ -105,6 +106,13 @@ def claim(root: Path, f: Path) -> Optional[Path]:
     return dst
 
 
+def free_memory() -> Dict[int, float]:
+    """Free GiB per GPU (nvidia-smi)."""
+    out = subprocess.run(["nvidia-smi", "--query-gpu=index,memory.free", "--format=csv,noheader,nounits"],
+                         capture_output=True, text=True, check=True).stdout
+    return {int(a): float(b) / 1024 for a, b in (l.split(",") for l in out.strip().splitlines() if l.strip())}
+
+
 def free_gpus(min_free_gb: float) -> List[int]:
     """GPUs with at least ``min_free_gb`` free, most free first (nvidia-smi)."""
     out = subprocess.run(["nvidia-smi", "--query-gpu=index,memory.free", "--format=csv,noheader,nounits"],
@@ -134,12 +142,19 @@ def worker(root: Path, node: str, can: Sequence[str], min_free_gb: float, max_jo
         if len(mine) < max_jobs:
             try:
                 gpus = [g for g in free_gpus(min_free_gb) if g not in mine]
+                free = free_memory()
             except (subprocess.CalledProcessError, FileNotFoundError, ValueError) as e:
-                log(f"nvidia-smi failed: {e}"); gpus = []
+                log(f"nvidia-smi failed: {e}"); gpus, free = [], {}
             for g in gpus[: max_jobs - len(mine)]:
                 f = next_job(root, can, delay)
                 if f is None:
                     break
+                try:                                      # the job's own memory need (not only the worker's)
+                    need = float(json.loads(f.read_text()).get("min_free_gb") or 0)
+                except (FileNotFoundError, json.JSONDecodeError):
+                    continue
+                if free.get(g, 0.0) < need:
+                    continue
                 run = claim(root, f)
                 if run is None:
                     continue

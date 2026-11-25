@@ -279,7 +279,8 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     if excl or a.subset_hours:
         log(f"ablation: excluded {ds.n_excluded} target clips containing {a.exclude_phones or '-'}; "
             f"subset {a.subset_hours} h -> {len(ds)} targets")
-    vds = PairDataset(a.cache / "val.pt", bands=("accept",), gate=None, seed=0)
+    # the val set drops the held-out phones too, so checkpoint choice never sees them (holdout runs)
+    vds = PairDataset(a.cache / "val.pt", bands=("accept",), gate=None, seed=0, exclude_tokens=excl)
     stats = conf_stats(torch.cat([ds.all[i]["conf"] for i in ds.idx]))
     log(f"train targets {len(ds)} ({bands}), val {len(vds)}; conf weighting stats {stats}")
     loader = torch.utils.data.DataLoader(ds, batch_sampler=FrameBudgetSampler(ds, a.max_frames, a.seed),

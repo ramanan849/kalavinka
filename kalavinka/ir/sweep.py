@@ -7,7 +7,10 @@ towards the mean contour.  This sweep traces that trade-off (pointwise cents
 RMSE against the vibrato-statistics distance) and picks ``tau*`` **on the val
 split**, so the test numbers stay untouched by the choice.
 
-For every ``tau`` it writes ``<run>/sweep/val_tau{tau}.json`` and
+Sampler time label (``--t-label``): ``left`` (default since 25 Nov 2026, the correct Euler label) writes to
+``<run>/sweep_left/``; ``mid`` (the earlier, half-step-ahead label) reproduces ``<run>/sweep/``.
+
+For every ``tau`` it writes ``<run>/sweep*/val_tau{tau}.json`` and
 ``test_tau{tau}.json`` (metrics) and ``test_f0_tau{tau}.json`` (index -> F0,
 for ``kalavinka.eval.render --control melody-ir``), plus ``sweep.json`` with
 the table and the chosen ``tau*``.
@@ -60,19 +63,22 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     p.add_argument("--heads", type=int, default=6)
     p.add_argument("--flow-steps", type=int, default=10)
     p.add_argument("--max-frames", type=int, default=12000)
+    p.add_argument("--t-label", choices=["left", "mid"], default="left",
+                   help="sampler time label (left = correct Euler; mid = the pre-25-Nov label, writes to sweep/)")
     a = p.parse_args(argv)
     device = "cuda" if torch.cuda.is_available() else "cpu"
     model = ContourNet("flow", a.d, a.layers, a.heads).to(device)
     model.load_state_dict(torch.load(a.run / "best.pt", map_location=device)["model"])
     data = {s: load_split(a.export / f"{s}.jsonl") for s in ("val", "test")}
     scs = {s: [scaffold(it) for it in v] for s, v in data.items()}
-    out = a.run / "sweep"
+    out = a.run / ("sweep" if a.t_label == "mid" else "sweep_left")
     out.mkdir(exist_ok=True)
     rows = []
     for tau in [float(t) for t in a.taus.split(",")]:
         row = {"tau": tau}
         for split in ("val", "test"):
-            res, f0s = evaluate(model, scs[split], data[split], device, a.max_frames, a.flow_steps, temperature=tau)
+            res, f0s = evaluate(model, scs[split], data[split], device, a.max_frames, a.flow_steps, temperature=tau,
+                                t_label=a.t_label)
             (out / f"{split}_tau{tau}.json").write_text(json.dumps(res, indent=1))
             if split == "test":
                 (out / f"test_f0_tau{tau}.json").write_text(json.dumps(f0s))
@@ -83,8 +89,8 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
         rows.append(row)
         print(json.dumps(row), flush=True)
     chosen = pick_tau(rows, a.vib_slack)
-    (out / "sweep.json").write_text(json.dumps({"rows": rows, "tau_star": chosen, "rule": f"vib_slack={a.vib_slack}"},
-                                               indent=1))
+    (out / "sweep.json").write_text(json.dumps({"rows": rows, "tau_star": chosen, "rule": f"vib_slack={a.vib_slack}",
+                                                "t_label": a.t_label}, indent=1))
     print(f"tau* = {chosen}")
 
 

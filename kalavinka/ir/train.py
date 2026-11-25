@@ -64,26 +64,41 @@ def batches(scs: Sequence[Dict], max_frames: int, shuffle: bool, rng: random.Ran
 
 
 @torch.no_grad()
-def evaluate(model, scs, items, device, max_frames, steps=10, seed=0, temperature=1.0) -> Dict:
-    """Generated F0 for every clip + corpus metrics vs the real F0 and the flat-MIDI baseline
-    (``temperature`` scales the flow model's starting noise; ignored in regress mode)."""
+def evaluate(model, scs, items, device, max_frames, steps=10, seed=0, temperature=1.0, t_label="left") -> Dict:
+    """Generated F0 for every clip + corpus metrics vs the real F0 and three flat-MIDI baselines
+    (``temperature`` scales the flow model's starting noise; ignored in regress mode; ``t_label``: see
+    ``ContourNet.generate``).
+
+    Baselines (all the flat note pitch, no ornaments), differing only in where they are voiced:
+
+    * ``flat_midi``: voiced on every sung note (its own voicing, like the model's), the fair baseline;
+    * ``flat_midi_same_frames``: voiced exactly where the model is, so cents / ornament errors are on the same
+      frames as the model's;
+    * ``flat_midi_ref_voicing``: voiced where the *real* singer is (the definition before 25 Nov 2026; it borrows the
+      reference voicing, so its voicing F1 is ~1 and its cents error is on a different frame set)."""
     model.eval()
     gen = torch.Generator(device=device); gen.manual_seed(seed)
-    preds, refs, flats, notes, out_f0 = [], [], [], [], {}
+    preds, refs, notes, out_f0 = [], [], [], {}
+    flats = {"flat_midi": [], "flat_midi_same_frames": [], "flat_midi_ref_voicing": []}
     for idx in batches(scs, max_frames, False, random.Random(0)):
         arrs, mask = batchify([scs[i] for i in idx])
         b, m = to_torch(arrs, mask, device)
-        r, v = model.generate(b, m, steps=steps, gen=gen, temperature=temperature)
+        r, v = model.generate(b, m, steps=steps, gen=gen, temperature=temperature, t_label=t_label)
         r, v = r.float().cpu().numpy(), v.float().cpu().numpy()
         for j, i in enumerate(idx):
             n = len(scs[i]["f0"])
             f0 = to_f0(scs[i]["flat_hz"], r[j, :n], v[j, :n])
+            flat = scs[i]["flat_hz"].astype(np.float32)
             preds.append(f0); refs.append(scs[i]["f0"])
-            flats.append(np.where(scs[i]["f0"] > 0, scs[i]["flat_hz"], 0).astype(np.float32))
+            flats["flat_midi"].append(np.where(flat > 0, flat, 0).astype(np.float32))
+            flats["flat_midi_same_frames"].append(np.where(f0 > 0, flat, 0).astype(np.float32))
+            flats["flat_midi_ref_voicing"].append(np.where(scs[i]["f0"] > 0, flat, 0).astype(np.float32))
             notes.append(scs[i]["flat_hz"])
             out_f0[items[i]["index"]] = [round(float(x), 1) for x in f0]
     model.train()
-    return {"model": corpus_metrics(preds, refs, notes), "flat_midi": corpus_metrics(flats, refs, notes)}, out_f0
+    res = {"model": corpus_metrics(preds, refs, notes)}
+    res.update({k: corpus_metrics(v, refs, notes) for k, v in flats.items()})
+    return res, out_f0
 
 
 def main(argv: Optional[Sequence[str]] = None) -> None:

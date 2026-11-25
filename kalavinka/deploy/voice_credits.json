@@ -1,0 +1,443 @@
+{
+ "about": "Credited playback singers of the held-out source songs (web lookup, 25 Nov 2026), used to name and gender the voices. 'confident': false = the lookup could not pin the exact version.",
+ "songs": {
+  "1981_dekha_ek_khwab__SFow1tB6gAY": {
+   "singers": [
+    {
+     "name": "Kishore Kumar",
+     "gender": "male"
+    },
+    {
+     "name": "Lata Mangeshkar",
+     "gender": "female"
+    }
+   ],
+   "source": "https://en.wikipedia.org/wiki/Silsila_(1981_film)",
+   "confident": true
+  },
+  "1982_tu_tu_hai_wohi__p0X6YI7nuEc": {
+   "singers": [
+    {
+     "name": "Kishore Kumar",
+     "gender": "male"
+    },
+    {
+     "name": "Asha Bhosle",
+     "gender": "female"
+    }
+   ],
+   "source": "https://music.apple.com/us/song/yeh-vaada-raha-tu-tu-hai-wahi-from-yeh-vaada-raha/6804600964",
+   "confident": true
+  },
+  "1983_ae_zindagi_gale_laga_le__8A30PWazxMU": {
+   "singers": [
+    {
+     "name": "Suresh Wadkar",
+     "gender": "male"
+    }
+   ],
+   "source": "https://en.wikipedia.org/wiki/Sadma",
+   "confident": true
+  },
+  "1989_aaja_shaam_hone_aayi__oxUX8e7PCd8": {
+   "singers": [
+    {
+     "name": "S. P. Balasubrahmanyam",
+     "gender": "male"
+    },
+    {
+     "name": "Lata Mangeshkar",
+     "gender": "female"
+    }
+   ],
+   "source": "https://en.wikipedia.org/wiki/Maine_Pyar_Kiya_(soundtrack)",
+   "confident": true
+  },
+  "1990_gori_hain_kalaiyaan__tLX5s5QLtAY": {
+   "singers": [
+    {
+     "name": "Lata Mangeshkar",
+     "gender": "female"
+    },
+    {
+     "name": "Shabbir Kumar",
+     "gender": "male"
+    }
+   ],
+   "source": "https://en.wikipedia.org/wiki/Aaj_Ka_Arjun",
+   "confident": true
+  },
+  "1990_jaan_e_jigar_jaan_e_man__ecTeagAk1Dc": {
+   "singers": [
+    {
+     "name": "Kumar Sanu",
+     "gender": "male"
+    },
+    {
+     "name": "Anuradha Paudwal",
+     "gender": "female"
+    }
+   ],
+   "source": "https://en.wikipedia.org/wiki/Aashiqui_(soundtrack)",
+   "confident": true
+  },
+  "1991_tu_pyaar_hai_kisi_aur_ka__98MGT9JStKk": {
+   "singers": [
+    {
+     "name": "Anuradha Paudwal",
+     "gender": "female"
+    },
+    {
+     "name": "Kumar Sanu",
+     "gender": "male"
+    }
+   ],
+   "source": "https://www.youtube.com/watch?v=U0qBRoeQa-g",
+   "confident": true
+  },
+  "1993_goriya_re_goriya__BQMzJDH_3xw": {
+   "singers": [
+    {
+     "name": "Lata Mangeshkar",
+     "gender": "female"
+    },
+    {
+     "name": "Jolly Mukherjee",
+     "gender": "male"
+    }
+   ],
+   "source": "https://en.wikipedia.org/wiki/Aaina_(1993_film)",
+   "confident": true
+  },
+  "1993_jaadu_teri_nazar___QeQIv9lihM": {
+   "singers": [
+    {
+     "name": "Udit Narayan",
+     "gender": "male"
+    }
+   ],
+   "source": "https://en.wikipedia.org/wiki/Darr",
+   "confident": true
+  },
+  "1994_ek_ladki_ko_dekha__htMvfOfixuM": {
+   "singers": [
+    {
+     "name": "Kumar Sanu",
+     "gender": "male"
+    }
+   ],
+   "source": "https://en.wikipedia.org/wiki/1942:_A_Love_Story",
+   "confident": true
+  },
+  "1998_o_o_jaane_jaana__yHBc0PcJb84": {
+   "singers": [
+    {
+     "name": "Kamaal Khan",
+     "gender": "male"
+    }
+   ],
+   "source": "https://en.wikipedia.org/wiki/Pyaar_Kiya_To_Darna_Kya_(1998_film)",
+   "confident": true
+  },
+  "1999_hoshwalon_ko_khabar_kya__r0Dmman8MjU": {
+   "singers": [
+    {
+     "name": "Jagjit Singh",
+     "gender": "male"
+    }
+   ],
+   "source": "https://en.wikipedia.org/wiki/Sarfarosh_(1999_film)",
+   "confident": true
+  },
+  "2000_toone_mujhe_pehchaana_nahin__u6DCkRtSWCo": {
+   "singers": [
+    {
+     "name": "Shaan",
+     "gender": "male"
+    }
+   ],
+   "source": "https://www.jiosaavn.com/song/tune-mujhe-pehchana-nahin-from-raju-chacha/HgUqQSB,Q1k",
+   "confident": true
+  },
+  "2007_salaam_e_ishq__MoJVzTzixzs": {
+   "singers": [
+    {
+     "name": "Sonu Nigam",
+     "gender": "male"
+    },
+    {
+     "name": "Shreya Ghoshal",
+     "gender": "female"
+    },
+    {
+     "name": "Kunal Ganjawala",
+     "gender": "male"
+    },
+    {
+     "name": "Sadhana Sargam",
+     "gender": "female"
+    },
+    {
+     "name": "Shankar Mahadevan",
+     "gender": "male"
+    }
+   ],
+   "source": "https://en.wikipedia.org/wiki/Salaam-e-Ishq",
+   "confident": true
+  },
+  "2010_dil_pardesi_ho_gaya__ddqyBylsXQ0": {
+   "singers": [
+    {
+     "name": "Sonu Nigam",
+     "gender": "male"
+    },
+    {
+     "name": "Alka Yagnik",
+     "gender": "female"
+    }
+   ],
+   "source": "https://en.wikipedia.org/wiki/Dil_Pardesi_Ho_Gayaa",
+   "confident": true
+  },
+  "2011_dil_ke_badle_sanam__fvwyPGBOEgY": {
+   "singers": [
+    {
+     "name": "Udit Narayan",
+     "gender": "male"
+    },
+    {
+     "name": "Alka Yagnik",
+     "gender": "female"
+    }
+   ],
+   "source": "https://www.youtube.com/watch?v=fvwyPGBOEgY",
+   "confident": false
+  },
+  "2011_rabb_kare_tujhko_bhi__BukHiHrbFpA": {
+   "singers": [
+    {
+     "name": "Alka Yagnik",
+     "gender": "female"
+    },
+    {
+     "name": "Udit Narayan",
+     "gender": "male"
+    }
+   ],
+   "source": "https://www.youtube.com/watch?v=BukHiHrbFpA",
+   "confident": false
+  },
+  "2014_manali_trance__vZ_NpLWuL00": {
+   "singers": [
+    {
+     "name": "Neha Kakkar",
+     "gender": "female"
+    },
+    {
+     "name": "Yo Yo Honey Singh",
+     "gender": "male"
+    }
+   ],
+   "source": "https://en.wikipedia.org/wiki/Yo_Yo_Honey_Singh",
+   "confident": true
+  },
+  "2014_offo__UFzBtouqWVA": {
+   "singers": [
+    {
+     "name": "Aditi Singh Sharma",
+     "gender": "female"
+    },
+    {
+     "name": "Amitabh Bhattacharya",
+     "gender": "male"
+    }
+   ],
+   "source": "https://en.wikipedia.org/wiki/2_States_(soundtrack)",
+   "confident": true
+  },
+  "2014_tharki_chokro__N5bELC8MXeU": {
+   "singers": [
+    {
+     "name": "Swaroop Khan",
+     "gender": "male"
+    }
+   ],
+   "source": "https://open.spotify.com/track/0cY7bOMdiAIU0xvhOfYm9r",
+   "confident": true
+  },
+  "2015_man_mera_mandir_shiv_meri_puja__S6HFRZmZrTI": {
+   "singers": [
+    {
+     "name": "Anuradha Paudwal",
+     "gender": "female"
+    }
+   ],
+   "source": "https://www.imdb.com/title/tt21244664/",
+   "confident": true
+  },
+  "2015_o_re_piya__FGTv9-oQhIg": {
+   "singers": [
+    {
+     "name": "Rahat Fateh Ali Khan",
+     "gender": "male"
+    }
+   ],
+   "source": "https://www.youtube.com/watch?v=iv7lcUkFVSc",
+   "confident": false
+  },
+  "2016_dil_deewane_ka_dola_dildar_ke_liye__mGnwSnPVc6c": {
+   "singers": [
+    {
+     "name": "Kumar Sanu",
+     "gender": "male"
+    },
+    {
+     "name": "Anuradha Paudwal",
+     "gender": "female"
+    },
+    {
+     "name": "Babla Mehta",
+     "gender": "male"
+    }
+   ],
+   "source": "https://www.shazam.com/en-us/song/1465078201/dil-diwane-ka-dola-dildar-ke-liye",
+   "confident": false
+  },
+  "2016_om_jai_shiv_omkara_full_audio__BhwOproElxU": {
+   "singers": [
+    {
+     "name": "Mukul Soni",
+     "gender": "male"
+    }
+   ],
+   "source": "https://open.spotify.com/track/22I52Unr0uk7o1MBsMN3sK",
+   "confident": false
+  },
+  "2017_hawayein__cYOB941gyXI": {
+   "singers": [
+    {
+     "name": "Arijit Singh",
+     "gender": "male"
+    }
+   ],
+   "source": "https://en.wikipedia.org/wiki/Jab_Harry_Met_Sejal_(soundtrack)",
+   "confident": true
+  },
+  "2017_jaha_tum_rahoge__Mi3GdCyzHCY": {
+   "singers": [
+    {
+     "name": "Altamash Faridi",
+     "gender": "male"
+    }
+   ],
+   "source": "https://music.apple.com/us/song/jaha-tum-rahoge/1529536913",
+   "confident": true
+  },
+  "2017_tu_hi_hai__KyMNLIYRsR4": {
+   "singers": [
+    {
+     "name": "Rahul Mishra",
+     "gender": "male"
+    }
+   ],
+   "source": "https://en.wikipedia.org/wiki/Half_Girlfriend_(soundtrack)",
+   "confident": true
+  },
+  "2019_apna_time_aayega__jFGKJBPFdUA": {
+   "singers": [
+    {
+     "name": "DIVINE",
+     "gender": "male"
+    },
+    {
+     "name": "Ranveer Singh",
+     "gender": "male"
+    }
+   ],
+   "source": "https://open.spotify.com/track/5FLgOuLoVwwUUF7IL36Lux",
+   "confident": true
+  },
+  "2019_kinna_sona__7lfFZs50JHM": {
+   "singers": [
+    {
+     "name": "Jubin Nautiyal",
+     "gender": "male"
+    },
+    {
+     "name": "Dhvani Bhanushali",
+     "gender": "female"
+    }
+   ],
+   "source": "https://music.apple.com/us/song/kinna-sona-from-marjaavaan/1486556088",
+   "confident": true
+  },
+  "2019_paagal__bdesdebUFLE": {
+   "singers": [
+    {
+     "name": "Badshah",
+     "gender": "male"
+    }
+   ],
+   "source": "https://www.shazam.com/en-us/song/1471523193/paagal",
+   "confident": true
+  },
+  "2021_bedardi_se_pyaar_ka__y_RHQ4mBDKA": {
+   "singers": [
+    {
+     "name": "Jubin Nautiyal",
+     "gender": "male"
+    }
+   ],
+   "source": "https://music.apple.com/in/song/bedardi-se-pyaar-ka/1570959103",
+   "confident": true
+  },
+  "2021_raatan_lambiyan__S2BOXJG71FY": {
+   "singers": [
+    {
+     "name": "Jubin Nautiyal",
+     "gender": "male"
+    },
+    {
+     "name": "Asees Kaur",
+     "gender": "female"
+    }
+   ],
+   "source": "https://en.wikipedia.org/wiki/Shershaah_(soundtrack)",
+   "confident": true
+  },
+  "2024_o_maahi__Etkd-07gnxM": {
+   "singers": [
+    {
+     "name": "Arijit Singh",
+     "gender": "male"
+    }
+   ],
+   "source": "https://music.apple.com/us/song/o-maahi-from-dunki/1720723962",
+   "confident": true
+  },
+  "2025_laal_pari__KGn-erOG-Bs": {
+   "singers": [
+    {
+     "name": "Yo Yo Honey Singh",
+     "gender": "male"
+    },
+    {
+     "name": "Simar Kaur",
+     "gender": "female"
+    }
+   ],
+   "source": "https://en.wikipedia.org/wiki/Housefull_5",
+   "confident": true
+  },
+  "2025_saiyaara__BSJa1UytM8w": {
+   "singers": [
+    {
+     "name": "Faheem Abdullah",
+     "gender": "male"
+    }
+   ],
+   "source": "https://www.imdb.com/title/tt28037987/soundtrack/",
+   "confident": true
+  }
+ }
+}

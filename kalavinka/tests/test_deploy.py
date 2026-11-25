@@ -58,13 +58,14 @@ def test_cli_bare_lyrics_become_sing(monkeypatch, capsys, tmp_path):
             seen["init"] = True
             self.device = "cpu"
 
-        def sing(self, lyrics, tune, voice, mode, steps, seed, model="kalavinka"):
-            seen["args"] = (lyrics, tune, voice, mode)
+        def sing(self, lyrics, tune, voice, mode, steps, seed, model="kalavinka", join="seamless", line_gap=0.3):
+            seen["args"] = (lyrics, tune, voice, mode, join)
             raise singer.SingError("stop here")
-    monkeypatch.setattr(singer, "KalavinkaSinger", Fake)
+    from kalavinka.deploy import seamless
+    monkeypatch.setattr(seamless, "SeamlessSinger", Fake, raising=False)
     with pytest.raises(SystemExit):
         cli.main(["--device", "cpu", "--outputs", str(tmp_path), "ठंडी हवा", "--tune", "2"])
-    assert seen["args"] == ("ठंडी हवा", 2, None, "score")
+    assert seen["args"] == ("ठंडी हवा", 2, None, "score", "seamless")
 
 
 def test_names():

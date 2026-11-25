@@ -11,9 +11,14 @@
    All the curve maths (ornaments, smoothing, strokes) lives in Python, so the editor never disagrees with what is sung.
    The editor only changes the composition and draws what Python sends back.
 
+     #kv-lyrics + #kv-lyrics-go  "type lyrics for this phrase": {phrase, text} goes to Python, which splits the line
+               into syllables with the singer's G2P and spreads them over the phrase's sung notes.
+
    Mouse:  drag a note up/down = pitch (snaps to the raag's swaras; hold Alt for free cents)
            drag a note's right edge = length (snaps to quarter beats; Alt = free)
-           click = select (its settings and ornaments appear below the canvas); double-click = edit the syllable
+           click = select (its settings and ornaments appear below the canvas); double-click = edit the syllable in
+           place (Enter = save, Tab / Shift+Tab = save and go to the next / previous sung note, Esc = cancel)
+           the lyrics strip under the time axis shows the phrase's words in time; click a syllable to select it
            Pencil: draw the pitch by hand over sung notes; Eraser: drag across drawn pitch to remove it
    Keys:   arrows up/down = next swara, left/right = select previous/next note, +/- = longer/shorter,
            Delete = remove note, Ctrl+Z / Ctrl+Y = undo / redo, Space = preview
@@ -22,7 +27,7 @@
   "use strict";
   if (window.KV) return;
 
-  const PAD_L = 64, PAD_R = 52, PAD_T = 18, PAD_B = 34, H = 380;
+  const PAD_L = 64, PAD_R = 52, PAD_T = 18, PAD_B = 52, H = 400;
   const COL = { grid: "#e6e6e9", gridSa: "#b9b9c4", txt: "#4a4a55", bar: "#5b8def", barSel: "#e2563b",
                 rest: "#d8d8de", curve: "#1f2a44", sung: "#ef8a17", edit: "#2fa37a", beat: "#f1f1f4", sam: "#c9c9d6",
                 head: "#e2563b" };
@@ -30,6 +35,7 @@
   const KV = {
     comp: null, view: null, sung: null, phrase: 0, sel: -1, mode: "select", snap: "raag",
     pxPerSec: 110, scrollT: 0, undo: [], redo: [], lastSent: "", drag: null, audio: null, playT0: 0, playing: false,
+    dirty: false, listening: false, inline: null,
   };
   window.KV = KV;
 
@@ -43,17 +49,31 @@
     if (!el || !KV.comp) return;
     const s = JSON.stringify(KV.comp);
     KV.lastSent = s;
+    KV.dirty = true;
     el.value = s;
     el.dispatchEvent(new Event("input", { bubbles: true }));
-    const b = document.querySelector("#kv-push");
-    if (b) b.click();
+    // click after Gradio has taken the new value (the push event is "always_last" on the Python side)
+    clearTimeout(KV.pushTimer);
+    KV.pushTimer = setTimeout(() => { const b = document.querySelector("#kv-push"); if (b) b.click(); }, 60);
+  }
+  function sendLyrics(text) {
+    const el = box("kv-lyrics"), b = document.querySelector("#kv-lyrics-go");
+    if (!el || !b || !KV.comp) return;
+    el.value = JSON.stringify({ phrase: KV.phrase, text: text, comp: KV.comp });
+    el.dispatchEvent(new Event("input", { bubbles: true }));
+    setTimeout(() => b.click(), 60);
   }
   KV.load = function (s) {
     if (!s || s === KV.lastSent) return s;
-    try { KV.comp = JSON.parse(s); } catch (e) { return s; }
+    let c;
+    try { c = JSON.parse(s); } catch (e) { return s; }
+    if (KV.comp) { KV.undo.push(JSON.stringify(KV.comp)); if (KV.undo.length > 100) KV.undo.shift(); KV.redo = []; }
+    const samePhrases = KV.comp && KV.comp.phrases.length === c.phrases.length;
+    KV.comp = c;
     KV.lastSent = s;
     if (KV.phrase >= KV.comp.phrases.length) KV.phrase = 0;
-    KV.sel = -1; KV.sung = null; KV.scrollT = 0;
+    if (KV.sel >= notes().length) KV.sel = -1;
+    if (!samePhrases) { KV.sung = null; KV.scrollT = 0; }
     build(); draw();
     return s;
   };
@@ -127,7 +147,17 @@
     KV.undo.push(JSON.stringify(KV.comp)); if (KV.undo.length > 100) KV.undo.shift();
     KV.redo = [];
   }
-  function commit() { send(); build(); draw(); }
+  function repairSlurs() {
+    // a hold ("-") needs a sung note before it: after deleting or inserting notes, a stray hold sings again
+    for (const p of KV.comp.phrases) p.notes.forEach((n, i) => {
+      if (n.syl === "-" && (i === 0 || p.notes[i - 1].syl === "_")) n.syl = "";
+    });
+  }
+  function clampPhrase() {
+    KV.phrase = Math.max(0, Math.min(KV.phrase, KV.comp.phrases.length - 1));
+    if (KV.sel >= notes().length) KV.sel = -1;
+  }
+  function commit() { repairSlurs(); clampPhrase(); send(); build(); draw(); }
 
   // ------------------------------------------------------------------ DOM
   function el(tag, attrs, ...kids) {
@@ -170,6 +200,11 @@
       el("button", { class: "kv-btn", onclick: stop }, "■"));
     bar.append(modes, snap, edit, view);
     const tabs = el("div", { class: "kv-tabs" });
+    const lyr = el("input", { class: "kv-lyrics-in", placeholder: "Type the lyrics of this phrase in Hindi, e.g. ठंडी हवा में गीत नया, then press Enter" });
+    lyr.addEventListener("keydown", (e) => { if (e.key === "Enter" && lyr.value.trim()) { e.preventDefault(); sendLyrics(lyr.value.trim()); } });
+    const lyrRow = el("div", { class: "kv-row kv-lyrics-row" }, lyr,
+      el("button", { class: "kv-btn", title: "split the line into syllables and put one on each sung note (more syllables = extra notes; fewer = the last notes hold)",
+                     onclick: () => { if (lyr.value.trim()) sendLyrics(lyr.value.trim()); } }, "Put lyrics on the notes"));
     const cwrap = el("div", { class: "kv-canvas-wrap" });
     const canvas = el("canvas", { class: "kv-canvas", tabindex: "0" });
     cwrap.append(canvas);
@@ -177,16 +212,21 @@
       oninput: (e) => { const v = vph(); if (!v) return; KV.scrollT = Math.max(0, (v.seconds - visibleSec() + 0.5)) * e.target.value / 100; draw(); } });
     const panel = el("div", { class: "kv-panel" });
     const status = el("div", { class: "kv-status" });
-    root.append(bar, tabs, cwrap, scroll, panel, status);
-    Object.assign(KV, { canvas, tabs, panel, status, scrollEl: scroll, toolbar: bar });
+    root.append(bar, tabs, lyrRow, cwrap, scroll, panel, status);
+    Object.assign(KV, { canvas, tabs, panel, status, scrollEl: scroll, toolbar: bar, lyricsIn: lyr });
     canvas.addEventListener("mousedown", onDown);
-    window.addEventListener("mousemove", onMove);
-    window.addEventListener("mouseup", onUp);
+    if (!KV.listening) {                       // window listeners once, even if the editor is mounted again
+      window.addEventListener("mousemove", onMove);
+      window.addEventListener("mouseup", onUp);
+      KV.listening = true;
+    }
     canvas.addEventListener("dblclick", onDbl);
     canvas.addEventListener("keydown", onKey);
     canvas.addEventListener("wheel", (e) => { if (!e.shiftKey && !e.ctrlKey) return; e.preventDefault();
       if (e.ctrlKey) zoom(e.deltaY < 0 ? 1.1 : 0.9); else { KV.scrollT = Math.max(0, KV.scrollT + e.deltaY / KV.pxPerSec); draw(); } }, { passive: false });
-    new ResizeObserver(() => resize()).observe(cwrap);
+    if (KV.ro) KV.ro.disconnect();
+    KV.ro = new ResizeObserver(() => resize());
+    KV.ro.observe(cwrap);
     resize();
     // pick up whatever Python already put in the boxes
     const c = box("kv-comp"), v = box("kv-view");
@@ -212,7 +252,7 @@
     KV.tabs.innerHTML = "";
     KV.comp.phrases.forEach((p, i) => KV.tabs.append(el("button", { class: "kv-tab" + (i === KV.phrase ? " kv-on" : ""),
       onclick: () => { KV.phrase = i; KV.sel = -1; KV.scrollT = 0; build(); draw(); } }, `Phrase ${i + 1}`)));
-    KV.tabs.append(el("button", { class: "kv-tab", title: "new phrase (one breath; each phrase is sung separately)", onclick: addPhrase }, "+ phrase"));
+    KV.tabs.append(el("button", { class: "kv-tab", title: "new phrase (a breath: phrases are joined by the phrase gap set above)", onclick: addPhrase }, "+ phrase"));
     if (KV.comp.phrases.length > 1)
       KV.tabs.append(el("button", { class: "kv-tab", title: "delete this phrase", onclick: delPhrase }, "− phrase"));
     buildPanel();
@@ -242,12 +282,14 @@
     const upd = (fn) => { snapshot(); fn(); commit(); };
     const row = el("div", { class: "kv-row" },
       el("b", {}, `Note ${KV.sel + 1}`),
-      field("syllable (Hindi; - = hold, _ = rest, empty = swara name)", n.syl, (v) => upd(() => { n.syl = v.trim(); delete n.phones; if (n.syl === "_") { delete n.swara; n.orn = []; } else if (!n.swara) n.swara = "Sa"; }), { size: 8 }),
+      field("syllable (Hindi; - = hold, _ = rest, empty = swara name)", n.syl, (v) => upd(() => setSyl(n, v)), { size: 8 }),
       field("swara", n.swara ?? "", (v) => upd(() => { n.swara = v.trim(); delete n.midi; delete n.hz; }), { size: 6 }),
       field("cents ±", n.cents ?? 0, (v) => upd(() => { const c = parseFloat(v) || 0; if (c) n.cents = c; else delete n.cents; }), { size: 4 }),
       field("beats", n.beats ?? "", (v) => upd(() => { const b = parseFloat(v); if (b > 0) { n.beats = b; delete n.sec; } }), { size: 4 }),
       field("or seconds", n.sec ?? "", (v) => upd(() => { const s = parseFloat(v); if (s > 0) { n.sec = s; delete n.beats; } else delete n.sec; }), { size: 4 }));
     P.append(row);
+    const vb = vph() && vph().notes[KV.sel];
+    if (vb && vb.warn) P.append(el("div", { class: "kv-warn" }, "⚠ " + vb.warn));
     if (n.syl === "_") return;
     const defs = (KV.view && KV.view.ornaments) || {};
     (n.orn || []).forEach((o, k) => {
@@ -301,16 +343,16 @@
   function addPhrase() {
     snapshot();
     KV.comp.phrases.splice(KV.phrase + 1, 0, { notes: [{ syl: "", swara: "Sa", beats: 1, orn: [] }], f0_edits: [] });
-    KV.phrase += 1; KV.sel = 0; commit();
+    KV.phrase += 1; KV.sel = 0; KV.sung = null; commit();
   }
   function delPhrase() {
     if (KV.comp.phrases.length <= 1) return;
     snapshot(); KV.comp.phrases.splice(KV.phrase, 1);
-    KV.phrase = Math.max(0, KV.phrase - 1); KV.sel = -1; commit();
+    KV.phrase = Math.max(0, KV.phrase - 1); KV.sel = -1; KV.sung = null; commit();
   }
   function clearEdits() { if (!phr()) return; snapshot(); phr().f0_edits = []; commit(); }
-  function doUndo() { if (!KV.undo.length) return; KV.redo.push(JSON.stringify(KV.comp)); KV.comp = JSON.parse(KV.undo.pop()); KV.sel = -1; commit(); }
-  function doRedo() { if (!KV.redo.length) return; KV.undo.push(JSON.stringify(KV.comp)); KV.comp = JSON.parse(KV.redo.pop()); KV.sel = -1; commit(); }
+  function doUndo() { if (!KV.undo.length) return; KV.redo.push(JSON.stringify(KV.comp)); KV.comp = JSON.parse(KV.undo.pop()); KV.sel = -1; clampPhrase(); commit(); }
+  function doRedo() { if (!KV.redo.length) return; KV.undo.push(JSON.stringify(KV.comp)); KV.comp = JSON.parse(KV.redo.pop()); KV.sel = -1; clampPhrase(); commit(); }
 
   // ------------------------------------------------------------------ mouse
   function pos(e) { const r = KV.canvas.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; }
@@ -389,12 +431,43 @@
   function onDbl(e) {
     const [x, y] = pos(e); const [i] = hit(x, y);
     if (i < 0 || KV.mode !== "select") return;
-    const n = notes()[i];
-    const s = window.prompt("Syllable for this note (Hindi; - = hold the previous one, _ = rest, empty = sing the swara name):", n.syl);
-    if (s === null) return;
-    snapshot(); n.syl = s.trim(); delete n.phones;
+    editInline(i);
+  }
+  function setSyl(n, v) {
+    n.syl = v.trim(); delete n.phones;
     if (n.syl === "_") { delete n.swara; n.orn = []; } else if (!n.swara) n.swara = "Sa";
-    commit();
+  }
+  function editInline(i) {
+    // a text field on the note itself: Enter saves, Tab / Shift+Tab saves and moves on, Esc cancels
+    closeInline(false);
+    const v = vph(), ns = notes(); if (!v || i < 0 || i >= ns.length) return;
+    const b = v.notes[i];
+    if (b.t < KV.scrollT || b.t > KV.scrollT + visibleSec() - 0.2) { KV.scrollT = Math.max(0, b.t - 0.5); draw(); }
+    KV.sel = i; buildPanel(); draw();
+    const x0 = xOf(b.t), y = b.c === null ? H - PAD_B - 30 : yOf(b.c) - 34;
+    const inp = el("input", { class: "kv-inline", value: ns[i].syl, title: "Hindi syllable; - = hold the previous one, _ = rest, empty = sing the swara name" });
+    inp.style.left = Math.max(0, x0) + "px"; inp.style.top = Math.max(0, y) + "px";
+    KV.canvas.parentElement.append(inp);
+    KV.inline = { inp, i };
+    inp.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") { e.preventDefault(); closeInline(true); }
+      else if (e.key === "Escape") { e.preventDefault(); closeInline(false); }
+      else if (e.key === "Tab") {
+        e.preventDefault(); const step = e.shiftKey ? -1 : 1; closeInline(true);
+        let j = i + step; while (j >= 0 && j < notes().length && notes()[j].syl === "_") j += step;
+        if (j >= 0 && j < notes().length) setTimeout(() => editInline(j), 30);
+      }
+    });
+    inp.addEventListener("blur", () => setTimeout(() => { if (KV.inline && KV.inline.inp === inp) closeInline(true); }, 120));
+    inp.focus(); inp.select();
+  }
+  function closeInline(save) {
+    const I = KV.inline; if (!I) return;
+    KV.inline = null;
+    const n = notes()[I.i], v = I.inp.value;
+    I.inp.remove();
+    if (save && n && v.trim() !== n.syl) { snapshot(); setSyl(n, v); commit(); }
+    if (KV.canvas) KV.canvas.focus();
   }
   function onKey(e) {
     const ns = notes();
@@ -421,15 +494,15 @@
     g.clearRect(0, 0, W, H);
     g.fillStyle = "#fff"; g.fillRect(0, 0, W, H);
     const v = vph();
-    if (!v || !KV.view) {
+    if (!v || !KV.view || !phr()) {
       g.fillStyle = COL.txt; g.font = "14px sans-serif";
       g.fillText("Load something to edit: pick a starting point above and press Load.", PAD_L, H / 2);
       return;
     }
     const [lo, hi] = range(), scale = new Set(KV.view.scale), sa = KV.view.sa_hz;
     // beat grid
-    const beat = 60 / tempo(), taal = KV.view.taal || 0;
-    for (let k = 0; k * beat <= v.seconds + 4; k++) {
+    const beat = 60 / Math.max(5, tempo()), taal = KV.view.taal || 0;
+    for (let k = 0; k * beat <= v.seconds + 4 && k < 5000; k++) {
       const x = xOf(k * beat); if (x < PAD_L || x > W - PAD_R) continue;
       g.strokeStyle = taal && k % taal === 0 ? COL.sam : COL.beat; g.lineWidth = taal && k % taal === 0 ? 1.5 : 1;
       g.beginPath(); g.moveTo(x, PAD_T); g.lineTo(x, H - PAD_B); g.stroke();
@@ -458,20 +531,33 @@
         g.fillStyle = COL.rest; g.fillRect(x0 + 1, H - PAD_B - 12, x1 - x0 - 2, 8);
         return;
       }
-      const y = yOf(c), sel = i === KV.sel;
+      const y = yOf(c), sel = i === KV.sel, wbar = x1 - x0;
       g.fillStyle = sel ? COL.barSel : COL.bar; g.globalAlpha = sel ? 0.55 : 0.32;
-      roundRect(g, x0 + 1, y - 7, Math.max(2, x1 - x0 - 2), 14, 4); g.fill(); g.globalAlpha = 1;
+      roundRect(g, x0 + 1, y - 7, Math.max(2, wbar - 2), 14, 4); g.fill(); g.globalAlpha = 1;
       g.fillStyle = sel ? COL.barSel : COL.bar; g.fillRect(x1 - 4, y - 7, 3, 14);
-      g.fillStyle = "#111"; g.font = "15px 'Noto Sans Devanagari', sans-serif"; g.textAlign = "left"; g.textBaseline = "alphabetic";
-      g.fillText(b.label, x0 + 3, y - 11);
+      g.textAlign = "left"; g.textBaseline = "alphabetic";
+      const slur = b.syl === "-";
+      const lab = slur ? "–" : b.label;
+      // the syllable above the bar: shrink to fit the bar, skip if it cannot fit (it shows when selected)
+      let fs = 15;
+      g.font = `${fs}px 'Noto Sans Devanagari', sans-serif`;
+      while (fs > 10 && g.measureText(lab).width > wbar + 6) { fs -= 1; g.font = `${fs}px 'Noto Sans Devanagari', sans-serif`; }
+      if (sel || g.measureText(lab).width <= wbar + 10) {
+        g.fillStyle = slur ? "#8a8a96" : "#111";
+        g.fillText(lab, x0 + 3, y - 11);
+        if (b.warn) { g.strokeStyle = "#d0342c"; g.lineWidth = 2; g.beginPath(); g.moveTo(x0 + 3, y - 8); g.lineTo(x0 + 3 + g.measureText(lab).width, y - 8); g.stroke(); }
+      }
+      // swara and ornaments below the bar, only as much as fits
       g.font = "10px sans-serif"; g.fillStyle = "#6a6a78";
       const sw = D && D.kind === "pitch" ? nameOf(Math.round(c / 100)) : b.swara;
-      g.fillText(sw + (b.orn.length ? "  ✦ " + b.orn.join(", ") : ""), x0 + 3, y + 18);
+      let low = sw + (b.orn.length ? "  ✦ " + b.orn.join(", ") : "");
+      if (!sel) while (low.length > 1 && g.measureText(low).width > Math.max(wbar, 18) + 4) low = low.slice(0, -2) + "…";
+      g.fillText(low, x0 + 3, y + 18);
     });
     // computed curve
     plot(g, v.curve.map((c, k) => [k / 50, c]), COL.curve, 2);
     // hand-drawn strokes
-    for (const s of phr().f0_edits || []) plot(g, s, COL.edit, 1, true);
+    for (const s of (phr() && phr().f0_edits) || []) plot(g, s, COL.edit, 1, true);
     // what the model sang
     if (KV.sung) for (const p of KV.sung) if (p.phrase === KV.phrase) plot(g, p.cents.map((c, k) => [p.t0 + k / 50, c]), COL.sung, 1.5);
     // live drag feedback
@@ -488,14 +574,27 @@
     g.fillStyle = COL.txt; g.font = "11px sans-serif"; g.textAlign = "center"; g.textBaseline = "top";
     const step = KV.pxPerSec > 150 ? 0.5 : KV.pxPerSec > 50 ? 1 : 2;
     for (let t = Math.ceil(KV.scrollT / step) * step; xOf(t) <= W - PAD_R; t += step) g.fillText(t.toFixed(step < 1 ? 1 : 0) + " s", xOf(t), H - PAD_B + 6);
+    // lyrics strip: the phrase's syllables in time (click one to select its note)
+    g.font = "13px 'Noto Sans Devanagari', sans-serif"; g.textAlign = "left"; g.textBaseline = "top";
+    let lastX = -1e9;
+    v.notes.forEach((b, i) => {
+      if (b.c === null || b.syl === "-") return;
+      const x = xOf(b.t); if (x < PAD_L - 2 || x > W - PAD_R) return;
+      if (x < lastX + 4) return;
+      g.fillStyle = i === KV.sel ? COL.barSel : (b.warn ? "#d0342c" : "#333");
+      g.fillText(b.label, x, H - PAD_B + 24);
+      lastX = x + g.measureText(b.label).width;
+    });
     // legend + status
     g.textAlign = "left"; g.textBaseline = "top"; g.font = "11px sans-serif";
     let lx = PAD_L;
     for (const [c, t] of [[COL.curve, "pitch to sing"], [COL.edit, "your drawing"], [COL.sung, "what the model sang"]]) {
       g.fillStyle = c; g.fillRect(lx, 4, 14, 3); g.fillStyle = COL.txt; g.fillText(t, lx + 18, 0); lx += 30 + g.measureText(t).width;
     }
+    const nwarn = v.notes.filter((b) => b.warn).length;
     if (KV.status) KV.status.textContent = `Sa = ${KV.view.sa_hz} Hz · tempo ${tempo()} bpm · phrase ${KV.phrase + 1}/${KV.comp.phrases.length}: ` +
-      `${v.notes.length} notes, ${v.seconds.toFixed(2)} s` + (KV.sel >= 0 ? ` · note ${KV.sel + 1} selected` : "");
+      `${v.notes.length} notes, ${v.seconds.toFixed(2)} s` + (KV.sel >= 0 ? ` · note ${KV.sel + 1} selected` : "") +
+      (nwarn ? ` · ⚠ ${nwarn} syllable(s) the model cannot sing (red)` : "");
     if (KV.scrollEl) { const span = Math.max(0, v.seconds - visibleSec() + 0.5); KV.scrollEl.style.visibility = span > 0 ? "visible" : "hidden"; }
   }
   function plot(g, pts, color, w, dots) {
@@ -549,7 +648,7 @@
         }
         k = j;
       }
-      t += p.seconds + 0.3;
+      t += p.seconds + ((KV.comp && KV.comp.phrase_gap_s !== undefined) ? Number(KV.comp.phrase_gap_s) : 0.3);
     }
     KV.playing = true; KV.playEnd = t;
     const tick = () => {

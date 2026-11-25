@@ -20,7 +20,11 @@ for model training into ``<out>/``:
   test assignment by concert; ``DATASHEET.md``
 
 Frame k of every array is at t = k / 100 s on the mix clock.  Splits are by
-concert, so no singer appears in two splits.
+concert: no recording appears in two splits, but the same singer can sing in
+concerts of different splits, so the test set is **not** singer-held-out
+(the code does not check singers). The assignment is filled by a hash of the
+concert name, so adding concerts can move existing ones between splits: pass
+``test`` / ``val`` lists (``assign_splits``) to pin a published split.
 """
 from __future__ import annotations
 

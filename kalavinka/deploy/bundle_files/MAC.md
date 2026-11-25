@@ -23,10 +23,19 @@ You need about **6 GB of free disk** and preferably **16 GB of RAM** (8 GB works
 ./sing ui
 ```
 Your browser opens a page where you type Hindi lyrics, pick a tune and a voice, and press **Sing**. At the top, the
-**Model** choice picks Kalavinka (ours), the base SoulX-Singer, or **both side by side**. Tabs:
+**Model** choice picks Kalavinka (ours), the base SoulX-Singer, or **both side by side**, and **Join** picks
+*seamless* (default: all your lines are sung as one performance; silence only where the song has a rest) or
+*separate* (the old way: each line sung alone with a short gap). Tabs:
 
 * **Sing new lyrics**: your lyrics on a bundled tune.
 * **Compare with the real singer**: a real song line re-sung, next to the real singer.
+* **Voices**: all 24 voices (1980s to 2020s, female and male, from songs the model never trained on), with the
+  credited singer of the source song, estimated gender and register, Sa and range, and a **Listen** button. Filter by
+  gender, era and register (the same filters sit next to every voice choice). Fix or add a name, gender or notes:
+  your edits are kept in `outputs/voice_profiles.local.json`.
+* **History**: every take: search, play, give it a title / tags / notes / a star, delete (to `outputs/trash/`) and
+  restore, export a zip, see what the app did (`outputs/log.jsonl`), and **Open in its tab** to change an old take
+  and sing it again.
 * **Alankars / sargam**: a built-in alankar (Sa Re Ga, Re Ga ma, ...), your own swaras, or a JSON score written
   by ChatGPT; you get a table of how many notes land on the right swara.
 * **History**: every take you have made (here or in the Terminal), playable.
@@ -70,37 +79,46 @@ notes landed within 50 cents of the written swara ("on the swara"), within 25 ce
 end ("Sa Ga Re Ma, Re Ma Ga Pa, ... up to Sa' and back"), save its answer as `my_alankar.json`, then
 `./sing sargam --json my_alankar.json`. (Or paste the JSON into the web page's Alankars tab.)
 
-**History and cache.** Every take is saved in `outputs/` and logged in `outputs/history.jsonl`. Asking for exactly the
-same thing again (same words, tune, voice, model, pitch, seed, steps) plays the saved take instead of singing it
-again, so comparisons are instant the second time. `./sing history` lists earlier takes; `--seed 1` gives a new take;
-`--fresh` forces a re-run.
+**History and cache.** Every take is saved in `outputs/` (a `.wav` plus a `.json` with everything that was asked for)
+and logged in `outputs/history.jsonl`; labels go to `outputs/annotations.jsonl` and everything the app does to
+`outputs/log.jsonl`. Asking for exactly the same thing again (same words, tune, voice, model, pitch, join, seed,
+steps) plays the saved take instead of singing it again, so comparisons are instant the second time.
+`./sing history [--search WORDS] [--star]` lists earlier takes; `./sing title 12 "best"`, `./sing tag 12 "slow sad"`,
+`./sing note 12 "..."`, `./sing star 12`, `./sing delete 12` / `./sing restore 12` label or tidy them; `./sing log`
+shows what happened; `./sing rebuild-history` re-creates the log from the `.json` files if it is ever lost.
+`--seed 1` gives a new take; `--fresh` forces a re-run.
 
 | Option | Meaning |
 |---|---|
 | `--tune N` | which song line to borrow the melody from (`./sing tunes`); default: one that fits your line |
-| `--voice N` | whose voice (`./sing voices`); default: the tune's own singer |
+| `--voice N` | whose voice: a number or part of the singer's name (`./sing voices`, `--gender female --era 1990s`); default: the tune's own singer |
+| `--join seamless\|separate` | one performance (default) or each line alone; `--line-gap 0.3` = seconds between lines where the song has none |
 | `--model kalavinka\|base\|both` | ours (default), the base SoulX-Singer, or both for comparison |
 | `--expressive` | our two-stage system draws the pitch curve (default: the model's own pitch, which sounded more natural) |
 | `--seed N` | another take of the same line |
-| `--steps N` (before the lyrics) | quality vs speed: 32 on the Mac GPU, 16 on CPU by default |
+| `--steps N` | quality vs speed: 32 on the Mac GPU, 16 on CPU by default |
 | `--device cpu` (before the lyrics) | force the CPU (if the Mac GPU misbehaves) |
-| `--fresh` (before the lyrics) | sing again even if the same request is in the history |
+| `--fresh` | sing again even if the same request is in the history |
 
 ## Compose: your own melody, timing and ornaments
 
 The web page's **Compose (pitch, timing, ornaments)** tab lets you write the melody yourself and edit it on the
 pitch (F0) curve:
 
-1. **Start from** the Yaman example, a bundled tune (with the real singer's pitch curve, or as plain notes), Hindi
-   lyrics on swaras you type (`Ga Pa Dha Pa Ga Re Sa`, one per syllable), a sargam line or alankar, a JSON
-   composition (e.g. from ChatGPT: open *JSON / ask ChatGPT* for the prompt), or a blank page. Press **Load**.
+1. **Start from** the Yaman example, a bundled tune (tick *keep the real singer's pitch curve*, or not), Hindi
+   lyrics on swaras you type (`Ga Pa Dha Pa Ga Re Sa`, one per syllable), a built-in alankar, sargam text, a JSON
+   composition (e.g. from ChatGPT: the prompt is next to the JSON box), or a blank page; only the boxes for your
+   choice are shown. Press **Load** (or **Restore last session**: every edit is autosaved).
 2. Set the **voice**, **Sa** (tonic; `auto` = the voice's own), **tempo**, **raag** (notes snap to its swaras) and
    **taal** (the beat-cycle grid).
 3. Edit on the curve:
    * drag a note **up/down** to change its pitch (snaps to the raag; hold **Alt** for free cents, e.g. a shruti);
    * drag a note's **right edge** to change its length (quarter beats; Alt = free);
-   * **double-click** a note to change its syllable (`-` = hold the previous syllable, a slur; `_` = rest; empty =
-     sing the swara name);
+   * **type a whole line** in the lyrics box above the curve and press Enter: it is split into syllables and put one
+     per note (extra syllables add notes; missing ones hold the last syllable);
+   * **double-click** a note to type its syllable on the spot (Enter saves, **Tab** / Shift+Tab moves to the next /
+     previous note, Esc cancels; `-` = hold the previous syllable, a slur; `_` = rest; empty = sing the swara name).
+     Syllables the model cannot sing are underlined in red; the words also run along a strip under the time axis;
    * **click** a note to edit it below the canvas and **add ornaments**, each with its own settings:
      meend (glide to a swara), andolan (slow sway), gamak (fast heavy shake to a neighbour swara), kan (grace note),
      murki (quick turn), khatka, zamzama (fast clusters), vibrato, glide in/out, custom shape. Carnatic names work

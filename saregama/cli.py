@@ -1131,8 +1131,12 @@ def cmd_export_soulx(a):
                 cn = clip_notes(notes, x, y)
                 if not any(n.kind != 1 for n in cn):
                     continue
-                save_audio(out / "wavs" / f"{cid}.wav", audio[x * 480:y * 480])
-                sp = split.get(r.concert, "train")
+                seg = audio[x * 480:y * 480]
+                seg = np.pad(seg, (0, max(0, (y - x) * 480 - len(seg))))     # wav length = n_frames x 480 exactly
+                save_audio(out / "wavs" / f"{cid}.wav", seg)
+                if r.concert not in split:                  # never let an unlisted concert slip into train
+                    raise SystemExit(f"concert {r.concert!r} is not in the splits file; add it (train/val/test) first")
+                sp = split[r.concert]
                 items[sp].append(clip_item(cn, x, y, f0, {
                     "clip_id": cid, "language": LANGUAGE_NAMES.get(langs[0], langs[0]) if langs else "Carnatic",
                     "tonic_hz": ir["tonic_hz"], "singer_id": singer_id(name), "mbid": r.mbid, "split": sp,

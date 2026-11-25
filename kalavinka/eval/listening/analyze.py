@@ -11,10 +11,19 @@ Outputs (stdout and ``--out``):
   (resampling listeners and clips together, 5,000 rounds, seeded);
 * paired differences between conditions (same listener, same clip) with
   their CIs, for the pairs given by ``--pairs`` (default: every pair against
-  the first condition);
+  the first condition). With fewer than ``MIN_LISTENERS`` (8) listeners the
+  listener resampling has almost no variance to draw on, so pairs are reported
+  as **descriptive only** (no "significant" flag); from 8 listeners on, each
+  pair gets a two-sided bootstrap p and a Holm-corrected p over the pairs, and
+  "significant" means Holm p < 0.05;
+* duplicate response files (the same listener's answers saved twice, e.g. the
+  online store and a downloaded file) are counted once;
 * listener screening: each listener's mean rating of the hidden real clip;
-  listeners whose real-clip mean is below ``--min-real`` are reported and,
-  with ``--screen``, left out (the anchor tells whether someone was listening);
+  listeners whose real-clip mean is below ``--min-real`` (default 3.0 on the
+  1-5 scale) are reported and, only with ``--screen``, left out (the anchor
+  tells whether someone was listening). Screening is off by default because it
+  can also drop listeners who genuinely heard the separated real vocals as
+  imperfect; the report states the threshold and whether it was applied;
 * listeners' free-text comments: per page (resolved to the clip, never to a
   condition, since a comment can refer to any of the five versions) and overall.
 
@@ -33,16 +42,24 @@ from pathlib import Path
 from typing import Dict, List, Optional, Sequence, Tuple
 
 
-def load_responses(path: Path) -> List[Dict]:
-    """Response documents from a file (one doc or a list) or every *.json in a directory."""
+MIN_LISTENERS = 8
+
+
+def load_responses(path: Path, dedupe: bool = True) -> List[Dict]:
+    """Response documents from a file (one doc or a list) or every *.json in a directory; identical answer sets
+    (same initials and same ratings) are kept once."""
     files = sorted(path.glob("*.json")) if path.is_dir() else [path]
-    out = []
+    out, seen = [], set()
     for f in files:
         d = json.loads(f.read_text())
         docs = d if isinstance(d, list) else [d]
         for doc in docs:
             body = doc.get("data", doc) if isinstance(doc, dict) else doc
             if isinstance(body, dict) and "ratings" in body:
+                fp = json.dumps([body.get("initials", ""), body["ratings"]], sort_keys=True)
+                if dedupe and fp in seen:
+                    continue
+                seen.add(fp)
                 out.append(body)
     return out
 
@@ -106,15 +123,30 @@ def bootstrap(rows: Sequence[Tuple[int, str, str, int]], pairs: Sequence[Tuple[s
         xs = sorted(xs)
         return [round(xs[int(0.025 * len(xs))], 3), round(xs[int(0.975 * len(xs)) - 1], 3)] if xs else [None, None]
     m = means(rows)
+    enough = len(listeners) >= MIN_LISTENERS
     out = {"listeners": len(listeners), "clips": len(clips),
+           "inference": "bootstrap p + Holm" if enough else f"descriptive only (fewer than {MIN_LISTENERS} listeners)",
            "conditions": {c: {"mean": round(m[c], 3), "ci95": ci(draws[c])} for c in conds}, "pairs": {}}
+    ps = {}
+    for a, b in pairs:
+        k = f"{b}-{a}"
+        xs = ddraws[k]
+        ps[k] = min(1.0, 2 * min(sum(x <= 0 for x in xs), sum(x >= 0 for x in xs)) / len(xs)) if xs else None
+    keys = [k for k in ps if ps[k] is not None]
+    order = sorted(keys, key=lambda k: ps[k])
+    adj, run = {}, 0.0
+    for rank, k in enumerate(order):                 # Holm
+        run = max(run, min(1.0, (len(order) - rank) * ps[k]))
+        adj[k] = run
     for a, b in pairs:
         k = f"{b}-{a}"
         paired = [(cell[x][b] - cell[x][a]) for x in cell if a in cell[x] and b in cell[x]]
         mean = sum(paired) / len(paired) if paired else None
         lo, hi = ci(ddraws[k])
         out["pairs"][k] = {"mean": round(mean, 3) if mean is not None else None, "ci95": [lo, hi],
-                           "significant": lo is not None and (lo > 0 or hi < 0)}
+                           "p": None if ps[k] is None else round(ps[k], 4),
+                           "p_holm": None if k not in adj else round(adj[k], 4),
+                           "significant": (k in adj and adj[k] < 0.05) if enough else None}
     return out
 
 

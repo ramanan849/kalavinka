@@ -10,7 +10,7 @@ annotation package (which stays unmodified; kalavinka wraps it).
 | `ir/` | stage 1: expressive-contour IR model (note scaffold -> expressive F0), temperature sweep | done |
 | `eval/` | held-out rendering, CER/F0/SIM, minimal-pair contrasts, paired bootstrap, listening test, demo tracks | done |
 | `ops/` | env setup, local (no-Slurm) P1 runner, GPU picker, web fetcher | done |
-| `deploy/` | shareable inference bundles: Colab notebook zip and Mac pipeline zip (`KalavinkaSinger`, CLI, web page; base-vs-ours comparison, alankars/sargam, Compose tab (F0 editor with ornaments), take history + cache) | done |
+| `deploy/` | shareable inference bundles: Colab notebook zip and Mac pipeline zip (`KalavinkaSinger`, CLI, web page; base-vs-ours comparison, alankars/sargam, Compose tab (F0 editor with ornaments, lyrics typed onto phrases), seamless joining of lines and phrases, 24 voice profiles with filters, History tab with labels / delete-restore / event log / reopen) | done |
 
 ## Layout on disk
 
@@ -128,11 +128,15 @@ ornament frames, voicing F1) and WavLM speaker similarity to the prompt.
 | Module | What |
 |---|---|
 | `eval/contrast_eval.py` | minimal-pair pronunciation scores (retroflex vs dental, aspirated vs plain) with a character CTC model and forced alignment |
-| `eval/compare.py` | paired bootstrap between systems for any per-clip metric (`cer@1`, `place_retro_sum/place_retro_n`, ...) |
+| `eval/compare.py` | paired bootstrap between systems for any per-clip metric (`cer@1`, `place_retro_sum/place_retro_n`, ...); resamples whole **songs** (clips of one song are not independent), two-sided p and Holm over a table's rows |
+| `eval/recheck_results.py` | re-runs every comparison table of a RESULTS.md with the song bootstrap + Holm and lists the verdicts that changed (`runs/eval_v1/RESULTS_song_bootstrap.md`) |
 | `eval/listening/` | blind naturalness test: `build.py` (page + stimuli + private key), `page.html`, `analyze.py` (two-way bootstrap, screening, comments) |
 | `eval/demo_song.py` | one held-out song's clips stitched in order, one track per system plus the real singer |
 | `eval/sing_new.py` | new lyrics (checked absent from training) via the dataset G2P, set to a held-out line's tune, sung by a run |
 | `eval/demo_song_timed.py` | demo tracks stitched with the song's real gaps (0 s = crossfade) instead of a fixed 0.6 s, so words split across clips are not broken by a pause |
+| `eval/demo_song_seamless.py` | a demo song re-rendered as one continuous performance (`deploy.seamless`: one timeline, real gaps, cuts only at rests or inside held notes), per system |
+| `ir/reeval.py` | re-scores a contour run on test with the current evaluation (fair flat-MIDI baselines; sampler time label) -> `test_metrics_v2.json` |
+| `ops/shadow_work.py` | a shadow copy of a P1 work dir (links for big files, copies for files stages rewrite) so text stages can be re-run without touching the dataset behind reported results (used for the G2P fix: `work_g2p2` -> `export/v2`) |
 | `eval/alankar_eval.py` | alankar benchmark: base SoulX vs V4-L on sargam exercises (note-by-note pitch, Whisper syllable CER, paired bootstrap) |
 | `eval/phone_eval.py` | IPA phone recogniser check (failed its gate; kept as a record) |
 | `ops/eval_queue.sh` | per-GPU queue: wait for a run, render, contrast, score |

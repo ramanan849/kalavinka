@@ -53,8 +53,14 @@ def test_analysis_recovers_condition_gap_and_screens():
     flagged, _ = screen(rows, 3.0)
     assert flagged == [5]
     res = bootstrap(rows, [("a", "b")], n=300)
-    assert res["pairs"]["b-a"]["mean"] == 1.0 and res["pairs"]["b-a"]["significant"]
-    assert res["listeners"] == 6 and res["clips"] == 8
+    # 6 listeners: the gap is measured, but no significance verdict (descriptive only below 8 listeners)
+    assert res["pairs"]["b-a"]["mean"] == 1.0 and res["pairs"]["b-a"]["significant"] is None
+    assert res["listeners"] == 6 and res["clips"] == 8 and res["inference"].startswith("descriptive")
+    many = resp + [dict(r) for r in resp[:4]]
+    for k, r in enumerate(many[6:]):                           # 10 listeners (different people, same pattern)
+        many[6 + k] = {"ratings": dict(r["ratings"]), "initials": f"L{k}"}
+    res = bootstrap(table(key, many), [("a", "b")], n=300)
+    assert res["pairs"]["b-a"]["significant"] is True and res["pairs"]["b-a"]["p_holm"] < 0.05
     assert table(key, [{"ratings": {"0a": 3}}]) == []          # incomplete responses are skipped
 
 

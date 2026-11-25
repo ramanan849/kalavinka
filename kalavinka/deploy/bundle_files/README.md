@@ -20,9 +20,12 @@ The first run downloads SoulX-Singer's base weights (2.7 GB, from Hugging Face) 
 python -m kalavinka_app sing "ठंडी हवा में गीत नया"            # new lyrics, tune picked automatically
 python -m kalavinka_app sing "चाँद की रोशनी में तेरा नाम" --tune 7 --voice 2
 python -m kalavinka_app sing "बारिश की बूँदों ने कुछ कहा" --expressive   # two-stage pitch (more vibrato)
-python -m kalavinka_app sing "पहली पंक्ति | दूसरी पंक्ति"        # several lines, sung one after another
+python -m kalavinka_app sing "पहली पंक्ति | दूसरी पंक्ति"        # several lines, sung as one performance
+python -m kalavinka_app sing "..." --join separate --line-gap 0.5  # the old way: each line alone, gaps between
 python -m kalavinka_app resing 3                                # a bundled line, next to the real singer
-python -m kalavinka_app tunes        # list tunes          python -m kalavinka_app voices   # list voices
+python -m kalavinka_app tunes        # list tunes          python -m kalavinka_app voices [--gender female --era 1990s]
+python -m kalavinka_app sing "..." --voice "Lata"               # a voice by number or by part of the singer's name
+python -m kalavinka_app voice-edit 12 --name "..." --gender female --notes "..."   # correct a voice profile
 python -m kalavinka_app demo         # three example lines in both pitch modes
 python -m kalavinka_app ui           # web page            (add --share for a public link)
 python -m kalavinka_app sing "..." --model both                 # compare with the base SoulX-Singer
@@ -30,11 +33,15 @@ python -m kalavinka_app alankar 2                               # an alankar, bo
 python -m kalavinka_app sargam "Sa Re Ga | Re Ga ma"             # your own swaras (or --json score.json)
 python -m kalavinka_app prompt       # the prompt that lets ChatGPT write a sargam JSON
 python -m kalavinka_app compose mine.json --model both    # your own melody + ornaments (see Compose below)
-python -m kalavinka_app history      # earlier takes (each request is cached: asking again reuses the take)
+python -m kalavinka_app history --search चाँद --star   # earlier takes (each request is cached: asking again reuses it)
+python -m kalavinka_app title 12 "best one"; python -m kalavinka_app star 12; python -m kalavinka_app delete 12
+python -m kalavinka_app log          # what the app did (takes, cache hits, errors, edits)
 ```
-Takes are saved in `outputs/` with a `.json` that says what was sung, and logged in `outputs/history.jsonl`.
-Options (before the command): `--device auto|cuda|mps|cpu`, `--steps N` (32 on a GPU, 16 on CPU by default),
-`--seed N` (another take), `--play`. The word `sing` can be left out: `python -m kalavinka_app "..."`.
+Takes are saved in `outputs/` with a `.json` that says what was sung, logged in `outputs/history.jsonl`, labelled in
+`outputs/annotations.jsonl`; deleted takes go to `outputs/trash/` (`restore N` brings them back) and
+`rebuild-history` re-creates the log from the `.json` files. Options: `--steps N` (32 on a GPU, 16 on CPU by
+default), `--seed N` (another take), `--fresh`, `--play`, `--outputs DIR` (before or after the command);
+`--device auto|cuda|mps|cpu` (before the command). The word `sing` can be left out: `python -m kalavinka_app "..."`.
 
 ## Compose: your own melody, timing and ornaments
 
@@ -78,7 +85,13 @@ The JSON format is explained at the top of `kalavinka_app/compose.py`.
 * **Lyrics must be Devanagari** (हिंदी). Use a Hindi keyboard or Google Input Tools to convert Hinglish.
 * **Tunes**: 17 lines from 10 songs the model never trained on. A tune needs at least as many syllables as your line
   (about one per vowel); leave the tune on *auto* and it picks one that fits. Extra notes of the tune are dropped.
-* **Voices**: by default the tune's own singer. Choosing another voice also moves the tune into that voice's range.
+* **Voices**: 24 voices from 1980s to 2020s songs the model never trained on, with the credited singer of the source
+  song, estimated gender (from the song's credits; the sung pitch decides in duets) and register; by default the tune's
+  own singer. Choosing another voice also moves the tune into that voice's range. The web page's Voices tab lists
+  them, plays each one, and lets you correct a profile (kept in `outputs/voice_profiles.local.json`).
+* **Seamless lines** (default): the lines of a song are sung as one performance: the model renders up to 14 s at a
+  time, cut at rests (or, in continuous singing, inside a held note with a crossfade), so silence appears only where
+  the song has a rest. Between lines from different songs the gap is `--line-gap` (0.3 s).
 * **Pitch modes**: *model's own pitch* (default) sounded most natural in our listening test. *Expressive* is our
   two-stage system: a small contour model draws a vibrato-rich pitch curve and SoulX sings it.
 * **Speed** for a 3-second line: about 5 s on a data-centre GPU (Colab's T4 is slower), about 20 s on a 100-core
@@ -90,9 +103,10 @@ The JSON format is explained at the top of `kalavinka_app/compose.py`.
 ## What is inside
 
 ```
-kalavinka_app/   singer (KalavinkaSinger), command line, web page, sargam/alankars, history + cache
+kalavinka_app/   singer (KalavinkaSinger), seamless joining, command line, web page, sargam/alankars, compose,
+                 voices (profiles), history + cache + event log
 vendor/          the project code inference needs, and SoulX-Singer's code
 weights/         our fine-tune (kalavinka_v4l, 64 MB) and the contour model (contour_cflow, 164 MB)
-data/            tunes, voices and their audio clips, the Hindi phone table
+data/            tunes, voices (+ voice_profiles.json) and their audio clips, the Hindi phone table
 ```
 See `NOTICE.md` for licences and the rules for the audio clips.

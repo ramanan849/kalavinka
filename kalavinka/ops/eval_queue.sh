@@ -32,11 +32,13 @@ for job in "$@"; do
               log "render $name"
               $SX -m kalavinka.eval.render --export "$EXPORT" --split "$split" --run "$run" --out "$EVAL/$name" \
                   --control "$ctl" ${extra//+/ } > "$EVAL/$name.log" 2>&1 || log "render $name FAILED" ;;
-    contrast) log "contrast $a"; $P1 -m kalavinka.eval.contrast_eval --render "$EVAL/$a" --export "$EXPORT" --split "${b:-test}" \
+    contrast) if ! grep -q '^rendered' "$EVAL/$a.log" 2>/dev/null; then log "skip contrast $a: its render did not finish"; continue; fi
+              log "contrast $a"; $P1 -m kalavinka.eval.contrast_eval --render "$EVAL/$a" --export "$EXPORT" --split "${b:-test}" \
                   > "$EVAL/contrast_$a.log" 2>&1 || log "contrast $a FAILED" ;;
     contrast-real) log "contrast-real $a -> $b"; $P1 -m kalavinka.eval.contrast_eval --real --render "$EVAL/$a" --export "$EXPORT" \
                   --split "${c:-test}" --out "$EVAL/$b" > "$EVAL/contrast_$b.log" 2>&1 || log "contrast-real $b FAILED" ;;
-    score)    log "score $a"; $P1 -m kalavinka.eval.score --render "$EVAL/$a" --export "$EXPORT" > "$EVAL/score_$a.log" 2>&1 \
+    score)    if ! grep -q '^rendered' "$EVAL/$a.log" 2>/dev/null; then log "skip score $a: its render did not finish"; continue; fi
+              log "score $a"; $P1 -m kalavinka.eval.score --render "$EVAL/$a" --export "$EXPORT" > "$EVAL/score_$a.log" 2>&1 \
                   || log "score $a FAILED" ;;
     *)        log "unknown job $job" ;;
   esac

@@ -124,16 +124,23 @@ class ContourNet(nn.Module):
         return lr + 0.5 * lv, {"resid": float(lr), "voicing": float(lv)}
 
     @torch.no_grad()
-    def generate(self, batch, mask, steps: int = 10, gen=None, temperature: float = 1.0):
-        """(residual (B, T), voicing prob (B, T)); flow mode integrates from noise with Euler steps."""
+    def generate(self, batch, mask, steps: int = 10, gen=None, temperature: float = 1.0, t_label: str = "left"):
+        """(residual (B, T), voicing prob (B, T)); flow mode integrates from noise with Euler steps.
+
+        ``t_label``: the time fed to the network at step k. ``"left"`` (default, correct for Euler: the state x_k
+        is at t = k/steps, which is how the network was trained); ``"mid"`` = (k + 0.5)/steps, the label used before
+        25 Nov 2026 (half a step ahead of the state), kept only to reproduce the earlier I2 numbers."""
         if self.mode == "regress":
             r, v = self(batch["cont"], batch["cat"], batch["ctx"], mask)
             return r, torch.sigmoid(v)
+        if t_label not in ("left", "mid"):
+            raise ValueError("t_label must be 'left' or 'mid'")
         B, T = mask.shape
         x = torch.randn(B, T, device=mask.device, generator=gen) * temperature
         v = None
+        off = 0.5 if t_label == "mid" else 0.0
         for k in range(steps):
-            t = torch.full((B,), (k + 0.5) / steps, device=mask.device)
+            t = torch.full((B,), (k + off) / steps, device=mask.device)
             u, v = self(batch["cont"], batch["cat"], batch["ctx"], mask, xt=x, t=t)
             x = x + u / steps
         return x, torch.sigmoid(v)

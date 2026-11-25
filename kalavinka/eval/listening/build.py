@@ -8,8 +8,9 @@ Listeners rate each stimulus 1-5 for how natural the singing sounds.
 Blinding: every stimulus file gets an opaque name (salted hash), the page only
 knows trial -> stimulus ids, and the page shuffles both the trial order and
 the order of stimuli inside a trial per listener.  The mapping id -> (clip,
-condition) is written to ``key.json`` next to the page and is **never
-published**.
+condition) is written to ``<out>.key.json`` **beside** the page folder (not
+inside it, so serving or zipping the folder can never leak it; ``--key-out``
+to choose another place) and is **never published**.
 
 Fairness: clips are chosen by a seeded random draw among test clips that all
 conditions rendered and that last ``--min-s``..``--max-s`` seconds (no
@@ -18,8 +19,8 @@ above -40 dB to ``--target-db``, peak at most -1 dBFS) and encoded to
 128 kbps MP3.
 
 Outputs in ``--out``: ``index.html`` (the page, from ``page.html`` with the
-manifest embedded), ``stimuli/<id>.mp3``, ``key.json`` (private) and
-``selection.json`` (the chosen clips).
+manifest embedded), ``stimuli/<id>.mp3`` and ``selection.json`` (the chosen
+clips); the private key goes to ``<out>.key.json`` next to the folder.
 
 Usage::
 
@@ -103,6 +104,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     p.add_argument("--max-s", type=float, default=10.0)
     p.add_argument("--target-db", type=float, default=-20.0)
     p.add_argument("--seed", type=int, default=0)
+    p.add_argument("--key-out", type=Path, default=None, help="where the private key goes (default <out>.key.json)")
     a = p.parse_args(argv)
     conds = dict(c.split("=", 1) for c in a.cond)
     items = {}
@@ -133,7 +135,8 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     page = (HERE / "page.html").read_text(encoding="utf-8")
     blob = json.dumps(manifest, ensure_ascii=False).replace("<", "\\u003c")
     (a.out / "index.html").write_text(page.replace("/*__MANIFEST__*/null", blob), encoding="utf-8")
-    (a.out / "key.json").write_text(json.dumps(key, indent=1))
+    key_path = a.key_out or a.out.parent / f"{a.out.name}.key.json"     # never inside the served folder
+    key_path.write_text(json.dumps(key, indent=1))
     (a.out / "selection.json").write_text(json.dumps({"clips": clips, "conditions": conds, "seed": a.seed,
                                                       "min_s": a.min_s, "max_s": a.max_s}, indent=1))
     print(f"{len(clips)} trials x {len(names)} stimuli -> {a.out}")

@@ -41,10 +41,11 @@ VENDOR_FILES = [
     "kalavinka/__init__.py", "kalavinka/sx/__init__.py", "kalavinka/sx/adapter.py", "kalavinka/sx/phones.py",
     "kalavinka/sx/train.py", "kalavinka/sx/data.py", "kalavinka/eval/__init__.py", "kalavinka/eval/render.py",
     "kalavinka/eval/sing_new.py", "kalavinka/ir/__init__.py", "kalavinka/ir/features.py", "kalavinka/ir/model.py",
-    "saregama/g2p.py", "saregama/phoneset.py", "saregama/paths.py",
+    "saregama/g2p.py", "saregama/numbers_hi.py", "saregama/phoneset.py", "saregama/paths.py",
 ]
-APP_FILES = ["singer.py", "cli.py", "app.py", "sargam.py", "history.py", "compose.py", "compose_ui.py",
-             "static/f0_editor.js", "static/f0_editor.css"]
+APP_FILES = ["singer.py", "cli.py", "app.py", "sargam.py", "history.py", "compose.py", "compose_ui.py", "seamless.py",
+             "voices.py", "voices_ui.py", "history_ui.py", "static/f0_editor.js", "static/f0_editor.css"]
+VOICE_SPEC = HERE / "voice_profiles.json"      # from voices_build: extra voices + profiles (gender, register, names)
 DROP_FIELDS = ("conf", "energy_db", "hnr_db", "h1h2_db", "f0_agree", "features", "swara", "note_cents")
 
 
@@ -163,6 +164,7 @@ def build_core(dst: Path, export: Path, n_tunes: int) -> Dict:
                                  "syllables": t["syllables"], "seconds": t["seconds"],
                                  "lyric": " ".join(s for s in t["item"]["text"].split() if s != "<SP>"),
                                  "voice": v["no"], "item": slim(t["item"])}, ensure_ascii=False) + "\n")
+    add_profiled_voices(voices, export, data)
     with open(data / "voices.jsonl", "w", encoding="utf-8") as fv:
         for v in sorted(voices.values(), key=lambda v: v["no"]):
             fv.write(json.dumps(v, ensure_ascii=False) + "\n")
@@ -170,6 +172,34 @@ def build_core(dst: Path, export: Path, n_tunes: int) -> Dict:
     for f in ("requirements.txt", "README.md", "NOTICE.md"):
         shutil.copy2(HERE / "bundle_files" / f, dst / f)
     return {"tunes": len(tunes), "voices": len(voices)}
+
+
+def add_profiled_voices(voices: Dict[str, Dict], export: Path, data: Path) -> int:
+    """Append the extra voices of ``VOICE_SPEC`` (numbers after the tune voices) and write
+    ``data/voice_profiles.json``. The spec's first voices must be the tune voices, in the same order (checked), so
+    voice numbers never change meaning. Returns the number of voices added."""
+    if not VOICE_SPEC.exists():
+        return 0
+    from kalavinka.eval.render import load_items
+    spec = json.loads(VOICE_SPEC.read_text(encoding="utf-8"))
+    by_no = {v["no"]: v for v in voices.values()}
+    held = {it["index"]: it for split in ("val", "test") for it in load_items(export / f"{split}.jsonl")}
+    added = 0
+    for sv in spec["voices"]:
+        if sv["no"] in by_no:
+            if by_no[sv["no"]]["item"]["singer_id"] != sv["singer_id"]:
+                raise SystemExit(f"voice {sv['no']}: spec singer {sv['singer_id']} != bundle "
+                                 f"{by_no[sv['no']]['item']['singer_id']}; re-run voices_build")
+            continue
+        it = held[sv["index"]]
+        shutil.copy2(export / it["wav"], data / it["wav"])
+        voices[sv["singer_id"]] = {"no": sv["no"], "item": slim(it), "song": sv["song"], "year": sv["year"],
+                                   "register": sv["register"],
+                                   "name": f"Voice {sv['no']}: singer of {sv['song']} ({sv['year']}), {sv['register']} register"}
+        added += 1
+    (data / "voice_profiles.json").write_text(json.dumps({k: spec[k] for k in ("gender_model", "voices", "gaps")},
+                                                         ensure_ascii=False, indent=1), encoding="utf-8")
+    return added
 
 
 def zip_dir(src: Path, zpath: Path, top: str) -> Path:

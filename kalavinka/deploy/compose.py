@@ -335,10 +335,18 @@ def normalise(comp: Dict | str) -> Dict:
     if not comp.get("phrases"):
         raise ComposeError('the composition needs a "phrases" list, each with a "notes" list')
     comp.setdefault("tonic", "auto")
-    comp["tempo_bpm"] = float(comp.get("tempo_bpm") or 80)
+    comp["tempo_bpm"] = _number(comp.get("tempo_bpm") or 80, "tempo_bpm")
+    if not 5 <= comp["tempo_bpm"] <= 600:
+        raise ComposeError(f"tempo {comp['tempo_bpm']:g} bpm: use 5-600 beats per minute")
     comp.setdefault("raag", "Chromatic (all 12)")
     comp.setdefault("taal", "none")
-    comp["smooth_ms"] = float(comp.get("smooth_ms", 30))
+    comp["smooth_ms"] = _number(30 if comp.get("smooth_ms") in (None, "") else comp["smooth_ms"], "smooth_ms")
+    comp["phrase_gap_s"] = _number(0.3 if comp.get("phrase_gap_s") in (None, "") else comp["phrase_gap_s"],
+                                   "phrase_gap_s")
+    if comp["smooth_ms"] < 0 or comp["phrase_gap_s"] < 0:
+        raise ComposeError("smooth_ms and phrase_gap_s cannot be negative")
+    if not isinstance(comp["phrases"], list):
+        raise ComposeError('"phrases" must be a list')
     for i, ph in enumerate(comp["phrases"]):
         if isinstance(ph, list):
             ph = comp["phrases"][i] = {"notes": ph}
@@ -351,16 +359,36 @@ def normalise(comp: Dict | str) -> Dict:
                 n["syl"] = "_"
             if n["syl"] == "-" and (j == 0 or ph["notes"][j - 1]["syl"] == "_"):
                 raise ComposeError(f"phrase {i + 1} note {j + 1}: '-' (hold) needs a sung note before it")
-            if "sec" not in n:
-                n["beats"] = float(n.get("beats", 1))
+            where = f"phrase {i + 1} note {j + 1}"
+            if n.get("sec") in (None, ""):
+                n.pop("sec", None)
+                n["beats"] = _number(1 if n.get("beats") in (None, "") else n["beats"], f"{where}: beats")
+            else:
+                n["sec"] = _number(n["sec"], f"{where}: sec")
             if float(n.get("sec", n.get("beats", 1))) <= 0:
-                raise ComposeError(f"phrase {i + 1} note {j + 1}: length must be positive")
+                raise ComposeError(f"{where}: length must be positive")
+            if n.get("cents") not in (None, ""):
+                n["cents"] = _number(n["cents"], f"{where}: cents")
             n.setdefault("orn", [])
             if isinstance(n["orn"], dict):
                 n["orn"] = [n["orn"]]
             if n["syl"] != "_":
-                note_cents(n, 60.0)                  # raises if the pitch is unreadable
+                try:
+                    note_cents(n, 60.0)              # raises if the pitch is unreadable
+                except (ValueError, TypeError, KeyError) as e:
+                    raise ComposeError(f"{where}: {e}") from e
     return comp
+
+
+def _number(v, what: str) -> float:
+    """``float(v)`` or a readable ComposeError."""
+    try:
+        x = float(v)
+    except (TypeError, ValueError):
+        raise ComposeError(f"{what}: {v!r} is not a number") from None
+    if not np.isfinite(x):
+        raise ComposeError(f"{what}: {v!r} is not a finite number")
+    return x
 
 
 def note_seconds(n: Dict, tempo_bpm: float) -> float:
@@ -387,16 +415,18 @@ def phrase_curve(ph: Dict, sa_midi: float, comp: Dict) -> Tuple[np.ndarray, List
     for i, (n, f, b) in enumerate(zip(notes, frames, bases)):
         if b is not None:
             curve[starts[i]:starts[i] + f] = b
-    # smooth the joins between consecutive sung notes
-    k = int(round(comp["smooth_ms"] / 1000 * FPS / 2))
+    # smooth the joins between consecutive sung notes: a ramp over ``smooth_ms`` centred on the join (at least one
+    # frame each side). Joins next to an ornament are left to the ornament, which shapes its own transition (a meend
+    # already arrives at the next note; a kan or glide starts the note on purpose), so nothing is added twice.
+    k = max(1, int(round(comp["smooth_ms"] / 1000 * FPS / 2))) if comp["smooth_ms"] > 0 else 0
     if k > 0:
         for i in range(1, len(notes)):
-            if bases[i] is None or bases[i - 1] is None:
+            if bases[i] is None or bases[i - 1] is None or notes[i].get("orn") or notes[i - 1].get("orn"):
                 continue
             s = starts[i]
             a, z = max(starts[i - 1], s - k), min(s + k, s + frames[i])
             if z - a >= 2:
-                curve[a:z] = np.linspace(bases[i - 1], bases[i], z - a)
+                curve[a:z] = np.linspace(bases[i - 1], bases[i], z - a + 2)[1:-1]
     # ornaments
     for i, (n, f, b) in enumerate(zip(notes, frames, bases)):
         if b is None or not n.get("orn"):
@@ -444,6 +474,73 @@ def syllable_phones(syl: str, swara: Optional[str], g2p=None) -> Tuple[str, List
     return syl, phones
 
 
+def phrase_tokens(notes: Sequence[Dict], g2p=None) -> Tuple[List[str], List[str]]:
+    """SoulX tokens and texts of a phrase's notes: rests -> <SP>, '-' repeats the previous syllable (a slur)."""
+    tokens, texts, last = [], [], None
+    for n in notes:
+        if n["syl"] == "_":
+            tokens.append("<SP>"); texts.append("_"); last = None
+        elif n["syl"] == "-":
+            if last is None:
+                raise ComposeError("'-' (hold) needs a sung note before it")
+            tokens.append(last[0]); texts.append(last[1])
+        else:
+            phones = n.get("phones") or syllable_phones(n["syl"], n.get("swara"), g2p)[1]
+            text = n["syl"] or syllable_phones("", n.get("swara"))[0]
+            last = ("in_" + "-".join(phones), text)
+            tokens.append(last[0]); texts.append(text)
+    return tokens, texts
+
+
+def note_pitches(notes: Sequence[Dict], idx: Sequence[int], curve: np.ndarray, starts: Sequence[int],
+                 bases: Sequence[Optional[float]], sa_midi: float) -> Tuple[List[int], List[int]]:
+    """(MIDI note pitch, note type) for notes ``idx``: the median of the curve over the middle half of each note."""
+    pitch, typ = [], []
+    for i in idx:
+        if notes[i]["syl"] == "_":
+            pitch.append(0); typ.append(1)
+            continue
+        c = curve[starts[i]:starts[i + 1]]
+        mid = c[len(c) // 4: max(len(c) // 4 + 1, 3 * len(c) // 4)]
+        v = np.nanmedian(mid) if np.isfinite(mid).any() else bases[i]
+        pitch.append(int(round(sa_midi + v / 100)))
+        typ.append(3 if notes[i]["syl"] == "-" else 2)
+    return pitch, typ
+
+
+def compose_timeline(comp: Dict, sa_midi: float, g2p=None):
+    """The whole composition on one ``seamless.Timeline`` (melody mode): phrases joined by a ``phrase_gap_s`` rest.
+    Returns (timeline, target cents over the whole timeline (NaN = unvoiced), start frame of every phrase)."""
+    from .seamless import Timeline
+    comp = normalise(comp)
+    tl = Timeline(melody=True)
+    edge = int(round(EDGE_REST * FPS))
+    tl.append_rest(EDGE_REST)
+    cents_parts, phrase_starts = [np.full(edge, np.nan)], []
+    for pi, ph in enumerate(comp["phrases"]):
+        if pi:
+            g0 = tl.total
+            tl.append_rest(comp["phrase_gap_s"])
+            cents_parts.append(np.full(tl.total - g0, np.nan))
+        curve, frames, bases = phrase_curve(ph, sa_midi, comp)
+        notes = ph["notes"]
+        tokens, texts = phrase_tokens(notes, g2p)
+        starts = np.concatenate([[0], np.cumsum(frames)]).astype(int)
+        pitch, typ = note_pitches(notes, range(len(notes)), curve, starts, bases, sa_midi)
+        it = {"phoneme": " ".join(tokens), "text": " ".join(texts), "note_pitch": " ".join(map(str, pitch)),
+              "note_type": " ".join(map(str, typ)), "duration": " ".join(f"{f / FPS:.6f}" for f in frames)}
+        hz = cents_to_hz(curve, sa_midi)
+        phrase_starts.append(tl.total)
+        tl.append_item(it, hz)
+        cents_parts.append(np.where(hz > 0, curve, np.nan))
+    g0 = tl.total
+    tl.finish()
+    cents_parts.append(np.full(tl.total - g0, np.nan))
+    cents = np.concatenate(cents_parts)
+    assert len(cents) == tl.total
+    return tl, cents, phrase_starts
+
+
 # ------------------------------------------------------------------------------------------- render plan
 def plan(comp: Dict, sa_midi: float, g2p=None, max_s: float = MAX_PHRASE_S) -> List[Dict]:
     """Composition -> SoulX items (one per piece of at most ``max_s`` s) with their target curves.
@@ -455,20 +552,7 @@ def plan(comp: Dict, sa_midi: float, g2p=None, max_s: float = MAX_PHRASE_S) -> L
     for pi, ph in enumerate(comp["phrases"]):
         curve, frames, bases = phrase_curve(ph, sa_midi, comp)
         notes = ph["notes"]
-        tokens, texts = [], []
-        last = None
-        for n in notes:
-            if n["syl"] == "_":
-                tokens.append("<SP>"); texts.append("_"); last = None
-            elif n["syl"] == "-":
-                if last is None:
-                    raise ComposeError("'-' (hold) needs a sung note before it")
-                tokens.append(last[0]); texts.append(last[1])
-            else:
-                phones = n.get("phones") or syllable_phones(n["syl"], n.get("swara"), g2p)[1]
-                text = n["syl"] or syllable_phones("", n.get("swara"))[0]
-                last = ("in_" + "-".join(phones), text)
-                tokens.append(last[0]); texts.append(text)
+        tokens, texts = phrase_tokens(notes, g2p)
         # cut into pieces <= max_s, preferring rests, never inside a slur
         pieces, cur = [], []
         for i in range(len(frames)):
@@ -489,16 +573,7 @@ def plan(comp: Dict, sa_midi: float, g2p=None, max_s: float = MAX_PHRASE_S) -> L
             if not idx:
                 continue
             seg = curve[starts[idx[0]]:starts[idx[-1] + 1]]
-            pitch, typ = [], []
-            for i in idx:
-                if notes[i]["syl"] == "_":
-                    pitch.append(0); typ.append(1)
-                    continue
-                c = curve[starts[i]:starts[i + 1]]
-                mid = c[len(c) // 4: max(len(c) // 4 + 1, 3 * len(c) // 4)]
-                v = np.nanmedian(mid) if np.isfinite(mid).any() else bases[i]
-                pitch.append(int(round(sa_midi + v / 100)))
-                typ.append(3 if notes[i]["syl"] == "-" else 2)
+            pitch, typ = note_pitches(notes, idx, curve, starts, bases, sa_midi)
             fr = [edge] + [frames[i] for i in idx] + [edge]
             cents = np.concatenate([np.full(edge, np.nan), seg, np.full(edge, np.nan)])
             hz = cents_to_hz(cents, sa_midi)
@@ -627,10 +702,47 @@ EXAMPLE = {
     ], "f0_edits": []}]}
 
 
+def set_phrase_lyrics(comp: Dict, phrase: int, sylls: Sequence[Dict]) -> Dict:
+    """Put a typed lyric line (syllables ``[{text, phones}]``, from the G2P) on phrase ``phrase``: one syllable per
+    sung note in order (rests and holds are skipped). More syllables than notes: new notes are added after the last
+    sung note (same swara and length). Fewer: the remaining sung notes hold the previous syllable (``-``), or become
+    rests if they follow a rest."""
+    comp = normalise(comp)
+    if not 0 <= phrase < len(comp["phrases"]):
+        raise ComposeError(f"there is no phrase {phrase + 1}")
+    if not sylls:
+        raise ComposeError("no syllables in the lyrics")
+    notes = comp["phrases"][phrase]["notes"]
+    slots = [i for i, n in enumerate(notes) if n["syl"] not in ("_", "-")]
+    if not slots:
+        raise ComposeError("this phrase has no sung notes to put lyrics on")
+    for k, i in enumerate(slots):
+        if k < len(sylls):
+            notes[i]["syl"] = sylls[k]["text"]
+            notes[i]["phones"] = list(sylls[k]["phones"])
+        else:
+            notes[i].pop("phones", None)
+            if i > 0 and notes[i - 1]["syl"] != "_":
+                notes[i]["syl"] = "-"
+            else:
+                notes[i]["syl"], notes[i]["orn"] = "_", []
+                notes[i].pop("swara", None)
+    last = slots[-1]
+    while last + 1 < len(notes) and notes[last + 1]["syl"] == "-":
+        last += 1
+    tmpl = notes[slots[-1]]
+    extra = [{"syl": s["text"], "phones": list(s["phones"]), "swara": tmpl.get("swara", "Sa"),
+              **({"sec": tmpl["sec"]} if "sec" in tmpl else {"beats": tmpl.get("beats", 1)}), "orn": []}
+             for s in sylls[len(slots):]]
+    notes[last + 1:last + 1] = extra
+    return normalise(comp)
+
+
 # ------------------------------------------------------------------------------------------- table view
-TABLE_COLS = ["phrase", "syllable", "swara", "cents", "beats", "sec", "ornaments"]
-
-
+TABLE_COLS = ["#", "phrase", "syllable", "swara", "cents", "beats", "sec", "ornaments"]
+# "#" is the note's id (its position when the table was made): it links a row back to its note, so data the table does
+# not show (a real singer's curve, G2P phones, a free midi/hz pitch) stays with the right note when rows are added,
+# deleted or moved. New rows leave it empty.
 def orn_to_text(orn: Sequence[Dict]) -> str:
     """Ornament list -> compact text: ``meend(to=Pa,start=0.5); vibrato(rate=5)`` (custom shapes shown as ``custom``)."""
     out = []
@@ -666,42 +778,72 @@ def orn_from_text(text: str, old: Sequence[Dict] = ()) -> List[Dict]:
     return out
 
 
-def to_table(comp: Dict) -> List[List]:
-    """Composition -> rows for the table view."""
+def _swara_cell(n: Dict, sa_midi: float) -> Tuple[str, float]:
+    """(swara name, cents offset) shown for a note: its own ``swara`` and ``cents``, or a free ``midi``/``hz`` pitch
+    named against the real tonic."""
+    if n.get("swara"):
+        return str(n["swara"]), float(n.get("cents", 0) or 0)
+    name, rest = cents_to_name(note_cents(n, sa_midi))
+    return name, round(float(rest), 1)
+
+
+def to_table(comp: Dict, sa_midi: float = 60.0) -> List[List]:
+    """Composition -> rows for the table view (``sa_midi``: the tonic, to name free midi/hz pitches)."""
     comp = normalise(comp)
-    rows = []
+    rows, k = [], 0
     for i, ph in enumerate(comp["phrases"]):
         for n in ph["notes"]:
-            sw = "" if n["syl"] == "_" else (n.get("swara") or cents_to_name(note_cents(n, 60.0))[0])
-            rows.append([i + 1, n["syl"], sw, n.get("cents", 0), n.get("beats", ""), n.get("sec", ""),
+            k += 1
+            sw, ce = ("", 0) if n["syl"] == "_" else _swara_cell(n, sa_midi)
+            rows.append([k, i + 1, n["syl"], sw, ce, n.get("beats", ""), n.get("sec", ""),
                          orn_to_text(n.get("orn", []))])
     return rows
 
 
-def from_table(rows: Sequence[Sequence], comp: Dict) -> Dict:
-    """Rows of the table view back into ``comp`` (settings and hand-drawn strokes are kept)."""
+def from_table(rows: Sequence[Sequence], comp: Dict, sa_midi: float = 60.0) -> Dict:
+    """Rows of the table view back into ``comp`` (settings and hand-drawn strokes are kept). A row whose "#" names
+    an original note keeps that note's hidden data (phones, custom curve, a free pitch whose cell was not changed);
+    a duration typed in "beats" wins over an unchanged "sec"."""
     comp = normalise(comp)
     old = [n for ph in comp["phrases"] for n in ph["notes"]]
+    blank = lambda x: str(x).strip() in ("", "nan", "None")
+    num = lambda x, what: _number(x, f"table row {what}")
     phrases: Dict[int, List[Dict]] = {}
     for k, r in enumerate(rows):
         r = list(r) + [""] * (len(TABLE_COLS) - len(r))
-        if all(str(x).strip() in ("", "nan", "None") for x in r):
+        if all(blank(x) for x in r):
             continue
-        blank = lambda x: str(x).strip() in ("", "nan", "None")
-        p = int(float(r[0])) if not blank(r[0]) else 1
-        n = {"syl": "" if blank(r[1]) else str(r[1]).strip()}
+        rid, ph, syl, sw, ce, beats, sec, orn = r[:8]
+        src = None
+        if not blank(rid):
+            j = int(num(rid, k + 1)) - 1
+            src = old[j] if 0 <= j < len(old) else None
+        p = int(num(ph, k + 1)) if not blank(ph) else 1
+        n = {"syl": "" if blank(syl) else str(syl).strip()}
         if n["syl"] != "_":
-            n["swara"] = str(r[2]).strip() or "Sa"
-            if not blank(r[3]) and float(r[3]):
-                n["cents"] = float(r[3])
-        if not blank(r[5]):
-            n["sec"] = float(r[5])
+            sw = str(sw).strip() if not blank(sw) else "Sa"
+            ce = 0.0 if blank(ce) else num(ce, k + 1)
+            if src is not None and src["syl"] != "_" and (sw, ce) == _swara_cell(src, sa_midi):
+                n.update({f: src[f] for f in ("swara", "cents", "midi", "hz") if f in src})   # unchanged pitch
+            else:
+                n["swara"] = sw
+                if ce:
+                    n["cents"] = ce
+        b_new = None if blank(beats) else num(beats, k + 1)
+        s_new = None if blank(sec) else num(sec, k + 1)
+        b_old = src.get("beats") if src is not None else None
+        if b_new is not None and (s_new is None or b_new != b_old):
+            n["beats"] = b_new                     # typed (or changed) beats win
+        elif s_new is not None:
+            n["sec"] = s_new
         else:
-            n["beats"] = float(r[4]) if not blank(r[4]) else 1.0
-        n["orn"] = orn_from_text(r[6], old[k].get("orn", []) if k < len(old) else [])
-        if k < len(old) and old[k].get("phones") and old[k]["syl"] == n["syl"]:
-            n["phones"] = old[k]["phones"]
+            n["beats"] = 1.0
+        n["orn"] = orn_from_text(orn, src.get("orn", []) if src is not None else [])
+        if src is not None and src.get("phones") and src["syl"] == n["syl"]:
+            n["phones"] = src["phones"]
         phrases.setdefault(p, []).append(n)
+    if not phrases:
+        raise ComposeError("the table is empty")
     edits = {i + 1: ph.get("f0_edits", []) for i, ph in enumerate(comp["phrases"])}
     comp["phrases"] = [{"notes": phrases[p], "f0_edits": edits.get(p, [])} for p in sorted(phrases)]
     return normalise(comp)
@@ -760,39 +902,86 @@ class ComposeSinger:
             raise ComposeError(str(e)) from e
 
     def view(self, comp, voice: Optional[int] = None) -> Dict:
-        """``view`` with the right tonic."""
+        """``view`` with the right tonic, plus a ``warn`` on every note whose syllable the model cannot sing (not
+        Devanagari, or a sound it has no phone for), so the editor can underline it."""
         comp = normalise(comp)
-        return view(comp, self.sa_midi(comp, voice))
+        v = view(comp, self.sa_midi(comp, voice))
+        for ph, vp in zip(comp["phrases"], v["phrases"]):
+            for n, b in zip(ph["notes"], vp["notes"]):
+                if n["syl"] not in ("", "-", "_") and not n.get("phones"):
+                    err = self._syl_error(n["syl"])
+                    if err:
+                        b["warn"] = err
+        return v
+
+    def _syl_error(self, syl: str) -> Optional[str]:
+        """Why a syllable cannot be sung (None if it can); cached per syllable."""
+        cache = self.__dict__.setdefault("_syl_cache", {})
+        if syl not in cache:
+            try:
+                self.g2p(syl)
+                cache[syl] = None
+            except ComposeError as e:
+                cache[syl] = str(e)
+        return cache[syl]
+
+    def lyrics(self, comp, phrase: int, text: str) -> Dict:
+        """Put a typed lyric line on a phrase (``set_phrase_lyrics`` with this singer's G2P)."""
+        return set_phrase_lyrics(comp, int(phrase), self.g2p(text))
 
     def sing(self, comp, model: str = "kalavinka", voice: Optional[int] = None, steps: Optional[int] = None,
-             seed: int = 0, check: bool = True) -> Tuple[np.ndarray, int, Dict]:
-        """Render every piece in melody mode and join them (short gaps between phrases). Returns (wav, sr, info)."""
+             seed: int = 0, check: bool = True, join: str = "seamless") -> Tuple[np.ndarray, int, Dict]:
+        """Render the composition in melody mode. ``join="seamless"`` (default): one timeline, phrases joined by
+        ``phrase_gap_s`` rests and cut only where ``seamless.plan_pieces`` says; ``"separate"``: the old way (each
+        piece of ``plan`` rendered alone and joined with short gaps). Returns (wav, sr, info)."""
+        from .seamless import JOINS, render
         from .singer import default_steps
+        if join not in JOINS:
+            raise ComposeError(f"join must be one of {JOINS}")
         comp = normalise(comp)
-        vo = self.s._voice(voice or comp.get("voice") or 1)
+        try:
+            vo = self.s._voice(voice or comp.get("voice") or 1)
+        except Exception as e:                        # SingError for an unknown voice
+            raise ComposeError(str(e)) from e
         sa = self.sa_midi(comp, vo["no"])
         self.s.steps = int(steps or default_steps(self.s.device))
         t0 = time.time()
-        pieces = plan(comp, sa, self.g2p)
-        if not pieces:
-            raise ComposeError("nothing to sing (only rests?)")
-        out, placed, pos = [], [], 0.0
-        gap = np.zeros(int(GAP_S * SR), np.float32)
-        for k, p in enumerate(pieces):
-            hz = [float(x) for x in p["item"]["f0"].split()]
-            w = self.s._render(p["item"], vo, hz, seed + k, shift=False, model=model)
-            placed.append({"cents": p["cents"], "sa_midi": sa, "start_s": pos, "phrase": p["phrase"], "t0": p["t0"]})
-            out += [w, gap]
-            pos += (len(w) + len(gap)) / SR
-        wav = np.concatenate(out[:-1]).astype(np.float32)
+        if join == "seamless":
+            tl, cents, pstarts = compose_timeline(comp, sa, self.g2p)
+            if all(n.typ == 1 for n in tl.notes):
+                raise ComposeError("nothing to sing (only rests?)")
+            wav, pieces = render(self.s, tl, vo, seed, model)
+            placed = [{"cents": cents, "sa_midi": sa, "start_s": 0.0}]
+            n_pieces, cuts = len(pieces), [p["cut"] for p in pieces[1:]]
+        else:
+            pieces = plan(comp, sa, self.g2p)
+            if not pieces:
+                raise ComposeError("nothing to sing (only rests?)")
+            out, placed, pos = [], [], 0.0
+            gap = np.zeros(int(GAP_S * SR), np.float32)
+            for k, p in enumerate(pieces):
+                hz = [float(x) for x in p["item"]["f0"].split()]
+                w = self.s._render(p["item"], vo, hz, seed + k, shift=False, model=model)
+                placed.append({"cents": p["cents"], "sa_midi": sa, "start_s": pos, "phrase": p["phrase"], "t0": p["t0"]})
+                out += [w, gap]
+                pos += (len(w) + len(gap)) / SR
+            wav = np.concatenate(out[:-1]).astype(np.float32)
+            n_pieces, cuts = len(pieces), ["gap"] * (len(pieces) - 1)
         info = {"model": model, "voice": vo["no"], "sa_midi": round(sa, 2), "steps": self.s.steps,
-                "device": self.s.device, "pieces": len(pieces), "title": comp.get("title", ""),
-                "took_s": round(time.time() - t0, 1), "seconds": round(len(wav) / SR, 2)}
+                "device": self.s.device, "pieces": n_pieces, "cuts": cuts, "join": join,
+                "title": comp.get("title", ""), "took_s": round(time.time() - t0, 1),
+                "seconds": round(len(wav) / SR, 2)}
         if check:
             rep = follow_report(wav, placed)
             info["follow"] = {k: v for k, v in rep.items() if k != "sung_cents"}
-            info["sung"] = [{"phrase": p["phrase"], "t0": round(p["t0"], 2), "start_s": round(p["start_s"], 2), "cents": c}
-                            for p, c in zip(placed, rep["sung_cents"])]
+            if join == "seamless":
+                sung = rep["sung_cents"][0]
+                ends = pstarts[1:] + [len(sung)]
+                info["sung"] = [{"phrase": i, "t0": 0.0, "start_s": round(a / FPS, 2), "cents": sung[a:b]}
+                                for i, (a, b) in enumerate(zip(pstarts, ends))]
+            else:
+                info["sung"] = [{"phrase": p["phrase"], "t0": round(p["t0"], 2), "start_s": round(p["start_s"], 2),
+                                 "cents": c} for p, c in zip(placed, rep["sung_cents"])]
         return wav, SR, info
 
 

@@ -29,6 +29,11 @@ else both.
 **Ablation switches** (``PairDataset``): ``exclude_tokens`` drops every clip that
 contains one of those phone ids, both as a target *and* as a prompt candidate
 (the phone-holdout experiment: the model must never hear or read them);
+Evaluation (``gate=None``) is deterministic: a clip without a prompt uses a self-prompt fraction seeded by its
+index, and the val batches never change between validations, so the val loss that picks ``best.pt`` is the same
+number every time (before 25 Nov 2026 it moved with the random self-prompt and the batch jitter). The held-out-phone
+runs also drop those clips from val, and ``subset_s`` runs take prompts only from the chosen subset.
+
 ``subset_s`` keeps a seeded random subset of targets totalling that many
 seconds (low-data experiment).
 """
@@ -36,6 +41,7 @@ from __future__ import annotations
 
 import json
 import random
+import zlib
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Optional, Sequence
@@ -175,10 +181,15 @@ class PairDataset(torch.utils.data.Dataset):
         self.idx = [i for i, c in enumerate(self.all) if c["band"] in bands and i not in bad]
         if subset_s > 0:
             self.idx = seeded_subset(self.idx, [self.all[i]["mel"].shape[0] / FPS for i in self.idx], subset_s, seed)
-        self.prompt = prompt_map([dict(c, band="excluded") if i in bad else c for i, c in enumerate(self.all)])
+        # prompts never come from held-out-phone clips, and (low-data runs) only from the chosen subset, so a
+        # "1 h" model really hears 1 h of audio
+        keep = set(self.idx) if subset_s > 0 else None
+        self.prompt = prompt_map([dict(c, band="excluded") if i in bad or (keep is not None and i not in keep) else c
+                                  for i, c in enumerate(self.all)])
         self.prompt_max = int(prompt_max_s * FPS)
         self.max_total = int(max_total_s * FPS)
         self.gate = gate
+        self.seed = seed
         self.rng = random.Random(seed)
 
     def __len__(self) -> int:
@@ -205,7 +216,9 @@ class PairDataset(torch.utils.data.Dataset):
             ntype = torch.cat([p["note_type"], t["note_type"]]).long()
             n_prompt = L
         else:                                   # self-prompt: the first 25-40 % of the target
-            n_prompt = int(T * self.rng.uniform(0.25, 0.4))
+            # training: random; evaluation (gate=None): fixed per clip, so the val loss is the same every time
+            r = self.rng if self.gate is not None else random.Random(zlib.crc32(f"{t['index']}|{self.seed}".encode()))
+            n_prompt = int(T * r.uniform(0.25, 0.4))
             parts = [(t, slice(0, None), t["mel2note"].long())]
             tokens, pitch, ntype = t["phoneme"].long(), t["note_pitch"].long(), t["note_type"].long()
         cat = lambda key: torch.cat([c[key][s] for c, s, _ in parts])          # noqa: E731
@@ -259,7 +272,7 @@ class FrameBudgetSampler(torch.utils.data.Sampler):
 
     def _batches(self) -> List[List[int]]:
         """Length-sorted chunks under the frame budget, in a (seeded) random order."""
-        rng = random.Random(self.seed + self.epoch)
+        rng = random.Random(self.seed + (self.epoch if self.shuffle else 0))     # eval batches never change
         order = sorted(range(len(self.ds)), key=lambda k: self.lengths[k] + rng.random())
         out, cur, longest = [], [], 0
         for k in order:

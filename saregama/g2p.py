@@ -15,6 +15,16 @@ Phones are names from :mod:`saregama.phoneset`; '.' marks syllable boundaries.
 
 Every phone remembers which written akshara it came from, so each syllable also
 gets its native-script text (used for the ``text`` field and in review tools).
+
+Fixes of 25 Nov 2026 (training data re-exported as ``export/v2``):
+
+* medial schwa deletion looks through a vowel's nasalisation (chandrabindu, or an
+  anusvara that stays a nasalisation): चाँदनी = chaand-nii, हँसना = hans-naa;
+* the final schwa is kept only after clusters ending in य / र (सत्य, मित्र), no
+  longer after व (पूर्व, गर्व, विश्व);
+* numbers (ASCII or Devanagari digits) are spelled out in Hindi
+  (``numbers_hi``), ॐ is ओम्, and symbols (♪, curly quotes, /, &, emoji) are
+  skipped instead of raising an error.
 """
 from __future__ import annotations
 
@@ -205,6 +215,18 @@ def _dev_parse(word: str, lang: str) -> Tuple[List[_Seg], List[str]]:
     return segs, aks
 
 
+def _is_vowel_nasalisation(segs: List["_Seg"], k: int) -> bool:
+    """True if segment ``k`` only nasalises the vowel before it: chandrabindu, or an anusvara that will not become
+    a nasal consonant (it does before a stop or m, as in अंगना / चंदा, where it closes the syllable)."""
+    ph = segs[k].phone
+    if ph == "nas":
+        return True
+    if ph != "<anusvara>":
+        return False
+    nxt = segs[k + 1].phone if k + 1 < len(segs) else None
+    return nxt not in HOMORGANIC_NASAL and nxt != "m"
+
+
 def _delete_schwas(segs: List[_Seg], medial: bool, keep_final: bool) -> List[_Seg]:
     """Schwa deletion: word-final rule plus right-to-left V C _ C V rule."""
 
@@ -224,8 +246,8 @@ def _delete_schwas(segs: List[_Seg], medial: bool, keep_final: bool) -> List[_Se
         while is_c(k):
             cluster += 1
             k -= 1
-        # keep final schwa after clusters ending in y/r/v: सत्य, मित्र, पत्र
-        if not (cluster >= 2 and segs[last - 1].phone in ("y", "r", "v")):
+        # keep final schwa after clusters ending in y/r: सत्य, मित्र, पत्र, कार्य (but not पूर्व, गर्व, विश्व)
+        if not (cluster >= 2 and segs[last - 1].phone in ("y", "r")):
             drop.add(last)
     if medial:
         for k in range(last - 1, 0, -1):
@@ -235,8 +257,12 @@ def _delete_schwas(segs: List[_Seg], medial: bool, keep_final: bool) -> List[_Se
             prv = [j for j in range(k - 1, -1, -1) if j not in drop]
             if len(nxt) < 2 or len(prv) < 2:
                 continue
-            c1, v0, c2, v2 = prv[0], prv[1], nxt[0], nxt[1]
-            if is_c(c1) and is_v(v0) and v0 + 1 == c1 and is_c(c2) and is_v(v2):
+            c1, c2, v2 = prv[0], nxt[0], nxt[1]
+            # the vowel before c1 may carry nasalisation (चाँदनी, हँसना, उँगली): look through it
+            v0 = c1 - 1
+            while v0 >= 0 and _is_vowel_nasalisation(segs, v0):
+                v0 -= 1
+            if is_c(c1) and is_v(v0) and v0 not in drop and is_c(c2) and is_v(v2):
                 drop.add(k)
     return [s for k, s in enumerate(segs) if k not in drop]
 
@@ -488,9 +514,23 @@ _TA_RANGE = re.compile(r"[஀-௿]")
 _WORD_SPLIT = re.compile(r"[\s।॥,;:!?\.\"'()\[\]{}\-–—…|]+")
 
 
-def split_words(line: str) -> List[str]:
-    """Words of a lyric line (NFC; split on spaces and punctuation)."""
-    return [w for w in _WORD_SPLIT.split(unicodedata.normalize("NFC", line)) if w]
+_KEEP_CF = {"\u200c", "\u200d"}            # ZWNJ / ZWJ shape Devanagari conjuncts: keep them
+
+
+def _letters_only(text: str) -> str:
+    """Replace every character that is not a letter, a combining mark, a digit or ZWJ/ZWNJ by a space
+    (curly quotes, ♪, /, &, emoji, ...), so symbols never reach the word rules."""
+    return "".join(ch if (unicodedata.category(ch)[0] in "LMN" or ch in _KEEP_CF) else " " for ch in text)
+
+
+def split_words(line: str, lang: str = "hi") -> List[str]:
+    """Words of a lyric line (NFC; split on spaces, punctuation and symbols). For Hindi, numbers (ASCII or
+    Devanagari digits) are spelled out as Hindi words and ॐ becomes ओम्, so nothing is silently dropped."""
+    from .numbers_hi import spell_numbers
+    text = unicodedata.normalize("NFC", line)
+    if lang == "hi":
+        text = spell_numbers(text.replace("ॐ", " ओम् "))
+    return [w for w in _WORD_SPLIT.split(_letters_only(text)) if w]
 
 
 def word_to_syllables(word: str, lang: str, lexicon: Optional[Lexicon] = None,
@@ -536,7 +576,7 @@ def line_to_syllables(line: str, lang: str, lexicon: Optional[Lexicon] = None,
     if lang not in LANGS:
         raise ValueError(f"lang must be one of {LANGS}, got {lang!r}")
     out: List[Syllable] = []
-    for wi, word in enumerate(split_words(line)):
+    for wi, word in enumerate(split_words(line, lang)):
         sylls = word_to_syllables(word, lang, lexicon, **opts)
         for si, (txt, ph) in enumerate(sylls):
             out.append(Syllable(text=txt, phones=ph, word_index=wi,

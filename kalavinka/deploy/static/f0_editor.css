@@ -21,3 +21,10 @@
 .kv-doc { font-size: 11px; color: #6a6a78; align-self: center; }
 .kv-hint { color: #6a6a78; }
 .kv-status { font-size: 12px; color: #6a6a78; margin-top: 4px; }
+.kv-canvas-wrap { position: relative; }
+.kv-inline { position: absolute; z-index: 5; width: 7em; font-size: 15px; padding: 2px 5px; border: 2px solid #e2563b;
+  border-radius: 5px; background: #fff; color: #111; font-family: 'Noto Sans Devanagari', sans-serif; }
+.kv-lyrics-row { align-items: center; }
+.kv-lyrics-in { flex: 1; min-width: 260px; border: 1px solid #d0d0d8; border-radius: 6px; padding: 4px 8px; font-size: 14px;
+  color: #111; background: #fff; font-family: 'Noto Sans Devanagari', system-ui, sans-serif; }
+.kv-warn { color: #b3261e; font-size: 12px; margin: 2px 0; }

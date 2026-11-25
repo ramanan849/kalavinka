@@ -1,0 +1,1023 @@
+{
+ "built_from": "../export/v1",
+ "gender_model": "alefiury/wav2vec2-large-xlsr-53-gender-recognition-librispeech",
+ "voices": [
+  {
+   "no": 1,
+   "index": "1982_tu_tu_hai_wohi__p0X6YI7nuEc_c003",
+   "singer_id": "1982_tu_tu_hai_wohi__p0X6YI7nuEc#0",
+   "song_id": "1982_tu_tu_hai_wohi__p0X6YI7nuEc",
+   "song": "Tu Tu Hai Wohi",
+   "year": 1982,
+   "decade": "1980s",
+   "gender": "male",
+   "gender_p_female": 0.001,
+   "gender_conf": 0.85,
+   "gender_from": "credits (duet) + pitch",
+   "register": "low",
+   "f0_median_hz": 196.3,
+   "range_hz": [
+    135.5,
+    257.3
+   ],
+   "sa_hz": 335.1,
+   "singer": {
+    "name": "Kishore Kumar",
+    "source": "credited singer of the source song",
+    "confirmed": false
+   },
+   "name_options": [],
+   "credit_source": "https://music.apple.com/us/song/yeh-vaada-raha-tu-tu-hai-wahi-from-yeh-vaada-raha/6804600964"
+  },
+  {
+   "no": 2,
+   "index": "1989_aaja_shaam_hone_aayi__oxUX8e7PCd8_c005",
+   "singer_id": "1989_aaja_shaam_hone_aayi__oxUX8e7PCd8#0",
+   "song_id": "1989_aaja_shaam_hone_aayi__oxUX8e7PCd8",
+   "song": "Aaja Shaam Hone Aayi",
+   "year": 1989,
+   "decade": "1980s",
+   "gender": "female",
+   "gender_p_female": 0.993,
+   "gender_conf": 0.85,
+   "gender_from": "credits (duet) + pitch",
+   "register": "low",
+   "f0_median_hz": 328.2,
+   "range_hz": [
+    188.4,
+    547.2
+   ],
+   "sa_hz": 174.2,
+   "singer": {
+    "name": "Lata Mangeshkar",
+    "source": "credited singer of the source song",
+    "confirmed": false
+   },
+   "name_options": [],
+   "credit_source": "https://en.wikipedia.org/wiki/Maine_Pyar_Kiya_(soundtrack)"
+  },
+  {
+   "no": 3,
+   "index": "1991_tu_pyaar_hai_kisi_aur_ka__98MGT9JStKk_c010",
+   "singer_id": "1991_tu_pyaar_hai_kisi_aur_ka__98MGT9JStKk#0",
+   "song_id": "1991_tu_pyaar_hai_kisi_aur_ka__98MGT9JStKk",
+   "song": "Tu Pyaar Hai Kisi Aur Ka",
+   "year": 1991,
+   "decade": "1990s",
+   "gender": "male",
+   "gender_p_female": 0.333,
+   "gender_conf": 0.85,
+   "gender_from": "credits (duet) + pitch",
+   "register": "mid",
+   "f0_median_hz": 218.1,
+   "range_hz": [
+    170.5,
+    293.9
+   ],
+   "sa_hz": 232.0,
+   "singer": {
+    "name": "Kumar Sanu",
+    "source": "credited singer of the source song",
+    "confirmed": false
+   },
+   "name_options": [],
+   "credit_source": "https://www.youtube.com/watch?v=U0qBRoeQa-g"
+  },
+  {
+   "no": 4,
+   "index": "1993_goriya_re_goriya__BQMzJDH_3xw_c001",
+   "singer_id": "1993_goriya_re_goriya__BQMzJDH_3xw#0",
+   "song_id": "1993_goriya_re_goriya__BQMzJDH_3xw",
+   "song": "Goriya Re Goriya",
+   "year": 1993,
+   "decade": "1990s",
+   "gender": "female",
+   "gender_p_female": 0.889,
+   "gender_conf": 0.85,
+   "gender_from": "credits (duet) + pitch",
+   "register": "mid",
+   "f0_median_hz": 405.9,
+   "range_hz": [
+    187.4,
+    553.2
+   ],
+   "sa_hz": 183.8,
+   "singer": {
+    "name": "Lata Mangeshkar",
+    "source": "credited singer of the source song",
+    "confirmed": false
+   },
+   "name_options": [],
+   "credit_source": "https://en.wikipedia.org/wiki/Aaina_(1993_film)"
+  },
+  {
+   "no": 5,
+   "index": "1993_jaadu_teri_nazar___QeQIv9lihM_c016",
+   "singer_id": "1993_jaadu_teri_nazar___QeQIv9lihM#0",
+   "song_id": "1993_jaadu_teri_nazar___QeQIv9lihM",
+   "song": "Jaadu Teri Nazar",
+   "year": 1993,
+   "decade": "1990s",
+   "gender": "male",
+   "gender_p_female": 0.001,
+   "gender_conf": 0.95,
+   "gender_from": "credits",
+   "register": "mid",
+   "f0_median_hz": 209.2,
+   "range_hz": [
+    145.7,
+    296.2
+   ],
+   "sa_hz": 137.9,
+   "singer": {
+    "name": "Udit Narayan",
+    "source": "credited singer of the source song",
+    "confirmed": false
+   },
+   "name_options": [],
+   "credit_source": "https://en.wikipedia.org/wiki/Darr"
+  },
+  {
+   "no": 6,
+   "index": "2014_manali_trance__vZ_NpLWuL00_c001",
+   "singer_id": "2014_manali_trance__vZ_NpLWuL00#0",
+   "song_id": "2014_manali_trance__vZ_NpLWuL00",
+   "song": "Manali Trance",
+   "year": 2014,
+   "decade": "2010s",
+   "gender": "male",
+   "gender_p_female": 0.469,
+   "gender_conf": 0.85,
+   "gender_from": "credits (duet) + pitch",
+   "register": "low",
+   "f0_median_hz": 171.5,
+   "range_hz": [
+    150.2,
+    188.3
+   ],
+   "sa_hz": 174.9,
+   "singer": {
+    "name": "Yo Yo Honey Singh",
+    "source": "credited singer of the source song",
+    "confirmed": false
+   },
+   "name_options": [],
+   "credit_source": "https://en.wikipedia.org/wiki/Yo_Yo_Honey_Singh"
+  },
+  {
+   "no": 7,
+   "index": "2017_tu_hi_hai__KyMNLIYRsR4_c010",
+   "singer_id": "2017_tu_hi_hai__KyMNLIYRsR4#0",
+   "song_id": "2017_tu_hi_hai__KyMNLIYRsR4",
+   "song": "Tu Hi Hai",
+   "year": 2017,
+   "decade": "2010s",
+   "gender": "male",
+   "gender_p_female": 0.826,
+   "gender_conf": 0.95,
+   "gender_from": "credits",
+   "register": "mid",
+   "f0_median_hz": 218.1,
+   "range_hz": [
+    149.6,
+    335.8
+   ],
+   "sa_hz": 184.9,
+   "singer": {
+    "name": "Rahul Mishra",
+    "source": "credited singer of the source song",
+    "confirmed": false
+   },
+   "name_options": [],
+   "credit_source": "https://en.wikipedia.org/wiki/Half_Girlfriend_(soundtrack)"
+  },
+  {
+   "no": 8,
+   "index": "2021_bedardi_se_pyaar_ka__y_RHQ4mBDKA_c003",
+   "singer_id": "2021_bedardi_se_pyaar_ka__y_RHQ4mBDKA#0",
+   "song_id": "2021_bedardi_se_pyaar_ka__y_RHQ4mBDKA",
+   "song": "Bedardi Se Pyaar Ka",
+   "year": 2021,
+   "decade": "2020s",
+   "gender": "male",
+   "gender_p_female": 0.559,
+   "gender_conf": 0.95,
+   "gender_from": "credits",
+   "register": "high",
+   "f0_median_hz": 227.1,
+   "range_hz": [
+    168.3,
+    345.9
+   ],
+   "sa_hz": 219.7,
+   "singer": {
+    "name": "Jubin Nautiyal",
+    "source": "credited singer of the source song",
+    "confirmed": false
+   },
+   "name_options": [],
+   "credit_source": "https://music.apple.com/in/song/bedardi-se-pyaar-ka/1570959103"
+  },
+  {
+   "no": 9,
+   "index": "2024_o_maahi__Etkd-07gnxM_c005",
+   "singer_id": "2024_o_maahi__Etkd-07gnxM#0",
+   "song_id": "2024_o_maahi__Etkd-07gnxM",
+   "song": "O Maahi",
+   "year": 2024,
+   "decade": "2020s",
+   "gender": "male",
+   "gender_p_female": 0.998,
+   "gender_conf": 0.95,
+   "gender_from": "credits",
+   "register": "high",
+   "f0_median_hz": 276.9,
+   "range_hz": [
+    186.8,
+    367.4
+   ],
+   "sa_hz": 277.1,
+   "singer": {
+    "name": "Arijit Singh",
+    "source": "credited singer of the source song",
+    "confirmed": false
+   },
+   "name_options": [],
+   "credit_source": "https://music.apple.com/us/song/o-maahi-from-dunki/1720723962"
+  },
+  {
+   "no": 10,
+   "index": "2025_saiyaara__BSJa1UytM8w_c003",
+   "singer_id": "2025_saiyaara__BSJa1UytM8w#0",
+   "song_id": "2025_saiyaara__BSJa1UytM8w",
+   "song": "Saiyaara",
+   "year": 2025,
+   "decade": "2020s",
+   "gender": "male",
+   "gender_p_female": 0.004,
+   "gender_conf": 0.95,
+   "gender_from": "credits",
+   "register": "high",
+   "f0_median_hz": 246.6,
+   "range_hz": [
+    190.5,
+    330.9
+   ],
+   "sa_hz": 138.5,
+   "singer": {
+    "name": "Faheem Abdullah",
+    "source": "credited singer of the source song",
+    "confirmed": false
+   },
+   "name_options": [],
+   "credit_source": "https://www.imdb.com/title/tt28037987/soundtrack/"
+  },
+  {
+   "no": 11,
+   "index": "2000_toone_mujhe_pehchaana_nahin__u6DCkRtSWCo_c006",
+   "singer_id": "2000_toone_mujhe_pehchaana_nahin__u6DCkRtSWCo#0",
+   "song_id": "2000_toone_mujhe_pehchaana_nahin__u6DCkRtSWCo",
+   "song": "Toone Mujhe Pehchaana Nahin",
+   "year": 2000,
+   "decade": "2000s",
+   "gender": "male",
+   "gender_p_female": 0.998,
+   "gender_conf": 0.95,
+   "gender_from": "credits",
+   "register": "high",
+   "f0_median_hz": 243.3,
+   "range_hz": [
+    167.7,
+    327.9
+   ],
+   "sa_hz": 146.8,
+   "singer": {
+    "name": "Shaan",
+    "source": "credited singer of the source song",
+    "confirmed": false
+   },
+   "name_options": [],
+   "credit_source": "https://www.jiosaavn.com/song/tune-mujhe-pehchana-nahin-from-raju-chacha/HgUqQSB,Q1k"
+  },
+  {
+   "no": 12,
+   "index": "2016_om_jai_shiv_omkara_full_audio__BhwOproElxU_c009",
+   "singer_id": "2016_om_jai_shiv_omkara_full_audio__BhwOproElxU#0",
+   "song_id": "2016_om_jai_shiv_omkara_full_audio__BhwOproElxU",
+   "song": "Om Jai Shiv Omkara Full Audio",
+   "year": 2016,
+   "decade": "2010s",
+   "gender": "female",
+   "gender_p_female": 0.999,
+   "gender_conf": 0.7,
+   "gender_from": "pitch (credits disagree)",
+   "register": "high",
+   "f0_median_hz": 408.1,
+   "range_hz": [
+    345.7,
+    551.2
+   ],
+   "sa_hz": 182.4,
+   "singer": null,
+   "name_options": [],
+   "credit_source": "https://open.spotify.com/track/22I52Unr0uk7o1MBsMN3sK"
+  },
+  {
+   "no": 13,
+   "index": "2025_laal_pari__KGn-erOG-Bs_c001",
+   "singer_id": "2025_laal_pari__KGn-erOG-Bs#0",
+   "song_id": "2025_laal_pari__KGn-erOG-Bs",
+   "song": "Laal Pari",
+   "year": 2025,
+   "decade": "2020s",
+   "gender": "female",
+   "gender_p_female": 0.999,
+   "gender_conf": 0.85,
+   "gender_from": "credits (duet) + pitch",
+   "register": "low",
+   "f0_median_hz": 346.0,
+   "range_hz": [
+    197.8,
+    472.3
+   ],
+   "sa_hz": 220.0,
+   "singer": {
+    "name": "Simar Kaur",
+    "source": "credited singer of the source song",
+    "confirmed": false
+   },
+   "name_options": [],
+   "credit_source": "https://en.wikipedia.org/wiki/Housefull_5"
+  },
+  {
+   "no": 14,
+   "index": "1983_ae_zindagi_gale_laga_le__8A30PWazxMU_c015",
+   "singer_id": "1983_ae_zindagi_gale_laga_le__8A30PWazxMU#0",
+   "song_id": "1983_ae_zindagi_gale_laga_le__8A30PWazxMU",
+   "song": "Ae Zindagi Gale Laga Le",
+   "year": 1983,
+   "decade": "1980s",
+   "gender": "male",
+   "gender_p_female": 0.649,
+   "gender_conf": 0.95,
+   "gender_from": "credits",
+   "register": "mid",
+   "f0_median_hz": 216.9,
+   "range_hz": [
+    160.0,
+    297.1
+   ],
+   "sa_hz": 108.1,
+   "singer": {
+    "name": "Suresh Wadkar",
+    "source": "credited singer of the source song",
+    "confirmed": false
+   },
+   "name_options": [],
+   "credit_source": "https://en.wikipedia.org/wiki/Sadma"
+  },
+  {
+   "no": 15,
+   "index": "1990_jaan_e_jigar_jaan_e_man__ecTeagAk1Dc_c003",
+   "singer_id": "1990_jaan_e_jigar_jaan_e_man__ecTeagAk1Dc#0",
+   "song_id": "1990_jaan_e_jigar_jaan_e_man__ecTeagAk1Dc",
+   "song": "Jaan E Jigar Jaan E Man",
+   "year": 1990,
+   "decade": "1990s",
+   "gender": "female",
+   "gender_p_female": 0.999,
+   "gender_conf": 0.85,
+   "gender_from": "credits (duet) + pitch",
+   "register": "high",
+   "f0_median_hz": 461.9,
+   "range_hz": [
+    302.7,
+    539.2
+   ],
+   "sa_hz": 290.5,
+   "singer": {
+    "name": "Anuradha Paudwal",
+    "source": "credited singer of the source song",
+    "confirmed": false
+   },
+   "name_options": [],
+   "credit_source": "https://en.wikipedia.org/wiki/Aashiqui_(soundtrack)"
+  },
+  {
+   "no": 16,
+   "index": "2007_salaam_e_ishq__MoJVzTzixzs_c001",
+   "singer_id": "2007_salaam_e_ishq__MoJVzTzixzs#0",
+   "song_id": "2007_salaam_e_ishq__MoJVzTzixzs",
+   "song": "Salaam E Ishq",
+   "year": 2007,
+   "decade": "2000s",
+   "gender": "male",
+   "gender_p_female": 0.465,
+   "gender_conf": 0.85,
+   "gender_from": "credits (duet) + pitch",
+   "register": "low",
+   "f0_median_hz": 208.8,
+   "range_hz": [
+    172.8,
+    310.3
+   ],
+   "sa_hz": 206.5,
+   "singer": null,
+   "name_options": [
+    "Sonu Nigam",
+    "Kunal Ganjawala",
+    "Shankar Mahadevan"
+   ],
+   "credit_source": "https://en.wikipedia.org/wiki/Salaam-e-Ishq"
+  },
+  {
+   "no": 17,
+   "index": "2015_man_mera_mandir_shiv_meri_puja__S6HFRZmZrTI_c022",
+   "singer_id": "2015_man_mera_mandir_shiv_meri_puja__S6HFRZmZrTI#0",
+   "song_id": "2015_man_mera_mandir_shiv_meri_puja__S6HFRZmZrTI",
+   "song": "Man Mera Mandir Shiv Meri Puja",
+   "year": 2015,
+   "decade": "2010s",
+   "gender": "female",
+   "gender_p_female": 0.999,
+   "gender_conf": 0.95,
+   "gender_from": "credits",
+   "register": "high",
+   "f0_median_hz": 487.4,
+   "range_hz": [
+    314.5,
+    561.8
+   ],
+   "sa_hz": 325.1,
+   "singer": {
+    "name": "Anuradha Paudwal",
+    "source": "credited singer of the source song",
+    "confirmed": false
+   },
+   "name_options": [],
+   "credit_source": "https://www.imdb.com/title/tt21244664/"
+  },
+  {
+   "no": 18,
+   "index": "2021_raatan_lambiyan__S2BOXJG71FY_c000",
+   "singer_id": "2021_raatan_lambiyan__S2BOXJG71FY#0",
+   "song_id": "2021_raatan_lambiyan__S2BOXJG71FY",
+   "song": "Raatan Lambiyan",
+   "year": 2021,
+   "decade": "2020s",
+   "gender": "female",
+   "gender_p_female": 0.999,
+   "gender_conf": 0.85,
+   "gender_from": "credits (duet) + pitch",
+   "register": "low",
+   "f0_median_hz": 260.8,
+   "range_hz": [
+    216.0,
+    294.0
+   ],
+   "sa_hz": 174.5,
+   "singer": {
+    "name": "Asees Kaur",
+    "source": "credited singer of the source song",
+    "confirmed": false
+   },
+   "name_options": [],
+   "credit_source": "https://en.wikipedia.org/wiki/Shershaah_(soundtrack)"
+  },
+  {
+   "no": 19,
+   "index": "1981_dekha_ek_khwab__SFow1tB6gAY_c004",
+   "singer_id": "1981_dekha_ek_khwab__SFow1tB6gAY#0",
+   "song_id": "1981_dekha_ek_khwab__SFow1tB6gAY",
+   "song": "Dekha Ek Khwab",
+   "year": 1981,
+   "decade": "1980s",
+   "gender": "male",
+   "gender_p_female": 0.003,
+   "gender_conf": 0.85,
+   "gender_from": "credits (duet) + pitch",
+   "register": "low",
+   "f0_median_hz": 166.0,
+   "range_hz": [
+    138.5,
+    205.4
+   ],
+   "sa_hz": 164.0,
+   "singer": {
+    "name": "Kishore Kumar",
+    "source": "credited singer of the source song",
+    "confirmed": false
+   },
+   "name_options": [],
+   "credit_source": "https://en.wikipedia.org/wiki/Silsila_(1981_film)"
+  },
+  {
+   "no": 20,
+   "index": "1990_gori_hain_kalaiyaan__tLX5s5QLtAY_c011",
+   "singer_id": "1990_gori_hain_kalaiyaan__tLX5s5QLtAY#0",
+   "song_id": "1990_gori_hain_kalaiyaan__tLX5s5QLtAY",
+   "song": "Gori Hain Kalaiyaan",
+   "year": 1990,
+   "decade": "1990s",
+   "gender": "female",
+   "gender_p_female": 0.999,
+   "gender_conf": 0.85,
+   "gender_from": "credits (duet) + pitch",
+   "register": "high",
+   "f0_median_hz": 468.7,
+   "range_hz": [
+    381.0,
+    596.1
+   ],
+   "sa_hz": 400.1,
+   "singer": {
+    "name": "Lata Mangeshkar",
+    "source": "credited singer of the source song",
+    "confirmed": false
+   },
+   "name_options": [],
+   "credit_source": "https://en.wikipedia.org/wiki/Aaj_Ka_Arjun"
+  },
+  {
+   "no": 21,
+   "index": "1998_o_o_jaane_jaana__yHBc0PcJb84_c002",
+   "singer_id": "1998_o_o_jaane_jaana__yHBc0PcJb84#0",
+   "song_id": "1998_o_o_jaane_jaana__yHBc0PcJb84",
+   "song": "O O Jaane Jaana",
+   "year": 1998,
+   "decade": "1990s",
+   "gender": "male",
+   "gender_p_female": 0.999,
+   "gender_conf": 0.95,
+   "gender_from": "credits",
+   "register": "high",
+   "f0_median_hz": 234.7,
+   "range_hz": [
+    184.5,
+    297.9
+   ],
+   "sa_hz": 219.1,
+   "singer": {
+    "name": "Kamaal Khan",
+    "source": "credited singer of the source song",
+    "confirmed": false
+   },
+   "name_options": [],
+   "credit_source": "https://en.wikipedia.org/wiki/Pyaar_Kiya_To_Darna_Kya_(1998_film)"
+  },
+  {
+   "no": 22,
+   "index": "2014_offo__UFzBtouqWVA_c000",
+   "singer_id": "2014_offo__UFzBtouqWVA#0",
+   "song_id": "2014_offo__UFzBtouqWVA",
+   "song": "Offo",
+   "year": 2014,
+   "decade": "2010s",
+   "gender": "female",
+   "gender_p_female": 0.999,
+   "gender_conf": 0.85,
+   "gender_from": "credits (duet) + pitch",
+   "register": "mid",
+   "f0_median_hz": 382.6,
+   "range_hz": [
+    328.1,
+    441.7
+   ],
+   "sa_hz": 261.8,
+   "singer": {
+    "name": "Aditi Singh Sharma",
+    "source": "credited singer of the source song",
+    "confirmed": false
+   },
+   "name_options": [],
+   "credit_source": "https://en.wikipedia.org/wiki/2_States_(soundtrack)"
+  },
+  {
+   "no": 23,
+   "index": "2016_dil_deewane_ka_dola_dildar_ke_liye__mGnwSnPVc6c_c018",
+   "singer_id": "2016_dil_deewane_ka_dola_dildar_ke_liye__mGnwSnPVc6c#0",
+   "song_id": "2016_dil_deewane_ka_dola_dildar_ke_liye__mGnwSnPVc6c",
+   "song": "Dil Deewane Ka Dola Dildar Ke Liye",
+   "year": 2016,
+   "decade": "2010s",
+   "gender": "male",
+   "gender_p_female": 0.426,
+   "gender_conf": 0.7,
+   "gender_from": "credits (duet) + pitch",
+   "register": "low",
+   "f0_median_hz": 203.8,
+   "range_hz": [
+    134.2,
+    290.5
+   ],
+   "sa_hz": 182.1,
+   "singer": null,
+   "name_options": [
+    "Kumar Sanu",
+    "Babla Mehta"
+   ],
+   "credit_source": "https://www.shazam.com/en-us/song/1465078201/dil-diwane-ka-dola-dildar-ke-liye"
+  },
+  {
+   "no": 24,
+   "index": "1994_ek_ladki_ko_dekha__htMvfOfixuM_c003",
+   "singer_id": "1994_ek_ladki_ko_dekha__htMvfOfixuM#0",
+   "song_id": "1994_ek_ladki_ko_dekha__htMvfOfixuM",
+   "song": "Ek Ladki Ko Dekha",
+   "year": 1994,
+   "decade": "1990s",
+   "gender": "male",
+   "gender_p_female": 0.552,
+   "gender_conf": 0.95,
+   "gender_from": "credits",
+   "register": "mid",
+   "f0_median_hz": 219.7,
+   "range_hz": [
+    156.6,
+    264.2
+   ],
+   "sa_hz": 117.6,
+   "singer": {
+    "name": "Kumar Sanu",
+    "source": "credited singer of the source song",
+    "confirmed": false
+   },
+   "name_options": [],
+   "credit_source": "https://en.wikipedia.org/wiki/1942:_A_Love_Story"
+  }
+ ],
+ "gaps": [
+  "2000s female"
+ ],
+ "all_singers": [
+  {
+   "singer_id": "1983_ae_zindagi_gale_laga_le__8A30PWazxMU#0",
+   "song_id": "1983_ae_zindagi_gale_laga_le__8A30PWazxMU",
+   "year": 1983,
+   "gender": "male",
+   "gender_p_female": 0.649,
+   "f0_med": 216.9,
+   "register": "mid"
+  },
+  {
+   "singer_id": "1983_ae_zindagi_gale_laga_le__8A30PWazxMU#1",
+   "song_id": "1983_ae_zindagi_gale_laga_le__8A30PWazxMU",
+   "year": 1983,
+   "gender": "male",
+   "gender_p_female": 0.999,
+   "f0_med": 243.45,
+   "register": "high"
+  },
+  {
+   "singer_id": "1990_gori_hain_kalaiyaan__tLX5s5QLtAY#0",
+   "song_id": "1990_gori_hain_kalaiyaan__tLX5s5QLtAY",
+   "year": 1990,
+   "gender": "female",
+   "gender_p_female": 0.999,
+   "f0_med": 468.7,
+   "register": "high"
+  },
+  {
+   "singer_id": "1990_jaan_e_jigar_jaan_e_man__ecTeagAk1Dc#1",
+   "song_id": "1990_jaan_e_jigar_jaan_e_man__ecTeagAk1Dc",
+   "year": 1990,
+   "gender": "female",
+   "gender_p_female": 0.665,
+   "f0_med": 284.8,
+   "register": "low"
+  },
+  {
+   "singer_id": "1990_jaan_e_jigar_jaan_e_man__ecTeagAk1Dc#2",
+   "song_id": "1990_jaan_e_jigar_jaan_e_man__ecTeagAk1Dc",
+   "year": 1990,
+   "gender": "male",
+   "gender_p_female": 0.999,
+   "f0_med": 210.1,
+   "register": "mid"
+  },
+  {
+   "singer_id": "1990_jaan_e_jigar_jaan_e_man__ecTeagAk1Dc#0",
+   "song_id": "1990_jaan_e_jigar_jaan_e_man__ecTeagAk1Dc",
+   "year": 1990,
+   "gender": "female",
+   "gender_p_female": 0.999,
+   "f0_med": 461.9,
+   "register": "high"
+  },
+  {
+   "singer_id": "1994_ek_ladki_ko_dekha__htMvfOfixuM#0",
+   "song_id": "1994_ek_ladki_ko_dekha__htMvfOfixuM",
+   "year": 1994,
+   "gender": "male",
+   "gender_p_female": 0.552,
+   "f0_med": 219.7,
+   "register": "mid"
+  },
+  {
+   "singer_id": "1998_o_o_jaane_jaana__yHBc0PcJb84#0",
+   "song_id": "1998_o_o_jaane_jaana__yHBc0PcJb84",
+   "year": 1998,
+   "gender": "male",
+   "gender_p_female": 0.999,
+   "f0_med": 234.7,
+   "register": "high"
+  },
+  {
+   "singer_id": "1999_hoshwalon_ko_khabar_kya__r0Dmman8MjU#0",
+   "song_id": "1999_hoshwalon_ko_khabar_kya__r0Dmman8MjU",
+   "year": 1999,
+   "gender": "male",
+   "gender_p_female": 0.002,
+   "f0_med": 155.6,
+   "register": "low"
+  },
+  {
+   "singer_id": "2000_toone_mujhe_pehchaana_nahin__u6DCkRtSWCo#0",
+   "song_id": "2000_toone_mujhe_pehchaana_nahin__u6DCkRtSWCo",
+   "year": 2000,
+   "gender": "male",
+   "gender_p_female": 0.998,
+   "f0_med": 243.3,
+   "register": "high"
+  },
+  {
+   "singer_id": "2007_salaam_e_ishq__MoJVzTzixzs#0",
+   "song_id": "2007_salaam_e_ishq__MoJVzTzixzs",
+   "year": 2007,
+   "gender": "male",
+   "gender_p_female": 0.465,
+   "f0_med": 208.8,
+   "register": "low"
+  },
+  {
+   "singer_id": "2010_dil_pardesi_ho_gaya__ddqyBylsXQ0#0",
+   "song_id": "2010_dil_pardesi_ho_gaya__ddqyBylsXQ0",
+   "year": 2010,
+   "gender": "male",
+   "gender_p_female": 0.987,
+   "f0_med": 206.1,
+   "register": "low"
+  },
+  {
+   "singer_id": "2011_dil_ke_badle_sanam__fvwyPGBOEgY#0",
+   "song_id": "2011_dil_ke_badle_sanam__fvwyPGBOEgY",
+   "year": 2011,
+   "gender": "male",
+   "gender_p_female": 0.998,
+   "f0_med": 215.55,
+   "register": "mid"
+  },
+  {
+   "singer_id": "2011_rabb_kare_tujhko_bhi__BukHiHrbFpA#0",
+   "song_id": "2011_rabb_kare_tujhko_bhi__BukHiHrbFpA",
+   "year": 2011,
+   "gender": "male",
+   "gender_p_female": 0.999,
+   "f0_med": 216.6,
+   "register": "mid"
+  },
+  {
+   "singer_id": "2014_tharki_chokro__N5bELC8MXeU#0",
+   "song_id": "2014_tharki_chokro__N5bELC8MXeU",
+   "year": 2014,
+   "gender": "male",
+   "gender_p_female": 0.999,
+   "f0_med": 295.04999999999995,
+   "register": "high"
+  },
+  {
+   "singer_id": "2015_man_mera_mandir_shiv_meri_puja__S6HFRZmZrTI#1",
+   "song_id": "2015_man_mera_mandir_shiv_meri_puja__S6HFRZmZrTI",
+   "year": 2015,
+   "gender": "female",
+   "gender_p_female": 0.999,
+   "f0_med": 360.79999999999995,
+   "register": "mid"
+  },
+  {
+   "singer_id": "2015_man_mera_mandir_shiv_meri_puja__S6HFRZmZrTI#0",
+   "song_id": "2015_man_mera_mandir_shiv_meri_puja__S6HFRZmZrTI",
+   "year": 2015,
+   "gender": "female",
+   "gender_p_female": 0.999,
+   "f0_med": 487.4,
+   "register": "high"
+  },
+  {
+   "singer_id": "2016_dil_deewane_ka_dola_dildar_ke_liye__mGnwSnPVc6c#0",
+   "song_id": "2016_dil_deewane_ka_dola_dildar_ke_liye__mGnwSnPVc6c",
+   "year": 2016,
+   "gender": "male",
+   "gender_p_female": 0.426,
+   "f0_med": 203.8,
+   "register": "low"
+  },
+  {
+   "singer_id": "2016_om_jai_shiv_omkara_full_audio__BhwOproElxU#0",
+   "song_id": "2016_om_jai_shiv_omkara_full_audio__BhwOproElxU",
+   "year": 2016,
+   "gender": "female",
+   "gender_p_female": 0.999,
+   "f0_med": 408.1,
+   "register": "high"
+  },
+  {
+   "singer_id": "2017_hawayein__cYOB941gyXI#0",
+   "song_id": "2017_hawayein__cYOB941gyXI",
+   "year": 2017,
+   "gender": "male",
+   "gender_p_female": 0.996,
+   "f0_med": 291.8,
+   "register": "high"
+  },
+  {
+   "singer_id": "2017_jaha_tum_rahoge__Mi3GdCyzHCY#0",
+   "song_id": "2017_jaha_tum_rahoge__Mi3GdCyzHCY",
+   "year": 2017,
+   "gender": "male",
+   "gender_p_female": 0.997,
+   "f0_med": 220.3,
+   "register": "high"
+  },
+  {
+   "singer_id": "2019_kinna_sona__7lfFZs50JHM#0",
+   "song_id": "2019_kinna_sona__7lfFZs50JHM",
+   "year": 2019,
+   "gender": "male",
+   "gender_p_female": 0.755,
+   "f0_med": 210.4,
+   "register": "mid"
+  },
+  {
+   "singer_id": "2021_raatan_lambiyan__S2BOXJG71FY#0",
+   "song_id": "2021_raatan_lambiyan__S2BOXJG71FY",
+   "year": 2021,
+   "gender": "female",
+   "gender_p_female": 0.999,
+   "f0_med": 260.8,
+   "register": "low"
+  },
+  {
+   "singer_id": "1981_dekha_ek_khwab__SFow1tB6gAY#0",
+   "song_id": "1981_dekha_ek_khwab__SFow1tB6gAY",
+   "year": 1981,
+   "gender": "male",
+   "gender_p_female": 0.003,
+   "f0_med": 166.0,
+   "register": "low"
+  },
+  {
+   "singer_id": "1982_tu_tu_hai_wohi__p0X6YI7nuEc#0",
+   "song_id": "1982_tu_tu_hai_wohi__p0X6YI7nuEc",
+   "year": 1982,
+   "gender": "male",
+   "gender_p_female": 0.001,
+   "f0_med": 196.3,
+   "register": "low"
+  },
+  {
+   "singer_id": "1989_aaja_shaam_hone_aayi__oxUX8e7PCd8#0",
+   "song_id": "1989_aaja_shaam_hone_aayi__oxUX8e7PCd8",
+   "year": 1989,
+   "gender": "female",
+   "gender_p_female": 0.993,
+   "f0_med": 328.2,
+   "register": "low"
+  },
+  {
+   "singer_id": "1991_tu_pyaar_hai_kisi_aur_ka__98MGT9JStKk#0",
+   "song_id": "1991_tu_pyaar_hai_kisi_aur_ka__98MGT9JStKk",
+   "year": 1991,
+   "gender": "male",
+   "gender_p_female": 0.333,
+   "f0_med": 218.1,
+   "register": "mid"
+  },
+  {
+   "singer_id": "1991_tu_pyaar_hai_kisi_aur_ka__98MGT9JStKk#1",
+   "song_id": "1991_tu_pyaar_hai_kisi_aur_ka__98MGT9JStKk",
+   "year": 1991,
+   "gender": "female",
+   "gender_p_female": 0.999,
+   "f0_med": 388.45,
+   "register": "mid"
+  },
+  {
+   "singer_id": "1993_goriya_re_goriya__BQMzJDH_3xw#0",
+   "song_id": "1993_goriya_re_goriya__BQMzJDH_3xw",
+   "year": 1993,
+   "gender": "female",
+   "gender_p_female": 0.889,
+   "f0_med": 405.9,
+   "register": "mid"
+  },
+  {
+   "singer_id": "1993_goriya_re_goriya__BQMzJDH_3xw#1",
+   "song_id": "1993_goriya_re_goriya__BQMzJDH_3xw",
+   "year": 1993,
+   "gender": "male",
+   "gender_p_female": 0.001,
+   "f0_med": 202.8,
+   "register": "low"
+  },
+  {
+   "singer_id": "1993_jaadu_teri_nazar___QeQIv9lihM#0",
+   "song_id": "1993_jaadu_teri_nazar___QeQIv9lihM",
+   "year": 1993,
+   "gender": "male",
+   "gender_p_female": 0.001,
+   "f0_med": 209.2,
+   "register": "mid"
+  },
+  {
+   "singer_id": "2014_manali_trance__vZ_NpLWuL00#0",
+   "song_id": "2014_manali_trance__vZ_NpLWuL00",
+   "year": 2014,
+   "gender": "male",
+   "gender_p_female": 0.469,
+   "f0_med": 171.5,
+   "register": "low"
+  },
+  {
+   "singer_id": "2014_offo__UFzBtouqWVA#0",
+   "song_id": "2014_offo__UFzBtouqWVA",
+   "year": 2014,
+   "gender": "female",
+   "gender_p_female": 0.999,
+   "f0_med": 382.55,
+   "register": "mid"
+  },
+  {
+   "singer_id": "2015_o_re_piya__FGTv9-oQhIg#1",
+   "song_id": "2015_o_re_piya__FGTv9-oQhIg",
+   "year": 2015,
+   "gender": "male",
+   "gender_p_female": 0.998,
+   "f0_med": 229.7,
+   "register": "high"
+  },
+  {
+   "singer_id": "2017_tu_hi_hai__KyMNLIYRsR4#0",
+   "song_id": "2017_tu_hi_hai__KyMNLIYRsR4",
+   "year": 2017,
+   "gender": "male",
+   "gender_p_female": 0.826,
+   "f0_med": 218.1,
+   "register": "mid"
+  },
+  {
+   "singer_id": "2019_apna_time_aayega__jFGKJBPFdUA#0",
+   "song_id": "2019_apna_time_aayega__jFGKJBPFdUA",
+   "year": 2019,
+   "gender": "male",
+   "gender_p_female": 0.002,
+   "f0_med": 193.8,
+   "register": "low"
+  },
+  {
+   "singer_id": "2019_paagal__bdesdebUFLE#0",
+   "song_id": "2019_paagal__bdesdebUFLE",
+   "year": 2019,
+   "gender": "male",
+   "gender_p_female": 0.001,
+   "f0_med": 139.1,
+   "register": "low"
+  },
+  {
+   "singer_id": "2021_bedardi_se_pyaar_ka__y_RHQ4mBDKA#0",
+   "song_id": "2021_bedardi_se_pyaar_ka__y_RHQ4mBDKA",
+   "year": 2021,
+   "gender": "male",
+   "gender_p_female": 0.559,
+   "f0_med": 227.05,
+   "register": "high"
+  },
+  {
+   "singer_id": "2024_o_maahi__Etkd-07gnxM#0",
+   "song_id": "2024_o_maahi__Etkd-07gnxM",
+   "year": 2024,
+   "gender": "male",
+   "gender_p_female": 0.998,
+   "f0_med": 276.9,
+   "register": "high"
+  },
+  {
+   "singer_id": "2025_laal_pari__KGn-erOG-Bs#0",
+   "song_id": "2025_laal_pari__KGn-erOG-Bs",
+   "year": 2025,
+   "gender": "female",
+   "gender_p_female": 0.999,
+   "f0_med": 346.0,
+   "register": "low"
+  },
+  {
+   "singer_id": "2025_saiyaara__BSJa1UytM8w#0",
+   "song_id": "2025_saiyaara__BSJa1UytM8w",
+   "year": 2025,
+   "gender": "male",
+   "gender_p_female": 0.004,
+   "f0_med": 246.6,
+   "register": "high"
+  }
+ ]
+}

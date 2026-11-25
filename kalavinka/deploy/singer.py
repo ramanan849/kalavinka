@@ -39,6 +39,7 @@ import json
 import os
 import random
 import sys
+import threading
 import time
 import zlib
 from pathlib import Path
@@ -123,6 +124,14 @@ def fetch_base_weights(bundle: str | Path, log=print) -> Path:
     return path
 
 
+def looks_like_mps_error(e: BaseException) -> bool:
+    """True for errors that mean "this operation does not run on the Mac GPU" (then the CPU is used), not for bugs
+    in our own code (those are raised as they are)."""
+    msg = str(e).lower()
+    return isinstance(e, NotImplementedError) or "mps" in msg or "not implemented" in msg or "not supported" in msg \
+        or "metal" in msg or "placeholder storage" in msg
+
+
 def default_steps(device: str) -> int:
     """Flow steps: 32 on a GPU; 16 on CPU (twice as fast, slightly rougher)."""
     return 16 if device == "cpu" else 32
@@ -151,7 +160,16 @@ class KalavinkaSinger:
         fetch_base_weights(self.bundle, log=lambda m: self.log(m.replace("[kalavinka] ", "")))
         use_soundfile_loader()
         self.device = pick_device(device)
-        self._load(self.device)
+        self._lock = threading.RLock()        # one render at a time (web page users, tabs, threads share the model)
+        self.steps = default_steps(self.device)
+        try:
+            self._load(self.device)
+        except Exception as e:                  # the model could not be built on the Mac GPU: use the CPU instead
+            if self.device != "mps":
+                raise
+            self.log(f"could not load on the Mac GPU ({str(e).splitlines()[0][:120]}); using the CPU")
+            self._load("cpu")
+            self.steps = default_steps("cpu")
         self._cflow = None
         self._base = None
 
@@ -188,6 +206,9 @@ class KalavinkaSinger:
             self._base[0].to("cpu")
             self._base = (self._base[0], IndicDataProcessor(hop_size=HOP, sample_rate=SR, device="cpu",
                                                             phoneset_path=str(UPSTREAM_PHONES)))
+        if self.steps == default_steps("mps"):
+            self.steps = default_steps("cpu")
+            self.log(f"using {self.steps} steps on the CPU (pass --steps to choose)")
         self.device = "cpu"
 
     def system(self, model: str = "kalavinka"):
@@ -250,7 +271,10 @@ class KalavinkaSinger:
                             "Tip: Google Input Tools or your phone's Hindi keyboard can convert Hinglish.")
         from saregama.g2p import line_to_syllables
         known = {x[3:] for x in json.loads(self.table.read_text(encoding="utf-8")) if x.startswith("in_")}
-        sylls = [{"text": s.text, "phones": list(s.phones)} for s in line_to_syllables(line, "hi")]
+        try:
+            sylls = [{"text": s.text, "phones": list(s.phones)} for s in line_to_syllables(line, "hi")]
+        except ValueError as e:
+            raise SingError(f"cannot read the lyrics: {e}") from e
         bad = sorted({p for s in sylls for p in s["phones"] if p not in known})
         if bad:
             raise SingError(f"the model has no sound for {bad} in: {line}")
@@ -283,6 +307,11 @@ class KalavinkaSinger:
         ``model``: kalavinka or base. Runs SoulX with an MPS -> CPU fallback."""
         import torch
         from kalavinka.eval.render import side
+        with self._lock:
+            return self._render_locked(target, voice, f0, seed, shift, model, torch, side)
+
+    def _render_locked(self, target, voice, f0, seed, shift, model, torch, side) -> np.ndarray:
+        """``_render`` under the lock; moves to the CPU once if the Mac GPU cannot run a step."""
         for attempt in (0, 1):
             try:
                 net, proc, remap = self.system(model)
@@ -293,7 +322,7 @@ class KalavinkaSinger:
                                        control="score" if f0 is None else "melody")
                 return wav[0].float().cpu().numpy().reshape(-1)
             except (RuntimeError, NotImplementedError, TypeError) as e:
-                if self.device != "mps" or attempt:
+                if self.device != "mps" or attempt or not looks_like_mps_error(e):
                     raise
                 self.log(f"MPS error: {str(e).splitlines()[0][:120]}")
                 self._to_cpu()
@@ -322,6 +351,8 @@ class KalavinkaSinger:
         lines = split_lines(lyrics)
         if not lines:
             raise SingError("type some lyrics first")
+        if tune is not None and not 1 <= int(tune) <= len(self._tunes):
+            raise SingError(f"there is no tune {tune}; pick 1 to {len(self._tunes)} (see the tune list)")
         self.steps = int(steps or default_steps(self.device))
         t0 = time.time()
         pieces, info = [], {"lines": [], "mode": mode, "model": model, "device": self.device}
@@ -355,7 +386,8 @@ class KalavinkaSinger:
     def resing(self, tune: int, mode: str = "score", steps: Optional[int] = None, seed: int = 0,
                model: str = "kalavinka") -> Dict:
         """Sing a bundled line with its original lyrics, plus the real singer's clip for comparison.
-        ``mode``: score | expressive | real-pitch (SoulX given the real singer's own pitch curve)."""
+        ``mode``: score | expressive | real-pitch (SoulX given the real singer's own pitch curve).
+        Returns {"model": (wav, sr), "real": (wav, sr), "model_name", "lyric", "song", "mode", "took_s"}."""
         import soundfile as sf
         tu = self._tune(tune)
         self.steps = int(steps or default_steps(self.device))
@@ -368,7 +400,7 @@ class KalavinkaSinger:
         wav = self._render(tu["item"], vo, f0() if f0 else None, seed, shift=False, model=model)
         real, sr = sf.read(self.bundle / "data" / tu["item"]["wav"], dtype="float32")
         return {"model": (wav, SR), "real": (real, sr), "lyric": tu["lyric"], "song": f"{tu['song']} ({tu['year']})",
-                "mode": mode, "model": model, "took_s": round(time.time() - t0, 1)}
+                "mode": mode, "model_name": model, "took_s": round(time.time() - t0, 1)}
 
 
 def save_wav(path: str | Path, wav: np.ndarray, sr: int = SR) -> Path:

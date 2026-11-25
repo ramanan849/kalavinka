@@ -142,7 +142,7 @@ def score_clip(gold_tiers: Dict, t0: int, sylls: Sequence[Dict], a: int, b: int)
     errs_ms = [float(np.min(np.abs(pon - g)) / FPS * 1000) if len(pon) else 1e9 for g in gon]
     sing = _in_span(t0, gold_tiers.get("singers", []), a, b)
     multi = sum(min(f1, b) - max(f0, a) for f0, f1, t in sing if len(t) > 1)
-    return {"gold_words": len(gw), "word_errors": int(min(errs, max(len(gw), errs))),
+    return {"gold_words": len(gw), "word_errors": int(min(errs, len(gw))),     # capped at the gold word count (insertions cannot exceed 100 %)
             "gold_onsets": len(gon), "onsets_50ms": int(sum(e <= 50 for e in errs_ms)),
             "onset_errors_ms": [round(e, 1) for e in errs_ms],
             "overlap_share": round(float(multi) / max(b - a, 1), 3)}
