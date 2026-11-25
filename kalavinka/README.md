@@ -10,6 +10,7 @@ annotation package (which stays unmodified; kalavinka wraps it).
 | `ir/` | stage 1: expressive-contour IR model (note scaffold -> expressive F0), temperature sweep | done |
 | `eval/` | held-out rendering, CER/F0/SIM, minimal-pair contrasts, paired bootstrap, listening test, demo tracks | done |
 | `ops/` | env setup, local (no-Slurm) P1 runner, GPU picker, web fetcher | done |
+| `deploy/` | shareable inference bundles: Colab notebook zip and Mac pipeline zip (`KalavinkaSinger`, CLI, web page) | done |
 
 ## Layout on disk
 
@@ -138,6 +139,14 @@ ornament frames, voicing F1) and WavLM speaker similarity to the prompt.
 .venv-p1/bin/python -m kalavinka.eval.demo_song --export $PROJECT/export/v1 --song <song id> --out $PROJECT/demo \
     --sys score=$PROJECT/runs/eval_v1/L4_score --sys twostage_i2=$PROJECT/runs/eval_v1/L4_irI2t085
 ```
+
+## Sharing the model (Colab / Mac)
+
+```
+kalavinka/ops/pack_bundles.sh        # -> <PROJECT>/bundles/kalavinka_colab.zip, kalavinka_mac.zip (~230 MB each)
+```
+See `deploy/README.md`. The zips hold our weights, 17 held-out tunes and 10 voices; SoulX's base `model.pt` is
+downloaded from Hugging Face on first use.
 
 ## Tests
 

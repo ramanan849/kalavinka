@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Kalavinka launcher.  Examples:
+#   ./sing ui                                   web page in your browser
+#   ./sing "ठंडी हवा में गीत नया"                sing a line (saved in outputs/, played on a Mac)
+#   ./sing "चाँद की रोशनी में तेरा नाम" --tune 7 --voice 2 --expressive
+#   ./sing resing 3                             a bundled line, next to the real singer
+#   ./sing tunes   |   ./sing voices   |   ./sing demo   |   ./sing help
+cd "$(dirname "$0")"
+if [ ! -x .venv/bin/python ]; then
+  echo "Not set up yet: run  bash setup_mac.sh  first."; exit 1
+fi
+export PYTORCH_ENABLE_MPS_FALLBACK=1
+case "${1:-help}" in
+  help|-h|--help) exec .venv/bin/python -m kalavinka_app --help ;;
+  ui|tunes|voices|fetch) exec .venv/bin/python -m kalavinka_app "$@" ;;
+  *) exec .venv/bin/python -m kalavinka_app --play "$@" ;;
+esac

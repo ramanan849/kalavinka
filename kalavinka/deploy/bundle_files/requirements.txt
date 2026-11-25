@@ -1,0 +1,15 @@
+# Kalavinka inference. Tested with Python 3.10-3.12.
+# torch: on Colab keep the preinstalled one; on a Mac setup_mac.sh installs it (Apple-silicon GPU = "mps").
+torch>=2.2
+torchaudio>=2.2
+transformers==4.41.2
+peft==0.11.1
+accelerate>=0.30
+omegaconf>=2.3
+librosa>=0.10
+scipy>=1.10
+soundfile>=0.12
+numpy
+einops>=0.7
+huggingface_hub>=0.23
+gradio>=4.40
