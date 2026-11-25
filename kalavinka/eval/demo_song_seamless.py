@@ -93,6 +93,8 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     p.add_argument("--max-gap", type=float, default=1.5)
     p.add_argument("--skip-gap", type=float, default=1.0)
     p.add_argument("--device", default="cuda")
+    p.add_argument("--max-s", type=float, default=14.0, help="longest render (28 for a model trained on long clips)")
+    p.add_argument("--tag", default="seamless", help="file name tag: <song>_<sys>_<tag>.wav")
     a = p.parse_args(argv)
     items = {}
     for line in (a.export / f"{a.split}.jsonl").read_text(encoding="utf-8").split("\n"):
@@ -131,11 +133,11 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
             raise SystemExit("twostage_i2 needs --f0-json")
         tl, gaps = song_timeline([items[c] for c in clips], melody, f0s if name == "twostage_i2" else None,
                                  a.max_gap, a.skip_gap)
-        wav, pieces = render(singers[run], tl, voice, seed)
-        sf.write(a.out / f"{a.song}_{name}_seamless.wav", wav, SR)
+        wav, pieces = render(singers[run], tl, voice, seed, max_s=a.max_s)
+        sf.write(a.out / f"{a.song}_{name}_{a.tag}.wav", wav, SR)
         report["systems"][name] = {"seconds": round(len(wav) / SR, 2), "pieces": pieces, "gaps": gaps}
         print(f"{name}: {len(wav) / SR:.1f} s, {len(pieces)} renders, cuts {[p['cut'] for p in pieces[1:]]}", flush=True)
-    (a.out / f"{a.song}_seamless.json").write_text(json.dumps(report, ensure_ascii=False, indent=1))
+    (a.out / f"{a.song}_{a.tag}.json").write_text(json.dumps(report, ensure_ascii=False, indent=1))
 
 
 if __name__ == "__main__":
