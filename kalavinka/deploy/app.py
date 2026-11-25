@@ -7,6 +7,9 @@ Two tabs:
 * **Compare with the real singer**: pick a tune, re-sing its original words, hear the model and the real clip.
 * **Alankars / sargam**: a built-in alankar or your own swaras (text, or an LLM-written JSON), with a note-by-note
   pitch check.
+* **Compose (pitch, timing, ornaments)**: write the melody yourself on the F0 curve (``compose_ui``): swaras or free
+  cents, lengths, lyrics on the notes, ornaments (meend, gamak, kan, murki, andolan, vibrato ...), hand-drawn pitch,
+  an instant preview tone, then sing it and see how closely each model followed.
 * **History**: every earlier take (all tabs, and the command line), newest first, playable.
 
 Every tab has a **Model** choice: Kalavinka (ours), base SoulX-Singer (zero-shot, Hindi phones mapped to English),
@@ -152,7 +155,12 @@ def launch(bundle: Path, device: str = "auto", share: bool = False, port: int = 
         w, sr = sf.read(hist.dir / r["wav"], dtype="float32")
         return (sr, w), f"`{hist.dir / r['wav']}`\n\n```\n{__import__('json').dumps(r['request'], ensure_ascii=False, indent=1)}\n```"
 
-    with gr.Blocks(title="Kalavinka: Hindi singing") as page:
+    import inspect
+    from .compose_ui import build_tab as build_compose_tab, head_html
+    head = head_html()
+    # Gradio 4/5 take head= on Blocks; Gradio 6 moved it to launch()
+    head_on_blocks = "head" in inspect.signature(gr.Blocks.__init__).parameters
+    with gr.Blocks(title="Kalavinka: Hindi singing", **({"head": head} if head_on_blocks else {})) as page:
         gr.Markdown("# Kalavinka: Hindi film-song singing\n" + HOW)
         with gr.Accordion("Model and settings (all tabs)", open=True):
             with gr.Row():
@@ -205,6 +213,7 @@ def launch(bundle: Path, device: str = "auto", share: bool = False, port: int = 
             sabout = gr.Markdown()
             sgo.click(do_sargam, [which, stext, sjson, svoice, stonic, sbeat, svowel, model, steps, seed],
                       [sa1, sa2, sabout])
+        init_compose = build_compose_tab(gr, singer, hist, tunes, voices, model, steps, seed, MODEL_CHOICES, two)
         with gr.Tab("History"):
             gr.Markdown(f"Every take is kept in `{hist.dir}` and logged in `history.jsonl`.")
             rows = history_rows()
@@ -215,4 +224,6 @@ def launch(bundle: Path, device: str = "auto", share: bool = False, port: int = 
             hb = gr.Button("Refresh")
             hb.click(do_refresh, None, pick)
             pick.change(do_play, pick, [hplay, hinfo])
-    page.queue().launch(share=share, server_port=port, inbrowser=not share)
+        init_compose(page)
+    page.queue().launch(share=share, server_port=port, inbrowser=not share,
+                        **({} if head_on_blocks else {"head": head}))

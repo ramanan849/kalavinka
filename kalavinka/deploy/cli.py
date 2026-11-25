@@ -16,6 +16,12 @@ Commands::
     sargam "Sa Re Ga | Re Ga ma" [--json score.json]
                                 sing your own swaras (notation: see kalavinka_app/sargam.py), or an LLM-written JSON
     prompt                      print the prompt to give ChatGPT (or any LLM) to write a sargam JSON for you
+    compose score.json [--model both] [--voice 4]
+                                sing your own composition (swaras, lengths, lyrics, ornaments, hand-drawn pitch;
+                                format: kalavinka_app/compose.py); the web page's Compose tab edits it on the F0 curve
+    compose --example | --from-tune 3 | --sargam "Sa Re Ga" --save x.json
+                                write a starting composition to edit (by hand, in the web page, or with an LLM)
+    compose-prompt              print the prompt to give ChatGPT (or any LLM) to write a composition JSON
     history [--n 20]            list earlier takes (every take is kept in outputs/ and logged in history.jsonl)
 
 Compare with the base model: add ``--model both`` (or ``base``) to sing, resing, alankar and sargam. ``base`` is the
@@ -135,6 +141,46 @@ def run_sargam(a, singer, hist, steps: int) -> None:
                   f"{p['mean_abs_cents']:9.1f} c {p['voiced_share'] * 100:6.0f}%   {'(reused) ' if hit else ''}{path.name}")
 
 
+def run_compose(a, bundle: Path, hist, singer_factory) -> None:
+    """compose command: write a starting composition (--save without a file), or sing one with each model (cached)
+    and print how closely each model followed the designed pitch curve."""
+    from .compose import EXAMPLE, ComposeError, ComposeSinger, from_sargam, from_tune, normalise
+    if a.example:
+        comp = EXAMPLE
+    elif a.from_tune:
+        tu = next((t for t in read_jsonl(bundle / "data" / "tunes.jsonl") if t["no"] == a.from_tune), None)
+        if tu is None:
+            raise ComposeError(f"there is no tune {a.from_tune} (see: ./sing tunes)")
+        comp = from_tune(tu, keep_curve=not a.plain)
+    elif a.sargam:
+        comp = from_sargam(a.sargam)
+    elif a.file:
+        comp = normalise(a.file.read_text(encoding="utf-8"))
+    else:
+        raise ComposeError("give a composition file, or --example / --from-tune N / --sargam \"...\" with --save")
+    comp = normalise(comp)
+    if a.voice:
+        comp["voice"] = a.voice
+    if a.save:
+        a.save.write_text(json.dumps(comp, ensure_ascii=False, indent=1), encoding="utf-8")
+        print(f"wrote {a.save}; edit it, then: ./sing compose {a.save}")
+        if not a.file:
+            return
+    singer = singer_factory()
+    from .singer import default_steps
+    steps = int(a.steps or default_steps(singer.device))
+    cs = ComposeSinger(singer)
+    print(f"== {comp.get('title', 'composition')}")
+    for model in models_of(a.model):
+        req = {"comp": comp, "model": model, "seed": a.seed, "steps": steps}
+        wav, sr, info, path, hit = hist.cached("compose", req, lambda: cs.sing(comp, model, None, steps, a.seed),
+                                               f"{model}_compose_{comp.get('title', '')}", a.fresh)
+        f = info["follow"]
+        print(f"  [{model}] {f['within_50c'] * 100:.0f}% of the curve within 50 c, {f['within_25c'] * 100:.0f}% within "
+              f"25 c, mean error {f['mean_abs_cents']} c   {'(reused) ' if hit else ''}{path}")
+        play(path, a.play)
+
+
 def main(argv: Optional[Sequence[str]] = None) -> None:
     """Parse the command and run it."""
     p = argparse.ArgumentParser(prog="sing", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -169,6 +215,16 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
         g.add_argument("--tonic", default=None, help="auto (the voice's own Sa), a note like C#3, or Hz")
         g.add_argument("--beat", type=float, default=None, help="seconds per note (default 0.45)")
         g.add_argument("--vowel", choices=["sargam", "aa"], default=None, help="sing the swara names, or 'aa' (akaar)")
+    c = sub.add_parser("compose", help="sing your own composition (pitch, timing, ornaments)")
+    c.add_argument("file", nargs="?", type=Path, default=None, help="a composition JSON")
+    c.add_argument("--example", action="store_true", help="start from the built-in Yaman example")
+    c.add_argument("--from-tune", type=int, default=None, help="start from bundled tune N (with its real pitch)")
+    c.add_argument("--plain", action="store_true", help="with --from-tune: plain notes, without the real pitch curve")
+    c.add_argument("--sargam", default=None, help='start from sargam text, e.g. "Sa Re Ga | ma Pa"')
+    c.add_argument("--save", type=Path, default=None, help="write the composition here")
+    c.add_argument("--model", choices=MODELS, default="both")
+    c.add_argument("--voice", type=int, default=None)
+    sub.add_parser("compose-prompt", help="the LLM prompt for writing a composition JSON")
     h = sub.add_parser("history", help="list earlier takes")
     h.add_argument("--n", type=int, default=20)
     sub.add_parser("prompt", help="the LLM prompt for writing a sargam JSON")
@@ -179,7 +235,7 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     u.add_argument("--port", type=int, default=7860)
     argv = list(sys.argv[1:] if argv is None else argv)
     cmds = {"sing", "resing", "tunes", "voices", "demo", "ui", "fetch", "alankar", "sargam", "history", "prompt",
-            "-h", "--help"}
+            "compose", "compose-prompt", "-h", "--help"}
     first = next((i for i, x in enumerate(argv) if not x.startswith("-") and (i == 0 or argv[i - 1] not in
                   ("--bundle", "--device", "--steps", "--seed", "--outputs"))), None)
     if first is not None and argv[first] not in cmds:
@@ -205,6 +261,18 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     if a.cmd == "prompt":
         from .sargam import LLM_PROMPT
         print(LLM_PROMPT); return
+    if a.cmd == "compose-prompt":
+        from .compose import COMPOSE_PROMPT
+        print(COMPOSE_PROMPT); return
+    if a.cmd == "compose":
+        from .compose import ComposeError
+        from .singer import KalavinkaSinger, SingError
+        try:
+            run_compose(a, bundle, hist, lambda: KalavinkaSinger(bundle, device=a.device))
+        except (ComposeError, SingError) as e:
+            print(f"\nCannot sing that: {e}", file=sys.stderr)
+            sys.exit(2)
+        return
     if a.cmd == "alankar" and a.which == "list":
         from .sargam import ALANKARS, alankar_lines, to_text
         for no, al in ALANKARS.items():

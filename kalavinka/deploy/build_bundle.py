@@ -43,7 +43,8 @@ VENDOR_FILES = [
     "kalavinka/eval/sing_new.py", "kalavinka/ir/__init__.py", "kalavinka/ir/features.py", "kalavinka/ir/model.py",
     "saregama/g2p.py", "saregama/phoneset.py", "saregama/paths.py",
 ]
-APP_FILES = ["singer.py", "cli.py", "app.py", "sargam.py", "history.py"]
+APP_FILES = ["singer.py", "cli.py", "app.py", "sargam.py", "history.py", "compose.py", "compose_ui.py",
+             "static/f0_editor.js", "static/f0_editor.css"]
 DROP_FIELDS = ("conf", "energy_db", "hnr_db", "h1h2_db", "f0_agree", "features", "swara", "note_cents")
 
 
@@ -127,6 +128,7 @@ def build_core(dst: Path, export: Path, n_tunes: int) -> Dict:
         shutil.rmtree(dst)
     (dst / "kalavinka_app").mkdir(parents=True)
     for f in APP_FILES:
+        (dst / "kalavinka_app" / f).parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(HERE / f, dst / "kalavinka_app" / f)
     (dst / "kalavinka_app" / "__init__.py").write_text('"""Kalavinka: Hindi film-song singing (see README.md)."""\n')
     shutil.copy2(HERE / "bundle_main.py", dst / "kalavinka_app" / "__main__.py")

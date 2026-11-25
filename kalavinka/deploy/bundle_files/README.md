@@ -29,11 +29,49 @@ python -m kalavinka_app sing "..." --model both                 # compare with t
 python -m kalavinka_app alankar 2                               # an alankar, both models, pitch checked note by note
 python -m kalavinka_app sargam "Sa Re Ga | Re Ga ma"             # your own swaras (or --json score.json)
 python -m kalavinka_app prompt       # the prompt that lets ChatGPT write a sargam JSON
+python -m kalavinka_app compose mine.json --model both    # your own melody + ornaments (see Compose below)
 python -m kalavinka_app history      # earlier takes (each request is cached: asking again reuses the take)
 ```
 Takes are saved in `outputs/` with a `.json` that says what was sung, and logged in `outputs/history.jsonl`.
 Options (before the command): `--device auto|cuda|mps|cpu`, `--steps N` (32 on a GPU, 16 on CPU by default),
 `--seed N` (another take), `--play`. The word `sing` can be left out: `python -m kalavinka_app "..."`.
+
+## Compose: your own melody, timing and ornaments
+
+The web page's **Compose (pitch, timing, ornaments)** tab lets you write the melody yourself and edit it on the
+pitch (F0) curve:
+
+1. **Start from** the Yaman example, a bundled tune (with the real singer's pitch curve, or as plain notes), Hindi
+   lyrics on swaras you type (`Ga Pa Dha Pa Ga Re Sa`, one per syllable), a sargam line or alankar, a JSON
+   composition (e.g. from ChatGPT: open *JSON / ask ChatGPT* for the prompt), or a blank page. Press **Load**.
+2. Set the **voice**, **Sa** (tonic; `auto` = the voice's own), **tempo**, **raag** (notes snap to its swaras) and
+   **taal** (the beat-cycle grid).
+3. Edit on the curve:
+   * drag a note **up/down** to change its pitch (snaps to the raag; hold **Alt** for free cents, e.g. a shruti);
+   * drag a note's **right edge** to change its length (quarter beats; Alt = free);
+   * **double-click** a note to change its syllable (`-` = hold the previous syllable, a slur; `_` = rest; empty =
+     sing the swara name);
+   * **click** a note to edit it below the canvas and **add ornaments**, each with its own settings:
+     meend (glide to a swara), andolan (slow sway), gamak (fast heavy shake to a neighbour swara), kan (grace note),
+     murki (quick turn), khatka, zamzama (fast clusters), vibrato, glide in/out, custom shape. Carnatic names work
+     too in JSON: jaru = meend, kampita = gamak, sphurita/nokku = kan;
+   * **Draw pitch** (pencil): draw the curve by hand over the sung notes; **Erase drawing** removes it;
+   * keys: arrows up/down = next swara, left/right = next note, +/- = length, Delete, Ctrl+Z / Ctrl+Y;
+   * **+ phrase**: each phrase is one breath and is sung separately.
+4. **▶ preview** plays the curve at once as a plain tone in the browser (no model), so you can check the melody.
+5. **Sing it** sings it with the model(s) chosen at the top (Kalavinka, base, or both). The table shows how closely
+   each model followed your curve, and the orange line in the editor is what the model actually sang.
+
+Exact values can be typed in the **Table view** (ornaments like `meend(to=Pa,start=0.5); vibrato(rate=5,depth=25)`).
+**Save JSON** writes the composition to `outputs/compositions/`.
+
+From the command line:
+```
+python -m kalavinka_app compose --example --save mine.json          # or --from-tune 3, or --sargam "Sa Re Ga | ma Pa"
+python -m kalavinka_app compose mine.json --model both              # sing it; prints how closely each model followed the curve
+python -m kalavinka_app compose-prompt                              # prompt for ChatGPT; save its answer as x.json, then compose x.json
+```
+The JSON format is explained at the top of `kalavinka_app/compose.py`.
 
 ## Good to know
 

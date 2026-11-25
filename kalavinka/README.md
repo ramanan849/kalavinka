@@ -10,7 +10,7 @@ annotation package (which stays unmodified; kalavinka wraps it).
 | `ir/` | stage 1: expressive-contour IR model (note scaffold -> expressive F0), temperature sweep | done |
 | `eval/` | held-out rendering, CER/F0/SIM, minimal-pair contrasts, paired bootstrap, listening test, demo tracks | done |
 | `ops/` | env setup, local (no-Slurm) P1 runner, GPU picker, web fetcher | done |
-| `deploy/` | shareable inference bundles: Colab notebook zip and Mac pipeline zip (`KalavinkaSinger`, CLI, web page; base-vs-ours comparison, alankars/sargam, take history + cache) | done |
+| `deploy/` | shareable inference bundles: Colab notebook zip and Mac pipeline zip (`KalavinkaSinger`, CLI, web page; base-vs-ours comparison, alankars/sargam, Compose tab (F0 editor with ornaments), take history + cache) | done |
 
 ## Layout on disk
 

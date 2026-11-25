@@ -3,7 +3,7 @@
 Every take (from the command line or the web page) is saved under ``outputs/`` as ``<time>_<name>.wav`` plus a
 ``.json`` with what was sung, and gets one line in ``outputs/history.jsonl``:
 
-    {"id": 12, "time": "2026-11-25 18:02:11", "key": "<sha1 of the request>", "kind": "sing|resing|sargam",
+    {"id": 12, "time": "2026-11-25 18:02:11", "key": "<sha1 of the request>", "kind": "sing|resing|sargam|compose",
      "model": "kalavinka|base", "request": {...}, "wav": "<file name>", "info": {...}}
 
 **Cache.** The key is a hash of the full request (kind, text, tune, voice, model, pitch mode, seed, steps, tempo,
@@ -111,9 +111,13 @@ def describe(r: Dict) -> str:
     """One line about a record, for the history list."""
     q = r["request"]
     what = {"sing": lambda: q.get("lyrics", ""), "resing": lambda: f"tune {q.get('tune')} (original words)",
-            "sargam": lambda: q.get("title") or q.get("sargam", "")[:40]}.get(r["kind"], lambda: "")()
+            "sargam": lambda: q.get("title") or q.get("sargam", "")[:40],
+            "compose": lambda: "compose: " + str((q.get("comp") or {}).get("title", ""))}.get(r["kind"], lambda: "")()
     extra = f"{q.get('mode', 'score')}"
     if r["kind"] == "sargam" and "pitch" in r.get("info", {}):
         p = r["info"]["pitch"]
         extra = f"{int(p['within_50c'] * 100)}% notes on the swara, {p['mean_abs_cents']} c off"
+    if r["kind"] == "compose" and "follow" in r.get("info", {}):
+        f = r["info"]["follow"]
+        extra = f"{int(f['within_50c'] * 100)}% of the curve within 50 c"
     return f"#{r['id']:<4} {r['time']}  {r['model']:<9} {r['kind']:<6} {what[:44]:<44}  {extra}"
