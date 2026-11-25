@@ -17,6 +17,8 @@ songs.csv columns (header required; only the first four are mandatory):
 """
 from __future__ import annotations
 
+import unicodedata
+
 import csv
 import json
 from collections import Counter
@@ -85,7 +87,9 @@ def safe_syllables(lines: List[str], windows: Optional[List[Tuple[float, float]]
     out, kept, kwin, bad = [], [], [] if windows is not None else None, []
     for k, line in enumerate(lines):
         words = []
-        for w in split_words(line):
+        # symbols (★, ♪ ...) are skipped by split_words; still report them as dropped, as before
+        bad += [t for t in line.split() if not any(unicodedata.category(c)[0] in "LN" for c in t)]
+        for w in split_words(line, lang):
             try:
                 line_to_syllables(w, lang, lexicon, **opts)
                 words.append(w)
