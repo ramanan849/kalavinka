@@ -532,7 +532,8 @@ def notes_qc(ctx, song: Song, sdir: Path) -> Dict:
     clips = []
     q = ctx.cfg["qc"]
     reasons: Dict[str, int] = {}
-    for i, j in plan_clips(sylls, single, cluster, hz, min_single=q.get("clip_min_single", 0.9),
+    for i, j in plan_clips(sylls, single, cluster, hz, min_s=q.get("clip_min_s", 2.0), max_s=q.get("clip_max_s", 16.0),
+                           min_single=q.get("clip_min_single", 0.9),
                            min_purity=q.get("clip_min_purity", 0.9), reasons=reasons):
         a, b = sylls[i]["start"], sylls[j - 1]["end"]
         seg = sylls[i:j]

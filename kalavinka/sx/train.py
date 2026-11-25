@@ -239,6 +239,8 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     p.add_argument("--reject-weight", type=float, default=0.2, help="clip weight of reject-band clips (conf mode)")
     p.add_argument("--exclude-phones", default="", help="comma list of Indic phone names to hold out (e.g. Th,Dh,Rh)")
     p.add_argument("--subset-hours", type=float, default=0.0, help="train on a seeded random subset of this size")
+    p.add_argument("--max-total-s", type=float, default=22.0,
+                   help="longest prompt + target sample in seconds (raise it for long-clip data so the prompt keeps 6 s)")
     p.add_argument("--conf-floor", type=float, default=0.2)
     p.add_argument("--lora-r", type=int, default=32)
     p.add_argument("--lora-alpha", type=int, default=64)
@@ -275,12 +277,13 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     table = json.loads(a.phones_table.read_text())
     excl = [table.index(f"in_{p}") for p in a.exclude_phones.split(",") if p]
     ds = PairDataset(a.cache / "train.pt", bands=bands, gate=GateProbs(a.p_score, a.p_melody), seed=a.seed,
-                     exclude_tokens=excl, subset_s=a.subset_hours * 3600)
+                     exclude_tokens=excl, subset_s=a.subset_hours * 3600, max_total_s=a.max_total_s)
     if excl or a.subset_hours:
         log(f"ablation: excluded {ds.n_excluded} target clips containing {a.exclude_phones or '-'}; "
             f"subset {a.subset_hours} h -> {len(ds)} targets")
     # the val set drops the held-out phones too, so checkpoint choice never sees them (holdout runs)
-    vds = PairDataset(a.cache / "val.pt", bands=("accept",), gate=None, seed=0, exclude_tokens=excl)
+    vds = PairDataset(a.cache / "val.pt", bands=("accept",), gate=None, seed=0, exclude_tokens=excl,
+                      max_total_s=a.max_total_s)
     stats = conf_stats(torch.cat([ds.all[i]["conf"] for i in ds.idx]))
     log(f"train targets {len(ds)} ({bands}), val {len(vds)}; conf weighting stats {stats}")
     loader = torch.utils.data.DataLoader(ds, batch_sampler=FrameBudgetSampler(ds, a.max_frames, a.seed),

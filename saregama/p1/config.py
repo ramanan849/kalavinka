@@ -28,7 +28,8 @@ DEFAULTS: Dict[str, Dict[str, Any]] = {
             "max_chars_per_s": 22.0, "batch_size": 16, "whisper_beams": 1},
     "lyrics": {"min_version_coverage": 0.4, "match_threshold": 0.75},
     "align": {"window_pad_s": 0.3},
-    "qc": {"clip_min_single": 0.9, "clip_min_purity": 0.9},
+    "qc": {"clip_min_single": 0.9, "clip_min_purity": 0.9,
+           "clip_min_s": 2.0, "clip_max_s": 16.0},      # clip length range (raise clip_max_s for long-clip data)
     "device": {"device": "cuda"},
 }
 
