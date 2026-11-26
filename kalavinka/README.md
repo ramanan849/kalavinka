@@ -135,6 +135,7 @@ ornament frames, voicing F1) and WavLM speaker similarity to the prompt.
 | `eval/sing_new.py` | new lyrics (checked absent from training) via the dataset G2P, set to a held-out line's tune, sung by a run |
 | `eval/demo_song_timed.py` | demo tracks stitched with the song's real gaps (0 s = crossfade) instead of a fixed 0.6 s, so words split across clips are not broken by a pause |
 | `eval/demo_song_seamless.py` | a demo song re-rendered as one continuous performance (`deploy.seamless`: one timeline, real gaps, cuts only at rests or inside held notes), per system |
+| `eval/long_passage.py` | long-singing test: consecutive test clips joined into 18-28 s passages, rendered clip by clip, in 14 s seamless pieces and in one call; each clip scored against the real singer (does a short-clip model struggle on long lyrics?) |
 | `ir/reeval.py` | re-scores a contour run on test with the current evaluation (fair flat-MIDI baselines; sampler time label) -> `test_metrics_v2.json` |
 | `ops/shadow_work.py` | a shadow copy of a P1 work dir (links for big files, copies for files stages rewrite) so text stages can be re-run without touching the dataset behind reported results (used for the G2P fix: `work_g2p2` -> `export/v2`) |
 | `eval/alankar_eval.py` | alankar benchmark: base SoulX vs V4-L on sargam exercises (note-by-note pitch, Whisper syllable CER, paired bootstrap) |
