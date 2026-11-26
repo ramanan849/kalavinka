@@ -138,6 +138,7 @@ ornament frames, voicing F1) and WavLM speaker similarity to the prompt.
 | `eval/long_passage.py` | long-singing test: consecutive test clips joined into 18-28 s passages, rendered clip by clip, in 14 s seamless pieces and in one call; each clip scored against the real singer (does a short-clip model struggle on long lyrics?) |
 | `ir/reeval.py` | re-scores a contour run on test with the current evaluation (fair flat-MIDI baselines; sampler time label) -> `test_metrics_v2.json` |
 | `ops/shadow_work.py` | a shadow copy of a P1 work dir (links for big files, copies for files stages rewrite) so text stages can be re-run without touching the dataset behind reported results (used for the G2P fix: `work_g2p2` -> `export/v2`) |
+| `annot/demo_transcribe.py` | demo-song compositions: `analyse` (lead-vocal separation, F0 ensemble, tonic, swara overview PDF, Whisper timestamps) on any song outside the dataset; `transcribe` a passage into Compose JSON; `compare` a hand-written composition with the real singing note by note and write a fixed copy |
 | `eval/alankar_eval.py` | alankar benchmark: base SoulX vs V4-L on sargam exercises (note-by-note pitch, Whisper syllable CER, paired bootstrap) |
 | `eval/phone_eval.py` | IPA phone recogniser check (failed its gate; kept as a record) |
 | `ops/eval_queue.sh` | per-GPU queue: wait for a run, render, contrast, score |
