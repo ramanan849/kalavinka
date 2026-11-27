@@ -1,4 +1,15 @@
-# saregama624
+# Kalavinka
+
+Hindi film-song singing voice synthesis on SoulX-Singer, for the IE624 course project
+(Gokularamanan R S and Rushikesh Bhagwan Shinde). The Kalavinka code is in `kalavinka/`
+(see [`kalavinka/README.md`](kalavinka/README.md)); `saregama/` is the annotation pipeline it builds on,
+described below.
+
+## Use of AI tools
+Claude (Anthropic) was used as a coding and debugging assistant. The ideas, the data curation and
+annotation, the experimental design and the conclusions are ours, and we checked the results.
+
+# saregama: the annotation pipeline
 
 Time-synced annotation of Carnatic concert recordings (Saraga 1.5) for the IE624
 project. For every multitrack recording, the pipeline produces:
