@@ -13,6 +13,9 @@ Everything is on **one clock, the mix's**, and is stored as an ICM-IR bundle per
 recording. The bundles are the source for ICM-IR training data and for
 SoulX-Singer fine-tuning clips.
 
+The Kalavinka work (Hindi film-song singing synthesis on SoulX-Singer: dataset, training,
+evaluation and the demo app) is on the [`kalavinka-v1`](../../tree/kalavinka-v1) branch.
+
 - [Status](#status)
 - [Setup](#setup)
 - [Running the pipeline](#running-the-pipeline)
