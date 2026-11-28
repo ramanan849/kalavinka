@@ -1,17 +1,14 @@
 # IE624 Course project 
- - Gokularamanan R S (23B1854) 
- - Rushikesh Bhagwan Shinde (23B1529)
+ -  ## Gokularamanan R S (23B1854) 
+ - ## Rushikesh Bhagwan Shinde (23B1529)
 ***
 
-# Kalavinka: teaching a singing model to sing Hindi film songs
+# Kalavinka: Indian Music Vocals synthesis
 
 Kalavinka is [SoulX-Singer](https://github.com/Soul-AILab/SoulX-Singer) fine-tuned on **10.7 hours of Hindi film
 songs** that we collected and labelled ourselves. You give it Hindi lyrics, a tune and a few seconds of a voice, and it
-sings. C
+sings. 
 
-On 105 test clips from songs it never heard, fine-tuning lowers the lyric error from 0.38 to 0.24 and brings the
-Hindi retroflex and aspirated consonants from chance level to close to real singers. The full write-up is
-[`docs/Kalavinka_Report_IE624.pdf`](docs/Kalavinka_Report_IE624.pdf).
 
 **Contents**
 1. [Links](#1-links)
@@ -328,11 +325,6 @@ $PROJECT/.venv-sx/bin/python -m pytest -q kalavinka/tests --ignore=kalavinka/tes
 
 ## 7. Credits, license and data
 
-**Who did what.**
-- Rushikesh Bhagwan Shinde: song curation, the annotation pipeline (lyrics, G2P, alignment, notes, the gold set),
-  and idea (C), the two-stage system.
-- Gokularamanan R S: audio cleaning (vocal separation, pitch, singers, tonic), model training, and idea (B).
-- Idea (A) was joint work.
 
 **Built on** [SoulX-Singer](https://github.com/Soul-AILab/SoulX-Singer) (Apache-2.0) by Soul AI Lab, and on RMVPE,
 FCPE, Mel-Band RoFormer, Qwen3-ASR, Whisper and MMS.
