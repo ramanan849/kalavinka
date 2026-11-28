@@ -1,8 +1,13 @@
+# IE624 Course project 
+ - Gokularamanan R S (23B1854) 
+ - Rushikesh Bhagwan Shinde (23B1529)
+***
+
 # Kalavinka: teaching a singing model to sing Hindi film songs
 
 Kalavinka is [SoulX-Singer](https://github.com/Soul-AILab/SoulX-Singer) fine-tuned on **10.7 hours of Hindi film
 songs** that we collected and labelled ourselves. You give it Hindi lyrics, a tune and a few seconds of a voice, and it
-sings. Course project for IE624 (IIT Bombay) by Gokularamanan R S and Rushikesh Bhagwan Shinde.
+sings. C
 
 On 105 test clips from songs it never heard, fine-tuning lowers the lyric error from 0.38 to 0.24 and brings the
 Hindi retroflex and aspirated consonants from chance level to close to real singers. The full write-up is
