@@ -1,6 +1,6 @@
-# IE624 Course project 
- -  ## Gokularamanan R S (23B1854) 
- - ## Rushikesh Bhagwan Shinde (23B1529)
+# IE624 Course project (Autumn 2026)
+ - Gokularamanan R S (23B1854) 
+ - Rushikesh Bhagwan Shinde (23B1529)
 ***
 
 # Kalavinka: Indian Music Vocals synthesis
