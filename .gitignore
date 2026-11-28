@@ -228,3 +228,7 @@ annotations/
 *.flac
 *.wav
 *.mp3
+.venv*/
+outputs/
+tmp*/
+.pytest_cache/
