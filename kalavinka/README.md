@@ -1,15 +1,20 @@
 # kalavinka
 
 Hindi film-song singing voice synthesis on SoulX-Singer, built on the `saregama`
-annotation package (which stays unmodified; kalavinka wraps it).
+annotation package (which stays unmodified; kalavinka wraps it). The [main README](../README.md) gives the
+ordered replication steps and the app quick start; this file is the reference for each part.
+
+**Names.** The report calls the ideas (A), (B) and (C); the code and older notes use their working names:
+(A) articulatory phone embeddings = `--phones articulatory`; (B) confidence-aware flow matching =
+`--weighting conf`; (C) the two-stage system = the contour models in `ir/` (I1 = C-reg, I2 = C-flow).
 
 | Part | What | Status |
 |---|---|---|
-| `annot/` | P1 finishing: gold-set threshold calibration (C3), v1 export with per-frame confidence | calibration done; export in progress |
-| `sx/` | stage 2: SoulX fine-tune -- Indic phone table + `IndicDataProcessor`, articulatory phone embeddings (B), confidence-aware flow matching (C), trainer | trainer smoke-tested |
-| `ir/` | stage 1: expressive-contour IR model (note scaffold -> expressive F0), temperature sweep | done |
+| `annot/` | P1 finishing: gold-set threshold calibration, v1 export with per-frame confidence, demo-song transcription | done |
+| `sx/` | stage 2: SoulX fine-tune -- Indic phone table + `IndicDataProcessor`, articulatory phone embeddings (A), confidence-aware flow matching (B), trainer | done |
+| `ir/` | stage 1 of idea (C): expressive-contour model (note scaffold -> expressive F0), temperature sweep | done |
 | `eval/` | held-out rendering, CER/F0/SIM, minimal-pair contrasts, paired bootstrap, listening test, demo tracks | done |
-| `ops/` | env setup, local (no-Slurm) P1 runner, GPU picker, web fetcher | done |
+| `ops/` | env setup, local (no-Slurm) P1 runner, training launchers, GPU picker, job queue ([`ops/README.md`](ops/README.md)), web fetcher | done |
 | `deploy/` | shareable inference bundles: Colab notebook zip and Mac pipeline zip (`KalavinkaSinger`, CLI, web page; base-vs-ours comparison, alankars/sargam, Compose tab (F0 editor with ornaments, lyrics typed onto phrases), seamless joining of lines and phrases, 24 voice profiles with filters, History tab with labels / delete-restore / event log / reopen) | done |
 
 ## Layout on disk
@@ -18,7 +23,7 @@ annotation package (which stays unmodified; kalavinka wraps it).
 
 ```
 PROJECT/
-  saregama624/            this repo
+  kalavinka/              this repo (any folder name; it must sit directly in PROJECT)
   SoulX-Singer/           upstream clone + pretrained_models/{SoulX-Singer,SoulX-Singer-Preprocess}
   models/melband-vocals-kj/   full-vocals separator
   dataset/Kalavinka/...   the 1,066 .opus songs
@@ -31,15 +36,11 @@ PROJECT/
 ## Environments
 
 ```
-kalavinka/ops/setup_envs.sh all      # .venv-p1 (py3.12, torch 2.8, P1) and .venv-sx (py3.10, torch 2.2, SoulX pins)
-kalavinka/ops/setup_other_node.sh    # once per extra node's container: links the shared copy of .venv-sx's Python, tmux session
+envs/setup.sh                        # from the uv lock files: .venv-p1 (py3.12, torch 2.8) and .venv-sx (py3.10, torch 2.2)
 ```
-`.venv-sx` gets the repo and the SoulX clone on its path via a `.pth` file
-(`saregama` itself needs py>=3.11, so only its pure-python modules are used there):
-```
-echo $PROJECT/saregama624 >  $(.venv-sx/bin/python -c 'import site;print(site.getsitepackages()[0])')/kalavinka_repo.pth
-echo $PROJECT/SoulX-Singer >> (same file)
-```
+See [`../envs/README.md`](../envs/README.md). `.venv-sx` gets the repo and the SoulX clone on its path via a `.pth`
+file (`saregama` itself needs py>=3.11, so only its pure-python modules are used there). The older
+`kalavinka/ops/setup_envs.sh` builds the same envs with loose pins.
 
 ## Annotation run (P1) on a local multi-GPU machine
 
@@ -61,11 +62,12 @@ kalavinka/ops/run_p1_local.sh status
 ## Calibration (gold set)
 
 ```
-.venv-p1/bin/python -m kalavinka.annot.calibrate --work $PROJECT/work --gold $PROJECT/gold
+.venv-p1/bin/python -m kalavinka.annot.calibrate --work $PROJECT/work --gold $PROJECT/gold --word-acc 0.93
 ```
+(The dataset was built with `--word-acc 0.93`, the target in the report; the default is 0.95.)
 Scores every planned clip inside a gold window against the corrected TextGrids
 and fits `min_mean_conf`, `min_good_src` for the most accepted time with pooled
-word accuracy >= 0.95 and onsets within 50 ms >= 0.90. Writes
+word accuracy >= `--word-acc` and onsets within 50 ms >= 0.90. Writes
 `export/calibration/{calibration.json, clips.tsv, report.md}`.
 
 ## SoulX adapter and fine-tuning
@@ -76,15 +78,18 @@ word accuracy >= 0.95 and onsets within 50 ms >= 0.90. Writes
 .venv-sx/bin/python -m kalavinka.sx.train --cache <cache dir> --phones-table <phone_set_indic.json> \
     --out $PROJECT/runs/<run> --phones {nearest|articulatory} --bands accept[,review] --weighting {none|conf}
 ```
-Runs (each <= 5k steps, early stopping at patience 5) -- filled in as they are launched:
+Runs (the arguments of each are in `ops/launch_sx_runs.sh`; report names in brackets):
 
-| Run | Phones | Data / loss | Command |
+| Run | Phones | Data / loss | Notes |
 |---|---|---|---|
-| R0 | zero-shot, Hindi phones remapped to nearest English tokens | - | eval only |
-| R1 | nearest-copy | accept, uniform | TBD |
-| R2 | articulatory | accept, uniform | TBD |
-| R3 | nearest-copy | accept+review, confidence-weighted | TBD |
-| R4 | articulatory | accept+review, confidence-weighted | TBD |
+| R0 (V0) | zero-shot, Hindi phones remapped to nearest English tokens | - | eval only (`--run zero-shot`) |
+| R1 to R5 (V1 to V5) | nearest / articulatory | accept or accept+review; uniform or confidence-weighted | first grid, <= 5k steps, patience 5 |
+| L1, L4 (V1-L, V4-L) | nearest / articulatory | as R1 / R4 | finals: 15k steps, 2x batch (`--max-frames 7200`), patience 8; seed 1 = L1b, L4b |
+| H1, H2 (+b, c) (HO-N, HO-A) | nearest / articulatory | accept, without every clip containing Th, Dh, Rh | held-out phone test, 3 seeds |
+| N1, N2 (NZ-U, NZ-W) | articulatory | accept+review+reject (cache `v1_all`); uniform / weighted | noisy-data test of (B) |
+| S1, S2 (+b) (SD-N, SD-A) | nearest / articulatory | 1 hour of accept data | small-data test of (A) |
+
+Our final model V4-L is `runs/L4_v2` (the one inside the apps).
 
 Smoke checks done: 30-step run and a 300-step overfit on the 25 example clips
 (val loss 0.337 -> 0.265).
@@ -96,19 +101,8 @@ kalavinka/ops/build_sx_cache.sh $PROJECT/export/v1 $PROJECT/runs/cache_v1       
 kalavinka/ops/launch_sx_runs.sh $PROJECT/runs/cache_v1 v1 16 R1 R2 R3 R4          # supervised, one GPU each, + live plots
 kalavinka/ops/launch_ir_runs.sh $PROJECT/export/v1 v1                             # I1 (regression) and I2 (flow)
 ```
-**Two nodes (shared `/workspace`).** `ops/jobq.py` is a job queue on the shared disk: one worker per
-node takes the next job when that node has a GPU with room, so idle GPUs on either node get used.
-The second node (gokul-bench) is set up once with `ops/setup_other_node.sh`; it runs `sx` jobs (training,
-rendering), while `p1` jobs (Whisper / contrast scoring) need the dev container's model caches.
-
-```
-# workers (gokul-bench first pick; gokul-dev takes jobs that waited 5 min)
-setsid nohup .venv-sx/bin/python kalavinka/ops/jobq.py worker --node gokul-dev --can sx,p1 --max-jobs 4 --delay 300 >> runs/jobq/worker_gokul-dev.log 2>&1 &
-ssh -i ~/.ssh/id_ed25519_bench gokula@10.20.227.19 "docker exec -d gokul-bench bash -lc 'cd $PROJECT/saregama624 && exec $PROJECT/.venv-sx/bin/python kalavinka/ops/jobq.py worker --node gokul-bench --can sx >> $PROJECT/runs/jobq/worker_gokul-bench.log 2>&1'"
-QUEUE=1 kalavinka/ops/launch_sx_runs.sh $PROJECT/runs/cache_v1 v2 16 L1b L4b             # runs go to the queue
-.venv-sx/bin/python kalavinka/ops/jobq.py submit --name X --needs sx --after <path> -- <cmd using $JOB_GPU>
-.venv-sx/bin/python kalavinka/ops/jobq.py status
-```
+**Several machines.** `ops/jobq.py` is a job queue on a shared disk, so idle GPUs on any machine pick up
+runs (`QUEUE=1 kalavinka/ops/launch_sx_runs.sh ...`); see [`ops/README.md`](ops/README.md).
 
 Each run lives in `runs/<R>_<tag>/` (`train_<ts>.log`, `supervise_<ts>.log`,
 `metrics.jsonl`, `best.pt`, `last.pt`, `live.png`, `DONE`); the val overlay is
@@ -153,12 +147,14 @@ ornament frames, voicing F1) and WavLM speaker similarity to the prompt.
 ```
 kalavinka/ops/pack_bundles.sh        # -> <PROJECT>/bundles/kalavinka_colab.zip, kalavinka_mac.zip (~230 MB each)
 ```
-See `deploy/README.md`. The zips hold our weights, 17 held-out tunes and 10 voices; SoulX's base `model.pt` is
+See `deploy/README.md`. The zips hold our weights, 17 held-out tunes and 24 voices; SoulX's base `model.pt` is
 downloaded from Hugging Face on first use.
 
 ## Tests
 
 ```
-.venv-p1/bin/python -m pytest -q kalavinka/tests     # annotation parts (SoulX tests skip)
-.venv-sx/bin/python -m pytest -q kalavinka/tests/test_sx_adapter_phones.py
+.venv-p1/bin/python -m pytest -q kalavinka/tests tests --ignore=kalavinka/tests/test_sx_ablation.py   # annotation + saregama
+.venv-sx/bin/python -m pytest -q kalavinka/tests --ignore=kalavinka/tests/test_calibrate.py           # SoulX parts (py3.10)
 ```
+`test_sx_ablation.py` imports SoulX-Singer (only on `.venv-sx`'s path); `test_calibrate.py` imports `saregama`, which
+needs Python >= 3.11. `test_repo_docs.py` checks that the READMEs name only existing paths, modules and links.
